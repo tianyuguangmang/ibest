@@ -1,0 +1,37 @@
+{
+  "pages":[
+    "pages/mall/mall",
+    "pages/my/my"
+  ],
+  "networkTimeout":{
+    "request":5000
+  },
+  "window":{
+    "navigationBarBackgroundColor": "white",
+    "navigationBarTitleText": "",
+    "navigationBarTextStyle":"black",
+    "backgroundColor": "#f6f6f6",
+    "backgroundTextStyle": "white",
+    "enablePullDownRefresh": false,
+    "debug":false
+  },
+  "tabBar": {
+    "list": [{
+      "pagePath": "pages/mall/mall",
+      "iconPath": "./images/pic_home.png",
+      "selectedIconPath": "./images/pic_home_p.png",
+      "text": "首页"
+    },{
+      "pagePath": "pages/my/my",
+      "iconPath": "./images/pic_ren.png",
+      "selectedIconPath": "./images/pic_ren_p.png",
+      "text": "我的"
+    }],
+    "borderStyle":"black",
+    "position": "bottom",
+    "color": "#666",
+    "selectedColor": "#ff3c42",
+    "backgroundColor": "#ffffff"
+
+  }
+}

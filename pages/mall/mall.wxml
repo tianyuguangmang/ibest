@@ -1,0 +1,42 @@
+<view>
+	<scroll-view scroll-x="{{true}}" class="nav-list  bg-w" scroll-into-view="nav-{{cateId}}">
+		<view class="nav-list-box flex-x" style="width:{{170*menuList.length+'rpx'}}">
+			<view wx:for="{{menuList}}" class="nav-item  flex-x flex-1" data-cateid="{{item.id}}" id="nav-{{item.id}}" bindtap="changeCateId">
+				<div class="title {{cateId==item.id?'selected-nav':''}} flex-x">{{item.name}}</div>
+			</view>
+		</view>
+	</scroll-view>
+	<view class="" style="height:90rpx;"></view>
+	<swiper indicator-dots="{{true}}" circular="{{true}}" autoplay="{{false}}" interval="{{2000}}" duration="{{1000}}" indicator-dots="{{true}}" indicator-active-color="red" indicator-color="white" class="swiper" wx:if="{{bannerList&&bannerList.length>0}}" circular="{{true}}" autoplay="{{true}}">
+		<swiper-item wx:for="{{bannerList}}">
+			<view>
+				<image class="mall-banner" src="{{item.pic+Size.W375H187}}" mode="aspectFill"></image>
+			</view>
+		</swiper-item>
+	</swiper>
+
+
+	<view class="list-box">
+		<div class="top-title flex-x bbl">今日推荐</div>
+		<block wx:if="{{goodsList.length>0}}">
+			<view class="hot-goods-list flex-xs">
+				<view class="hot-goods-item flex-x" wx:for="{{goodsList}}">
+					<navigator class="goods-msg-box flex-y" url="/pages/goodsdetail/goodsdetail?id={{item.id}}&index={{index}}" open-type="navigate">
+						<div class="goods-img flex-x">
+							<image src="{{item.mainImage+Size.W150H150}}" lazy-load="{{true}}" mode="aspectFill" />
+						</div>
+						<div class="title ellipse">{{item.title}}</div>
+						<div class="origin-price">￥{{item.marketPrice}}</div>
+						<div class="discount-price flex-x">
+							<span class="price flex-1">￥{{item.unitPrice}}</span>
+							<span class="count-box"><span class="count-value">{{item.soldCount}}</span>已售</span>
+						</div>
+					</navigator>
+				</view>
+				<!-- <view wx:if="{{noMoreData}}" class="no-more flex-x">没有更多数据啦</view> -->
+			</view>
+		</block>
+
+
+	</view>
+</view>
