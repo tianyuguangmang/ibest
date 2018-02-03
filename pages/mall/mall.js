@@ -54,6 +54,12 @@ Page({
 				mainImage:'https://ps.ssl.qhimg.com/sdmt/179_135_100/t010b0a4aa5bb6941c4.jpg',
 				unitPrice:10,
 				marketPrice:20
+			},{
+				id:1,
+				title:'特价商品',
+				mainImage:'https://ps.ssl.qhimg.com/sdmt/179_135_100/t010b0a4aa5bb6941c4.jpg',
+				unitPrice:10,
+				marketPrice:20
 			}]
 		})
 	}

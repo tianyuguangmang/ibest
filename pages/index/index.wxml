@@ -1,0 +1,18 @@
+
+<view class="flex-x btl">
+	<view class="title">
+		<block wx:for="{{menuList}}">
+		<view class="item flex-x {{index == 0?'selected':''}}" >
+			{{item.name}}
+		</view>
+		</block>
+	</view>
+	<view class="flex-1 flex-wrap goods-list">
+		<div class="goods-item flex-y" wx:for="{{goodsList}}">
+			<image class="mainImage" src="{{item.mainImage}}" mode="aspectFill"></image>
+			<div class="name flex-1">{{item.title}}</div>
+			<view class="add-cart">+</view>
+		</div>
+		
+	</view>
+</view>

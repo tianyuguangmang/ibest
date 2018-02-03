@@ -1,0 +1,162 @@
+.cart-list{
+	width:100%;
+	overflow: hidden;
+}
+.cart-item{
+	width:100%;
+	margin-bottom: 22rpx;
+	background: #fff;
+	position: relative;
+	padding:30rpx 0rpx;
+	
+}
+.select-btn{
+	width:97rpx;
+}
+.img-box{
+	width:190rpx;
+
+}
+.img-box image{
+	width:190rpx;
+	height: 190rpx;
+}
+.msg-detail{
+	padding:0 30rpx;
+	width:100%;
+	overflow:hidden;
+	min-height: 180rpx;
+
+}
+.cart-box{
+	width:100%;
+}
+.goods-detail{
+	width:100%;
+	font-size:28rpx;
+	color:#999;
+	
+	
+}
+.msg-detail .title{
+
+	width:80%;
+	font-size:32rpx;
+
+	margin:10rpx 0;
+	line-height: 40rpx;
+	color:#3d3d3d;
+}
+.price-number{
+	width:100%;
+}
+.price{
+	width:100%;
+}
+.number .value{
+	width:68rpx;
+	height: 100%;
+	line-height: 60rpx;
+	text-align: center;
+}
+.number{
+	width:190rpx;
+	height: 60rpx;
+	border: 1px solid #ccc;
+}
+.decrease{
+	border-right: 1px solid #e5e5e5;
+	height: 100%;
+	text-align: center;
+	color:#b2b2b2;
+	font-size:28rpx;
+	line-height: 60rpx;
+}
+.add{
+	border-left: 1px solid #e5e5e5;
+	height: 100%;
+	line-height: 60rpx;
+	text-align: center;
+	font-size:28rpx;
+	color:#b2b2b2;
+}
+.origin-price{
+	font-size:28rpx;
+	color:#999999;
+	text-decoration: line-through;
+}
+.discount-price{
+	font-size:34rpx;
+	color:#fe5600;
+}
+.total{
+	height: 90rpx;
+	width:100%;
+	background: #fff;
+	position: fixed;
+	bottom: 0rpx;
+
+}
+.all-select{
+	width:85rpx;
+}
+.select-word{
+	width:90rpx;
+}
+.total-money{
+	text-align: center;
+}
+.total-money .money{
+	color:#fe5600;
+}
+.amount{
+	padding: 20rpx 70rpx;
+	background: #fe5600;
+	font-size:34rpx;
+	color:#fff;
+	text-align: center;
+}
+.height-content{
+	height: 120rpx;
+}
+.cart-item-box{
+	
+	position: relative;
+
+}
+.delete-box{
+	width: 100px;
+	background: #ff3c42;
+	color:#fff;
+	height:245rpx;
+margin-bottom:22rpx;
+
+
+}
+.delete-box image{
+	width:65rpx;
+	height: 70rpx;
+}
+.left-pull{
+	width:10rpx;
+	height: 50rpx;
+	position: absolute;
+	top:50%;
+	margin-top: -25rpx;
+	right: 0rpx;
+
+}
+
+.cart-img-box image{
+	width:284rpx;
+	height: 162rpx;
+}
+.no-more{
+	margin-top: 200rpx;
+	color:#d6d6d6;
+}
+
+.buy-count{
+	font-size:34rpx;
+	color:#999999;
+}

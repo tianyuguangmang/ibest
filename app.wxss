@@ -13,7 +13,7 @@ page,view,span,li,body, div, ul, li, h1, h2, h3, h4, h5, h6, p, dl, dt, dd, ol, 
 }
 page{
 	font-size:16px;
-  background: #f6f6f6;
+  background:#f5f5f5;
 }
 button,image{
   margin:0px;
@@ -60,8 +60,9 @@ button::after{
 .flex-ys {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content:space-between;
+  align-items: flex-start;
+  align-content:flex-start;
+  justify-content:flex-start;
 } 
 .flex-xs {
   display: flex;
@@ -114,9 +115,6 @@ button::after{
 .bg-w{
   background: #fff;
 }
-
-
-
 .btl{
   border-top: 1px solid #e3e5e9;
 }
@@ -161,4 +159,16 @@ button::after{
   word-wrap:break-word; 
   width:100%;
   
+}
+.flex-wrap {
+  flex-wrap: wrap;
+
+  display: flex;
+  align-content:flex-start;
+
+  justify-content: flex-start;
+}
+page{
+  height: 100%;
+  width: 100%;
 }

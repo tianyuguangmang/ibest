@@ -7,9 +7,9 @@
 		</view>
 	</scroll-view>
 	<view class="" style="height:90rpx;"></view>
-	<swiper indicator-dots="{{true}}" circular="{{true}}" autoplay="{{false}}" interval="{{2000}}" duration="{{1000}}" indicator-dots="{{true}}" indicator-active-color="red" indicator-color="white" class="swiper" wx:if="{{bannerList&&bannerList.length>0}}" circular="{{true}}" autoplay="{{true}}">
+	<swiper indicator-dots="{{false}}" circular="{{true}}" autoplay="{{false}}" interval="{{2000}}" duration="{{1000}}"  indicator-active-color="red" indicator-color="white" class="swiper" wx:if="{{bannerList&&bannerList.length>0}}" circular="{{true}}" autoplay="{{true}}">
 		<swiper-item wx:for="{{bannerList}}">
-			<view>
+			<view class="flex-x img-box">
 				<image class="mall-banner" src="{{item.pic+Size.W375H187}}" mode="aspectFill"></image>
 			</view>
 		</swiper-item>

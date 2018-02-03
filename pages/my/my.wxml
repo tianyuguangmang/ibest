@@ -1,3 +1,19 @@
 <view>
-	wode
+	<view class="msg">
+		
+	</view>
+	<view class="flex-x packet" style="border-bottom:1rpx solid #ddd;">
+		<div class="item flex-1 flex-y" style="border-right:1rpx solid #ddd;">
+			<span class="flex-1 flex-x" style="color:#2591f8;">0.00</span>
+			<span class="flex-1">钱包</span>
+		</div>
+		<div class="item flex-1 flex-y" style="border-right:1rpx solid #ddd;">
+			<span class="flex-1 flex-x" style="color:#f06841;">0.00</span>
+			<span class="flex-1">钱包</span>
+		</div>
+		<div class="item flex-1 flex-y">
+			<span class="flex-1 flex-x" style="color:#f8b53b;">0.00</span>
+			<span class="flex-1">钱包</span>
+		</div>
+	</view>
 </view>

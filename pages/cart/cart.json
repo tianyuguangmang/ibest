@@ -1,0 +1,7 @@
+{
+
+    "enablePullDownRefresh": false,
+    "onReachBottomDistance":50,
+    "navigationBarTitleText": "购物车"
+    
+}

@@ -1,0 +1,175 @@
+
+.title-box{
+	border-bottom: 1rpx solid #e5e5e5;
+	border-top: 1rpx solid #ddd;
+	position: fixed;
+	top:0px;
+	z-index: 1000;
+}
+.title-name{
+	height: 90rpx;
+	color:#bdbdbd;
+
+}
+.title-name div{
+	height: 100%;
+	line-height: 90rpx;
+	font-size:34rpx;
+}
+.selected{
+	color:#ff4444;
+	border-bottom: 4rpx solid #ff4444;
+}
+.order-msg{
+	width:100%;
+	height: 80rpx;
+	font-size:28rpx;
+}
+.service-number{
+	width:170rpx;
+	
+	color:#333;
+	text-align: center;
+}
+.order-msg .number{
+	color:#333;
+
+}
+.order-msg .states{
+	margin-right: 30rpx;
+	color:#ff4444;
+	text-align: center;
+}
+.order-msg .time{
+	width:102rpx;
+	color:#666666;
+	text-align: center;
+}
+.null-more-data {
+	margin-top: -20rpx;
+}
+.order-btn{
+	height: 80rpx;
+	line-height: 80rpx;
+	width:100%;
+	background: #fff;
+	text-align: center;
+	color:#e7e7e7;
+	font-size:30rpx;
+}
+.order-name{
+	height: 100%;
+	font-size:34rpx;
+}
+.order-name .name{
+	width:100%;
+	font-size:34rpx;
+}
+.order-name .styles{
+	width:100%;
+	color:#9a9a9a;
+	font-size:26rpx;
+	margin-top: 15rpx;
+}
+.order-protrait{
+	width:100%;
+	padding:10rpx;
+	
+}
+.order-protrait .img-box{
+	width:190rpx;
+}
+.order-protrait .img-box image{
+	width:152rpx;
+	height: 152rpx;
+}
+.order-protrait .price{
+	float: right;
+	margin-right: 24rpx;
+	font-size:28rpx;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-end;
+}
+.price .origin-price{
+	color:#999;
+	text-decoration: line-through;
+}
+.price .discount-price{
+	float:right;
+}
+.buyer-number{
+	text-align: right;
+	color:#999999;
+
+}
+.buyer-number span{
+	float:right;
+}
+.order-item{
+	margin-bottom: 22rpx;
+}
+.call-contact{
+	color:#ff4444;
+	width:158rpx;
+	height: 54rpx;
+	border-radius: 27rpx;
+	font-size:28rpx;
+	border: 1rpx solid #acacac;
+	line-height: 50rpx;
+	margin-right:25rpx;
+	color:#333;
+}
+.finish-order{
+	color:#333;
+	width:158rpx;
+	height: 54rpx;
+	border-radius: 27rpx;
+	font-size:28rpx;
+	border: 1rpx solid #acacac;
+	line-height: 50rpx;
+	margin-right:25rpx;
+
+}
+.cr-b{
+	color:#333;
+}
+.finish{
+	color:#ff4444;
+	height: 80rpx;
+	background: #fff;
+	width:100%;
+	font-size:30rpx;
+}
+.finish-time{
+	margin-right: 24rpx;
+}
+.finish-date{
+	margin-right: 14rpx;
+}
+.bbl{
+  border-bottom:1px solid #e7e7e7;
+}
+.btl{
+  border-top:1px solid #e7e7e7;
+}
+
+.total{
+	height: 80rpx;
+	width:100%;
+	padding:0rpx 30rpx;
+	line-height: 80rpx;
+	font-size:28rpx;
+	text-align: right;
+}
+
+.order-list{
+	
+}
+.all-content{
+	height: 100%;
+}
+view{
+	width:100%;
+}

@@ -1,7 +1,13 @@
 {
   "pages":[
-    "pages/mall/mall",
-    "pages/my/my"
+  "pages/my/my",
+  "pages/newaddress/newaddress",
+    "pages/myorder/myorder",
+    "pages/cart/cart",
+    "pages/index/index",
+    "pages/mall/mall"
+    
+
   ],
   "networkTimeout":{
     "request":5000
@@ -17,7 +23,7 @@
   },
   "tabBar": {
     "list": [{
-      "pagePath": "pages/mall/mall",
+      "pagePath": "pages/index/index",
       "iconPath": "./images/pic_home.png",
       "selectedIconPath": "./images/pic_home_p.png",
       "text": "首页"

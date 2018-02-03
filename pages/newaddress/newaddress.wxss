@@ -1,0 +1,32 @@
+.new-address{
+	background: #fff;
+	margin-top: 20rpx;
+	width:100%;
+	padding-left: 30rpx;
+	color: #333;
+	font-size:32rpx;
+}
+.item{
+	height: 112rpx;
+	border-bottom: 1rpx solid #eee;
+
+
+}
+.item .name{
+	color:#666;
+	width:100rpx;
+	margin-right: 80rpx;
+	font-weight: bold;
+	text-align: center;
+	
+}
+.btn-box{
+	margin-top: 50rpx;
+}
+.btn-box .btn{
+	width:600rpx;
+	height: 80rpx;
+	color: #fff;
+	border-radius: 40rpx;
+	background:#fe5600;
+}

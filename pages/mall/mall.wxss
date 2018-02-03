@@ -38,10 +38,22 @@
 .swiper{
 	width:100%;
 	height: 275rpx;
+	background: #fff;
 }
 .swiper image{
 	width:100%;
 	height: 275rpx;
+}
+.swiper .img-box{
+	width:100%;
+	height: 275rpx;
+}
+.swiper .mall-banner{
+	width:94%;
+	height: 240rpx;
+	border-radius: 10rpx;
+
+	
 }
 .hot-goods-list {
 	flex-wrap: wrap;
