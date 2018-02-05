@@ -16,4 +16,44 @@
 			<span class="flex-1">钱包</span>
 		</div>
 	</view>
+	<view class="menu">
+		<navigator class="flex-x item btl" url="/pages/myorder/myorder">
+			<div class="icon-box">
+				<image class="" src=""></image>
+			</div>
+			<div class="flex-1">我的订单</div>
+			<div class="right-icon">
+				<image class="" src=""></image>
+			</div>
+		</navigator>
+		<div class="flex-x item btl bbl">
+			<div class="icon-box">
+				<image class="" src=""></image>
+			</div>
+			<div class="flex-1">我的地址</div>
+			<div class="right-icon">
+				<image class="" src=""></image>
+			</div>
+		</div>
+	</view>
+	<view class="menu">
+		<div class="flex-x item btl">
+			<div class="icon-box">
+				<image class="" src=""></image>
+			</div>
+			<div class="flex-1">我的店铺</div>
+			<div class="right-icon">
+				<image class="" src=""></image>
+			</div>
+		</div>
+		<div class="flex-x item btl bbl">
+			<div class="icon-box">
+				<image class="" src=""></image>
+			</div>
+			<div class="flex-1">优惠券</div>
+			<div class="right-icon">
+				<image class="" src=""></image>
+			</div>
+		</div>
+	</view>
 </view>

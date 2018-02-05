@@ -44,7 +44,9 @@ button::after{
   width:0px;
   height: 0px;
 }
-
+.lm{
+  text-decoration: line-through;
+}
 .flex-y {
   display: flex;
   flex-direction: column;

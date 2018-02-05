@@ -1,6 +1,6 @@
 <view class="btl">
 	<view wx:if="{{cartList}}">
-		<view class="cart-list" wx:if="{{cartList.length>0}}">
+		<view class="cart-list">
 			<block  wx:for="{{cartList}}">
 			
 				<view class="cart-item flex-x flex-1" style="width:100% ">
@@ -31,7 +31,6 @@
 							</div> -->
 						</div>
 					</div>
-					<image src="../../images/cartitem_06.png" class="left-pull"/>
 				</view>
 			
 			</block>
