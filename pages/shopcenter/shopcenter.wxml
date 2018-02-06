@@ -16,33 +16,22 @@
 			<span class="flex-1">钱包</span>
 		</div>
 	</view>
-
-	<view class="menu">
-		<navigator class="flex-x item btl"  url="/pages/shopcenter/shopcenter">
-			<div class="icon-box">
-				<image class="" src=""></image>
-			</div>
-			<div class="flex-1">我的店铺</div>
-			<div class="right-icon">
-				<image class="" src=""></image>
-			</div>
-		</navigator>
-		<navigator class="flex-x item btl bbl" url="/pages/address/address">
-			<div class="icon-box">
-				<image class="" src=""></image>
-			</div>
-			<div class="flex-1">我的地址</div>
-			<div class="right-icon">
-				<image class="" src=""></image>
-			</div>
-		</navigator>
-	</view>
 	<view class="menu">
 		<navigator class="flex-x item btl"  url="/pages/stockgoods/stockgoods">
 			<div class="icon-box">
 				<image class="" src=""></image>
 			</div>
-			<div class="flex-1">店铺进货</div>
+			<div class="flex-1">收货地址</div>
+			<div class="right-icon">
+				<image class="" src=""></image>
+			</div>
+		</navigator>
+
+		<navigator class="flex-x item btl"  url="/pages/stockgoods/stockgoods">
+			<div class="icon-box">
+				<image class="" src=""></image>
+			</div>
+			<div class="flex-1">进货</div>
 			<div class="right-icon">
 				<image class="" src=""></image>
 			</div>
@@ -58,15 +47,23 @@
 		</navigator>
 	</view>
 	<view class="menu">
-		<navigator class="flex-x item btl"  url="/pages/suppliercenter/suppliercenter">
+		<navigator class="flex-x item btl"  url="/pages/stockgoods/stockgoods">
 			<div class="icon-box">
 				<image class="" src=""></image>
 			</div>
-			<div class="flex-1">供应商中心</div>
+			<div class="flex-1">推广二维码</div>
 			<div class="right-icon">
 				<image class="" src=""></image>
 			</div>
 		</navigator>
-		
+		<navigator class="flex-x item btl bbl" url="/pages/shelfgoods/shelfgoods">
+			<div class="icon-box">
+				<image class="" src=""></image>
+			</div>
+			<div class="flex-1">订单列表</div>
+			<div class="right-icon">
+				<image class="" src=""></image>
+			</div>
+		</navigator>
 	</view>
 </view>

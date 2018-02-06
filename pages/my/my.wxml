@@ -18,15 +18,6 @@
 </view> -->
 
 	<view class="menu">
-		<navigator class="flex-x item btl"  url="/pages/shopcenter/shopcenter">
-			<div class="icon-box">
-				<image class="" src=""></image>
-			</div>
-			<div class="flex-1">我的店铺</div>
-			<div class="right-icon">
-				<image class="" src=""></image>
-			</div>
-		</navigator>
 		<navigator class="flex-x item btl bbl" url="/pages/address/address">
 			<div class="icon-box">
 				<image class="" src=""></image>
@@ -36,29 +27,20 @@
 				<image class="" src=""></image>
 			</div>
 		</navigator>
+		
+		
 	</view>
 	<view class="menu">
-		<navigator class="flex-x item btl"  url="/pages/stockgoods/stockgoods">
+		<navigator class="flex-x item  btl"  url="/pages/shopcenter/shopcenter">
 			<div class="icon-box">
 				<image class="" src=""></image>
 			</div>
-			<div class="flex-1">店铺进货</div>
+			<div class="flex-1">我的店铺</div>
 			<div class="right-icon">
 				<image class="" src=""></image>
 			</div>
 		</navigator>
-		<navigator class="flex-x item btl bbl" url="/pages/shelfgoods/shelfgoods">
-			<div class="icon-box">
-				<image class="" src=""></image>
-			</div>
-			<div class="flex-1">商品上架</div>
-			<div class="right-icon">
-				<image class="" src=""></image>
-			</div>
-		</navigator>
-	</view>
-	<view class="menu">
-		<navigator class="flex-x item btl"  url="/pages/suppliercenter/suppliercenter">
+		<navigator class="flex-x item btl bbl"  url="/pages/suppliercenter/suppliercenter">
 			<div class="icon-box">
 				<image class="" src=""></image>
 			</div>
