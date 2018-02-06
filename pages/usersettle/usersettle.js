@@ -1,6 +1,7 @@
 /**
  * @author tygm
  * @Date 2018/3/20
+ * 用户购买商品订单结算页
  */
 var service = require("../../js/service.js");
 var app = getApp();

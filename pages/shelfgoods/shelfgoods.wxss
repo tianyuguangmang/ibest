@@ -1,0 +1,122 @@
+page{
+	height: 100%;
+	width: 100%;
+}
+page .index{
+	width:100%;
+	height: 100%;
+}
+page .title{
+	height: 100%;
+}
+.title{
+	width:200rpx;
+	background: #f7f7f7;
+	font-size:30rpx;
+	color:#000;
+
+}
+.title .item{
+	height: 100rpx;
+	width:100%;
+	border-bottom: 2rpx solid #fff;
+
+}
+.title .selected{
+	background: #fff;
+	color:#ff3d41;
+	border-left: 9rpx solid #ff3d41;
+}
+.goods-list{
+	background: #fff;
+	height: 100%;
+}
+.goods-item{
+	padding:30rpx;
+	width:100%;
+}
+.goods-item .img-box{
+	width:120rpx;
+	height: 120rpx;
+	margin-right: 10rpx;
+}
+.img-box image{
+	width:100%;
+	height: 100%;
+}
+
+.brief .price{
+	height: 60rpx;
+
+}
+.price .origin-price{
+	color: #999999;
+	font-size: 28rpx;
+}
+.price .current-price{
+	font-size:34rpx;
+	color:#f84f2f;
+	margin-top:-8rpx;
+	margin-right: 20rpx;
+}
+.brief div{
+	width:100%;
+}
+.brief .name{
+	font-size:34rpx;
+	color: #333;
+
+}
+.brief .sell{
+	color: #999;
+	font-size:28rpx;
+	margin-top: 10rpx;
+
+}
+.brief .add-cart{
+
+	
+	width:40rpx;
+	height: 40rpx;
+	right: 0rpx;
+	font-size:40rpx;
+	color:#fff;
+	background: #fa3e47;
+	border-radius: 20rpx;
+	line-height: 40rpx;
+	text-align: center;
+
+}
+.total{
+	height: 90rpx;
+	width:100%;
+	background: #fff;
+	position: fixed;
+	bottom: 0rpx;
+
+}
+.all-select{
+	width:85rpx;
+}
+.select-word{
+	width:90rpx;
+}
+.total-money{
+	text-align: center;
+}
+.total-money .money{
+	color:#fe5600;
+}
+.amount{
+	padding: 20rpx 70rpx;
+	background: #fe5600;
+	font-size:34rpx;
+	color:#fff;
+	text-align: center;
+}
+.shop-cart{
+	margin-left: 30rpx;
+}
+.brief .editor{
+	color:#fe5600;
+}

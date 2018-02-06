@@ -1,0 +1,28 @@
+<view class="myshop">
+	
+	<view class="flex-y box">
+		<div class="flex-x box-item">
+			<span style="color:#333;margin-right:40rpx;">姓名</span>
+			<input value="{{phone}}" type="number" placeholder="请输入手机号" class="flex-1" bindinput="inputPhone" />
+		</div>
+		<div class="flex-x box-item">
+			<span style="color:#333;margin-right:40rpx;">地址</span>
+			<input value="{{phone}}" type="number" placeholder="请输入手机号" class="flex-1" bindinput="inputPhone" />
+		</div>
+		<div class="flex-x box-item">
+			<span style="color:#333;margin-right:40rpx;">手机号</span>
+			<input value="{{phone}}" type="number" placeholder="请输入手机号" class="flex-1" bindinput="inputPhone" />
+		</div>
+		<div class="flex-x" style="height:120rpx;width:100%;">
+			<span style="color:#333;margin-right:40rpx;">验证码</span>
+			<input value="{{validateCode}}" type="number" placeholder="请输入验证码" class="flex-1" bindinput="inputValidate" />
+			<span style="padding:15rpx 40rpx;border-radius:40rpx;background:#ff3c42;color:#fff;margin-right:30rpx;" class="flex-x" bindtap="getValidateCode" wx:if="{{effectiveTime==0}}">发送验证码</span>
+			<span style="padding:15rpx 40rpx;border-radius:40rpx;background:#ccc;color:#fff;margin-right:30rpx;" class="flex-x" wx:else>{{effectiveTime}}s后重新发送</span>
+		</div>
+	</view>
+	<view class="flex-x btn-box">
+		<view class="btn flex-x" bindtap="toSubmit">
+			提交申请
+		</view>
+	</view>
+</view>

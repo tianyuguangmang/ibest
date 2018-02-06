@@ -53,7 +53,7 @@ Page({
 	/**
 	 * 购物车本地存储数据格式 
 	 * key: mid 商户id uid 用户id
-	 * cart_info
+	 * shop_cart_info
 	 * 
 	 * value:
 	 * pid 商品id skuid 商品规格id
@@ -113,12 +113,16 @@ Page({
 
 	},
 	onHide:function(){
-		console.log(this.cartInfo);
 		wx.setStorage({
-		  key:"cart_info",
+		  key:"shop_cart_info",
 		  data:this.cartInfo
 		})
 
+	},
+	countValue:function(){
+		wx.redirectTo({
+		  url: '/pages/shopsettle/shopsettle'
+		})
 	},
 	/**
 	 * 购物车增加
@@ -128,7 +132,7 @@ Page({
 		var _index = app.getData(currentTarget,'index');
 		var _list = this.data.goodsList;
 		
-		_list[_index].count = _list[_index].count?_list[_index].count+1:1;
+		_list[_index].count = _list[_index].count?_list[_index].count+5:5;
 		var _select = _list[_index];
 		this.calcCart(_select);
 
@@ -145,7 +149,7 @@ Page({
 	subtractCart:function(currentTarget){
 		var _index = app.getData(currentTarget,'index');
 		var _list = this.data.goodsList;
-		_list[_index].count = _list[_index].count>0?_list[_index].count-1:0;
+		_list[_index].count = _list[_index].count>0?_list[_index].count-5:0;
 		var _select = _list[_index];
 		this.calcCart(_select);
 		this.setData({
@@ -155,7 +159,7 @@ Page({
 	onLoad:function(){
 		var _this = this;
 		wx.getStorage({
-		  key: 'cart_info',
+		  key: 'shop_cart_info',
 		  success: function(res) {
 	      var _cartInfo = res.data;
 	      _this.cartInfo = _cartInfo;

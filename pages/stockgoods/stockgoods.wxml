@@ -1,0 +1,45 @@
+
+<view class="flex-x index">
+	<view class="title">
+		<block wx:for="{{menuList}}">
+		<view class="item flex-x {{index == 0?'selected':''}}" >
+			{{item.name}}
+		</view>
+		</block>
+	</view>
+	<view class="flex-1 goods-list">
+	<!-- 	<div class="goods-item flex-y" wx:for="{{goodsList}}">
+		<image class="mainImage" src="{{item.mainImage}}" mode="aspectFill"></image>
+		<div class="name flex-1">{{item.title}}</div>
+		<view class="add-cart" bindtap="addToCart">+</view>
+		<view class="price">￥{{5}}</view>
+	</div> -->
+		<view class="goods-item flex-xs" wx:for="{{goodsList}}">
+			<view class="img-box">
+				<image class="" src="{{item.mainImage}}"></image>
+			</view>
+			<div class="brief flex-1 flex-y">
+				<div class="name">{{item.title}}</div>
+				<div class="sell flex-1">销量{{item.sellCount}}件</div>
+				<div class="price flex-x">
+					<span style="font-size:24rpx;color:#f84f2f;">￥</span>
+					<span class="current-price">{{item.currentPrice}}</span><span class="origin-price lm">￥{{item.originPrice}}</span>
+					<span class="flex-1"></span>
+					<view class="add-cart flex-x" bindtap="subtractCart" data-index="{{index}}" hidden="{{!item.count||item.count==0}}">-</view>
+					<view hidden="{{!item.count||item.count==0}}" style="font-size:28rpx;padding:0 10rpx;color:#666;">{{item.count}}</view>
+					<view class="add-cart flex-x" bindtap="addToCart" data-index="{{index}}">+</view>
+				</div>
+			</div>
+		</view>
+	</view>
+</view>
+<view class="total flex-x">
+	
+	<div class="shop-cart">购物车</div>
+	<div class="total-money flex-1">
+		合计：<span class="money">￥{{countMoney}}</span>
+	</div>
+	<view class="amount" bindtap="countValue">
+		结算
+	</view>
+</view>

@@ -11,7 +11,24 @@ Page({
 		noMoreData: false,
 		hotList: null
 	},
+	timeCount:function(s){
+    var _this = this;
+    var _results = s||this.data.effectiveTime;
+    //disEndTime
+    var _timer = setInterval(function(){
+      
+        if(_results>0){
+          _results -=1;
+        }else{
+          clearInterval(_timer);
+        }
+      _this.setData({
+        effectiveTime:_results
+        
+      })
 
+    },1000)
+  },
 	//页面分享功能
 	onShareAppMessage: function(res) {
 

@@ -1,12 +1,20 @@
 {
   "pages":[
-  "pages/my/my",
-     "pages/index/index",
-  
-  "pages/newaddress/newaddress",
+    "pages/my/my",
+    "pages/shelfgoods/shelfgoods",
+    "pages/stockgoods/stockgoods",
+    "pages/shopsettle/shopsettle",
+    "pages/shopcenter/shopcenter",
+    "pages/address/address",
+    "pages/suppliercenter/suppliercenter",
+    "pages/myshop/myshop",
+    "pages/index/index",
+    
+    "pages/newaddress/newaddress",
+
     "pages/myorder/myorder",
     "pages/cart/cart",
-   
+    
     "pages/mall/mall"
     
 
@@ -34,6 +42,11 @@
       "iconPath": "./images/pic_gwc.png",
       "selectedIconPath": "./images/pic_gwc_p.png",
       "text": "购物车"
+    },{
+      "pagePath": "pages/myorder/myorder",
+      "iconPath": "./images/pic_home.png",
+      "selectedIconPath": "./images/pic_home_p.png",
+      "text": "订单"
     },{
       "pagePath": "pages/my/my",
       "iconPath": "./images/pic_ren.png",
