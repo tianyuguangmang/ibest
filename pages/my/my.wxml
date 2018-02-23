@@ -19,8 +19,8 @@
 
 	<view class="menu">
 		<navigator class="flex-x item btl bbl" url="/pages/address/address">
-			<div class="icon-box">
-				<image class="" src=""></image>
+			<div class="icon-box flex-x">
+				<i class="iconfont icon-dizhi color1 clip" style="font-size:54rpx;"></i>
 			</div>
 			<div class="flex-1">我的地址</div>
 			<div class="right-icon">
@@ -32,8 +32,8 @@
 	</view>
 	<view class="menu">
 		<navigator class="flex-x item  btl"  url="/pages/shopcenter/shopcenter">
-			<div class="icon-box">
-				<image class="" src=""></image>
+			<div class="icon-box flex-x">
+				<i class="iconfont icon-dianpu color2 clip" style="font-size:50rpx;"></i>
 			</div>
 			<div class="flex-1">我的店铺</div>
 			<div class="right-icon">
@@ -41,8 +41,8 @@
 			</div>
 		</navigator>
 		<navigator class="flex-x item btl bbl"  url="/pages/suppliercenter/suppliercenter">
-			<div class="icon-box">
-				<image class="" src=""></image>
+			<div class="icon-box flex-x">
+				<i class="iconfont icon-supplier color3 clip"></i>
 			</div>
 			<div class="flex-1">供应商中心</div>
 			<div class="right-icon">
