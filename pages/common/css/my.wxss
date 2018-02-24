@@ -1,0 +1,87 @@
+
+.msg{
+	width:100%;
+	height: 275rpx;
+	background: #fe5600;
+	 background-image: -webkit-linear-gradient(left, #fac362 10%,#fe5600);
+	
+	position: relative;
+
+}
+.msg .name{
+	position: absolute;
+	left: 240rpx;
+	top:50%;
+	margin-top: -50rpx;
+	color:#fff;
+	font-size: 30rpx;
+}
+.msg .score{
+	position: absolute;
+	left: 240rpx;
+	top:55%;
+	
+	color:#fff;
+	font-size: 30rpx;
+}
+.avatar{
+	position: absolute;
+	top:50%;
+	margin-top: -75rpx;
+	left:60rpx;
+	width:150rpx;
+	height: 150rpx;
+	border:4rpx solid #ccc;
+	border-radius: 75rpx;
+	background: #fff;
+}
+.avatar image{
+	width:100%;
+	height: 100%;
+
+}
+
+.icon-box{
+	width:50rpx;
+	height: 80rpx;
+	margin-right: 20rpx;
+}
+
+.menu{
+	width:100%;
+	background: #fff;
+	margin-top: 20rpx;
+	color: #666;
+
+}
+.menu .item{
+	width:100%;
+	padding:10rpx 20rpx 10rpx 30rpx;
+}
+.right-icon{
+	width:50rpx;
+	height: 80rpx;
+}
+.right-icon image{
+	width:100%;
+	height: 100%;
+}
+.color{
+	background: #666;
+	font-size:40rpx;
+}
+.color1{
+    background-image: -webkit-linear-gradient(left bottom, #fb2c61 , #fac362);
+  }
+.color2{
+background-image: -webkit-linear-gradient(left bottom, #fb2c61 , #fac362);
+}
+.color3{
+background-image: -webkit-linear-gradient(left bottom, #fb2c61 , #fac362);
+}
+.clip{
+  -webkit-background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+  font-size:46rpx;
+}

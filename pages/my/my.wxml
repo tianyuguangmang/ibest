@@ -1,21 +1,11 @@
 <view>
 	<view class="msg">
-		
+		<view class="avatar">
+			<image class="" src="../../images/avatar.png"></image>
+		</view>
+		<view class="name">孤独的狼</view>
+		<view class="score">积分：100</view>
 	</view>
-<!-- 	<view class="flex-x packet" style="border-bottom:1rpx solid #ddd;">
-	<div class="item flex-1 flex-y" style="border-right:1rpx solid #ddd;">
-		<span class="flex-1 flex-x" style="color:#2591f8;">0.00</span>
-		<span class="flex-1">钱包</span>
-	</div>
-	<div class="item flex-1 flex-y" style="border-right:1rpx solid #ddd;">
-		<span class="flex-1 flex-x" style="color:#f06841;">0.00</span>
-		<span class="flex-1">钱包</span>
-	</div>
-	<div class="item flex-1 flex-y">
-		<span class="flex-1 flex-x" style="color:#f8b53b;">0.00</span>
-		<span class="flex-1">钱包</span>
-	</div>
-</view> -->
 
 	<view class="menu">
 		<navigator class="flex-x item btl bbl" url="/pages/address/address">
@@ -23,8 +13,8 @@
 				<i class="iconfont icon-dizhi color1 clip" style="font-size:54rpx;"></i>
 			</div>
 			<div class="flex-1">我的地址</div>
-			<div class="right-icon">
-				<image class="" src=""></image>
+			<div class="right-icon flex-x">
+				<i class="iconfont icon-weibiaoti34 color clip" style="font-size:54rpx;"></i>
 			</div>
 		</navigator>
 		
@@ -36,8 +26,8 @@
 				<i class="iconfont icon-dianpu color2 clip" style="font-size:50rpx;"></i>
 			</div>
 			<div class="flex-1">我的店铺</div>
-			<div class="right-icon">
-				<image class="" src=""></image>
+			<div class="right-icon flex-x">
+				<i class="iconfont icon-weibiaoti34 color clip" style="font-size:54rpx;"></i>
 			</div>
 		</navigator>
 		<navigator class="flex-x item btl bbl"  url="/pages/suppliercenter/suppliercenter">
@@ -45,8 +35,8 @@
 				<i class="iconfont icon-supplier color3 clip"></i>
 			</div>
 			<div class="flex-1">供应商中心</div>
-			<div class="right-icon">
-				<image class="" src=""></image>
+			<div class="right-icon flex-x">
+				<i class="iconfont icon-weibiaoti34 color clip" style="font-size:54rpx;"></i>
 			</div>
 		</navigator>
 		

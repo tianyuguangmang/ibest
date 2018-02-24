@@ -175,11 +175,3 @@ page{
   width: 100%;
 }
 
-.color{
-    background-image: -webkit-linear-gradient(left bottom,red,yellow);
-  }
-.clip{
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-size:70rpx;
-}

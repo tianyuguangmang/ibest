@@ -1,40 +1,51 @@
 <view>
 	<view class="msg">
-		
+		<view class="avatar">
+			<image class="" src="../../images/avatar.png"></image>
+		</view>
+		<view class="name">孤独的狼</view>
+		<view class="score">余额：100</view>
 	</view>
-<!-- 	<view class="flex-x packet" style="border-bottom:1rpx solid #ddd;">
-	<div class="item flex-1 flex-y" style="border-right:1rpx solid #ddd;">
-		<span class="flex-1 flex-x" style="color:#2591f8;">0.00</span>
-		<span class="flex-1">钱包</span>
-	</div>
-	<div class="item flex-1 flex-y" style="border-right:1rpx solid #ddd;">
-		<span class="flex-1 flex-x" style="color:#f06841;">0.00</span>
-		<span class="flex-1">钱包</span>
-	</div>
-	<div class="item flex-1 flex-y">
-		<span class="flex-1 flex-x" style="color:#f8b53b;">0.00</span>
-		<span class="flex-1">钱包</span>
-	</div>
-</view> -->
-
 	<view class="menu">
-		<navigator class="flex-x item btl">
-			<div class="icon-box">
-				<image class="" src=""></image>
+		<navigator class="flex-x item  btl">
+			<div class="icon-box flex-x">
+				<i class="iconfont icon-shangpinguanli01 color2 clip" style="font-size:50rpx;"></i>
 			</div>
 			<div class="flex-1">商品管理</div>
-			<div class="right-icon">
-				<image class="" src=""></image>
+			<div class="right-icon flex-x">
+				<i class="iconfont icon-weibiaoti34 color clip" style="font-size:54rpx;"></i>
 			</div>
 		</navigator>
-		<navigator class="flex-x item btl bbl" url="/pages/shelfgoods/shelfgoods">
-			<div class="icon-box">
-				<image class="" src=""></image>
+		
+		<navigator class="flex-x item btl  bbl">
+			<div class="icon-box flex-x">
+				<i class="iconfont icon-liebiao color3 clip"></i>
 			</div>
 			<div class="flex-1">订单列表</div>
-			<div class="right-icon">
-				<image class="" src=""></image>
+			<div class="right-icon flex-x">
+				<i class="iconfont icon-weibiaoti34 color clip" style="font-size:54rpx;"></i>
+			</div>
+		</navigator>		
+	</view>
+	<view class="menu">
+		<navigator class="flex-x item  btl">
+			<div class="icon-box flex-x">
+				<i class="iconfont icon-tixian color2 clip" style="font-size:50rpx;"></i>
+			</div>
+			<div class="flex-1">提现</div>
+			<div class="right-icon flex-x">
+				<i class="iconfont icon-weibiaoti34 color clip" style="font-size:54rpx;"></i>
 			</div>
 		</navigator>
+		<navigator class="flex-x item  btl  bbl">
+			<div class="icon-box flex-x">
+				<i class="iconfont icon-yinxingqia-copy color2 clip" style="font-size:50rpx;"></i>
+			</div>
+			<div class="flex-1">银行卡</div>
+			<div class="right-icon flex-x">
+				<i class="iconfont icon-weibiaoti34 color clip" style="font-size:54rpx;"></i>
+			</div>
+		</navigator>
+		
 	</view>
 </view>

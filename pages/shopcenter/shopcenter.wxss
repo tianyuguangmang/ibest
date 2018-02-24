@@ -1,38 +1,19 @@
-.msg{
-	width:100%;
-	height: 275rpx;
-	background: #fe5600;
-}
+@import "../iconfont.wxss";
+@import "../common/css/my.wxss";
 .packet{
-	height: 140rpx;
+	margin-top: 20rpx;
 	background: #fff;
+	font-size:28rpx;
+	padding: 20rpx 0;
 }
 .packet .item{
 	height: 140rpx;
+	width:33.3%;
 }
-.icon-box{
-	width:80rpx;
-	height: 80rpx;
-}
-.icon-box image{
-	width:100%;
-	height: 100%;
-}
-.menu{
-	width:100%;
-	background: #fff;
+.packet .item i{
 	margin-top: 20rpx;
-
 }
-.menu .item{
-	width:100%;
-	padding:10rpx 30rpx;
-}
-.right-icon{
-	width:80rpx;
-	height: 80rpx;
-}
-.right-icon image{
-	width:100%;
-	height: 100%;
+.packet .item span{
+	color: #666;
+	margin-top: 10rpx;
 }

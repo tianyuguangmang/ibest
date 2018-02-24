@@ -1,69 +1,41 @@
 <view>
 	<view class="msg">
+		<view class="avatar">
+			<image class="" src="../../images/avatar.png"></image>
+		</view>
+		<view class="name">孤独的狼</view>
+		<view class="score">余额：100</view>
+	</view>
+	<view class="flex-wrap packet">
+		<navigator class="item flex-y" >
+			<i class="iconfont icon-weibiaoti2fuzhi08 color1 clip" style="font-size:54rpx;"></i>
+			<span class="flex-1">收货地址</span>
+		</navigator>
+		<navigator class="item flex-y" url='/pages/stockgoods/stockgoods'>
+			<i class="iconfont icon-huowu color1 clip" style="font-size:54rpx;"></i>
+			<span class="flex-1">进货</span>
+		</navigator>
+		<navigator class="item flex-y" url="/pages/shelfgoods/shelfgoods">
+			<i class="iconfont icon-iconfontzhizuobiaozhunbduan31 color1 clip" style="font-size:54rpx;"></i>
+			<span class="flex-1">商品上架</span>
+		</navigator>
+		<navigator class="item flex-y" >
+			<i class="iconfont icon-erweima color1 clip" style="font-size:54rpx;"></i>
+			<span class="flex-1">推广二维码</span>
+		</navigator>
+		<navigator class="item flex-y">
+			<i class="iconfont icon-shangpinguanli01 color1 clip" style="font-size:54rpx;"></i>
+			<span class="flex-1">订单列表</span>
+		</navigator>
+		<navigator class="item flex-y">
+			<i class="iconfont icon-yinxingqia-copy color1 clip" style="font-size:54rpx;"></i>
+			<span class="flex-1">银行卡</span>
+		</navigator>
+		<navigator class="item flex-y">
+			<i class="iconfont icon-tixian color1 clip" style="font-size:54rpx;"></i>
+			<span class="flex-1">提现</span>
+		</navigator>
 		
 	</view>
-	<view class="flex-x packet" style="border-bottom:1rpx solid #ddd;">
-		<div class="item flex-1 flex-y" style="border-right:1rpx solid #ddd;">
-			<span class="flex-1 flex-x" style="color:#2591f8;">0.00</span>
-			<span class="flex-1">钱包</span>
-		</div>
-		<div class="item flex-1 flex-y" style="border-right:1rpx solid #ddd;">
-			<span class="flex-1 flex-x" style="color:#f06841;">0.00</span>
-			<span class="flex-1">钱包</span>
-		</div>
-		<div class="item flex-1 flex-y">
-			<span class="flex-1 flex-x" style="color:#f8b53b;">0.00</span>
-			<span class="flex-1">钱包</span>
-		</div>
-	</view>
-	<view class="menu">
-		<navigator class="flex-x item btl"  url="/pages/stockgoods/stockgoods">
-			<div class="icon-box">
-				<image class="" src=""></image>
-			</div>
-			<div class="flex-1">收货地址</div>
-			<div class="right-icon">
-				<image class="" src=""></image>
-			</div>
-		</navigator>
-
-		<navigator class="flex-x item btl"  url="/pages/stockgoods/stockgoods">
-			<div class="icon-box">
-				<image class="" src=""></image>
-			</div>
-			<div class="flex-1">进货</div>
-			<div class="right-icon">
-				<image class="" src=""></image>
-			</div>
-		</navigator>
-		<navigator class="flex-x item btl bbl" url="/pages/shelfgoods/shelfgoods">
-			<div class="icon-box">
-				<image class="" src=""></image>
-			</div>
-			<div class="flex-1">商品上架</div>
-			<div class="right-icon">
-				<image class="" src=""></image>
-			</div>
-		</navigator>
-	</view>
-	<view class="menu">
-		<navigator class="flex-x item btl"  url="/pages/stockgoods/stockgoods">
-			<div class="icon-box">
-				<image class="" src=""></image>
-			</div>
-			<div class="flex-1">推广二维码</div>
-			<div class="right-icon">
-				<image class="" src=""></image>
-			</div>
-		</navigator>
-		<navigator class="flex-x item btl bbl" url="/pages/shelfgoods/shelfgoods">
-			<div class="icon-box">
-				<image class="" src=""></image>
-			</div>
-			<div class="flex-1">订单列表</div>
-			<div class="right-icon">
-				<image class="" src=""></image>
-			</div>
-		</navigator>
-	</view>
+	
 </view>

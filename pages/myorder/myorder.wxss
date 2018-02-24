@@ -14,11 +14,11 @@
 .title-name div{
 	height: 100%;
 	line-height: 90rpx;
-	font-size:34rpx;
+	font-size:32rpx;
 }
 .selected{
-	color:#ff4444;
-	border-bottom: 4rpx solid #ff4444;
+	color:#e56000;
+	border-bottom: 4rpx solid #e56000;
 }
 .order-msg{
 	width:100%;
@@ -37,7 +37,7 @@
 }
 .order-msg .states{
 	margin-right: 30rpx;
-	color:#ff4444;
+	color:#e56000;
 	text-align: center;
 }
 .order-msg .time{
@@ -63,7 +63,7 @@
 }
 .order-name .name{
 	width:100%;
-	font-size:34rpx;
+	font-size:32rpx;
 }
 .order-name .styles{
 	width:100%;
@@ -172,4 +172,8 @@
 }
 view{
 	width:100%;
+}
+
+.order-btn .btn{
+	border:1rpx solid #e56000;color:#e56000;
 }
