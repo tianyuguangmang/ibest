@@ -3,7 +3,7 @@
 	width:100%;
 	height: 275rpx;
 	background: #fe5600;
-	 background-image: -webkit-linear-gradient(left, #fac362 10%,#fe5600);
+	 background-image: -webkit-linear-gradient(bottom, #fac362 10%,#fe5600 90%);
 	
 	position: relative;
 
