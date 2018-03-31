@@ -6,55 +6,26 @@
 		<view class="name">孤独的狼</view>
 		<view class="score">余额：100</view>
 	</view>
-	<view class="menu">
-		<navigator class="flex-x item  btl">
-			<div class="icon-box flex-x">
-				<i class="iconfont icon-shangpinguanli01 color2 clip" style="font-size:50rpx;"></i>
-			</div>
-			<div class="flex-1">商品管理</div>
-			<div class="right-icon flex-x">
-				<i class="iconfont icon-weibiaoti34 color clip" style="font-size:54rpx;"></i>
-			</div>
+	<view class="flex-wrap packet">
+		<navigator class="item flex-y" >
+			<i class="iconfont icon-shangpinguanli01 color1 clip" style="font-size:54rpx;"></i>
+			<span class="flex-1">商品管理</span>
 		</navigator>
-		<navigator class="flex-x item btl ">
-			<div class="icon-box flex-x">
-				<i class="iconfont icon-weibiaoti37 color3 clip"></i>
-			</div>
-			<div class="flex-1">添加商品</div>
-			<div class="right-icon flex-x">
-				<i class="iconfont icon-weibiaoti34 color clip" style="font-size:54rpx;"></i>
-			</div>
+		<navigator class="item flex-y" url='/pages/stockgoods/stockgoods'>
+			<i class="iconfont icon-weibiaoti37 color1 clip" style="font-size:54rpx;"></i>
+			<span class="flex-1">添加商品</span>
 		</navigator>
-
-		<navigator class="flex-x item btl  bbl">
-			<div class="icon-box flex-x">
-				<i class="iconfont icon-liebiao color3 clip"></i>
-			</div>
-			<div class="flex-1">订单列表</div>
-			<div class="right-icon flex-x">
-				<i class="iconfont icon-weibiaoti34 color clip" style="font-size:54rpx;"></i>
-			</div>
-		</navigator>		
-	</view>
-	<view class="menu">
-		<navigator class="flex-x item  btl">
-			<div class="icon-box flex-x">
-				<i class="iconfont icon-tixian color2 clip" style="font-size:50rpx;"></i>
-			</div>
-			<div class="flex-1">提现</div>
-			<div class="right-icon flex-x">
-				<i class="iconfont icon-weibiaoti34 color clip" style="font-size:54rpx;"></i>
-			</div>
+		<navigator class="item flex-y" url="/pages/shelfgoods/shelfgoods">
+			<i class="iconfont icon-liebiao color1 clip" style="font-size:54rpx;"></i>
+			<span class="flex-1">订单列表</span>
 		</navigator>
-		<navigator class="flex-x item  btl  bbl">
-			<div class="icon-box flex-x">
-				<i class="iconfont icon-yinxingqia-copy color2 clip" style="font-size:50rpx;"></i>
-			</div>
-			<div class="flex-1">银行卡</div>
-			<div class="right-icon flex-x">
-				<i class="iconfont icon-weibiaoti34 color clip" style="font-size:54rpx;"></i>
-			</div>
+		<navigator class="item flex-y" >
+			<i class="iconfont icon-tixian color1 clip" style="font-size:54rpx;"></i>
+			<span class="flex-1">提现</span>
 		</navigator>
-		
+		<navigator class="item flex-y">
+			<i class="iconfont icon-yinxingqia-copy color1 clip" style="font-size:54rpx;"></i>
+			<span class="flex-1">银行卡</span>
+		</navigator>
 	</view>
 </view>

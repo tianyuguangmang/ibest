@@ -1,11 +1,12 @@
 <view>
-	<view class="msg">
+	<!-- <view class="msg">
 		<view class="avatar">
 			<image class="" src="../../images/avatar.png"></image>
 		</view>
 		<view class="name">孤独的狼</view>
 		<view class="score">积分：100</view>
-	</view>
+	</view> -->
+	<baseinfo></baseinfo>
 
 	<view class="menu">
 		<navigator class="flex-x item btl bbl" url="/pages/address/address">
@@ -21,20 +22,20 @@
 		
 	</view>
 	<view class="menu">
-		<navigator class="flex-x item  btl"  url="/pages/shopcenter/shopcenter">
+		<navigator class="flex-x item  btl"  url="/pages/parttimejob/parttimejob">
 			<div class="icon-box flex-x">
-				<i class="iconfont icon-dianpu color2 clip" style="font-size:50rpx;"></i>
+				<i class="iconfont icon-jianzhi color2 clip" style="font-size:50rpx;"></i>
 			</div>
-			<div class="flex-1">我的店铺</div>
+			<div class="flex-1">我要兼职</div>
 			<div class="right-icon flex-x">
 				<i class="iconfont icon-weibiaoti34 color clip" style="font-size:54rpx;"></i>
 			</div>
 		</navigator>
-		<navigator class="flex-x item btl bbl"  url="/pages/suppliercenter/suppliercenter">
+		<navigator class="flex-x item btl bbl"  url="/pages/servicecenter/servicecenter">
 			<div class="icon-box flex-x">
-				<i class="iconfont icon-supplier color3 clip"></i>
+				<i class="iconfont icon-woshishangjia color3 clip"></i>
 			</div>
-			<div class="flex-1">供应商中心</div>
+			<div class="flex-1">商家中心</div>
 			<div class="right-icon flex-x">
 				<i class="iconfont icon-weibiaoti34 color clip" style="font-size:54rpx;"></i>
 			</div>

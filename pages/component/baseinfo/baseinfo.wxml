@@ -1,0 +1,9 @@
+<view class="wx-msg">
+	<view class="avatar">
+		<image class="img" src="../../../images/avatar.png"></image>
+	</view>
+	<view class="name">123</view>
+	<view class="score">积分：100</view>
+</view>
+
+

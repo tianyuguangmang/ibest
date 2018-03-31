@@ -1,0 +1,33 @@
+<view>
+	<view class="msg">
+		<view class="avatar">
+			<image class="" src="../../images/avatar.png"></image>
+		</view>
+		<view class="name">孤独的狼</view>
+		<view class="score">余额：100</view>
+	</view>
+	<view class="flex-wrap packet">
+		<navigator class="item flex-y" >
+			<i class="iconfont icon-xuanti-fuzeren color1 clip" style="font-size:54rpx;"></i>
+			<span class="flex-1">社区负责人</span>
+		</navigator>
+		<navigator class="item flex-y" url="/pages/shopcenter/shopcenter">
+			<i class="iconfont icon-dianpu color1 clip" style="font-size:54rpx;"></i>
+			<span class="flex-1">社区商铺</span>
+		</navigator>
+		<navigator class="item flex-y" >
+			<i class="iconfont icon-jiaolian1 color1 clip" style="font-size:54rpx;"></i>
+			<span class="flex-1">学生家教</span>
+		</navigator>
+		<navigator class="item flex-y" >
+			<i class="iconfont icon-guanggao color1 clip" style="font-size:54rpx;"></i>
+			<span class="flex-1">发传单</span>
+		</navigator>
+		<navigator class="item flex-y" >
+			<i class="iconfont icon-fuwuyuan color1 clip" style="font-size:54rpx;"></i>
+			<span class="flex-1">服务生</span>
+		</navigator>
+		
+	</view>
+	
+</view>

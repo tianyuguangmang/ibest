@@ -1,3 +1,6 @@
 
 @import "../iconfont.wxss";
 @import "../common/css/my.wxss";
+.baseinfo{
+	width:100px;
+}

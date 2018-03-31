@@ -1,6 +1,13 @@
 {
+  "component": true,
+  "usingComponents": {
+    "baseinfo": "pages/component/baseinfo/baseinfo"
+  },
   "pages":[
     "pages/my/my",
+
+    "pages/parttimejob/parttimejob",
+    "pages/servicecenter/servicecenter",
     "pages/shelfgoods/shelfgoods",
     "pages/stockgoods/stockgoods",
     "pages/shopsettle/shopsettle",
@@ -19,6 +26,7 @@
     
 
   ],
+  
   "networkTimeout":{
     "request":5000
   },
