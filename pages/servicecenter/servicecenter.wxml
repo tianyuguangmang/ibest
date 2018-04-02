@@ -1,20 +1,17 @@
 <view>
-	<view class="msg">
-		<view class="avatar">
-			<image class="" src="../../images/avatar.png"></image>
-		</view>
-		<view class="name">孤独的狼</view>
-		<view class="score">余额：100</view>
-	</view>
+	<baseinfo></baseinfo>
 	<view class="flex-wrap packet">
+		<navigator class="item flex-y" url="/pages/myshop/myshop">
+			<i class="iconfont icon-supplier color1 clip" style="font-size:54rpx;"></i>
+			<span class="flex-1">成为供应商</span>
+		</navigator>
 		<navigator class="item flex-y" url="/pages/suppliercenter/suppliercenter">
 			<i class="iconfont icon-supplier color1 clip" style="font-size:54rpx;"></i>
-			<span class="flex-1">成为批发商</span>
+			<span class="flex-1">我是供应商</span>
 		</navigator>
 		<navigator class="item flex-y">
 			<i class="iconfont icon-renwufabu color1 clip" style="font-size:54rpx;"></i>
-			<span class="flex-1">任务发布</span>
+			<span class="flex-1">我有任务</span>
 		</navigator>
 	</view>
-	
 </view>

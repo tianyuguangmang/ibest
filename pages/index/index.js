@@ -8,6 +8,7 @@ import * as Size from '../../js/imagesize';
 Page({
 	data: {
 		Size,
+		cateIndex:0,
 		menuList:[{id:1,name:"今日推荐"},{id:1,name:"推荐"},{id:1,name:"推荐"},{id:1,name:"推荐"},{id:1,name:"推荐"},{id:1,name:"推荐"}],
 		bannerList:[{pic:'https://ps.ssl.qhimg.com/sdmt/179_135_100/t010b0a4aa5bb6941c4.jpg'}],
 		goodsList:[{
@@ -49,10 +50,16 @@ Page({
 			}
 		}
 	},
+	changeCate:function(currentTarget){
+		var _index = app.getData(currentTarget,"index");
+		this.setData({
+			cateIndex:_index
+		})
+
+	},
 	cartInfo:{},
 	/**
 	 * 购物车本地存储数据格式 
-	 * key: mid 商户id uid 用户id
 	 * cart_info
 	 * 
 	 * value:

@@ -210,14 +210,7 @@ Page({
       return false;
     }
     _this.dataLoading = true;
-    wx.showLoading({
-      title:"加载中..."
-    })
-    console.log(this.from);
-    if(this.from == 'distribute'){
-      params.from = "distribute";
-    }
-    service.getOrderDataList(Object.assign(params,{current:_this.current+1,size:_this.size}),function(res){
+ /*   service.getOrderDataList(Object.assign(params,{current:_this.current+1,size:_this.size}),function(res){
       wx.hideLoading();
       var _arr = reload?[]:_this.data.dataMsg||[];
        _this.dataLoading = false;
@@ -243,7 +236,7 @@ Page({
     },function(res){
       wx.hideLoading();
       _this.dataLoading = false;
-    })
+    })*/
   },
   cateId:0,
   onLoad: function(options){

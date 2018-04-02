@@ -2,7 +2,7 @@
 <view class="flex-x index">
 	<view class="title">
 		<block wx:for="{{menuList}}">
-		<view class="item flex-x {{index == 0?'selected':''}}" >
+		<view class="item flex-x {{index == cateIndex?'selected':''}}" bindtap="changeCate" data-index="{{index}}">
 			{{item.name}}
 		</view>
 		</block>

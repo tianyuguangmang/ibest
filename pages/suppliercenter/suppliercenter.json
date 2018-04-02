@@ -1,9 +1,13 @@
 {
 
-    "enablePullDownRefresh": true,
-    "navigationBarBackgroundColor": "#fe5600",
-    "navigationBarTextStyle":"#fff",
-    "onReachBottomDistance":50,
-    "navigationBarTitleText": "首页"
-    
+  "enablePullDownRefresh": true,
+  "navigationBarBackgroundColor": "#fe5600",
+  "navigationBarTextStyle":"#fff",
+  "onReachBottomDistance":50,
+  "navigationBarTitleText": "首页",
+  "component": true,
+  "usingComponents": {
+    "baseinfo": "../component/baseinfo/baseinfo"
+  }
+  
 }

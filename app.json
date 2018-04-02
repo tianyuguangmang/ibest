@@ -1,8 +1,5 @@
 {
-  "component": true,
-  "usingComponents": {
-    "baseinfo": "pages/component/baseinfo/baseinfo"
-  },
+  
   "pages":[
     "pages/my/my",
 

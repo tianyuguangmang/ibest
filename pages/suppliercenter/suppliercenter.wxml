@@ -1,11 +1,5 @@
 <view>
-	<view class="msg">
-		<view class="avatar">
-			<image class="" src="../../images/avatar.png"></image>
-		</view>
-		<view class="name">孤独的狼</view>
-		<view class="score">余额：100</view>
-	</view>
+	<baseinfo></baseinfo>
 	<view class="flex-wrap packet">
 		<navigator class="item flex-y" >
 			<i class="iconfont icon-shangpinguanli01 color1 clip" style="font-size:54rpx;"></i>
