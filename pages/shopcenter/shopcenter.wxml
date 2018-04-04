@@ -1,9 +1,13 @@
 <view>
 	<baseinfo></baseinfo>
 	<view class="flex-wrap packet">
-		<navigator class="item flex-y" >
+		<navigator class="item flex-y" url="/pages/merchantsetting/merchantsetting">
 			<i class="iconfont icon-weibiaoti2fuzhi08 color1 clip" style="font-size:54rpx;"></i>
-			<span class="flex-1">收货地址</span>
+			<span class="flex-1">商家信息</span>
+		</navigator>
+		<navigator class="item flex-y" url="/pages/shophours/shophours">
+			<i class="iconfont icon-weibiaoti2fuzhi08 color1 clip" style="font-size:54rpx;"></i>
+			<span class="flex-1">营业时间</span>
 		</navigator>
 		<navigator class="item flex-y" url='/pages/stockgoods/stockgoods'>
 			<i class="iconfont icon-huowu color1 clip" style="font-size:54rpx;"></i>

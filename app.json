@@ -1,6 +1,10 @@
 {
   
   "pages":[
+    "pages/merchantsetting/merchantsetting",
+    "pages/shophours/shophours",
+    
+    "pages/shopcenter/shopcenter",
     "pages/my/my",
 
     "pages/parttimejob/parttimejob",
@@ -8,7 +12,7 @@
     "pages/shelfgoods/shelfgoods",
     "pages/stockgoods/stockgoods",
     "pages/shopsettle/shopsettle",
-    "pages/shopcenter/shopcenter",
+    
     "pages/address/address",
     "pages/suppliercenter/suppliercenter",
     "pages/myshop/myshop",
