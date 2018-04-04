@@ -8,6 +8,7 @@ import * as Size from '../../js/imagesize';
 Page({
   data: {
     Size,
+    cartList:[]
     
   },
 

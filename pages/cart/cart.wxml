@@ -1,6 +1,6 @@
 <view class="btl">
 	<view wx:if="{{cartList}}">
-		<view class="cart-list">
+		<view class="cart-list" wx:if="{{cartList.length>0}}">
 			<block  wx:for="{{cartList}}">
 			
 				<view class="cart-item flex-x flex-1" style="width:100% ">
@@ -34,6 +34,12 @@
 				</view>
 			
 			</block>
+		</view>
+		<view class="no-data flex-y" wx:else>
+			<div class="order-img-box flex-x">
+				<image src="../../images/bad.png" class="square"/>
+			</div>
+			<div style="margin-top:20rpx;">我要买个购物车~</div>
 		</view>
 		
 	</view>

@@ -6,27 +6,32 @@
 			<span class="flex-1">商家信息</span>
 		</navigator>
 		<navigator class="item flex-y" url="/pages/shophours/shophours">
-			<i class="iconfont icon-weibiaoti2fuzhi08 color1 clip" style="font-size:54rpx;"></i>
+			<i class="iconfont icon-weibiaoti2fuzhi08 color2 clip" style="font-size:54rpx;"></i>
 			<span class="flex-1">营业时间</span>
 		</navigator>
 		<navigator class="item flex-y" url='/pages/stockgoods/stockgoods'>
 			<i class="iconfont icon-huowu color1 clip" style="font-size:54rpx;"></i>
 			<span class="flex-1">进货</span>
 		</navigator>
-		<navigator class="item flex-y" url="/pages/shelfgoods/shelfgoods">
-			<i class="iconfont icon-iconfontzhizuobiaozhunbduan31 color1 clip" style="font-size:54rpx;"></i>
-			<span class="flex-1">商品上架</span>
-		</navigator>
 		<navigator class="item flex-y" >
 			<i class="iconfont icon-erweima color1 clip" style="font-size:54rpx;"></i>
 			<span class="flex-1">推广二维码</span>
 		</navigator>
-		<navigator class="item flex-y">
+	
+		<navigator class="item flex-y" url="/pages/shelfgoods/shelfgoods">
+			<i class="iconfont icon-iconfontzhizuobiaozhunbduan31 color1 clip" style="font-size:54rpx;"></i>
+			<span class="flex-1">商品上架</span>
+		</navigator>
+			<navigator class="item flex-y" url='/pages/merchantorder/merchantorder'>
 			<i class="iconfont icon-shangpinguanli01 color1 clip" style="font-size:54rpx;"></i>
+			<span class="flex-1">进货列表</span>
+		</navigator>
+		<navigator class="item flex-y" url="/pages/merchantorder/merchantorder">
+			<i class="iconfont icon-shangpinguanli01 color4 clip" style="font-size:54rpx;"></i>
 			<span class="flex-1">订单列表</span>
 		</navigator>
 		<navigator class="item flex-y">
-			<i class="iconfont icon-yinxingqia-copy color1 clip" style="font-size:54rpx;"></i>
+			<i class="iconfont icon-yinxingqia-copy color3 clip" style="font-size:54rpx;"></i>
 			<span class="flex-1">银行卡</span>
 		</navigator>
 		<navigator class="item flex-y">

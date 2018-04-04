@@ -6,7 +6,7 @@
 		<view class="flex-1 title-name flex-x"  data-cateid="4" bindtap="changeCateId"><div class="{{cateId==4?'selected':''}}">待收货</div></view>
 		<view class="flex-1 title-name flex-x"  data-cateid="5" bindtap="changeCateId"><div class="{{cateId==5?'selected':''}}">已完成</div></view>
 	</view>
-	<view class="order-box flex-1">
+	<view class="order-box flex-1 flex-y">
 		<view class="" style="height:110rpx;"></view>
 		<view wx:if="{{dataMsg}}" class="flex-1 flex-y">
 
@@ -60,9 +60,9 @@
 		</view>
 		<view class="no-data flex-y" wx:else>
 			<div class="order-img-box flex-x">
-				<image src="../../images/no_data.png"/>
+				<image src="../../images/nulldata.png"/>
 			</div>
-			<div style="margin-top:20rpx;">暂无相关记录</div>
+			<div>暂无相关记录</div>
 		</view>
 		</view>
 	</view>

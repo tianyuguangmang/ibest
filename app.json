@@ -1,12 +1,16 @@
 {
   
   "pages":[
+    "pages/my/my",
+    "pages/shopcenter/shopcenter",
+
+    "pages/merchantorder/merchantorder",
     "pages/shophours/shophours",
     "pages/merchantsetting/merchantsetting",
     
 
-    "pages/shopcenter/shopcenter",
-    "pages/my/my",
+    
+    
 
     "pages/parttimejob/parttimejob",
     "pages/servicecenter/servicecenter",
