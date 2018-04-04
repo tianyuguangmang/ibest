@@ -12,6 +12,8 @@ Page({
 		dataMsg:{
 			sendPrice:'',
 			deliveryFee:'',
+			latitude:'',
+			longitude:'',
 			address:'',
 			detailAddress:'',
 
@@ -21,6 +23,7 @@ Page({
 	},
 	getSelectPos:function(){
 		var _this = this;
+		var _dataMsg = this.data.dataMsg;
 		wx.getSetting({
       success(res) {
         if (res.authSetting['scope.userLocation'] === false) {
@@ -29,14 +32,11 @@ Page({
               if (res.authSetting['scope.userLocation'] === true) {
                 wx.chooseLocation({
                   success:function(data){
-                    
+                    _dataMsg.latitude = data.latitude;
+                    _dataMsg.longitude = data.longitude;
+                    _dataMsg.address = data.name;
                     _this.setData({
-                      errorTip:'',
-                      selectPos:data.name,
-                      latitude:data.latitude,
-                      longitude:data.longitude,
-                      flag: !_this.data.flag
-
+                     	dataMsg:_dataMsg
                     })
                   },
                   fail:function(res){
@@ -53,12 +53,11 @@ Page({
         }else{
           wx.chooseLocation({
             success:function(data){
+              _dataMsg.latitude = data.latitude;
+              _dataMsg.longitude = data.longitude;
+              _dataMsg.address = data.name;
               _this.setData({
-                selectPos:data.name,
-                errorTip:'',
-                latitude:data.latitude,
-                longitude:data.longitude,
-                flag: !_this.data.flag
+               	dataMsg:_dataMsg
               })
             },
             fail:function(res){
@@ -88,52 +87,6 @@ Page({
   inputDeliveryFee:function(e) {
     var _dataMsg = this.data.dataMsg;
     _dataMsg.deliveryFee = e.detail.value;
-    this.setData({
-      dataMsg:_dataMsg
-    })
-  },
-	timeCount:function(s){
-    var _this = this;
-    var _results = s||this.data.effectiveTime;
-    //disEndTime
-    var _timer = setInterval(function(){
-      
-        if(_results>0){
-          _results -=1;
-        }else{
-          clearInterval(_timer);
-        }
-      _this.setData({
-        effectiveTime:_results
-        
-      })
-
-    },1000)
-  },
-  bindTimeChange1: function(e) {
-    var _dataMsg = this.data.dataMsg;
-    _dataMsg.amStartTime = e.detail.value;
-    this.setData({
-      dataMsg:_dataMsg
-    })
-  },
-  bindTimeChange2: function(e) {
-    var _dataMsg = this.data.dataMsg;
-    _dataMsg.amEndTime = e.detail.value;
-    this.setData({
-      dataMsg: _dataMsg
-    })
-  },
-  bindTimeChange3: function(e) {
-    var _dataMsg = this.data.dataMsg;
-    _dataMsg.pmStartTime = e.detail.value;
-    this.setData({
-      dataMsg:_dataMsg
-    })
-  },
-  bindTimeChange4: function(e) {
-    var _dataMsg = this.data.dataMsg;
-    _dataMsg.pmEndTime = e.detail.value;
     this.setData({
       dataMsg:_dataMsg
     })

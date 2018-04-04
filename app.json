@@ -1,9 +1,10 @@
 {
   
   "pages":[
-    "pages/merchantsetting/merchantsetting",
     "pages/shophours/shophours",
+    "pages/merchantsetting/merchantsetting",
     
+
     "pages/shopcenter/shopcenter",
     "pages/my/my",
 

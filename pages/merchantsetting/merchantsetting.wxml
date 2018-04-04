@@ -13,11 +13,11 @@
 	<view class="flex-y box">
 		<div class="flex-x box-item" bindtap="getSelectPos">
 			<span style="color:#333;margin-right:40rpx;">地址</span>
-			<view class="flex-1"></view>
+			<view class="flex-1">{{dataMsg.address}}</view>
 		</div>
 		<div class="flex-x box-item">
 			<span style="color:#333;margin-right:40rpx;">详细地址</span>
-			<input value="{{dataMsg.deliveryFee}}" type="number" placeholder="请输入详细地址" class="flex-1" bindinput="inputDetailAddress" />
+			<input value="{{dataMsg.detailAddress}}" type="number" placeholder="请输入详细地址" class="flex-1" bindinput="inputDetailAddress" />
 		</div>
 	</view>
 
