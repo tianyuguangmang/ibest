@@ -1,6 +1,7 @@
 {
   
   "pages":[
+    "pages/suppliergoods/suppliergoods",
     "pages/my/my",
     "pages/shopcenter/shopcenter",
 

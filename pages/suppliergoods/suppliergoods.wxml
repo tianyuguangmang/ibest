@@ -1,0 +1,23 @@
+<view class="myshop">
+	
+	<view class="flex-y box">
+		<div class="flex-x box-item">
+			<span style="color:#333;margin-right:40rpx;">商品分类</span>
+			<input value="{{dataMsg.sendPrice}}" type="number" placeholder="请输入商品名称" class="flex-1" bindinput="inputSendPrice" />
+		</div>
+		<div class="flex-x box-item">
+			<span style="color:#333;margin-right:40rpx;">商品名称:</span>
+			<input value="{{dataMsg.sendPrice}}" type="number" placeholder="请输入商品名称" class="flex-1" bindinput="inputSendPrice" />
+		</div>
+		<div class="flex-x box-item">
+			<span style="color:#333;margin-right:40rpx;">商品价格</span>
+			<input value="{{dataMsg.deliveryFee}}" type="number" placeholder="请输入商品价格" style="width:300rpx;" bindinput="inputDeliveryFee" /><span class="flex-1">元</span>
+		</div>
+	</view>
+
+	<view class="flex-x btn-box">
+		<view class="btn flex-x" bindtap="toSubmit">
+			确定
+		</view>
+	</view>
+</view>
