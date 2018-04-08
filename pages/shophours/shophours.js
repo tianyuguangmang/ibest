@@ -49,6 +49,6 @@ Page({
   },
 
 	toSubmit:function(){
-		console.log(this.data.dataMsg);
+		console.log(this.data.dataMsg); 
 	},
 })
