@@ -5,6 +5,7 @@
     "navigationBarTextStyle":"#fff",
     "onReachBottomDistance":50,
     "navigationBarTitleText": "首页",
+
       "component": true,
   "usingComponents": {
     "baseinfo": "../component/baseinfo/baseinfo"

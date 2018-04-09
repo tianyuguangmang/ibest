@@ -9,5 +9,6 @@
   "usingComponents": {
     "baseinfo": "../component/baseinfo/baseinfo"
   }
+
     
 }
