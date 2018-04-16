@@ -4,7 +4,7 @@
     "navigationBarBackgroundColor": "#fe5600",
     "navigationBarTextStyle":"#fff",
     "onReachBottomDistance":50,
-    "navigationBarTitleText": "首页",
+    "navigationBarTitleText": "兼职商铺",
 
       "component": true,
   "usingComponents": {

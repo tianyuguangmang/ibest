@@ -7,7 +7,7 @@
 		</navigator>
 		<navigator class="item flex-y" url="/pages/shopcenter/shopcenter">
 			<i class="iconfont icon-dianpu color1 clip" style="font-size:54rpx;"></i>
-			<span class="flex-1">社区商铺</span>
+			<span class="flex-1">兼职商铺</span>
 		</navigator>
 		<navigator class="item flex-y" >
 			<i class="iconfont icon-jiaolian1 color1 clip" style="font-size:54rpx;"></i>

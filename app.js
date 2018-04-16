@@ -70,7 +70,7 @@ App({
     //ce 881709141159608 881709300256129
    /* baseUrl:"https://applettest.jixuejiyong.com",
     MERCHANTID:"881709141159608",*/
-    baseUrl:wx.getExtConfigSync().baseUrl,
+    baseUrl:"https://im.echgs.com",
     MERCHANTID:wx.getExtConfigSync().MERCHANTID,
     //baseUrl:"https://am.jixuejiyong.com",
     //MERCHANTID:"881711301104846",

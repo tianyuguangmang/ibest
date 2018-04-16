@@ -195,9 +195,13 @@ var http = {
 
 //分享者分到红包
 const shareCanGetMoneyUrl = BaseUrl + "/merchantredpacketaccount/user/redpacket/get";
-
+const CateList = BaseUrl + "/cate/list";
 
 var Service = {
+	getCateList:function(params,cb,failcb){
+		http.get(CateList,params,cb,failcb,1)
+	},
+
 	shareCanGetMoney:function(params,cb){
 		http.post(shareCanGetMoneyUrl,params,cb)
 	},
