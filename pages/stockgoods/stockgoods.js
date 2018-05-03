@@ -27,7 +27,13 @@ Page({
 		}]
 		
 	},
-
+	//获取供应商商品列表
+	getSupplierGoodsList:function(){
+		var params = {};
+		service.getSupplierGoodsList(params,function(res){
+			console.log(res);
+		})
+	},
 	//页面分享功能
 	onShareAppMessage: function(res) {
 

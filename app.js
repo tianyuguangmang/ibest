@@ -61,32 +61,12 @@ App({
    * 全局变量
    */
   globalData: {
+    //用户基本信息
     userInfo: null,
-    //am.jixuejiyong.com/
-    
-    shopGlobalMsg:null,
-    openId:0,
-    userBaseInfo:'',
-    //ce 881709141159608 881709300256129
-   /* baseUrl:"https://applettest.jixuejiyong.com",
-    MERCHANTID:"881709141159608",*/
+    //访问url
     baseUrl:"https://im.echgs.com",
-    MERCHANTID:wx.getExtConfigSync().MERCHANTID,
-    //baseUrl:"https://am.jixuejiyong.com",
-    //MERCHANTID:"881711301104846",
-    // MERCHANTID:"881711280428186",
-   //MERCHANTID:"881711181003646",
-    title:"",
-    defaultAddress:"",
-    editorAddress:"",
-    //选中商品的数量
-    totalCount:0,
-    //选中的购物车数据
-    selectCartData:'',
-    //选中购物车的金额
-    selectCartMoney:0,
-    needEvaluateOrder:'',
-    menuList:''
+    //用户的openId
+    openId:'',
   },
   /**
    * 打开地图

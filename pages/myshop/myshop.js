@@ -29,25 +29,17 @@ Page({
 
     },1000)
   },
-	//页面分享功能
-	onShareAppMessage: function(res) {
-
-		return {
-			//longitude 经度 
-			//latitude 维度
-			title: app.globalData.title,
-			path: '/pages/mall/mall',
-			success: function(res) {
-				// 转发成功
-				wx.showToast({
-					title: '转发成功',
-					icon: 'success',
-					duration: 2000
-				})
-			},
-			fail: function(res) {
-
-			}
-		}
-	}
+  toSubmit:function(){
+  	this.supplierRegister();
+  },
+  supplierRegister:function(){
+  	var params = {
+  		phone:"18754800737",
+  		validCode:123
+  	}
+  	service.supplierRegister(params,function(res){
+  		console.log(res);
+  	});
+  }
+	
 })

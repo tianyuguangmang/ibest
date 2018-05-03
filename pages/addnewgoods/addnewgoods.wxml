@@ -1,0 +1,27 @@
+<view class="myshop">
+	
+	<view class="flex-y box">
+		<div class="flex-x box-item">
+			<span style="color:#333;margin-right:40rpx;"></span>
+			<input value="{{phone}}" type="number" placeholder="请输入商品名称" class="flex-1" bindinput="inputPhone" />
+		</div>
+		<div class="flex-x box-item">
+			<span style="color:#333;margin-right:40rpx;">商品价格</span>
+			<input value="{{phone}}" type="number" placeholder="请输入商品价格" class="flex-1" bindinput="inputPhone" />
+		</div>
+		<div class="flex-x box-item">
+			<span style="color:#333;margin-right:40rpx;">库存</span>
+			<input value="{{phone}}" type="number" placeholder="请输入库存" class="flex-1" bindinput="inputPhone" />
+		</div>
+		<div class="flex-x box-item">
+			<span style="color:#333;margin-right:40rpx;">商品分类</span>
+			<input value="{{phone}}" type="number" placeholder="请输入商品分类" class="flex-1" bindinput="inputPhone" />
+		</div>
+	
+	</view>
+	<view class="flex-x btn-box">
+		<view class="btn flex-x" bindtap="toSubmit">
+			确定
+		</view>
+	</view>
+</view>

@@ -58,7 +58,7 @@ Page({
           var _arr = '';
           for(let i = 0,_len = tempFilePaths.length;i<_len;i++){
             wx.uploadFile({
-              url: 'https://upload.qiniup.com', //仅为示例，非真实的接口地址
+              url: 'https://upload.qiniup.com', //接口地址
               filePath: tempFilePaths[i],
               name: 'file',
               formData:{

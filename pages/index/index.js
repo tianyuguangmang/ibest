@@ -160,7 +160,7 @@ Page({
 		})
 	},
 	onLoad:function(){
-		wx.login({
+		/*wx.login({
       success: function(res) {
         if (res.code) {
         	console.log(res.code);
@@ -175,7 +175,7 @@ Page({
           console.log('登录失败！' + res.errMsg)
         }
       }
-  })
+  })*/
 		var _this = this;
 		service.getCateList(null,function(res){
 

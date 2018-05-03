@@ -1,7 +1,9 @@
 {
 
   "pages":[
+    "pages/stockgoods/stockgoods",
     "pages/index/index",
+     "pages/addnewgoods/addnewgoods",
     "pages/suppliergoods/suppliergoods",
     "pages/my/my",
     "pages/shopcenter/shopcenter",
@@ -17,7 +19,7 @@
     "pages/parttimejob/parttimejob",
     "pages/servicecenter/servicecenter",
     "pages/shelfgoods/shelfgoods",
-    "pages/stockgoods/stockgoods",
+    
     "pages/shopsettle/shopsettle",
     
     "pages/address/address",

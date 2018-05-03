@@ -10,7 +10,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "1.6.6",
 	"appid": "wx005cb93df28521fb",
-	"projectname": "hgs",
+	"projectname": "hgs_tygm",
 	"condition": {
 		"search": {
 			"current": -1,
