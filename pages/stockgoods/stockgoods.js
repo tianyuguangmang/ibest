@@ -8,7 +8,7 @@ import * as Size from '../../js/imagesize';
 Page({
 	data: {
 		Size,
-		menuList:[{id:1,name:"今日推荐"},{id:1,name:"推荐"},{id:1,name:"推荐"},{id:1,name:"推荐"},{id:1,name:"推荐"},{id:1,name:"推荐"}],
+		menuList:[],
 		bannerList:[{pic:'https://ps.ssl.qhimg.com/sdmt/179_135_100/t010b0a4aa5bb6941c4.jpg'}],
 		goodsList:[{
 			productId:1,
@@ -28,11 +28,64 @@ Page({
 		
 	},
 	//获取供应商商品列表
-	getSupplierGoodsList:function(){
-		var params = {};
+	getSupplierGoodsList:function(cateId){
+		var _this = this;
+		cateId = cateId?cateId:1;
+
+		var params = {
+			cateId:cateId
+		};
+
 		service.getSupplierGoodsList(params,function(res){
-			console.log(res);
+			_this.setData({
+				goodsList:res.data.result.list
+			})
+			
 		})
+	},
+	
+	changeCate:function(currentTarget){
+		var _index = app.getData(currentTarget,"index");
+		var _cateId = app.getData(currentTarget,"cateid");
+		this.setData({
+			cateIndex:_index
+		})
+		this.getSupplierGoodsList(_cateId);
+
+	},
+	//获取分类列表
+	getCateList:function(){
+		var _this = this;
+		service.getCateList(null,function(res){
+			_this.setData({
+				menuList:res.data.result
+			})
+
+
+
+		});
+	},
+	onLoad:function(){
+		var _this = this;
+		this.getSupplierGoodsList();
+		this.getCateList();
+		wx.getStorage({
+		  key: 'shop_cart_info',
+		  success: function(res) {
+	      var _cartInfo = res.data;
+	      _this.cartInfo = _cartInfo;
+	      var _goodsList = _this.data.goodsList;
+	      for(var i=0,_len = _goodsList.length;i<_len;i++){
+	      	if(_cartInfo['pid_'+_goodsList[i].productId+'_skuid_1']){
+	      		_goodsList[i].count = _cartInfo['pid_'+_goodsList[i].productId+'_skuid_1'].count;
+	      	}
+	      }
+	      _this.setData({
+	      	goodsList:_goodsList,
+	      })
+		  } 
+		})
+		
 	},
 	//页面分享功能
 	onShareAppMessage: function(res) {
@@ -162,24 +215,5 @@ Page({
 			goodsList:_list
 		})
 	},
-	onLoad:function(){
-		var _this = this;
-		wx.getStorage({
-		  key: 'shop_cart_info',
-		  success: function(res) {
-	      var _cartInfo = res.data;
-	      _this.cartInfo = _cartInfo;
-	      var _goodsList = _this.data.goodsList;
-	      for(var i=0,_len = _goodsList.length;i<_len;i++){
-	      	if(_cartInfo['pid_'+_goodsList[i].productId+'_skuid_1']){
-	      		_goodsList[i].count = _cartInfo['pid_'+_goodsList[i].productId+'_skuid_1'].count;
-	      	}
-	      }
-	      _this.setData({
-	      	goodsList:_goodsList,
-	      })
-		  } 
-		})
-		
-	}
+	
 })
