@@ -8,6 +8,8 @@ import * as Size from '../../js/imagesize';
 Page({
 	data: {
 		Size,
+		cateIndex:0,
+		totalMoney:0,
 		menuList:[],
 		bannerList:[{pic:'https://ps.ssl.qhimg.com/sdmt/179_135_100/t010b0a4aa5bb6941c4.jpg'}],
 		goodsList:[{
@@ -161,14 +163,22 @@ Page({
 			_cartInfo['pid_'+data.productId+'_skuid_1'] = {
 				count:data.count,
 				productId:data.productId,
-				title:data.title,//名称
-				currentPrice:data.currentPrice,
+				name:data.name,//名称
+				resetPrice:data.resetPrice,
 				mainImage:data.mainImage,
 				originPrice:data.originPrice,
 				sku:'褐色',
 				skuId:0
 			}
 		}
+		var _totalMoney = 0;
+		for(var key in _cartInfo){
+			_totalMoney += _cartInfo[key].count*_cartInfo[key].resetPrice;
+
+		}
+		this.setData({
+			totalMoney:_totalMoney
+		})
 
 	},
 	onHide:function(){

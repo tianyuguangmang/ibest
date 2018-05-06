@@ -1,12 +1,22 @@
 
-<view class="flex-x index">
-	<view class="title">
+<view class="index">
+	<!-- <view class="title">
 		<block wx:for="{{menuList}}">
 		<view class="item flex-x {{index == cateIndex?'selected':''}}" bindtap="changeCate" data-cateid="{{item.cateId}}" data-index="{{index}}">
 			{{item.title}}
 		</view>
 		</block>
-	</view>
+	</view> -->
+  <scroll-view scroll-x  class="swiper-title" scroll-into-view="cateId-{{1}}" scroll-with-animation="{{true}}">
+   	<view class="flex-x" style="width:{{200*menuList.length+'rpx'}};height:100%;">
+	   	<block wx:for="{{menuList}}">
+				<view class="flex-x {{cateIndex==index?'selected':''}} item" bindtap="changeCate" data-index="{{index}}" style="width:200rpx;height:100%;" id="cateId-{{index}}">
+					{{item.title}}
+				</view>
+			</block>
+		</view>
+  </scroll-view>
+  <view style="height: 100rpx;"></view>
 	<view class="flex-1 goods-list">
 	<!-- 	<div class="goods-item flex-y" wx:for="{{goodsList}}">
 		<image class="mainImage" src="{{item.mainImage}}" mode="aspectFill"></image>
@@ -19,11 +29,11 @@
 				<image class="" src="{{item.mainImage}}"></image>
 			</view>
 			<div class="brief flex-1 flex-y">
-				<div class="name">{{item.title}}</div>
-				<div class="sell flex-1">销量{{item.sellCount}}件</div>
+				<div class="name">{{item.name}}</div>
+				<div class="sell flex-1">销量{{item.soldNumber}}件</div>
 				<div class="price flex-x">
 					<span style="font-size:24rpx;color:#f84f2f;">￥</span>
-					<span class="current-price">{{item.currentPrice}}</span><span class="origin-price lm">￥{{item.originPrice}}</span>
+					<span class="current-price">{{item.resetPrice}}</span><span class="origin-price lm">￥{{item.originPrice}}</span>
 					<span class="flex-1"></span>
 					<view class="add-cart flex-x" bindtap="subtractCart" data-index="{{index}}" hidden="{{!item.count||item.count==0}}">-</view>
 					<view hidden="{{!item.count||item.count==0}}" style="font-size:28rpx;padding:0 10rpx;color:#666;">{{item.count}}</view>
@@ -37,7 +47,7 @@
 	
 	<div class="shop-cart">购物车</div>
 	<div class="total-money flex-1">
-		合计：<span class="money">￥{{countMoney}}</span>
+		合计：<span class="money">￥{{totalMoney}}</span>
 	</div>
 	<view class="amount" bindtap="countValue">
 		结算

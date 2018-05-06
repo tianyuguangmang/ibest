@@ -1,5 +1,7 @@
 @import "../common/css/index.wxss";
-
+page{
+	background: #f6f6f6;
+}
 .total{
 	height: 90rpx;
 	width:100%;
@@ -29,4 +31,21 @@
 }
 .shop-cart{
 	margin-left: 30rpx;
+}
+.swiper-title{
+	position: fixed;
+	top:0;
+	z-index: 1000;
+	background: #fff;
+
+	height: 90rpx;
+	width:100%;
+}
+
+.swiper-title .item{
+	border-bottom: 1px solid #FFF;
+}
+.swiper-title .selected{
+	color:#e56000;
+	border-bottom: 1px solid #e56000;
 }
