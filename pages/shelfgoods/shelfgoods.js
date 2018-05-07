@@ -112,6 +112,10 @@ Page({
 				skuId:0
 			}
 		}
+		wx.setStorage({
+		  key:"shop_cart_info",
+		  data:_cartInfo
+		})
 
 	},
 	onHide:function(){

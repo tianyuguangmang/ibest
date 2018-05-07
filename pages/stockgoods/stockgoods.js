@@ -12,22 +12,25 @@ Page({
 		totalMoney:0,
 		menuList:[],
 		bannerList:[{pic:'https://ps.ssl.qhimg.com/sdmt/179_135_100/t010b0a4aa5bb6941c4.jpg'}],
-		goodsList:[{
-			productId:1,
-			title:'特价商品价商',
-			mainImage:'https://img.alicdn.com/tfs/TB1EkSvdr_I8KJjy1XaXXbsxpXa-350-350.jpg_240x240xz.jpg_.webp',
-			currentPrice:10,
-			sellCount:10,
-			originPrice:20
-		},{
-			productId:2,
-			title:'特价商品价商',
-			mainImage:'https://img.alicdn.com/tfs/TB1EkSvdr_I8KJjy1XaXXbsxpXa-350-350.jpg_240x240xz.jpg_.webp',
-			currentPrice:10,
-			sellCount:10,
-			originPrice:20
-		}]
+		goodsList:[],
+		//是否显示商品详情默认不显示
+		showDetail:false,
+		//选中的要显示的商品
+		productDetail:null
 		
+	},
+	showDetailLay:function(currentTarget){
+		var _index = app.getData(currentTarget,"index");
+		var _goodsList = this.data.goodsList;
+		this.setData({
+			productDetail:_goodsList[_index],
+			showDetail:true
+		})
+	},
+	showDetailToggle:function(){
+		this.setData({
+			showDetail:!this.data.showDetail
+		})
 	},
 	//获取供应商商品列表
 	getSupplierGoodsList:function(cateId){
@@ -179,15 +182,9 @@ Page({
 		this.setData({
 			totalMoney:_totalMoney
 		})
-
+		wx.setStorageSync('shop_cart_info', _cartInfo);
 	},
-	onHide:function(){
-		wx.setStorage({
-		  key:"shop_cart_info",
-		  data:this.cartInfo
-		})
 
-	},
 	countValue:function(){
 		wx.redirectTo({
 		  url: '/pages/shopsettle/shopsettle'
@@ -197,18 +194,20 @@ Page({
 	 * 购物车增加
 	 * @param {[type]} currentTarget [description]
 	 */
-	addToCart:function(currentTarget){
-		var _index = app.getData(currentTarget,'index');
-		var _list = this.data.goodsList;
-		
-		_list[_index].count = _list[_index].count?_list[_index].count+5:5;
-		var _select = _list[_index];
+	addToCart:function(){
+		var _select = this.data.productDetail;
+		_select.count = 5;
 		this.calcCart(_select);
-
-
-		this.setData({
+		/*this.setData({
 			goodsList:_list
+		})*/
+	},
+
+	toCart:function(){
+		wx.switchTab({
+		  url: '/pages/cart/cart'
 		})
+
 	},
 	/**
 	 * 购物车减少
