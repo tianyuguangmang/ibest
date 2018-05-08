@@ -22,6 +22,8 @@ Page({
       path: '/pages/mall/mall',
       success: function(res) {
         // 转发成功
+        // 
+        // 
         wx.showToast({
           title: '转发成功',
           icon: 'success',
