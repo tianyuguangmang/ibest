@@ -35,6 +35,16 @@ Page({
   },
   selectedThisGoods:function(currentTarget){
     var _index = app.getData(currentTarget,"index");
+    var _cartList = this.data.cartList;
+    if(_cartList[_index].selected){
+      _cartList[_index].selected = false;
+    }else{
+      _cartList[_index].selected = true;
+    }
+    this.setData({
+      cartList:_cartList
+    })
+    
 
   },
   onShow:function(){
