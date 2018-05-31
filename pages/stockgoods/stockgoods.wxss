@@ -2,6 +2,7 @@
 page{
 	background: #f6f6f6;
 }
+
 .total{
 	height: 90rpx;
 	width:100%;
@@ -50,5 +51,60 @@ page{
 	border-bottom: 1px solid #e56000;
 }
 .goods-list{
-	height: 100%;
+
+	background: #f6f6f6;
 }
+.goods-list .goods-item{
+	padding:0 5rpx;
+	width:50%;
+	
+	
+	margin-top: 10rpx;
+}
+.goods-item .content{
+	width:100%;
+	
+	border:1px solid #fefefe;
+	background: #fff;
+}
+ .content .img-box{
+ 	width:100%;
+ 	height: 250rpx;
+ }
+  .content .img-box image{
+  	width:100%;
+  	height: 100%;
+  }
+  .brief{
+  	padding:0 15rpx;
+  }
+  .brief .name{
+	font-size:28rpx;
+	height: 35rpx;
+	line-height: 35rpx;
+  }
+  .goods-detail{
+  	position: fixed;
+  	width:600rpx;
+  	left:50%;
+  	margin-left: -300rpx;
+	z-index: 10002;
+	background: #fff;
+  	top:10%;
+  }
+
+  .cart-porn{
+  	position: fixed;
+  	bottom: 10%;
+  	right: 20rpx;
+  	width:60rpx;
+  	height: 60rpx;
+  	
+  	border-radius: 50%;
+  }
+  .cart-porn image{
+  	width:100%;
+  	height: 100%;
+
+  }
+

@@ -10,41 +10,56 @@
   <scroll-view scroll-x  class="swiper-title" scroll-into-view="cateId-{{1}}" scroll-with-animation="{{true}}">
    	<view class="flex-x" style="width:{{200*menuList.length+'rpx'}};height:100%;">
 	   	<block wx:for="{{menuList}}">
-				<view class="flex-x {{cateIndex==index?'selected':''}} item" bindtap="changeCate" data-index="{{index}}" style="width:200rpx;height:100%;" id="cateId-{{index}}">
+				<view class="flex-x {{cateIndex==index?'selected':''}} item" bindtap="changeCate"  style="width:200rpx;height:100%;" id="cateId-{{index}}" data-index="{{index}}" data-cateid="{{item.cateId}}">
 					{{item.title}}
 				</view>
 			</block>
 		</view>
   </scroll-view>
-  <view style="height: 100rpx;"></view>
-	<view class="flex-1 goods-list">
+  <view style="height: 95rpx;"></view>
+	<view class="goods-list flex-wrap">
 	<!-- 	<div class="goods-item flex-y" wx:for="{{goodsList}}">
-		<image class="mainImage" src="{{item.mainImage}}" mode="aspectFill"></image>
+		<image class="mainImag e" src="{{item.mainImage}}" mode="aspectFill"></image>
 		<div class="name flex-1">{{item.title}}</div>
 		<view class="add-cart" bindtap="addToCart">+</view>
 		<view class="price">￥{{5}}</view>
 	</div> -->
-		<view class="goods-item flex-xs" wx:for="{{goodsList}}">
-			<view class="img-box">
-				<image class="" src="{{item.mainImage}}"></image>
-			</view>
-			<div class="brief flex-1 flex-y">
-				<div class="name">{{item.name}}</div>
-				<div class="sell flex-1">销量{{item.soldNumber}}件</div>
-				<div class="price flex-x">
-					<span style="font-size:24rpx;color:#f84f2f;">￥</span>
-					<span class="current-price">{{item.resetPrice}}</span><span class="origin-price lm">￥{{item.originPrice}}</span>
-					<span class="flex-1"></span>
-					<view class="add-cart flex-x" bindtap="subtractCart" data-index="{{index}}" hidden="{{!item.count||item.count==0}}">-</view>
-					<view hidden="{{!item.count||item.count==0}}" style="font-size:28rpx;padding:0 10rpx;color:#666;">{{item.count}}</view>
-					<view class="add-cart flex-x" bindtap="addToCart" data-index="{{index}}">+</view>
+		<view class="goods-item " wx:for="{{goodsList}}">
+			<view class="content" bindtap="showDetailLay" data-index="{{index}}" data-cateid="{{item.productId}}">
+				<view class="img-box">
+					<image class="" src="{{item.mainImage}}" mode="aspectFill"></image>
+				</view>
+				<div class="brief flex-1 flex-y">
+					<div class="name a-ellipsis">{{index==3?"夏季衣服，T恤衫，真的很好，选择没有错":item.name}}</div>
+					<div class="price flex-x">
+						<span style="font-size:24rpx;color:#f84f2f;">￥</span>
+						<span class="flex-1" style="color:#f84f2f;">{{item.resetPrice}}</span>
+						<span class="sell">销量{{item.soldNumber}}件</span>
+						<!-- <span class="origin-price lm">￥{{item.originPrice}}</span> -->
+					</div>
+					<!-- <div class="sell flex-1">销量{{item.soldNumber}}件</div> -->
+					<!-- <div class="price flex-x">
+						<span style="font-size:24rpx;color:#f84f2f;">￥</span>
+						<span class="current-price">{{item.resetPrice}}</span><span class="origin-price lm">￥{{item.originPrice}}</span>
+						<span class="flex-1"></span>
+						<view class="add-cart flex-x" bindtap="subtractCart" data-index="{{index}}" hidden="{{!item.count||item.count==0}}">-</view>
+						<view hidden="{{!item.count||item.count==0}}" style="font-size:28rpx;padding:0 10rpx;color:#666;">{{item.count}}</view>
+						<view class="add-cart flex-x" bindtap="addToCart" data-index="{{index}}">+</view>
+					</div> -->
 				</div>
-			</div>
+			</view>
 		</view>
 	</view>
 </view>
-<view class="total flex-x">
+<view class="bg-cover" hidden="{{!showDetail}}" bindtap="showDetailToggle"></view>
+<view class="goods-detail" hidden="{{!showDetail}}">
+	<div bindtap="addToCart">加入购物车</div>
 	
+</view>
+<view class="cart-porn" bindtap="toCart">
+	<image src="../../images/cart_2.png"></image>
+</view>
+<view class="total flex-x">
 	<div class="shop-cart">购物车</div>
 	<div class="total-money flex-1">
 		合计：<span class="money">￥{{totalMoney}}</span>
@@ -52,4 +67,4 @@
 	<view class="amount" bindtap="countValue">
 		结算
 	</view>
-</view>
+</view> 

@@ -22,6 +22,8 @@ Page({
       path: '/pages/mall/mall',
       success: function(res) {
         // 转发成功
+        // 
+        // 
         wx.showToast({
           title: '转发成功',
           icon: 'success',
@@ -33,18 +35,42 @@ Page({
       }
     }
   },
+  selectedThisGoods:function(currentTarget){
+    var _index = app.getData(currentTarget,"index");
+    var _cartList = this.data.cartList;
+    if(_cartList[_index].selected){
+      _cartList[_index].selected = false;
+    }else{
+      _cartList[_index].selected = true;
+    }
+    this.setData({
+      cartList:_cartList
+    })
+    
+
+  },
   onShow:function(){
     var _this = this;
-    wx.getStorage({
-      key: 'cart_info',
+    var _cartInfo = wx.getStorageSync('shop_cart_info');
+    var _arr = [];
+    for(var key in _cartInfo){
+      _arr.push(_cartInfo[key]);
+    }
+    console.log(_cartInfo);
+    _this.setData({
+      cartList:_arr
+    })
+    /*wx.getStorage({
+      key: 'shop_cart_info',
       success: function(res) {
           console.log("x",res);
+
           
           _this.setData({
             cartList:res.data,
           })
       } 
-    })
+    })*/
   },
   onLoad:function(){
   }
