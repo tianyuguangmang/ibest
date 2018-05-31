@@ -2,6 +2,6 @@
 
     "enablePullDownRefresh": true,
     "onReachBottomDistance":50,
-    "navigationBarTitleText": "首页"
+    "navigationBarTitleText": "进货"
     
 }

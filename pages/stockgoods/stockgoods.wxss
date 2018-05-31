@@ -49,3 +49,6 @@ page{
 	color:#e56000;
 	border-bottom: 1px solid #e56000;
 }
+.goods-list{
+	height: 100%;
+}

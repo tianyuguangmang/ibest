@@ -92,8 +92,9 @@ const http = {
 			wx.login({
 			  success: function(res) {
 			    if (res.code) {
+			    	console.log(res);
 			      //发起网络请求
-			      http.login("/user/wxcode",{code:res.code},function(res){
+			      http.login("/user/wxcode",{wxcode:res.code},function(res){
 				  		var _openId = res.data.result.openId;
 				  		app.globalData.openId = _openId;
 				  		OpenId = _openId;
