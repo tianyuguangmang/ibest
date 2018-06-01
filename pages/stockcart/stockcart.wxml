@@ -54,7 +54,7 @@
 		<div class="total-money flex-1">
 			合计：<span class="money">￥{{countMoney}}</span>
 		</div>
-		<view class="amount" bindtap="countValue">
+		<view class="amount" bindtap="cartInfoSubmit">
 			结算
 		</view>
 	</view>

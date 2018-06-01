@@ -2,6 +2,8 @@
 
   "pages":[
     "pages/stockgoods/stockgoods",
+    "pages/myorder/myorder",
+    "pages/stockcart/stockcart",
     "pages/index/index",
      "pages/addnewgoods/addnewgoods",
     "pages/suppliergoods/suppliergoods",
@@ -29,7 +31,7 @@
     
     "pages/newaddress/newaddress",
 
-    "pages/myorder/myorder",
+    
     "pages/cart/cart",
     
     "pages/mall/mall"

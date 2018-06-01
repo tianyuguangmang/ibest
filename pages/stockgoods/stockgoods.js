@@ -170,6 +170,7 @@ Page({
 				resetPrice:data.resetPrice,
 				mainImage:data.mainImage,
 				originPrice:data.originPrice,
+				supplierId:data.supplierId,
 				sku:'褐色',
 				skuId:0
 			}
@@ -204,9 +205,12 @@ Page({
 	},
 
 	toCart:function(){
-		wx.switchTab({
-		  url: '/pages/cart/cart'
+		wx.redirectTo({
+		  url: '/pages/stockcart/stockcart'
 		})
+		/*wx.switchTab({
+		  url: '/pages/cart/cart'
+		})*/
 
 	},
 	/**
