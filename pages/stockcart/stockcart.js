@@ -62,6 +62,9 @@ Page({
       }
     }
     service.stockCartInfoSubmit({list:JSON.stringify(_arr)},function(res){
+      wx.redirectTo({
+      url: '/pages/stockordersubmit/stockordersubmit'
+    })
       console.log(res);
     });
 

@@ -239,6 +239,15 @@ Page({
     })*/
   },
   cateId:0,
+  getData:function(){
+    var _this = this;
+    service.getMerchantOrder({current:1,size:10},function(res){
+      console.log(res.data.result.list);
+      _this.setData({
+        dataList:res.data.result.list
+      })
+    })
+  },
   onLoad: function(options){
     var _this = this;
     this.from = options.from;
@@ -252,6 +261,7 @@ Page({
       cateId:_id
     })
     this.cateId = _id;
+    this.getData();
 
   
     

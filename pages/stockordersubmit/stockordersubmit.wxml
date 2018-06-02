@@ -1,0 +1,61 @@
+<view class="btl">
+	<view>
+		<view class="cart-list" wx:if="{{dataMsg.productList.length>0}}">
+			<block  wx:for="{{dataMsg.productList}}">
+			
+				<view class="cart-item flex-x flex-1" style="width:100%">
+					<div class="select-btn flex-x">
+						<radio checked="{{item.selected}}" bindtap="selectedThisGoods" data-index="{{index}}"/>
+					</div>
+					<div class="img-box flex-x">
+						<image src="{{item.mainImage+Size.W100H100}}" mode="aspectFill"/>
+					</div>
+					<div class="msg-detail flex-1 flex-ys">
+						<div class="title m-ellipsis">
+							{{item.name}}
+						</div>
+						<div class="goods-detail a-ellipsis">
+							{{item.sku}}
+						</div>
+						<div class="price-number flex-1 flex-xsc">
+							<div class="price flex-x">
+								<div class="discount-price">￥{{item.currentPrice}}</div>
+								<div class="origin-price flex-1">￥{{item.originPrice}}</div>
+								<div class="buy-count">x{{item.count}}</div>
+								
+							</div>
+							<!-- <div class="number flex-x">
+								<view class="flex-1 decrease" bindtap="decrease" data-index="{{index}}">-</view>
+								<input type="number" class="value" value="{{item.count}}" data-index="{{index}}" bindinput="changeCount"/>
+								<view class="flex-1 add" bindtap="add" data-index="{{index}}">+</view>
+							</div> -->
+						</div>
+					</div>
+				</view>
+			
+			</block>
+		</view>
+		<view class="no-data flex-y" wx:else>
+			<div class="order-img-box flex-x">
+				<image src="../../images/bad.png" class="square"/>
+			</div>
+			<div style="margin-top:20rpx;">您没有要购买的商品~</div>
+		</view>
+		
+	</view>
+
+	
+
+	<view class="total flex-x" wx:if="{{cartList}}">
+		<div class="all-select flex-x">
+			<radio checked="{{allSelectedState}}" bindtap="allSelected"/>
+		</div>
+		<div class="select-word">全选</div>
+		<div class="total-money flex-1">
+			合计：<span class="money">￥{{countMoney}}</span>
+		</div>
+		<view class="amount" bindtap="buyConfirm">
+			确认购买
+		</view>
+	</view>
+</view>

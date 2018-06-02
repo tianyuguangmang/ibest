@@ -8,10 +8,10 @@
 	</view>
 	<view class="order-box flex-1 flex-y">
 		<view class="" style="height:110rpx;"></view>
-		<view wx:if="{{dataMsg}}" class="flex-1 flex-y">
+		<view wx:if="{{dataList}}" class="flex-1 flex-y">
 
-		<view class="order-list bg flex-1"  wx:if="{{dataMsg.length>0}}"  scroll-y="{{true}}"  bindscrolltolower="lower"  lower-threshold="{{50}}"> 
-			<view class="order-item flex-y" wx:for="{{dataMsg}}" wx:key="item.id" data-id="{{item.id}}">
+		<view class="order-list bg flex-1"  wx:if="{{dataList.length>0}}"  scroll-y="{{true}}"  bindscrolltolower="lower"  lower-threshold="{{50}}"> 
+			<view class="order-item flex-y" wx:for="{{dataList}}" wx:key="item.id" data-id="{{item.id}}">
 				<div class="order-msg flex-x bg-w">
 					<div class="service-number">订单编号：</div>
 					<div class="number flex-1">{{item.id}}</div>
