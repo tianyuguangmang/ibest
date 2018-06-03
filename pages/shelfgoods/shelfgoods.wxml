@@ -1,18 +1,18 @@
 
 <view class="flex-x index">
 	<view class="flex-1 goods-list">
-		<view class="goods-item flex-xs" wx:for="{{goodsList}}">
+		<view class="goods-item flex-xs" wx:for="{{dataList}}">
 			<view class="img-box">
 				<image class="" src="{{item.mainImage}}"></image>
 			</view>
 			<div class="brief flex-1 flex-y">
-				<div class="name">{{item.title}}</div>
-				<div class="sell flex-1">销量{{item.sellCount}}件</div>
+				<div class="name">{{item.name}}</div>
+				<div class="sell flex-1">销量{{item.soldNumber}}件</div>
 				<div class="price flex-x">
 					<span style="font-size:24rpx;color:#f84f2f;">￥</span>
-					<span class="current-price">{{item.currentPrice}}</span><span class="origin-price lm">￥{{item.originPrice}}</span>
+					<span class="current-price">{{item.resetPrice}}</span><span class="origin-price lm">￥{{item.originPrice}}</span>
 					<span class="flex-1"></span>
-					<view class="flex-x editor"  data-index="{{index}}">编辑</view>
+					<view class="flex-x editor"  data-index="{{index}}" bindtap="editor"><span wx:if="{{item.onSell}}">下架</span><span wx:else>上架</span></view>
 				
 				</div>
 			</div>

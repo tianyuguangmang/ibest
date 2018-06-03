@@ -162,24 +162,42 @@ Page({
 			goodsList:_list
 		})
 	},
-	onLoad:function(){
+	getMerchantProduct:function() {
 		var _this = this;
-		wx.getStorage({
-		  key: 'shop_cart_info',
-		  success: function(res) {
-	      var _cartInfo = res.data;
-	      _this.cartInfo = _cartInfo;
-	      var _goodsList = _this.data.goodsList;
-	      for(var i=0,_len = _goodsList.length;i<_len;i++){
-	      	if(_cartInfo['pid_'+_goodsList[i].productId+'_skuid_1']){
-	      		_goodsList[i].count = _cartInfo['pid_'+_goodsList[i].productId+'_skuid_1'].count;
-	      	}
-	      }
-	      _this.setData({
-	      	goodsList:_goodsList,
-	      })
-		  } 
+		service.getMerchantProduct({current:1,size:10},function(res){
+			_this.setData({
+				dataList:res.data.result.list
+			})
+
 		})
+	},
+	toShelfGood: function(productId,onSell){
+
+
+	},
+	editor:function(currentTarget){
+		var _this = this;
+		var index = app.getData(currentTarget,"index");
+		var _list = this.data.dataList;
+		var _onSell = _list[index].onSell==1?0:1;
+		var _productId = _list[index].productId;
+		service.toShelfGood({productId:_productId,onSell:_onSell},function(res){
+			_list[index].onSell = _onSell;
+			wx.showToast({
+			  title: _onSell==1?"已上架":"已下架",
+			  icon: 'success',
+			  duration: 2000
+			})
+			_this.setData({
+				dataList:_list
+
+			})
+
+		})
+
+	},
+	onLoad:function(){
+		this.getMerchantProduct();
 		
 	}
 })

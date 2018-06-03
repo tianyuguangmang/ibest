@@ -1,6 +1,8 @@
 {
 
   "pages":[
+    "pages/shelfgoods/shelfgoods",
+    
     "pages/my/my",
     "pages/merchantorder/merchantorder",
 
@@ -24,7 +26,6 @@
 
     "pages/parttimejob/parttimejob",
     "pages/servicecenter/servicecenter",
-    "pages/shelfgoods/shelfgoods",
     
     "pages/shopsettle/shopsettle",
     

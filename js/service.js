@@ -11,7 +11,15 @@ const stockCartInfoSubmitUrl = "/msorder/save";
 const getStockOrderInfoUrl = "/msorder/info";
 const buyConfirmUrl = "/msorder/add";
 const getMerchantOrderUrl = "/submsorder/list";
+const getMerchantProductUrl = "/merchant/product/list"
+const toShelfGoodUrl = "/merchant/product/sell"
 var Service = {
+	toShelfGood:function(params,cb,failcb){
+		http.get(toShelfGoodUrl,params,cb,failcb);
+	},
+	getMerchantProduct:function(params,cb,failcb){
+		http.get(getMerchantProductUrl,params,cb,failcb,1);
+	},
 	getMerchantOrder:function(params,cb,failcb){
 		http.get(getMerchantOrderUrl,params,cb,failcb);
 	},
