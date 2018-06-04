@@ -14,14 +14,20 @@ Page({
 		bannerList:[{pic:'https://ps.ssl.qhimg.com/sdmt/179_135_100/t010b0a4aa5bb6941c4.jpg'}],
 		goodsList:[],
 		//是否显示商品详情默认不显示
-		showDetail:false,
+		showDetail:true,
 		//选中的要显示的商品
 		productDetail:null
 		
 	},
 	showDetailLay:function(currentTarget){
 		var _index = app.getData(currentTarget,"index");
+		var _cartInfo = this.cartInfo;
 		var _goodsList = this.data.goodsList;
+		if(_cartInfo['pid_'+_goodsList[_index].productId+'_skuid_1']){
+			_goodsList[_index].count = _cartInfo['pid_'+_goodsList[_index].productId+'_skuid_1'].count;
+		}else{
+			_goodsList[_index].count = 0;
+		}
 		this.setData({
 			productDetail:_goodsList[_index],
 			showDetail:true
@@ -113,7 +119,7 @@ Page({
 			}
 		}
 	},
-	cartInfo:{},
+	cartInfo:wx.getStorageSync('shop_cart_info')||{},
 	/**
 	 * 购物车本地存储数据格式 
 	 * key: mid 商户id uid 用户id
@@ -151,36 +157,38 @@ Page({
 	},
 	/**
 	 * 计算购物车
-	 * @param  {[type]} data 商品数据
+	 * @param  {[type]} num +-数量
 	 * @return {[type]}
 	 */
-	calcCart:function(data){
+	calcCart:function(num){
+		var _select = this.data.productDetail;
 		var _cartInfo = this.cartInfo;
-		if(_cartInfo['pid_'+data.productId+'_skuid_1']){
-			if(data.count == 0){
-				delete _cartInfo['pid_'+data.productId+'_skuid_1'];
-			}else{
-				_cartInfo['pid_'+data.productId+'_skuid_1'].count = data.count;
+		if(_cartInfo['pid_'+_select.productId+'_skuid_1']){
+			_cartInfo['pid_'+_select.productId+'_skuid_1'].count += num;
+			if(_cartInfo['pid_'+_select.productId+'_skuid_1'].count<0){
+				_cartInfo['pid_'+_select.productId+'_skuid_1'].count = 0;
 			}
 		}else{
-			_cartInfo['pid_'+data.productId+'_skuid_1'] = {
-				count:data.count,
-				productId:data.productId,
-				name:data.name,//名称
-				resetPrice:data.resetPrice,
-				mainImage:data.mainImage,
-				originPrice:data.originPrice,
-				supplierId:data.supplierId,
+			_cartInfo['pid_'+_select.productId+'_skuid_1'] = {
+				count:5,
+				productId:_select.productId,
+				name:_select.name,//名称
+				resetPrice:_select.resetPrice,
+				mainImage:_select.mainImage,
+				originPrice:_select.originPrice,
+				supplierId:_select.supplierId,
 				sku:'褐色',
 				skuId:0
 			}
 		}
+		_select.count = _cartInfo['pid_'+_select.productId+'_skuid_1'].count;
 		var _totalMoney = 0;
 		for(var key in _cartInfo){
 			_totalMoney += _cartInfo[key].count*_cartInfo[key].resetPrice;
 
 		}
 		this.setData({
+			productDetail:_select,
 			totalMoney:_totalMoney
 		})
 		wx.setStorageSync('shop_cart_info', _cartInfo);
@@ -196,12 +204,7 @@ Page({
 	 * @param {[type]} currentTarget [description]
 	 */
 	addToCart:function(){
-		var _select = this.data.productDetail;
-		_select.count = 5;
-		this.calcCart(_select);
-		/*this.setData({
-			goodsList:_list
-		})*/
+		this.calcCart(5);
 	},
 
 	toCart:function(){

@@ -1,13 +1,14 @@
 {
 
   "pages":[
+    "pages/stockgoods/stockgoods",
+    
     "pages/shelfgoods/shelfgoods",
     
     "pages/my/my",
     "pages/merchantorder/merchantorder",
 
     
-    "pages/stockgoods/stockgoods",
     "pages/stockordersubmit/stockordersubmit",
     "pages/myorder/myorder",
     "pages/stockcart/stockcart",

@@ -53,13 +53,29 @@
 </view>
 <view class="bg-cover" hidden="{{!showDetail}}" bindtap="showDetailToggle"></view>
 <view class="goods-detail" hidden="{{!showDetail}}">
-	<div bindtap="addToCart">加入购物车</div>
+	
+	<view class="img-content">
+		<image src="https://img.alicdn.com/tfs/TB1EkSvdr_I8KJjy1XaXXbsxpXa-350-350.jpg_240x240xz.jpg_.webp"></image>
+	</view>
+	<view class="goods-msg flex-ys">
+		<div class="name">小饰品</div>
+		<div class="sell-number">销量<span style="color:#fe5600;margin-left: 10rpx;">100</span></div>
+		<div class="price flex-x">
+			<span style="font-size:32rpx;">￥</span><span>20</span>
+			<span class="flex-1"></span>
+			<span class="add-cart">-</span>
+			<span style="margin:0 10rpx;">{{productDetail.count}}</span>
+			<span class="add-cart" bindtap="addToCart">+</span>
+		</div>
+		<div class="goods-brief">简介简介简介简介简介简介简介简介简介简介</div>
+	</view>
+	<!-- <div bindtap="addToCart">加入购物车</div> -->
 	
 </view>
 <view class="cart-porn" bindtap="toCart">
 	<image src="../../images/cart_2.png"></image>
 </view>
-<view class="total flex-x">
+<!-- <view class="total flex-x">
 	<div class="shop-cart">购物车</div>
 	<div class="total-money flex-1">
 		合计：<span class="money">￥{{totalMoney}}</span>
@@ -67,4 +83,4 @@
 	<view class="amount" bindtap="countValue">
 		结算
 	</view>
-</view> 
+</view>  -->

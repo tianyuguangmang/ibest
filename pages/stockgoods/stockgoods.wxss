@@ -85,12 +85,11 @@ page{
   }
   .goods-detail{
   	position: fixed;
-  	width:600rpx;
-  	left:50%;
-  	margin-left: -300rpx;
+  	width:100%;
 	z-index: 10002;
 	background: #fff;
-  	top:10%;
+  	top:15%;
+  	height: 100%;
   }
 
   .cart-porn{
@@ -108,3 +107,47 @@ page{
 
   }
 
+.goods-detail .img-content{
+	width:100%;
+	height: auto;
+}
+.img-content image{
+	width:100%;
+}
+.goods-msg{
+	padding:30rpx;
+	font-size: 32rpx;
+	color: #aaa;
+}
+.goods-msg .name{
+	font-size: 40rpx;
+	color: #333;
+	font-weight: bold;
+}
+.goods-msg .sell-number{
+	margin-top: 12rpx;
+}
+.goods-msg .price{
+	margin-top: 12rpx;
+	color: #fe5600;
+	font-size: 34rpx;
+	width: 100%;
+}
+.goods-msg .price .add-cart{
+
+	
+	width:40rpx;
+	height: 40rpx;
+	right: 0rpx;
+	font-size:40rpx;
+	color:#fff;
+	background: #e56000;
+	border-radius: 20rpx;
+	line-height: 40rpx;
+	text-align: center;
+
+}
+.goods-msg .goods-brief{
+	margin-top: 12rpx;
+
+}
