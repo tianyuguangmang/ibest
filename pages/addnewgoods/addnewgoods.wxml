@@ -2,7 +2,7 @@
 	
 	<view class="flex-y box">
 		<div class="flex-x box-item">
-			<span style="color:#333;margin-right:40rpx;"></span>
+			<span style="color:#333;margin-right:40rpx;">商品名称</span>
 			<input value="{{phone}}" type="number" placeholder="请输入商品名称" class="flex-1" bindinput="inputPhone" />
 		</div>
 		<div class="flex-x box-item">
@@ -10,7 +10,7 @@
 			<input value="{{phone}}" type="number" placeholder="请输入商品价格" class="flex-1" bindinput="inputPhone" />
 		</div>
 		<div class="flex-x box-item">
-			<span style="color:#333;margin-right:40rpx;">库存</span>
+			<span style="color:#333;margin-right:40rpx;">库<span style="margin:0 30rpx;"></span>存</span>
 			<input value="{{phone}}" type="number" placeholder="请输入库存" class="flex-1" bindinput="inputPhone" />
 		</div>
 		<div class="flex-x box-item">

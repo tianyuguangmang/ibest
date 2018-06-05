@@ -1,11 +1,13 @@
 {
 
   "pages":[
+    "pages/addnewgoods/addnewgoods",
+    "pages/my/my",
     "pages/stockgoods/stockgoods",
     
     "pages/shelfgoods/shelfgoods",
     
-    "pages/my/my",
+    
     "pages/merchantorder/merchantorder",
 
     
@@ -13,7 +15,7 @@
     "pages/myorder/myorder",
     "pages/stockcart/stockcart",
     "pages/index/index",
-     "pages/addnewgoods/addnewgoods",
+     
     "pages/suppliergoods/suppliergoods",
     
     "pages/shopcenter/shopcenter",

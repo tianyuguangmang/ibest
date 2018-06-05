@@ -5,7 +5,7 @@
 			<i class="iconfont icon-shangpinguanli01 color1 clip" style="font-size:54rpx;"></i>
 			<span class="flex-1">商品管理</span>
 		</navigator>
-		<navigator class="item flex-y" url='/pages/stockgoods/stockgoods'>
+		<navigator class="item flex-y" url='/pages/addnewgoods/addnewgoods'>
 			<i class="iconfont icon-weibiaoti37 color1 clip" style="font-size:54rpx;"></i>
 			<span class="flex-1">添加商品</span>
 		</navigator>
