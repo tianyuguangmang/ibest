@@ -52,7 +52,7 @@ Page({
 	},
 	toSubmit:function(){
 		var params = {
-			name:"夏季衬衫10元20件，选择这个没有错，选这个没有错",
+			name:"夏季衬衫10元20件、",
 			mainImage:"https://img.alicdn.com/tfs/TB1EkSvdr_I8KJjy1XaXXbsxpXa-350-350.jpg_240x240xz.jpg_.webp",
 			resetPrice:12,
 			originPrice:10,

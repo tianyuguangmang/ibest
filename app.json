@@ -1,10 +1,10 @@
 {
 
   "pages":[
-    "pages/addnewgoods/addnewgoods",
+    "pages/suppliercenter/suppliercenter",
     "pages/my/my",
     "pages/stockgoods/stockgoods",
-    
+    "pages/addnewgoods/addnewgoods",
     "pages/shelfgoods/shelfgoods",
     
     
@@ -33,7 +33,7 @@
     "pages/shopsettle/shopsettle",
     
     "pages/address/address",
-    "pages/suppliercenter/suppliercenter",
+    
     "pages/myshop/myshop",
     
     
