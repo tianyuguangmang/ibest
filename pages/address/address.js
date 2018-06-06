@@ -32,5 +32,18 @@ Page({
 
 			}
 		}
+	},
+	onLoad:function(){
+		this.dataList();
+	},
+	dataList:function(){
+		var _this = this;
+		service.getAddressList({},function(res){
+			_this.setData({
+				dataList:res.data.result
+			})
+
+		})
+
 	}
 })

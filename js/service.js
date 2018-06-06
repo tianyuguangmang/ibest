@@ -11,11 +11,32 @@ const stockCartInfoSubmitUrl = "/msorder/save";
 const getStockOrderInfoUrl = "/msorder/info";
 const buyConfirmUrl = "/msorder/add";
 const getMerchantOrderUrl = "/submsorder/list";
-const getMerchantProductUrl = "/merchant/product/list"
-const toShelfGoodUrl = "/merchant/product/sell"
+const getMerchantProductUrl = "/merchant/product/list";
+const getSupplierProductUrl = "/supplier/product/list";
+const toShelfGoodUrl = "/merchant/product/sell";
+const toShelfSupplierGoodUrl = "/supplier/product/sell";
+const merchantConfirmReceiveUrl = "/submsorder/status";
+const addNewAddressUrl = "/address/add";
+const getAddressListUrl = "/address/list";
 var Service = {
+	getAddressList: function(params,cb,failcb){
+		http.get(getAddressListUrl,params,cb,failcb);
+	},
+	addNewAddress: function(params,cb,failcb){
+		http.json(addNewAddressUrl,params,cb,failcb);
+	},
+	merchantConfirmReceive: function(params,cb,failcb){
+		http.get(merchantConfirmReceiveUrl,params,cb,failcb);
+	},
+	getSupplierProduct:function(params,cb,failcb){
+		http.get(getSupplierProductUrl,params,cb,failcb,1);
+	},
 	toShelfGood:function(params,cb,failcb){
-		http.get(toShelfGoodUrl,params,cb,failcb);
+		var url = toShelfGoodUrl;
+		if(params._type=="SUPPLIER"){
+			url = toShelfSupplierGoodUrl;
+		}
+		http.get(url,params,cb,failcb);
 	},
 	getMerchantProduct:function(params,cb,failcb){
 		http.get(getMerchantProductUrl,params,cb,failcb,1);

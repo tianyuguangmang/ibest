@@ -19,7 +19,7 @@
 		</view>
 	</view>
 </view>
-<view class="total flex-x">
+<!-- <view class="total flex-x">
 	
 	<div class="shop-cart">购物车</div>
 	<div class="total-money flex-1">
@@ -28,4 +28,4 @@
 	<view class="amount" bindtap="countValue">
 		结算
 	</view>
-</view>
+</view> -->

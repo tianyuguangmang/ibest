@@ -32,5 +32,16 @@ Page({
 
 			}
 		}
+	},
+	onSubmit: function(){
+		var params = {
+			name:"tygm",
+			phone:"18765400123",
+			address:"山东省费县",
+			detail:"田村小区12号"
+		}
+		service.addNewAddress(params,function(res){
+
+		})
 	}
 })

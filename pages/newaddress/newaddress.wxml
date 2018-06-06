@@ -22,7 +22,7 @@
 	
 </view>
 <view class="btn-box flex-x">
-	<view class="btn flex-x">
+	<view class="btn flex-x" bindtap="onSubmit">
 		保存
 	</view>
 </view>

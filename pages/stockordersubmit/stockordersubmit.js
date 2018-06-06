@@ -40,6 +40,9 @@ Page({
     service.getStockOrderInfo({},function(res){
       var _dataMsg = res.data.result;
       _dataMsg.productList = JSON.parse(_dataMsg.productList);
+      for(var i=0;i<_dataMsg.productList.length;i++){
+        _dataMsg.productList[i].supplierProduct = JSON.parse(_dataMsg.productList[i].supplierProduct);
+      }
       console.log(_dataMsg)
       _this.setData({
         dataMsg:_dataMsg

@@ -1,7 +1,7 @@
 <view>
 	<baseinfo></baseinfo>
 	<view class="flex-wrap packet">
-		<navigator class="item flex-y" url='/pages/addnewgoods/addnewgoods'>
+		<navigator class="item flex-y" url='/pages/shelfgoods/shelfgoods?type=SUPPLIER'>
 			<i class="iconfont icon-shangpinguanli01 color1 clip" style="font-size:54rpx;"></i>
 			<span class="flex-1">商品管理</span>
 		</navigator>

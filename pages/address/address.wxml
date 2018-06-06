@@ -1,7 +1,7 @@
 <view class="address">
-	<view class="item">
-		<view class="flex-x base"><div class="name flex-1">小王</div><div class="phone">1985401232</div></view>
-		<view class="pos">智慧立方d浙大网新闻 </view>
+	<view class="item" wx:for="{{dataList}}">
+		<view class="flex-x base"><div class="name flex-1">{{item.name}}</div><div class="phone">{{item.phone}}</div></view>
+		<view class="pos">{{item.address+item.detail}} </view>
 		<view class="btn flex-x btl">
 			<view class="default flex-1">默认地址</view><view class="editor">编辑</view><view class="dele">删除</view>
 		</view>

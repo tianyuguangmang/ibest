@@ -55,11 +55,11 @@
 <view class="goods-detail" hidden="{{!showDetail}}">
 	
 	<view class="img-content">
-		<image src="https://img.alicdn.com/tfs/TB1EkSvdr_I8KJjy1XaXXbsxpXa-350-350.jpg_240x240xz.jpg_.webp"></image>
+		<image src="{{productDetail.mainImage}}"></image>
 	</view>
 	<view class="goods-msg flex-ys">
-		<div class="name">小饰品</div>
-		<div class="sell-number">销量<span style="color:#fe5600;margin-left: 10rpx;">100</span></div>
+		<div class="name">{{productDetail.name}}</div>
+		<div class="sell-number">销量<span style="color:#fe5600;margin-left: 10rpx;">{{productDetail.soldNumber}}</span></div>
 		<div class="price flex-x">
 			<span style="font-size:32rpx;">￥</span><span>20</span>
 			<span class="flex-1"></span>
@@ -84,4 +84,3 @@
 		结算
 	</view>
 </view>  -->
-1

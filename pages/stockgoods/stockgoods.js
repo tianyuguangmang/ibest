@@ -14,7 +14,7 @@ Page({
 		bannerList:[{pic:'https://ps.ssl.qhimg.com/sdmt/179_135_100/t010b0a4aa5bb6941c4.jpg'}],
 		goodsList:[],
 		//是否显示商品详情默认不显示
-		showDetail:true,
+		showDetail:false,
 		//选中的要显示的商品
 		productDetail:null
 		

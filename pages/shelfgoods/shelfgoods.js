@@ -171,6 +171,14 @@ Page({
 
 		})
 	},
+	getSupplierProduct:function() {
+		var _this = this;
+		service.getSupplierProduct({current:1,size:10},function(res){
+			_this.setData({
+				dataList:res.data.result.list
+			})
+		})
+	},
 	toShelfGood: function(productId,onSell){
 
 
@@ -181,7 +189,7 @@ Page({
 		var _list = this.data.dataList;
 		var _onSell = _list[index].onSell==1?0:1;
 		var _productId = _list[index].productId;
-		service.toShelfGood({productId:_productId,onSell:_onSell},function(res){
+		service.toShelfGood({productId:_productId,onSell:_onSell,_type:this.type},function(res){
 			_list[index].onSell = _onSell;
 			wx.showToast({
 			  title: _onSell==1?"已上架":"已下架",
@@ -196,8 +204,13 @@ Page({
 		})
 
 	},
-	onLoad:function(){
-		this.getMerchantProduct();
+	type:null,
+	onLoad:function(options){
+		this.type = options.type;
+		if(this.type == 'SUPPLIER')
+			this.getSupplierProduct();
+		else
+			this.getMerchantProduct();
 		
 	}
 })

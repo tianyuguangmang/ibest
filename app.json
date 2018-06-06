@@ -1,6 +1,7 @@
 {
 
   "pages":[
+    "pages/address/address",
     "pages/suppliercenter/suppliercenter",
     "pages/my/my",
     "pages/stockgoods/stockgoods",
@@ -32,7 +33,7 @@
     
     "pages/shopsettle/shopsettle",
     
-    "pages/address/address",
+    
     
     "pages/myshop/myshop",
     

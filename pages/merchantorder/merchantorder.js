@@ -243,8 +243,12 @@ Page({
     var _this = this;
     service.getMerchantOrder({current:1,size:10},function(res){
       console.log(res.data.result.list);
+      var _list = res.data.result.list;
+      for(var i = 0;i<_list.length;i++){
+        _list[i].supplierProduct = JSON.parse(_list[i].supplierProduct);
+      }
       _this.setData({
-        dataList:res.data.result.list
+        dataList:_list
       })
     })
   },
@@ -330,13 +334,12 @@ Page({
      var _this = this;
     var _id = app.getData(currentTarget,"id");
     var params = {
-      id:_id
+      orderId:_id,
+      status:"CONFIRM_RECEIVE"
     };
-    service.confirmReceive(params,function(res){
+    service.merchantConfirmReceive(params,function(res){
      
-     wx.redirectTo({
-        url: '/pages/myorder/myorder?id='+ _this.data.cateId
-      })
+     
     })
   },
   callPhone:function(){
