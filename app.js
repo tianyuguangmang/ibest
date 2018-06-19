@@ -4,9 +4,11 @@
  * @Date 2018/3/20
  */
 import {Validate} from "./validate/index";
+import * as Constant from "./js/constant";
 App({
   /*...{Validate},*/
   ...Validate,
+  ...Constant,
   onLaunch: function() {
     //调用API从本地缓存中获取数据
     var logs = wx.getStorageSync('logs') || []
@@ -40,6 +42,7 @@ App({
     }
 
   },
+
   /**
    * 获取登录微信的信息
    * @param  {Function} cb [description]

@@ -5,33 +5,18 @@
 var service = require("../../js/service.js");
 var app = getApp();
 import * as Size from '../../js/imagesize';
+
 Page({
 	data: {
 		Size,
 		cateIndex:0,
-		menuList:[{id:1,name:"今日推荐"},{id:1,name:"推荐"},{id:1,name:"推荐"},{id:1,name:"推荐"},{id:1,name:"推荐"},{id:1,name:"推荐"}],
+		menuList:null,
 		bannerList:[{pic:'https://ps.ssl.qhimg.com/sdmt/179_135_100/t010b0a4aa5bb6941c4.jpg'}],
-		goodsList:[{
-			productId:1,
-			title:'特价商品价商',
-			mainImage:'https://img.alicdn.com/tfs/TB1EkSvdr_I8KJjy1XaXXbsxpXa-350-350.jpg_240x240xz.jpg_.webp',
-			currentPrice:10,
-			sellCount:10,
-			originPrice:20
-		},{
-			productId:2,
-			title:'特价商品价商',
-			mainImage:'https://img.alicdn.com/tfs/TB1EkSvdr_I8KJjy1XaXXbsxpXa-350-350.jpg_240x240xz.jpg_.webp',
-			currentPrice:10,
-			sellCount:10,
-			originPrice:20
-		}]
+		goodsList:null
 		
 	},
-
 	//页面分享功能
 	onShareAppMessage: function(res) {
-
 		return {
 			//longitude 经度 
 			//latitude 维度
@@ -52,10 +37,12 @@ Page({
 	},
 	changeCate:function(currentTarget){
 		var _index = app.getData(currentTarget,"index");
+		var cateId = app.getData(currentTarget,"id");
+		this.dataCateId = cateId;
+		this.getDataList();
 		this.setData({
 			cateIndex:_index
 		})
-
 	},
 	cartInfo:{},
 	/**
@@ -92,13 +79,22 @@ Page({
 			}
 		}
 	},
+	//获取分类列表
+	getCateList:function(){
+		var _this = this;
+		service.getCateList(null,function(res){
+			_this.setData({
+				menuList:res.data.result
+			})
+		});
+	},
 	/**
 	 * 计算购物车
 	 * @param  {[type]} data 商品数据
 	 * @return {[type]}
 	 */
 	calcCart:function(data){
-		var _cartInfo = this.cartInfo;
+		var _cartInfo = this.cartDataInfo||{};
 		if(_cartInfo['pid_'+data.productId+'_skuid_1']){
 			if(data.count == 0){
 				delete _cartInfo['pid_'+data.productId+'_skuid_1'];
@@ -110,22 +106,19 @@ Page({
 				count:data.count,
 				productId:data.productId,
 				title:data.title,//名称
-				currentPrice:data.currentPrice,
+				resetPrice:data.resetPrice,
 				mainImage:data.mainImage,
 				originPrice:data.originPrice,
 				sku:'褐色',
 				skuId:0
 			}
 		}
+		wx.setStorageSync(app.CART_INFO,_cartInfo);
+		return true;
 
 	},
 	onHide:function(){
-		console.log(this.cartInfo);
-		wx.setStorage({
-		  key:"cart_info",
-		  data:this.cartInfo
-		})
-
+		
 	},
 	/**
 	 * 购物车增加
@@ -137,12 +130,12 @@ Page({
 		
 		_list[_index].count = _list[_index].count?_list[_index].count+1:1;
 		var _select = _list[_index];
-		this.calcCart(_select);
-
-
-		this.setData({
-			goodsList:_list
-		})
+		if(this.calcCart(_select)){
+			this.setData({
+				goodsList:_list
+			})
+		}
+		
 	},
 	/**
 	 * 购物车减少
@@ -154,48 +147,43 @@ Page({
 		var _list = this.data.goodsList;
 		_list[_index].count = _list[_index].count>0?_list[_index].count-1:0;
 		var _select = _list[_index];
-		this.calcCart(_select);
-		this.setData({
-			goodsList:_list
+		if(this.calcCart(_select)){
+			this.setData({
+				goodsList:_list
+			})
+		}
+	},
+	dataCurrent:1,
+	dataSize:10,
+	dataCateId:null,
+	getDataList:function(){
+		var _this = this;
+		var params = {
+			current:this.dataCurrent,
+			size:this.dataSize
+		}
+		if(this.dataCateId) params.cateId = this.dataCateId;
+		service.merchantGoodsList(params,function(res){
+			var _goodsList = res.data.result.list;
+			var _cartInfo = _this.cartDataInfo;
+			if(_cartInfo&&_goodsList.length>0){
+				for(var i=0,_len = _goodsList.length;i<_len;i++){
+			    	if(_cartInfo['pid_'+_goodsList[i].productId+'_skuid_1']){
+			    		_goodsList[i].count = _cartInfo['pid_'+_goodsList[i].productId+'_skuid_1'].count;
+			    	}
+			    }
+			}
+			_this.setData({
+				goodsList:_goodsList
+			})
+
 		})
 	},
+	cartDataInfo:null,
 	onLoad:function(){
-		/*wx.login({
-      success: function(res) {
-        if (res.code) {
-        	console.log(res.code);
-          //发起网络请求
-          wx.request({
-            url: 'https://test.com/onLogin',
-            data: {
-              code: res.code
-            }
-          })
-        } else {
-          console.log('登录失败！' + res.errMsg)
-        }
-      }
-  })*/
 		var _this = this;
-		service.getCateList(null,function(res){
-
-		});
-		wx.getStorage({
-		  key: 'cart_info',
-		  success: function(res) {
-	      var _cartInfo = res.data;
-	      _this.cartInfo = _cartInfo;
-	      var _goodsList = _this.data.goodsList;
-	      for(var i=0,_len = _goodsList.length;i<_len;i++){
-	      	if(_cartInfo['pid_'+_goodsList[i].productId+'_skuid_1']){
-	      		_goodsList[i].count = _cartInfo['pid_'+_goodsList[i].productId+'_skuid_1'].count;
-	      	}
-	      }
-	      _this.setData({
-	      	goodsList:_goodsList,
-	      })
-		  } 
-		})
-		
+		this.getCateList();
+		this.cartDataInfo = wx.getStorageSync(app.CART_INFO);
+		this.getDataList();		
 	}
 })

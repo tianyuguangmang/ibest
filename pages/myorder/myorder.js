@@ -174,7 +174,7 @@ Page({
    * @return {[type]}        [description]
    */
   dataLoad:function(reload,more){
-  	console.log(111)
+    console.log(111)
     var _this = this;
     var params = '';
     var _id = this.cateId*1;
@@ -239,6 +239,19 @@ Page({
     })*/
   },
   cateId:0,
+  getData:function(){
+    var _this = this;
+    service.getUserOrderList({current:1,size:10},function(res){
+      console.log(res.data.result.list);
+      var _list = res.data.result.list;
+      for(var i = 0;i<_list.length;i++){
+        _list[i].productList = JSON.parse(_list[i].productList);
+      }
+      _this.setData({
+        dataMsg:_list
+      })
+    })
+  },
   onLoad: function(options){
     var _this = this;
     this.from = options.from;
@@ -252,6 +265,7 @@ Page({
       cateId:_id
     })
     this.cateId = _id;
+    this.getData();
 
   
     
@@ -320,13 +334,12 @@ Page({
      var _this = this;
     var _id = app.getData(currentTarget,"id");
     var params = {
-      id:_id
+      orderId:_id,
+      status:"CONFIRM_RECEIVE"
     };
-    service.confirmReceive(params,function(res){
+    service.merchantConfirmReceive(params,function(res){
      
-     wx.redirectTo({
-        url: '/pages/myorder/myorder?id='+ _this.data.cateId
-      })
+     
     })
   },
   callPhone:function(){

@@ -14,8 +14,8 @@
 			<view class="order-item flex-y" wx:for="{{dataMsg}}" wx:key="item.id" data-id="{{item.id}}">
 				<div class="order-msg flex-x bg-w">
 					<div class="service-number">订单编号：</div>
-					<div class="number flex-1">{{item.id}}</div>
-					<div class="states" wx:if="{{item.status=='WAIT_BUYER_PAY'}}">待付款</div>
+					<div class="number flex-1">{{item.orderId}}</div>
+					<div class="states" wx:if="{{item.status=='WAIT_PAY'}}">待付款</div>
 					<div class="states" wx:if="{{item.status=='TRADE_CLOSED'}}">交易关闭</div>
 					<div class="states" wx:elif="{{item.status=='WAIT_SELLER_SEND_GOODS'}}">等待商家发货</div>
 					<div class="states" wx:elif="{{item.status=='WAIT_BUYER_CONFIRM_GOODS'}}">等待确认收货</div>
@@ -23,24 +23,24 @@
 					
 				</div>
 				<div class="order-protrait flex-xcs" wx:for="{{item.productList}}" wx:for-item="it">
-					<div class="img-box flex-x"><image src="{{it.mainImage + Size.W76H76}}" lazy-load="{{true}}"/></div>
+					<div class="img-box flex-x"><image src="{{it.mainImage}}" lazy-load="{{true}}"/></div>
 					<view class="order-name flex-1 flex-y">
-						<div class="name m-ellipsis">{{it.title}}</div>
+						<div class="name m-ellipsis">{{it.name}}</div>
 						<div class="styles">
 							<span class="">{{it.sku}}</span>
 						</div>
 					</view>
 					<div class="price">
-						<div class="discount-price">￥{{it.originPrice}}</div>
-						<div class="origin-price">￥{{it.currentPrice}}</div>
-						<div class="buyer-number"><span>x{{it.count}}</span></div>
+						<div class="discount-price">￥{{it.resetPrice}}</div>
+						<div class="origin-price">￥{{it.originPrice}}</div>
+						<div class="buyer-number"><span>x{{it.count?it.count:1}}</span></div>
 					</div>
 					
 				</div>
 				<view class="bg-w flex-x" style="font-size:24rpx;height:80rpx;">
 					
 					<div class="flex-1"></div>
-					<div style="padding-right:20rpx;">共{{item.productList.length}}件商品 合计：￥<span style="font-size:30rpx;margin-right:5rpx;">{{item.totalFee}}</span>含（配送费{{item.deliveryFee}}）</div>
+					<div style="padding-right:20rpx;">共{{item.productList.length}}件商品 合计：￥<span style="font-size:30rpx;margin-right:5rpx;">{{item.totalMoney}}</span></div>
 				</view>
 				<div class="flex-x order-btn btl">
 					<div class="flex-1"></div>
@@ -52,7 +52,7 @@
 					<view class="finish-order btn" bindtap="toPay" data-id="{{item.id}}" data-index="{{index}}"  wx:if="{{item.status == 'WAIT_BUYER_PAY'}}" bindtap="toPay">立即支付</view>
 					<view class="finish-order"  data-id="{{item.id}}" wx:elif="{{item.status == 'TRADE_CLOSED'}}" bindtap="deleteOrder">删除订单</view>
 					<view class="finish-order btn"  data-id="{{item.id}}" wx:elif="{{item.status == 'WAIT_SELLER_SEND_GOODS'}}" bindtap="remindBusiness">提醒商家</view>
-					<view class="finish-order btn"  data-id="{{item.id}}" wx:elif="{{item.status == 'WAIT_BUYER_CONFIRM_GOODS'}}" bindtap="confirmReceive">确认收货</view>
+					<view class="finish-order btn"  data-id="{{item.id}}" wx:elif="{{item.status == 'WAIT_PAY'}}" bindtap="confirmReceive">确认收货</view>
 					<view class="finish-order"  data-id="{{item.id}}" wx:elif="{{item.status == 'TRADE_FINISHED'}}" bindtap="deleteOrder">删除订单</view>
 				</div>
 			</view>

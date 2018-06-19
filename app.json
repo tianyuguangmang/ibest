@@ -1,9 +1,14 @@
 {
 
   "pages":[
+    "pages/myorder/myorder",
+    
+    "pages/index/index",
+    "pages/my/my",
     "pages/address/address",
     "pages/suppliercenter/suppliercenter",
-    "pages/my/my",
+    "pages/userordersubmit/userordersubmit",
+    
     "pages/stockgoods/stockgoods",
     "pages/addnewgoods/addnewgoods",
     "pages/shelfgoods/shelfgoods",
@@ -11,11 +16,9 @@
     
     "pages/merchantorder/merchantorder",
 
-    
     "pages/stockordersubmit/stockordersubmit",
-    "pages/myorder/myorder",
     "pages/stockcart/stockcart",
-    "pages/index/index",
+    
      
     "pages/suppliergoods/suppliergoods",
     

@@ -36,6 +36,29 @@ Page({
 	onLoad:function(){
 		this.dataList();
 	},
+	deleteAddress: function(currentTarget){
+		var _this = this;
+		var _id = app.getData(currentTarget,"id");
+		var _index = app.getData(currentTarget,"index");
+		var _list =this.data.dataList;
+		wx.showModal({
+		  title: '提示',
+		  content: '确定要删除这个地址吗？',
+		  success: function(res) {
+		    if (res.confirm) {
+		      	service.deleteAddress({addressId:_id},function(res){
+					_list.splice(_index,1);
+					_this.setData({
+						dataList:_list
+					})
+				})
+		    } else if (res.cancel) {
+		      console.log('用户点击取消')
+		    }
+		  }
+		})
+		
+	},
 	dataList:function(){
 		var _this = this;
 		service.getAddressList({},function(res){

@@ -1,7 +1,7 @@
 <view class="btl">
-	<view wx:if="{{cartList}}">
-		<view class="cart-list" wx:if="{{cartList.length>0}}">
-			<block  wx:for="{{cartList}}">
+	<view>
+		<view class="cart-list" wx:if="{{dataMsg.productList.length>0}}">
+			<block  wx:for="{{dataMsg.productList}}">
 			
 				<view class="cart-item flex-x flex-1" style="width:100%">
 					<div class="select-btn flex-x">
@@ -21,7 +21,7 @@
 							<div class="price flex-x">
 								<div class="discount-price">￥{{item.resetPrice}}</div>
 								<div class="origin-price flex-1">￥{{item.originPrice}}</div>
-								<div class="buy-count">x{{item.count}}</div>
+								<div class="buy-count">x{{10||item.count}}</div>
 								
 							</div>
 							<!-- <div class="number flex-x">
@@ -39,7 +39,7 @@
 			<div class="order-img-box flex-x">
 				<image src="../../images/bad.png" class="square"/>
 			</div>
-			<div style="margin-top:20rpx;">我要买个购物车~</div>
+			<div style="margin-top:20rpx;">您没有要购买的商品~</div>
 		</view>
 		
 	</view>
@@ -47,16 +47,15 @@
 	
 
 	<view class="total flex-x" wx:if="{{cartList}}">
-		<!-- <div class="all-select flex-x">
+		<div class="all-select flex-x">
 			<radio checked="{{allSelectedState}}" bindtap="allSelected"/>
-		</div> -->
-		<!-- <div class="select-word">全选</div> -->
-		<div class="total-money" style="margin-left: 20rpx;">
-			合计：<span class="money">￥{{countMoney}}</span>
 		</div>
-		<div class="flex-1"></div>
-		<view class="amount" bindtap="onSubmit">
-			结算
+		<div class="select-word">全选</div>
+		<div class="total-money flex-1">
+			合计：<span class="money">￥{{dataMsg.totalMoney}}</span>
+		</div>
+		<view class="amount" bindtap="buyConfirm">
+			确认购买
 		</view>
 	</view>
 </view>

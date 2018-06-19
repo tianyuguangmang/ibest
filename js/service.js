@@ -18,7 +18,31 @@ const toShelfSupplierGoodUrl = "/supplier/product/sell";
 const merchantConfirmReceiveUrl = "/submsorder/status";
 const addNewAddressUrl = "/address/add";
 const getAddressListUrl = "/address/list";
+const deleteAddressUrl = "/address/delete";
+const merchantGoodsListUrl = "/merchant/product/list";
+const cmOrderSaveUrl = "/cmorder/save";
+const getUserOrderInfoUrl = "/cmorder/info";
+const userOrderSubmitUrl = "/cmorder/add";
+const userOrderListUrl = "/cmorder/list";
 var Service = {
+	getUserOrderList: function(params,cb,failcb){
+		http.get(userOrderListUrl,params,cb,failcb);
+	},
+	userOrderSubmit: function(params,cb,failcb){
+		http.post(userOrderSubmitUrl,params,cb,failcb);
+	},
+	getUserOrderInfo: function(params,cb,failcb){
+		http.get(getUserOrderInfoUrl,params,cb,failcb);
+	},
+	cmOrderSave: function(params,cb,failcb){
+		http.post(cmOrderSaveUrl,params,cb,failcb);
+	},
+	merchantGoodsList: function(params,cb,failcb){
+		http.get(merchantGoodsListUrl,params,cb,failcb);
+	},
+	deleteAddress: function(params,cb,failcb){
+		http.post(deleteAddressUrl,params,cb,failcb);
+	},
 	getAddressList: function(params,cb,failcb){
 		http.get(getAddressListUrl,params,cb,failcb);
 	},

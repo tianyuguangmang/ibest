@@ -2,8 +2,8 @@
 <view class="flex-x index">
 	<view class="title">
 		<block wx:for="{{menuList}}">
-		<view class="item flex-x {{index == cateIndex?'selected':''}}" bindtap="changeCate" data-index="{{index}}">
-			{{item.name}}
+		<view class="item flex-x {{index == cateIndex?'selected':''}}" bindtap="changeCate" data-id="{{item.cateId}}" data-index="{{index}}">
+			{{item.title}}
 		</view>
 		</block>
 	</view>
@@ -19,11 +19,11 @@
 				<image class="" src="{{item.mainImage}}"></image>
 			</view>
 			<div class="brief flex-1 flex-y">
-				<div class="name">{{item.title}}</div>
-				<div class="sell flex-1">销量{{item.sellCount}}件</div>
+				<div class="name">{{item.name}}</div>
+				<div class="sell flex-1">销量{{item.soldNumber}}件</div>
 				<div class="price flex-x">
 					<span style="font-size:24rpx;color:#f84f2f;">￥</span>
-					<span class="current-price">{{item.currentPrice}}</span><span class="origin-price lm">￥{{item.originPrice}}</span>
+					<span class="current-price">{{item.resetPrice}}</span><span class="origin-price lm">￥{{item.originPrice}}</span>
 					<span class="flex-1"></span>
 					<view class="add-cart flex-x" bindtap="subtractCart" data-index="{{index}}" hidden="{{!item.count||item.count==0}}">-</view>
 					<view hidden="{{!item.count||item.count==0}}" style="font-size:28rpx;padding:0 10rpx;color:#666;">{{item.count}}</view>

@@ -3,7 +3,9 @@
 		<view class="flex-x base"><div class="name flex-1">{{item.name}}</div><div class="phone">{{item.phone}}</div></view>
 		<view class="pos">{{item.address+item.detail}} </view>
 		<view class="btn flex-x btl">
-			<view class="default flex-1">默认地址</view><view class="editor">编辑</view><view class="dele">删除</view>
+			<view class="default flex-1" data-id="{{item.addressId}}" data-index="{{index}}">默认地址</view>
+			<view class="editor" data-id="{{item.addressId}}" data-index="{{index}}">编辑</view>
+			<view class="dele" data-id="{{item.addressId}}" data-index="{{index}}" bindtap="deleteAddress">删除</view>
 		</view>
 	</view>
 	<view class="btn-box flex-x">
