@@ -179,7 +179,6 @@ button::after{
   justify-content: flex-start;
 }
 page{
-  height: 100%;
   width: 100%;
 }
 .bg-cover{

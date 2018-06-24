@@ -1,15 +1,19 @@
-<view>
+<view wx:if="baseInfo">
 	<baseinfo></baseinfo>
 	<view class="flex-wrap packet">
-		<navigator class="item flex-y" >
+		<!-- <navigator class="item flex-y" >
 			<i class="iconfont icon-xuanti-fuzeren color1 clip" style="font-size:54rpx;"></i>
 			<span class="flex-1">社区负责人</span>
-		</navigator>
-		<navigator class="item flex-y" url="/pages/shopcenter/shopcenter">
+		</navigator> -->
+		<navigator class="item flex-y" url="/pages/shopcenter/shopcenter" wx:if="{{baseInfo.isMerchant==1}}">
 			<i class="iconfont icon-dianpu color1 clip" style="font-size:54rpx;"></i>
-			<span class="flex-1">兼职商铺</span>
+			<span class="flex-1">店铺负责人</span>
 		</navigator>
-		<navigator class="item flex-y" >
+		<navigator class="item flex-y" url="/pages/myshop/myshop?type=MERCHANT" wx:else>
+			<i class="iconfont icon-dianpu color1 clip" style="font-size:54rpx;"></i>
+			<span class="flex-1">成为店铺负责人</span>
+		</navigator>
+		<!-- <navigator class="item flex-y" >
 			<i class="iconfont icon-jiaolian1 color1 clip" style="font-size:54rpx;"></i>
 			<span class="flex-1">学生家教</span>
 		</navigator>
@@ -20,7 +24,7 @@
 		<navigator class="item flex-y" >
 			<i class="iconfont icon-fuwuyuan color1 clip" style="font-size:54rpx;"></i>
 			<span class="flex-1">服务生</span>
-		</navigator>
+		</navigator> -->
 		
 	</view>
 	

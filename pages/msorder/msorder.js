@@ -210,61 +210,34 @@ Page({
       return false;
     }
     _this.dataLoading = true;
- /*   service.getOrderDataList(Object.assign(params,{current:_this.current+1,size:_this.size}),function(res){
-      wx.hideLoading();
-      var _arr = reload?[]:_this.data.dataMsg||[];
-       _this.dataLoading = false;
-       _this.current =_this.current+1;
-      var noMoreData = false;
-      var record = res.data.results.records;
-      if(record){
-        _arr = _arr.concat(record);
-        if(record != _this.size){
-          noMoreData = true;
-        }
-        _this.orderMap["order_"+_id] = {
-          current:_this.current,
-          noMoreData:noMoreData,
-          orderList:_arr
-        }
-        _this.setData({
-          dataMsg:_arr
-        })
-      }else{
-       _this.dataLoading = false;
-      }
-    },function(res){
-      wx.hideLoading();
-      _this.dataLoading = false;
-    })*/
   },
   cateId:0,
   getData:function(){
     var _this = this;
-    service.getMerchantOrder({current:1,size:10},function(res){
-      console.log(res.data.result.list);
+    var params = {
+      size:10,
+      current:1,
+    }
+    if(this.isMerchant){
+      params.merchantId = this.baseInfo.merchantInfo.mchtId;
+    }else{
+      params.supplierId = this.baseInfo.supplierInfo.supId;
+
+    }
+    service.getMerchantOrder(params,function(res){
       var _list = res.data.result.list;
-      for(var i = 0;i<_list.length;i++){
-        _list[i].supplierProduct = JSON.parse(_list[i].supplierProduct);
-      }
       _this.setData({
         dataList:_list
       })
     })
   },
+  baseInfo:null,
+  isMerchant:null,
   onLoad: function(options){
-    var _this = this;
-    this.from = options.from;
 
-    if(!options.id){
-      var _id = 1;
-    }else{
-      var _id = options.id;
-    }
-    this.setData({
-      cateId:_id
-    })
-    this.cateId = _id;
+    var _this = this;
+    if(options.type == 'MERCHANT') this.isMerchant = 1;
+    this.baseInfo = app.globalData.baseInfo;
     this.getData();
 
   

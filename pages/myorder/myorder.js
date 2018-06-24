@@ -55,7 +55,7 @@ Page({
     var _this = this;
     _this.noMoreData = false;
     _this.current = 0;
-    _this.setData({
+    /*_this.setData({
       dataMsg:[{
         shopName:"商铺名称",
         id:"192732948824",
@@ -72,7 +72,7 @@ Page({
           productId:1
         }]
       }]
-    })
+    })*/
     //_this.dataLoad(true); 
   },
   toPay:function(currentTarget){
@@ -241,12 +241,9 @@ Page({
   cateId:0,
   getData:function(){
     var _this = this;
-    service.getUserOrderList({current:1,size:10},function(res){
-      console.log(res.data.result.list);
+    service.getUserOrderList({current:1,size:10,userId:6},function(res){
       var _list = res.data.result.list;
-      for(var i = 0;i<_list.length;i++){
-        _list[i].productList = JSON.parse(_list[i].productList);
-      }
+     console.log(_list);
       _this.setData({
         dataMsg:_list
       })
@@ -337,7 +334,7 @@ Page({
       orderId:_id,
       status:"CONFIRM_RECEIVE"
     };
-    service.merchantConfirmReceive(params,function(res){
+    service.consumerConfirmReceive(params,function(res){
      
      
     })

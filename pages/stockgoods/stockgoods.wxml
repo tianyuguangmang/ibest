@@ -30,7 +30,7 @@
 					<image class="" src="{{item.mainImage}}" mode="aspectFill"></image>
 				</view>
 				<div class="brief flex-1 flex-y">
-					<div class="name a-ellipsis">{{index==3?"夏季衣服，T恤衫，真的很好，选择没有错":item.name}}</div>
+					<div class="name a-ellipsis">{{item.name}}</div>
 					<div class="price flex-x">
 						<span style="font-size:24rpx;color:#f84f2f;">￥</span>
 						<span class="flex-1" style="color:#f84f2f;">{{item.resetPrice}}</span>
@@ -61,7 +61,7 @@
 		<div class="name">{{productDetail.name}}</div>
 		<div class="sell-number">销量<span style="color:#fe5600;margin-left: 10rpx;">{{productDetail.soldNumber}}</span></div>
 		<div class="price flex-x">
-			<span style="font-size:32rpx;">￥</span><span>20</span>
+			<span style="font-size:32rpx;">￥</span><span>{{productDetail.resetPrice}}</span>
 			<span class="flex-1"></span>
 			<span class="add-cart">-</span>
 			<span style="margin:0 10rpx;">{{productDetail.count}}</span>

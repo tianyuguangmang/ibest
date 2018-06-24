@@ -3,12 +3,16 @@
 	<view class="flex-y box">
 		<div class="flex-x box-item">
 			<span style="color:#333;margin-right:40rpx;">姓<span style="margin:0 15rpx;"></span>名</span>
-			<input value="{{phone}}" type="number" placeholder="请输入真是姓名" class="flex-1" bindinput="inputPhone" />
+			<input value="{{realName}}" type="text" placeholder="请输入真是姓名" class="flex-1" bindinput="inputName" />
 		</div>
-		<div class="flex-x box-item">
-			<span style="color:#333;margin-right:40rpx;">地<span style="margin:0 15rpx;"></span>址</span>
-			<input value="{{phone}}" type="number" placeholder="请选择地址" class="flex-1" bindinput="inputPhone" />
-		</div>
+		<!-- <div class="flex-x box-item">
+			<span style="color:#333;margin-right:40rpx;">省市区</span>
+			 <picker mode="region"  class="flex-1" style="height: 120rpx;" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}" placeholder="请选择省市区">
+			    <view class="picker flex-xs" style="height: 120rpx;">
+			      {{region[0]}}，{{region[1]}}，{{region[2]}}
+			    </view>
+			  </picker>
+		</div> -->
 		<div class="flex-x box-item">
 			<span style="color:#333;margin-right:40rpx;">手机号</span>
 			<input value="{{phone}}" type="number" placeholder="请输入手机号" class="flex-1" bindinput="inputPhone" />
@@ -21,7 +25,7 @@
 		</div>
 	</view>
 	<view class="flex-x btn-box">
-		<view class="btn flex-x" bindtap="toSubmit">
+		<view class="btn flex-x" bindtap="onSubmit">
 			提交申请
 		</view>
 	</view>

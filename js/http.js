@@ -30,19 +30,19 @@ function request(contentType,type,url,params,successcb,failcb){
     	}else{
     		wx.hideLoading();
     		wx.showModal({
-				  title: '温馨提示',
-				  content:res.data.error,
-				  showCancel:false,
-				  success: function(res) {
-				    if (res.confirm) {
-				      if(failcb){
-								failcb(res);
-							}
-				    } else if (res.cancel) {
-				      
-				    }
-				  }
-				})
+			  title: '温馨提示',
+			  content:res.data.error,
+			  showCancel:false,
+			  success: function(res) {
+			    if (res.confirm) {
+			      	if(failcb){
+						failcb(res);
+					}
+			    } else if (res.cancel) {
+			      
+			    }
+			  }
+			})
       }
     },
     fail:function(res){
@@ -82,6 +82,23 @@ function request(contentType,type,url,params,successcb,failcb){
   })
 }
 const http = {
+	getBaseInfo:function(cb){
+		wx.login({
+		  success: function(res) {
+		    if (res.code) {
+		    	console.log(res);
+		      //发起网络请求
+		      http.login("/user/wxcode",{wxcode:res.code},function(res){
+			  		var _openId = res.data.result.openId;
+			  		app.globalData.openId = _openId;
+			  		OpenId = _openId;
+			  		app.globalData.baseInfo = res.data.result;
+			  		if(cb)cb(res);
+			    })
+			  }
+			}
+		});
+	},
 	login:function(url,params,cb,failcb){
 		request('application/x-www-form-urlencoded',"GET",url,params,cb,failcb);
 		

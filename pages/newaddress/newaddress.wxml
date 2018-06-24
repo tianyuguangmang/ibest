@@ -1,22 +1,22 @@
 <view class="new-address">
 	<view class="flex-x item">
 		<div class="name">联系人</div>
-		<div class="flex-1">王文彪</div>
+		<div class="flex-1"><input type="text" bindinput="inputName" value="{{name}}"/></div>
 		<div class="img-box"></div>
 	</view>
 	<view class="flex-x item">
 		<div class="name">电话</div>
-		<div class="flex-1">123</div>
+		<div class="flex-1"><input type="text" bindinput="inputPhone" value="{{phone}}"/></div>
 		<div class="img-box"></div>
 	</view>
 	<view class="flex-x item">
 		<div class="name">地址</div>
-		<div class="flex-1">王文彪</div>
+		<div class="flex-1"><input type="text" bindinput="inputAddress" value="{{address}}" /></div>
 		<div class="img-box"></div>
 	</view>
 	<view class="flex-x item">
 		<div class="name">门牌号</div>
-		<div class="flex-1">王文彪</div>
+		<div class="flex-1"><input type="text" placeholder="6号楼601室" bindinput="inputDetail" value="{{detail}}"/></div>
 		<div class="img-box"></div>
 	</view>
 	

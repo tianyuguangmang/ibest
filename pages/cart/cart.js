@@ -94,7 +94,7 @@ Page({
         });
       }
     }
-    service.cmOrderSave({list:JSON.stringify(_arr),merchantId:19},function(res){
+    service.cmOrderSave({list:JSON.stringify(_arr),merchantId:4},function(res){
       wx.navigateTo({
         url: '/pages/userordersubmit/userordersubmit'
       })

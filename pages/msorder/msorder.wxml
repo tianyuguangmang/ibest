@@ -23,16 +23,16 @@
 					
 				</div>
 				<div class="order-protrait flex-xcs">
-					<div class="img-box flex-x"><image src="{{item.supplierProduct.mainImage + Size.W76H76}}" lazy-load="{{true}}"/></div>
+					<div class="img-box flex-x"><image src="{{item.mainImage + Size.W76H76}}" lazy-load="{{true}}"/></div>
 					<view class="order-name flex-1 flex-y">
-						<div class="name m-ellipsis">{{item.supplierProduct.title}}</div>
+						<div class="name m-ellipsis">{{item.title}}</div>
 						<div class="styles">
 							<span class="">{{item.supplierProduct.sku}}</span>
 						</div>
 					</view>
 					<div class="price">
-						<div class="discount-price">￥{{item.supplierProduct.resetPrice}}</div>
-						<div class="origin-price">￥{{item.supplierProduct.originPrice}}</div>
+						<div class="discount-price">￥{{item.resetPrice}}</div>
+						<div class="origin-price">￥{{item.originPrice}}</div>
 						<div class="buyer-number"><span>x{{item.count}}</span></div>
 					</div>
 					

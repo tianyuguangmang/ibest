@@ -44,9 +44,10 @@ Page({
 		cateId = cateId?cateId:1;
 
 		var params = {
-			cateId:cateId
+			//cateId:cateId,
+			size:10,
+			current:1
 		};
-
 		service.getSupplierGoodsList(params,function(res){
 			_this.setData({
 				goodsList:res.data.result.list

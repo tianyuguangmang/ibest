@@ -1,0 +1,19 @@
+<view class="new-address">
+	<view class="flex-x item">
+		<div class="name">电话</div>
+		<div class="flex-1"><input type="text" bindinput="inputPhone" value="{{phone}}"/></div>
+		<div class="img-box"></div>
+	</view>
+	<view class="flex-x item">
+		<div class="name">地址</div>
+		<div class="flex-1"><input type="text" bindinput="inputValidCode" value="{{validCode}}" /></div>
+		<div class="img-box"></div>
+	</view>
+	
+	
+</view>
+<view class="btn-box flex-x">
+	<view class="btn flex-x" bindtap="onSubmit">
+		确定
+	</view>
+</view>

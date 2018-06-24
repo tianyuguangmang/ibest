@@ -1,26 +1,27 @@
 <view class="btl">
+	<view class="" bindtap="selectedAddress">请选择地址</view>
 	<view>
-		<view class="cart-list" wx:if="{{dataMsg.productList.length>0}}">
-			<block  wx:for="{{dataMsg.productList}}">
+		<view class="cart-list" wx:if="{{dataMsg.orderList.length>0}}">
+			<block  wx:for="{{dataMsg.orderList}}">
 			
 				<view class="cart-item flex-x flex-1" style="width:100%">
-					<div class="select-btn flex-x">
-						<radio checked="{{item.selected}}" bindtap="selectedThisGoods" data-index="{{index}}"/>
-					</div>
+				<!-- 	<div class="select-btn flex-x">
+					<radio checked="{{item.selected}}" bindtap="selectedThisGoods" data-index="{{index}}"/>
+				</div> -->
 					<div class="img-box flex-x">
-						<image src="{{item.supplierProduct.mainImage+Size.W100H100}}" mode="aspectFill"/>
+						<image src="{{item.mainImage+Size.W100H100}}" mode="aspectFill"/>
 					</div>
 					<div class="msg-detail flex-1 flex-ys">
 						<div class="title m-ellipsis">
-							{{item.supplierProduct.name}}
+							{{item.name}}
 						</div>
 						<div class="goods-detail a-ellipsis">
 							{{item.sku}}
 						</div>
 						<div class="price-number flex-1 flex-xsc">
 							<div class="price flex-x">
-								<div class="discount-price">￥{{item.supplierProduct.resetPrice}}</div>
-								<div class="origin-price flex-1">￥{{item.supplierProduct.originPrice}}</div>
+								<div class="discount-price">￥{{item.resetPrice}}</div>
+								<div class="origin-price flex-1">￥{{item.originPrice}}</div>
 								<div class="buy-count">x{{item.count}}</div>
 								
 							</div>
@@ -47,12 +48,12 @@
 	
 
 	<view class="total flex-x" wx:if="{{cartList}}">
-		<div class="all-select flex-x">
+		<!-- <div class="all-select flex-x">
 			<radio checked="{{allSelectedState}}" bindtap="allSelected"/>
 		</div>
-		<div class="select-word">全选</div>
-		<div class="total-money flex-1">
-			合计：<span class="money">￥{{dataMsg.totalMoney}}</span>
+		<div class="select-word">全选</div> -->
+		<div class="total-money flex-1 flex-x">
+			合计：<span class="money">￥{{dataMsg.totalMoney}}</span><span class="flex-1"></span>
 		</div>
 		<view class="amount" bindtap="buyConfirm">
 			确认购买

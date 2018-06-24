@@ -33,6 +33,34 @@ Page({
 			}
 		}
 	},
+
+  getSupplierInfo:function(cb){
+    var _baseInfo = app.globalData.baseInfo;
+    if(_baseInfo&&_baseInfo.isSupplier == 1){
+        service.getSupplierInfo({userId:_baseInfo.userId},function(res){
+          app.globalData.baseInfo.supplierInfo = res.data.result;
+        })
+    }
+   
+  },
+  getMerchantInfo:function(){
+     var _baseInfo = app.globalData.baseInfo;
+    if(_baseInfo&&_baseInfo.isMerchant == 1){
+        service.getMerchantInfo({userId:_baseInfo.userId},function(res){
+          app.globalData.baseInfo.merchantInfo = res.data.result;
+        })
+    }
+  },
+  getBaseInfo:function(){
+    service.getBaseInfo((res) => {
+      this.getSupplierInfo();
+      this.getMerchantInfo();
+
+    });
+  },
+  onLoad:function(){
+    this.getBaseInfo();
+  },
 	chooseImage: function (currentTarget) {
       var _this =　this;
       var _evaluateList = this.data.evaluateList;

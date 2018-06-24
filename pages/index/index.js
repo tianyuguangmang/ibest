@@ -62,8 +62,6 @@ Page({
 	 * 			sku:褐色,
 	 * 			skuId:1
 	 * 		}
-	 * 
-	 * 
 	 * }
 	 * @param {[type]} currentTarget [description]
 	 */
@@ -160,7 +158,8 @@ Page({
 		var _this = this;
 		var params = {
 			current:this.dataCurrent,
-			size:this.dataSize
+			size:this.dataSize,
+			merchantId:4
 		}
 		if(this.dataCateId) params.cateId = this.dataCateId;
 		service.merchantGoodsList(params,function(res){

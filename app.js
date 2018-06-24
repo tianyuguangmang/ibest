@@ -42,7 +42,21 @@ App({
     }
 
   },
-
+  goBack:function(content,delta){
+    if(content){
+       wx.showToast({
+        title:content,
+        duration: 1000
+      })
+    }
+    var _timer = setTimeout(() => {
+      wx.hideToast();
+      clearTimeout(_timer);
+      wx.navigateBack({
+        delta: delta||1
+      })
+    },1000)
+  },
   /**
    * 获取登录微信的信息
    * @param  {Function} cb [description]
@@ -67,7 +81,7 @@ App({
     //用户基本信息
     userInfo: null,
     //访问url
-    baseUrl:"https://im.echgs.com",
+    baseUrl:"http://192.168.0.100:8080/ibest",
     //用户的openId
     openId:'',
   },

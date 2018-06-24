@@ -7,11 +7,11 @@
 		<view class="flex-1 title-name flex-x"  data-cateid="5" bindtap="changeCateId"><div class="{{cateId==5?'selected':''}}">已完成</div></view>
 	</view>
 	<view class="order-box flex-1">
-		<view class="" style="height:110rpx;"></view>
+		<view class="" style="height:110rpx;width:100%;"></view>
 		<view wx:if="{{dataMsg}}" class="flex-1 flex-y">
 
-		<view class="order-list bg flex-1"  wx:if="{{dataMsg.length>0}}"  scroll-y="{{true}}"  bindscrolltolower="lower"  lower-threshold="{{50}}"> 
-			<view class="order-item flex-y" wx:for="{{dataMsg}}" wx:key="item.id" data-id="{{item.id}}">
+		<view class="order-list bg flex-1"  wx:if="{{dataMsg.length>0}}" > 
+			<view class="order-item flex-y" wx:for="{{dataMsg}}" wx:key="item.orderId" data-id="{{item.orderId}}">
 				<div class="order-msg flex-x bg-w">
 					<div class="service-number">订单编号：</div>
 					<div class="number flex-1">{{item.orderId}}</div>
@@ -22,12 +22,12 @@
 					<div class="states" wx:elif="{{item.status=='TRADE_FINISHED'}}">交易成功</div>
 					
 				</div>
-				<div class="order-protrait flex-xcs" wx:for="{{item.productList}}" wx:for-item="it">
+				<div class="order-protrait flex-xcs" wx:for="{{item.subOrderList}}" wx:for-item="it">
 					<div class="img-box flex-x"><image src="{{it.mainImage}}" lazy-load="{{true}}"/></div>
 					<view class="order-name flex-1 flex-y">
 						<div class="name m-ellipsis">{{it.name}}</div>
 						<div class="styles">
-							<span class="">{{it.sku}}</span>
+							<span class="">{{it.sku?it.sku:""}}</span>
 						</div>
 					</view>
 					<div class="price">
@@ -40,7 +40,7 @@
 				<view class="bg-w flex-x" style="font-size:24rpx;height:80rpx;">
 					
 					<div class="flex-1"></div>
-					<div style="padding-right:20rpx;">共{{item.productList.length}}件商品 合计：￥<span style="font-size:30rpx;margin-right:5rpx;">{{item.totalMoney}}</span></div>
+					<div style="padding-right:20rpx;">共{{item.subOrderList.length}}件商品 合计：￥<span style="font-size:30rpx;margin-right:5rpx;">{{item.totalMoney}}</span></div>
 				</view>
 				<div class="flex-x order-btn btl">
 					<div class="flex-1"></div>
@@ -52,7 +52,7 @@
 					<view class="finish-order btn" bindtap="toPay" data-id="{{item.id}}" data-index="{{index}}"  wx:if="{{item.status == 'WAIT_BUYER_PAY'}}" bindtap="toPay">立即支付</view>
 					<view class="finish-order"  data-id="{{item.id}}" wx:elif="{{item.status == 'TRADE_CLOSED'}}" bindtap="deleteOrder">删除订单</view>
 					<view class="finish-order btn"  data-id="{{item.id}}" wx:elif="{{item.status == 'WAIT_SELLER_SEND_GOODS'}}" bindtap="remindBusiness">提醒商家</view>
-					<view class="finish-order btn"  data-id="{{item.id}}" wx:elif="{{item.status == 'WAIT_PAY'}}" bindtap="confirmReceive">确认收货</view>
+					<view class="finish-order btn"  data-id="{{item.orderId}}" wx:elif="{{item.status == 'WAIT_PAY'}}" bindtap="confirmReceive">确认收货</view>
 					<view class="finish-order"  data-id="{{item.id}}" wx:elif="{{item.status == 'TRADE_FINISHED'}}" bindtap="deleteOrder">删除订单</view>
 				</div>
 			</view>

@@ -40,7 +40,7 @@ Page({
     var _this = this;
     service.getUserOrderInfo({},function(res){
       var _dataMsg = res.data.result;
-      _dataMsg.productList = JSON.parse(_dataMsg.productList);
+    
      
       console.log(_dataMsg)
       _this.setData({

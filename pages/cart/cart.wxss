@@ -160,3 +160,11 @@ margin-bottom:22rpx;
 	font-size:34rpx;
 	color:#999999;
 }
+.origin-price{
+	margin-top:8rpx;
+	margin-left:20rpx;
+
+}
+.total-money{
+	padding-left: 30rpx;
+}

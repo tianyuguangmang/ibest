@@ -16,6 +16,7 @@ const getSupplierProductUrl = "/supplier/product/list";
 const toShelfGoodUrl = "/merchant/product/sell";
 const toShelfSupplierGoodUrl = "/supplier/product/sell";
 const merchantConfirmReceiveUrl = "/submsorder/status";
+const consumerConfirmReceiveUrl = "/cmorder/update";
 const addNewAddressUrl = "/address/add";
 const getAddressListUrl = "/address/list";
 const deleteAddressUrl = "/address/delete";
@@ -24,7 +25,29 @@ const cmOrderSaveUrl = "/cmorder/save";
 const getUserOrderInfoUrl = "/cmorder/info";
 const userOrderSubmitUrl = "/cmorder/add";
 const userOrderListUrl = "/cmorder/list";
+const getSupplierInfoUrl = "/supplier/info";
+const getMerchantInfoUrl = "/merchant/info";
+const registerMerchantUrl = "/merchant/register";
+const registerSupplierUrl = '/supplier/register';
 var Service = {
+	getBaseInfo: function(cb){
+		http.getBaseInfo(cb);
+	},
+	registerSupplier: function(params,cb,failcb){
+		http.get(registerSupplierUrl,params,cb,failcb);
+	},
+	registerMerchant: function(params,cb,failcb){
+		http.get(registerMerchantUrl,params,cb,failcb);
+	},
+	getMerchantInfo: function(params,cb,failcb){
+		http.get(getMerchantInfoUrl,params,cb,failcb);
+	},
+	getSupplierInfo: function(params,cb,failcb){
+		http.get(getSupplierInfoUrl,params,cb,failcb);
+	},
+	consumerConfirmReceive: function(params,cb,failcb){
+		http.get(consumerConfirmReceiveUrl,params,cb,failcb);
+	},
 	getUserOrderList: function(params,cb,failcb){
 		http.get(userOrderListUrl,params,cb,failcb);
 	},

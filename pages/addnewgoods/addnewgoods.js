@@ -9,29 +9,15 @@ Page({
 	data: {
 		Size,
 		noMoreData: false,
-		hotList: null
+		hotList: null,
+		menuList:null,
+		menuIndex:0,
+		name:'',
+		originPrice:'',
+		stock:""
 	},
-	timeCount:function(s){
-    var _this = this;
-    var _results = s||this.data.effectiveTime;
-    //disEndTime
-    var _timer = setInterval(function(){
-      
-        if(_results>0){
-          _results -=1;
-        }else{
-          clearInterval(_timer);
-        }
-      _this.setData({
-        effectiveTime:_results
-        
-      })
-
-    },1000)
-  },
 	//页面分享功能
 	onShareAppMessage: function(res) {
-
 		return {
 			//longitude 经度 
 			//latitude 维度
@@ -50,16 +36,77 @@ Page({
 			}
 		}
 	},
+	onLoad:function(){
+		this.getCateList();
+	},
+	//获取分类列表
+	getCateList:function(){
+		var _this = this;
+		service.getCateList(null,function(res){
+			_this.setData({
+				menuList:res.data.result
+			})
+		});
+	},
+	bindPickerChange: function(e) {
+	  console.log('picker发送选择改变，携带值为', e.detail.value)
+	  this.setData({
+	    index: e.detail.value
+	  })
+	},
+	inputName:function(e){
+		this.setData({
+			name:e.detail.value
+		})
+	},
+	inputOriginPrice:function(e){
+		this.setData({
+			originPrice:e.detail.value
+		})
+	},
+	inputStock:function(e){
+		this.setData({
+			stock:e.detail.value
+		})
+	},
 	toSubmit:function(){
 		var params = {
-			name:"夏季衬衫10元20件、",
+			name:this.data.name,
 			mainImage:"https://img.alicdn.com/tfs/TB1EkSvdr_I8KJjy1XaXXbsxpXa-350-350.jpg_240x240xz.jpg_.webp",
-			resetPrice:12,
-			originPrice:10,
-			stock:1000,
-			cateId:1
+			resetPrice:this.data.originPrice*1.5,
+			originPrice:this.data.originPrice,
+			stock:this.data.stock,
+			cateId:this.data.menuList[this.data.menuIndex].cateId
 		}
-		service.addNewGoods(params,function(res){});
+		if(!app.required(params.name)){
+	      wx.showModal({
+	        title: '温馨提示',
+	        content:"请输入商品名称",
+	        showCancel:false
+	      })
+	      return;
+	    }
+	    if(!app.required(params.originPrice)){
+	      wx.showModal({
+	        title: '温馨提示',
+	        content:"请输入商品价格",
+	        showCancel:false
+	      })
+	      return;
+	    }
+
+	    if(!app.required(params.stock)){
+	      wx.showModal({
+	        title: '温馨提示',
+	        content:"请输入商品库存",
+	        showCancel:false
+	      })
+	      return;
+	    }
+		service.addNewGoods(params,function(res){
+			app.goBack("已提交");
+
+		});
 
 	}
 })

@@ -1,21 +1,22 @@
 <view>
 	<baseinfo></baseinfo>
 	<view class="flex-wrap packet">
-		<navigator class="item flex-y" url="/pages/myshop/myshop">
-			<i class="iconfont icon-supplier color1 clip" style="font-size:54rpx;"></i>
-			<span class="flex-1">成为供应商</span>
-		</navigator>
-		<navigator class="item flex-y" url="/pages/suppliercenter/suppliercenter">
+		
+		<navigator class="item flex-y" wx:if="{{baseInfo.isSupplier == 1 }}" url="/pages/suppliercenter/suppliercenter">
 			<i class="iconfont icon-supplier color1 clip" style="font-size:54rpx;"></i>
 			<span class="flex-1">我是供应商</span>
 		</navigator>
-		<navigator class="item flex-y">
+		<navigator class="item flex-y" url="/pages/myshop/myshop" wx:else>
+			<i class="iconfont icon-supplier color1 clip" style="font-size:54rpx;"></i>
+			<span class="flex-1">成为供应商</span>
+		</navigator>
+		<!-- <navigator class="item flex-y">
 			<i class="iconfont icon-renwufabu color1 clip" style="font-size:54rpx;"></i>
 			<span class="flex-1">我有任务</span>
 		</navigator>
 		<navigator class="item flex-y">
 			<i class="iconfont icon-renwufabu color1 clip" style="font-size:54rpx;"></i>
 			<span class="flex-1">我要找人</span>
-		</navigator>
+		</navigator> -->
 	</view>
 </view>

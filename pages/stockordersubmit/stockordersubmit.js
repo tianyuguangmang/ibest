@@ -35,21 +35,21 @@ Page({
       }
     }
   },
+  selectedAddress:function(){
+
+  },
   getStockOrderInfo:function(){
     var _this = this;
     service.getStockOrderInfo({},function(res){
       var _dataMsg = res.data.result;
-      _dataMsg.productList = JSON.parse(_dataMsg.productList);
-      for(var i=0;i<_dataMsg.productList.length;i++){
-        _dataMsg.productList[i].supplierProduct = JSON.parse(_dataMsg.productList[i].supplierProduct);
-      }
-      console.log(_dataMsg)
+      
       _this.setData({
         dataMsg:_dataMsg
       })
 
     })
   },
+
   getUserOrderInfo:function(){
     service.getUserOrderInfo({},function(res){
       var _dataMsg = res.data.result;
@@ -64,7 +64,7 @@ Page({
 
   },
   buyConfirm:function(){
-    service.stockBuyConfirm({},function(res){
+    service.stockBuyConfirm({addressId:5},function(res){
       console.log(res);
     })
   },
@@ -75,9 +75,7 @@ Page({
   type:'user_type',
   onLoad:function(options){
     this.type = options.type;
-    if(this.type == 'user_order'){
-      this.getUserOrderInfo();
-    }
+    this.getStockOrderInfo();
 
   }
 })

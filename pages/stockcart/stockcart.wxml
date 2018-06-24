@@ -19,7 +19,7 @@
 						</div>
 						<div class="price-number flex-1 flex-xsc">
 							<div class="price flex-x">
-								<div class="discount-price">￥{{item.currentPrice}}</div>
+								<div class="discount-price">￥{{item.resetPrice}}</div>
 								<div class="origin-price flex-1">￥{{item.originPrice}}</div>
 								<div class="buy-count">x{{item.count}}</div>
 								
@@ -47,12 +47,12 @@
 	
 
 	<view class="total flex-x" wx:if="{{cartList}}">
-		<div class="all-select flex-x">
+		<!-- <div class="all-select flex-x">
 			<radio checked="{{allSelectedState}}" bindtap="allSelected"/>
 		</div>
-		<div class="select-word">全选</div>
-		<div class="total-money flex-1">
-			合计：<span class="money">￥{{countMoney}}</span>
+		<div class="select-word">全选</div> -->
+		<div class="total-money flex-1 flex-x">
+			合计：<span class="money">￥{{countMoney?countMoney:'0.00'}}</span><span class="flex-1"></span>
 		</div>
 		<view class="amount" bindtap="cartInfoSubmit">
 			结算

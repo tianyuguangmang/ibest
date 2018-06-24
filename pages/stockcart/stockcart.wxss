@@ -1,1 +1,9 @@
 @import "../cart/cart.wxss";
+.origin-price{
+	margin-top:8rpx;
+	margin-left:20rpx;
+
+}
+.total-money{
+	padding-left: 30rpx;
+}

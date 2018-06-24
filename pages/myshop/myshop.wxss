@@ -43,3 +43,6 @@ page{
 	width:100%;
 	border-bottom:1rpx solid #eee;
 }
+.picker{
+	height: 100%;
+}

@@ -8,7 +8,8 @@ import * as Size from '../../js/imagesize';
 Page({
   data: {
     Size,
-    cartList:[]
+    cartList:[],
+    countMoney:0
     
   },
 
@@ -38,13 +39,17 @@ Page({
   selectedThisGoods:function(currentTarget){
     var _index = app.getData(currentTarget,"index");
     var _cartList = this.data.cartList;
+    var _amount = this.data.countMoney;
     if(_cartList[_index].selected){
       _cartList[_index].selected = false;
+      _amount -= _cartList[_index].resetPrice*_cartList[_index].count;
     }else{
       _cartList[_index].selected = true;
+      _amount += _cartList[_index].resetPrice*_cartList[_index].count;
     }
     this.setData({
-      cartList:_cartList
+      cartList:_cartList,
+      countMoney:_amount
     })
     
 
@@ -61,6 +66,15 @@ Page({
         });
       }
     }
+
+    if(_arr.length<=0){
+      wx.showModal({
+        title: '温馨提示',
+        content:"请选择商品",
+        showCancel:false
+      })
+      return;
+    }
     service.stockCartInfoSubmit({list:JSON.stringify(_arr)},function(res){
       wx.redirectTo({
       url: '/pages/stockordersubmit/stockordersubmit'
@@ -72,6 +86,7 @@ Page({
   onShow:function(){
     var _this = this;
     var _cartInfo = wx.getStorageSync('shop_cart_info');
+    console.log(_cartInfo);
     var _arr = [];
     for(var key in _cartInfo){
       _arr.push(_cartInfo[key]);
