@@ -1,9 +1,12 @@
 <view class="wx-msg">
 	<view class="avatar">
-		<image class="img" src="../../../images/avatar.png"></image>
+		<image class="img" src="{{baseInfo.avatar?baseInfo.avatar:'/images/avatar.png'}}"></image>
 	</view>
-	<view class="name">123</view>
-	<view class="score">积分：100</view>
+	<view class="name">{{baseInfo.nickName}}</view>
+	<view class="score">
+		<span wx:if="{{baseInfo.isSupplier == 1}}">账户余额:{{baseInfo.supplierInfo.accountFund}}</span>
+		<span wx:if="{{baseInfo.isMerchant == 1}}" style="margin-left: 30rpx;">账户余额:{{baseInfo.merchantInfo.accountFund}}</span>
+	</view>
 </view>
 
 

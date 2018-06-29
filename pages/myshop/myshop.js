@@ -96,13 +96,13 @@ Page({
     }
     if(this.isMerchant == 1){
       service.registerMerchant(params,function(res){
-        app.goBack("已提交，请耐心等待审核");
+        app.goBack("请等待审核");
       })
       return;
     }
 
     service.registerSupplier(params,function(res){
-      app.goBack("已提交，请耐心等待审核");
+      app.goBack("请等待审核");
 
     })
   }

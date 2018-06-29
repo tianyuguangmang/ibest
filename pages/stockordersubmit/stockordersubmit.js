@@ -8,7 +8,14 @@ import * as Size from '../../js/imagesize';
 Page({
   data: {
     Size,
-    cartList:[]
+    cartList:[],
+
+   /* selectedAddress:{
+      name:"王文斌",
+      phone:"187547008212",
+      address:"山东农业大学",
+      detail:"104号"
+    }*/
     
   },
 
@@ -64,17 +71,28 @@ Page({
 
   },
   buyConfirm:function(){
-    service.stockBuyConfirm({addressId:5},function(res){
-      console.log(res);
+    if(!this.data.selectedAddress||!this.data.selectedAddress.addressId){
+      wx.showModal({
+        title: '温馨提示',
+        content:"请选择地址",
+        showCancel:false
+      })
+      return;
+    }
+    service.stockBuyConfirm({addressId:this.data.selectedAddress.addressId,payType:'ACCOUNT'},function(res){
+      wx.navigateTo({
+        url: '/pages/msorder/msorder?type=MERCHANT'
+      })
     })
   },
   onShow:function(){
-    //this.getStockOrderInfo();
-   
+   if(app.globalData.selectedAddress){
+    this.setData({
+      selectedAddress:app.globalData.selectedAddress
+    })
+   }
   },
-  type:'user_type',
   onLoad:function(options){
-    this.type = options.type;
     this.getStockOrderInfo();
 
   }

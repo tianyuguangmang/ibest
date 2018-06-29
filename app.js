@@ -23,9 +23,11 @@ App({
       //调用登录接口
       wx.getUserInfo({
         success: function(res) {
-          
           that.globalData.userInfo = res.userInfo
           typeof cb == "function" && cb(that.globalData.userInfo)
+        },
+        fail:function(res){
+          console.log(res);
         }
       })
     }
@@ -78,10 +80,15 @@ App({
    * 全局变量
    */
   globalData: {
+   
+    //获取到的基本信息
+    baseInfo:null,
     //用户基本信息
     userInfo: null,
+    //用户访问的商户的id
+    merchantId:null,
     //访问url
-    baseUrl:"http://192.168.0.100:8080/ibest",
+    baseUrl:"http://192.168.26.115:8080/ibest",
     //用户的openId
     openId:'',
   },

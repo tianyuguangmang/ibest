@@ -52,10 +52,12 @@ Page({
     }
   },
   getBaseInfo:function(){
+    var _this = this;
     service.getBaseInfo((res) => {
-      this.getSupplierInfo();
-      this.getMerchantInfo();
-
+      _this.setData({
+        baseInfo:res.data.result
+      })
+     
     });
   },
   onLoad:function(){

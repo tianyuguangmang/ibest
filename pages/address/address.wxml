@@ -1,12 +1,27 @@
-<view class="address">
-	<view class="item" wx:for="{{dataList}}">
-		<view class="flex-x base"><div class="name flex-1">{{item.name}}</div><div class="phone">{{item.phone}}</div></view>
-		<view class="pos">{{item.address+item.detail}} </view>
-		<view class="btn flex-x btl">
-			<view class="default flex-1" data-id="{{item.addressId}}" data-index="{{index}}">默认地址</view>
-			<view class="editor" data-id="{{item.addressId}}" data-index="{{index}}">编辑</view>
-			<view class="dele" data-id="{{item.addressId}}" data-index="{{index}}" bindtap="deleteAddress">删除</view>
+<view class="address"  wx:if="{{dataList}}">
+	<block wx:if="{{dataList.length>0}}">
+		<view class="item"  wx:for="{{dataList}}">
+			<div bindtap="selectedThis"  data-id="{{item.addressId}}" data-index="{{index}}">
+			<view class="flex-x base">
+				<div class="name flex-1">{{item.name}}</div>
+				<div class="phone">{{item.phone}}</div>
+			</view>
+			<view class="pos">{{item.address+item.detail}} </view>
+			</div>
+			<view class="btn flex-x btl">
+				<!-- <view class="default flex-1" data-id="{{item.addressId}}" data-index="{{index}}" wx:if="{{item.isDefault}}">默认地址</view>
+				<view class=" flex-1" bindtap="setDefault" data-id="{{item.addressId}}" data-index="{{index}}" wx:else>设为默认</view> -->
+				<view class="flex-1"></view>
+				<view class="editor" data-id="{{item.addressId}}" data-index="{{index}}" bindtap="editorAddress">编辑</view>
+				<view class="dele" data-id="{{item.addressId}}" data-index="{{index}}" bindtap="deleteAddress">删除</view>
+			</view>
 		</view>
+	</block>
+	<view class="no-data flex-y" wx:else>
+		<div class="order-img-box flex-x">
+			<image src="../../images/no_data.png"/>
+		</div>
+		<div>暂无地址</div>
 	</view>
 	<view class="btn-box flex-x">
 		<navigator class="btn flex-x" url="/pages/newaddress/newaddress">

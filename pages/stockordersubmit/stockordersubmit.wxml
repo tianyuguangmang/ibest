@@ -1,5 +1,19 @@
 <view class="btl">
-	<view class="" bindtap="selectedAddress">请选择地址</view>
+	<view class="address" style="padding-bottom:20rpx; background: #fff;margin-bottom: 20rpx;" wx:if="{{selectedAddress}}">
+		<view class="item" >
+			<view class="flex-x base"><div class="name flex-1">{{selectedAddress.name}}</div><div class="phone">{{selectedAddress.phone}}</div></view>
+			<view class="pos">{{selectedAddress.address+selectedAddress.detail}} </view>
+		</view>
+	</view>
+	<view class="menu" wx:else>
+		<navigator class="flex-x item" style="margin-bottom: 20rpx;" url="/pages/address/address">
+			<div class="flex-1">请选择地址</div>
+			<div class="right-icon flex-x">
+				<i class="iconfont icon-weibiaoti34 color clip" style="font-size:54rpx;"></i>
+			</div>
+		</navigator>
+	</view>
+
 	<view>
 		<view class="cart-list" wx:if="{{dataMsg.orderList.length>0}}">
 			<block  wx:for="{{dataMsg.orderList}}">

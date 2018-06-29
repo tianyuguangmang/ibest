@@ -25,9 +25,9 @@
 				<div class="order-protrait flex-xcs">
 					<div class="img-box flex-x"><image src="{{item.mainImage + Size.W76H76}}" lazy-load="{{true}}"/></div>
 					<view class="order-name flex-1 flex-y">
-						<div class="name m-ellipsis">{{item.title}}</div>
+						<div class="name m-ellipsis">{{item.name}}</div>
 						<div class="styles">
-							<span class="">{{item.supplierProduct.sku}}</span>
+							<span class="">{{item.sku}}</span>
 						</div>
 					</view>
 					<div class="price">
@@ -60,7 +60,7 @@
 		</view>
 		<view class="no-data flex-y" wx:else>
 			<div class="order-img-box flex-x">
-				<image src="../../images/nulldata.png"/>
+				<image src="../../images/no_data.png"/>
 			</div>
 			<div>暂无相关记录</div>
 		</view>

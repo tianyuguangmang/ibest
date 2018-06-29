@@ -37,6 +37,15 @@ Page({
 			}
 		}
 	},
+	isEditor:null,
+	onLoad:function(options){
+
+		if(options.type == 1){
+			this.isEditor = 1;
+			var _address = app.globalData.selectedAddress;
+			this.setData(_address);
+		}
+	},
 	inputName:function(e){
 		this.setData({
 			name:e.detail.value
@@ -94,6 +103,15 @@ Page({
 			  title: '温馨提示',
 			  content:"请输入门牌号",
 			  showCancel:false
+			})
+			return;
+		}
+		if(this.isEditor){
+			params.addressId = this.data.addressId;
+			params.userId = this.data.userId;
+			params.isDefault = this.data.isDefault;
+			service.editorAddress(params,function(res){
+
 			})
 			return;
 		}

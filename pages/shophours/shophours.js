@@ -10,10 +10,12 @@ Page({
 		Size,
 		noMoreData: false,
 		dataMsg:{
-			amStartTime:'',
-			amEndTime:'',
-			pmStartTime:'',
-			pmEndTime:'',
+			amStartTime:'09:00',
+			amEndTime:'12:00',
+			pmStartTime:'14:00',
+			pmEndTime:'18:00',
+     // weekAmStartTime:'',
+     // weekPmStartTime:''
 		},
 		
 		hotList: null
@@ -47,8 +49,32 @@ Page({
       dataMsg:_dataMsg
     })
   },
+  isMerchant:null,
+  onLoad:function(options){
+    var baseInfo = app.globalData.baseInfo;
 
+    if(options.type=="MERCHANT"){
+      this.isMerchant = 1;
+      this.setData({
+        dataMsg:baseInfo.merchantInfo
+      })
+    }else{
+      this.setData({
+        dataMsg:baseInfo.supplierInfo
+      })
+    }
+   
+  },
 	toSubmit:function(){
-		console.log(this.data.dataMsg); 
+    var params = this.data.dataMsg;
+    if(this.isMerchant == 1){
+      service.updateMerchantShopTime(params,function(res){
+        app.goBack("修改成功");
+      });
+      return;
+    }
+    service.updateSupplierShopTime(params,function(res){
+      app.goBack("修改成功");
+    })
 	},
 })

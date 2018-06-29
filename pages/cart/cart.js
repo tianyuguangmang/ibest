@@ -90,17 +90,19 @@ Page({
         _arr.push({
           productId:_list[i].productId,
           count:_list[i].count,
-          merchantId:19
         });
       }
     }
-    service.cmOrderSave({list:JSON.stringify(_arr),merchantId:4},function(res){
+    service.cmOrderSave({list:JSON.stringify(_arr),merchantId:this.merchantId},function(res){
       wx.navigateTo({
         url: '/pages/userordersubmit/userordersubmit'
       })
 
     })
   },
+  merchantId:null,
   onLoad:function(){
+    this.merchantId = app.globalData.merchantId||9;
+
   }
 })

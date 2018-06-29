@@ -29,15 +29,34 @@ const getSupplierInfoUrl = "/supplier/info";
 const getMerchantInfoUrl = "/merchant/info";
 const registerMerchantUrl = "/merchant/register";
 const registerSupplierUrl = '/supplier/register';
+const updateSupplierShopTimeUrl = "/supplier/shop/time";
+const updateMerchantShopTimeUrl = "/merchant/shop/time";
+const editorAddressUrl = "/address/update";
+const updateUserUrl = "/user/update"
 var Service = {
+	/*setDefaultAddress: function(params,cb,failcb){
+		http.json(editorAddressUrl,params,cb,failcb);
+	},*/
+	updateUserInfo: function(params,cb,failcb){
+		http.post(updateUserUrl,params,cb,failcb);
+	},
+	editorAddress: function(params,cb,failcb){
+		http.json(editorAddressUrl,params,cb,failcb);
+	},
+	updateMerchantShopTime: function(params,cb,failcb){
+		http.post(updateMerchantShopTimeUrl,params,cb,failcb);
+	},
+	updateSupplierShopTime: function(params,cb,failcb){
+		http.post(updateSupplierShopTimeUrl,params,cb,failcb);
+	},
 	getBaseInfo: function(cb){
 		http.getBaseInfo(cb);
 	},
 	registerSupplier: function(params,cb,failcb){
-		http.get(registerSupplierUrl,params,cb,failcb);
+		http.post(registerSupplierUrl,params,cb,failcb);
 	},
 	registerMerchant: function(params,cb,failcb){
-		http.get(registerMerchantUrl,params,cb,failcb);
+		http.post(registerMerchantUrl,params,cb,failcb);
 	},
 	getMerchantInfo: function(params,cb,failcb){
 		http.get(getMerchantInfoUrl,params,cb,failcb);

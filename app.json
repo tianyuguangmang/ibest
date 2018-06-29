@@ -1,62 +1,33 @@
 {
 
   "pages":[
-    "pages/my/my",
-
-    "pages/stockcart/stockcart",
-
-
-    "pages/myshop/myshop",
     
+    "pages/my/my",
+    "pages/addnewgoods/addnewgoods",
+    
+    "pages/stockcart/stockcart",
+    "pages/stockordersubmit/stockordersubmit",
+    "pages/shophours/shophours",
+    
+    "pages/myshop/myshop",
     "pages/messagecollect/messagecollect",
-
     "pages/address/address",
-
     "pages/newaddress/newaddress",
     "pages/myorder/myorder",
-    
     "pages/index/index",
     "pages/suppliercenter/suppliercenter",
     "pages/userordersubmit/userordersubmit",
-    
     "pages/stockgoods/stockgoods",
-    "pages/addnewgoods/addnewgoods",
     "pages/shelfgoods/shelfgoods",
-    
-    
     "pages/msorder/msorder",
-
-    "pages/stockordersubmit/stockordersubmit",
-    
-     
     "pages/suppliergoods/suppliergoods",
-    
     "pages/shopcenter/shopcenter",
-
-    "pages/shophours/shophours",
     "pages/merchantsetting/merchantsetting",
-    
-
-    
-    
-
     "pages/parttimejob/parttimejob",
     "pages/servicecenter/servicecenter",
-    
     "pages/shopsettle/shopsettle",
-    
-    
-    
-    
-    
-    
-
-    
     "pages/cart/cart",
-    
     "pages/mall/mall"
-    
-
   ],
   
   "networkTimeout":{

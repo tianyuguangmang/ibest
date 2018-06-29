@@ -14,7 +14,8 @@ Page({
 		menuIndex:0,
 		name:'',
 		originPrice:'',
-		stock:""
+		stock:"",
+		baseCount:''
 	},
 	//页面分享功能
 	onShareAppMessage: function(res) {
@@ -51,8 +52,13 @@ Page({
 	bindPickerChange: function(e) {
 	  console.log('picker发送选择改变，携带值为', e.detail.value)
 	  this.setData({
-	    index: e.detail.value
+	    menuIndex: e.detail.value
 	  })
+	},
+	inputBaseCount:function(e){
+		this.setData({
+			baseCount:e.detail.value
+		})
 	},
 	inputName:function(e){
 		this.setData({
@@ -73,9 +79,9 @@ Page({
 		var params = {
 			name:this.data.name,
 			mainImage:"https://img.alicdn.com/tfs/TB1EkSvdr_I8KJjy1XaXXbsxpXa-350-350.jpg_240x240xz.jpg_.webp",
-			resetPrice:this.data.originPrice*1.5,
 			originPrice:this.data.originPrice,
 			stock:this.data.stock,
+			baseCount:this.data.baseCount,
 			cateId:this.data.menuList[this.data.menuIndex].cateId
 		}
 		if(!app.required(params.name)){
@@ -103,10 +109,18 @@ Page({
 	      })
 	      return;
 	    }
-		service.addNewGoods(params,function(res){
-			app.goBack("已提交");
+	    wx.showModal({
+	        title: '温馨提示',
+	        content:"确定要以"+params.originPrice+"元/"+params.baseCount+"个(件)"+"销售此商品吗？",
+	        showCancel:false,
+	        success:function(){
+	        	service.addNewGoods(params,function(res){
+					app.goBack("已提交");
 
-		});
+				});
+	        }
+	    })
+		
 
 	}
 })

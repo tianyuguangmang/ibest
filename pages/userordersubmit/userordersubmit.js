@@ -11,8 +11,6 @@ Page({
     cartList:[]
     
   },
-
-  //页面分享功能
   onShareAppMessage: function(res) {
 
     return {
@@ -40,26 +38,33 @@ Page({
     var _this = this;
     service.getUserOrderInfo({},function(res){
       var _dataMsg = res.data.result;
-    
-     
-      console.log(_dataMsg)
       _this.setData({
         dataMsg:_dataMsg
       })
 
     })
-
   },
   buyConfirm:function(){
-    service.userOrderSubmit({addressId:3},function(res){
+    if(!this.data.selectedAddress||!this.data.selectedAddress.addressId){
+      wx.showModal({
+        title: '温馨提示',
+        content:"请选择地址",
+        showCancel:false
+      })
+      return;
+    }
+    service.userOrderSubmit({addressId:this.data.selectedAddress.addressId},function(res){
       console.log(res);
     })
   },
   onShow:function(){
-    //this.getStockOrderInfo();
+    if(app.globalData.selectedAddress){
+      this.setData({
+        selectedAddress:app.globalData.selectedAddress
+      })
+    }
    
   },
-  type:'user_type',
   onLoad:function(options){
     this.getUserOrderInfo();
 

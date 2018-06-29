@@ -1,6 +1,7 @@
 <view class="myshop">
 	
 	<view class="flex-y box">
+		<!-- <div  style="width:100%;padding:20rpx 0;font-size:32rpx;">周一~周五</div> -->
 		<div class="flex-x box-item">
 			<span style="color:#333;margin-right:40rpx;">上午</span><span class="flex-1"></span>
 		</div>
@@ -14,7 +15,7 @@
 		</div>
 		<div class="flex-x box-item">
 			<span style="color:#333;margin-right:40rpx;">结束时间：</span>
-			 <picker mode="time" value="{{dataMsg.amEndTime}}" start="00:00" end="12:00" bindchange="bindTimeChange2" class="flex-1">
+			 <picker mode="time" value="{{dataMsg.amEndTime}}" start="{{dataMsg.amStartTime}}" end="12:00" bindchange="bindTimeChange2" class="flex-1">
 			    <view class="picker">
 			       {{dataMsg.amEndTime}}
 			    </view>
@@ -28,7 +29,7 @@
 		</div>
 		<div class="flex-x box-item">
 			<span style="color:#333;margin-right:40rpx;">开始时间：</span>
-			 <picker mode="time" value="{{dataMsg.pmStartTime}}" start="00:00" end="12:00" bindchange="bindTimeChange3" class="flex-1">
+			 <picker mode="time" value="{{dataMsg.pmStartTime}}" start="12:00" end="23:59" bindchange="bindTimeChange3" class="flex-1">
 			    <view class="picker">
 			       {{dataMsg.pmStartTime}}
 			    </view>
@@ -36,7 +37,7 @@
 		</div>
 		<div class="flex-x box-item">
 			<span style="color:#333;margin-right:40rpx;">结束时间：</span>
-			 <picker mode="time" value="{{dataMsg.pmEndTime}}" start="00:00" end="12:00" bindchange="bindTimeChange4" class="flex-1">
+			 <picker mode="time" value="{{dataMsg.pmEndTime}}" start="{{dataMsg.pmStartTime}}" end="23:59" bindchange="bindTimeChange4" class="flex-1">
 			    <view class="picker">
 			       {{dataMsg.pmEndTime}}
 			    </view>
@@ -44,7 +45,8 @@
 		</div>
 		
 	</view>
-	<view class="flex-x btn-box">
+
+	<view class="flex-x btn-box" style="padding-bottom: 50rpx;">
 		<view class="btn flex-x" bindtap="toSubmit">
 			确定
 		</view>

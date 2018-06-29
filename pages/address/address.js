@@ -33,8 +33,33 @@ Page({
 			}
 		}
 	},
-	onLoad:function(){
+	selectedThis:function(currentTarget){
+		var _index = app.getData(currentTarget,"index");
+		var _select = this.data.dataList[_index];
+		_select.index = _index;
+		app.globalData.selectedAddress = _select;
+		wx.navigateBack({
+		  delta: 1
+		})
+	},
+	onShow:function(){
 		this.dataList();
+	},
+	setDefault: function(currentTarget){
+		var _index = app.getData(currentTarget,"index");
+		var _id = app.getData(currentTarget,"id");
+		service.setDefaultAddress({addressId:_id},function(res){
+
+		})
+	},
+	editorAddress: function(currentTarget){
+		var _index = app.getData(currentTarget,"index");
+		var _select = this.data.dataList[_index];
+		_select.index = _index;
+		app.globalData.selectedAddress = _select;
+		wx.navigateTo({
+		  url: '/pages/newaddress/newaddress?type=1'
+		})
 	},
 	deleteAddress: function(currentTarget){
 		var _this = this;

@@ -20,9 +20,8 @@
 						<div class="price-number flex-1 flex-xsc">
 							<div class="price flex-x">
 								<div class="discount-price">￥{{item.resetPrice}}</div>
-								<div class="origin-price flex-1">￥{{item.originPrice}}</div>
+								<div class="origin-price flex-1"></div>
 								<div class="buy-count">x{{item.count}}</div>
-								
 							</div>
 							<!-- <div class="number flex-x">
 								<view class="flex-1 decrease" bindtap="decrease" data-index="{{index}}">-</view>
@@ -43,10 +42,7 @@
 		</view>
 		
 	</view>
-
-	
-
-	<view class="total flex-x" wx:if="{{cartList}}">
+	<view class="total flex-x" wx:if="{{cartList}}" style="z-index: 999;">
 		<!-- <div class="all-select flex-x">
 			<radio checked="{{allSelectedState}}" bindtap="allSelected"/>
 		</div>

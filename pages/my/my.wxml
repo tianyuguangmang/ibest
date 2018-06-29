@@ -6,8 +6,7 @@
 		<view class="name">孤独的狼</view>
 		<view class="score">积分：100</view>
 	</view> -->
-	<baseinfo></baseinfo>
-
+	<baseinfo wx:if="{{baseInfo}}" baseInfo="{{baseInfo}}"></baseinfo>
 	<view class="menu">
 		<navigator class="flex-x item btl bbl" url="/pages/address/address">
 			<div class="icon-box flex-x">

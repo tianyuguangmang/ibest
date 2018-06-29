@@ -1,8 +1,16 @@
-
+@import "../iconfont.wxss";
 page{
 	font-size:30rpx;
 }
-
+.right-icon{
+	width:50rpx;
+	height: 80rpx;
+	margin-right: 30rpx;
+}
+.right-icon image{
+	width:100%;
+	height: 100%;
+}
 .btn{
 	width:690rpx;
 	height: 88rpx;

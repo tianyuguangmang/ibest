@@ -7,7 +7,10 @@
 		</div>
 		<div class="flex-x box-item">
 			<span style="color:#333;margin-right:40rpx;">商品价格</span>
-			<input value="{{originPrice}}" type="number" placeholder="请输入商品价格" class="flex-1" bindinput="inputOriginPrice" />
+			<input value="{{originPrice}}" type="number"  style="width: 120rpx;margin-right: 20rpx;" placeholder="商品价格" bindinput="inputOriginPrice" />
+			<span style="margin-right: 20rpx;">元/</span>
+			<input value="{{baseCount}}" style="width: 120rpx;" type="number" placeholder="商品数量" bindinput="inputBaseCount" />
+			<span class="flex-1">个(件)</span>
 		</div>
 		<div class="flex-x box-item">
 			<span style="color:#333;margin-right:40rpx;">库<span style="margin:0 30rpx;"></span>存</span>
@@ -20,6 +23,9 @@
 			      {{menuList[menuIndex].title}}
 			    </view>
 			  </picker>
+			<div class="right-icon flex-x">
+				<i class="iconfont icon-weibiaoti34 color clip" style="font-size:50rpx;color:#ccc;"></i>
+			</div>
 		</div>
 	
 	</view>

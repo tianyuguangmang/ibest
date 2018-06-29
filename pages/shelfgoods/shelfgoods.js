@@ -55,9 +55,16 @@ Page({
 
 	
 	getSupplierProduct:function() {
-
 		var _this = this;
 		service.getSupplierProduct({current:1,size:10,supplierId:this.baseInfo.supplierInfo.supId},function(res){
+			_this.setData({
+				dataList:res.data.result.list
+			})
+		})
+	},
+	getMerchantProduct:function() {
+		var _this = this;
+		service.getMerchantProduct({current:1,size:10,merchantId:this.baseInfo.merchantInfo.mchtId},function(res){
 			_this.setData({
 				dataList:res.data.result.list
 			})
@@ -93,10 +100,13 @@ Page({
 	onLoad:function(options){
 		this.baseInfo = app.globalData.baseInfo;
 		this.type = options.type;
-		if(this.type == 'SUPPLIER')
-			this.getSupplierProduct();
-		else
+		if(this.type == 'MERCHANT'){
 			this.getMerchantProduct();
+		}
+		else{
+			this.getSupplierProduct();
+
+		}
 		
 	}
 })

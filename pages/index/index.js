@@ -159,7 +159,7 @@ Page({
 		var params = {
 			current:this.dataCurrent,
 			size:this.dataSize,
-			merchantId:4
+			//merchantId:this.mchtId
 		}
 		if(this.dataCateId) params.cateId = this.dataCateId;
 		service.merchantGoodsList(params,function(res){
@@ -179,10 +179,25 @@ Page({
 		})
 	},
 	cartDataInfo:null,
-	onLoad:function(){
+	mchtId:1,
+	getWxUserInfo:function(){
+		//app.getUserInfo(function(res) {
+			/*service.updateUserInfo({
+				avatar:"",
+				nickName:"王文",
+				userId:app.globalData.baseInfo.userId
+			},function(res){})*/
+		//});
+		
+	},
+	onLoad:function(options){
 		var _this = this;
+		this.mchtId = options.merchantId||9;
+		app.globalData.merchantId = this.mchtId;
 		this.getCateList();
 		this.cartDataInfo = wx.getStorageSync(app.CART_INFO);
-		this.getDataList();		
+		this.getDataList();	
+		this.getWxUserInfo();	
+		
 	}
 })
