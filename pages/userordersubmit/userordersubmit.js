@@ -65,6 +65,7 @@ Page({
     }
    
   },
+  
   onLoad:function(options){
     this.getUserOrderInfo();
 

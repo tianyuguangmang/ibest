@@ -3,8 +3,11 @@
   "pages":[
     
     "pages/my/my",
-    "pages/addnewgoods/addnewgoods",
+    "pages/deliverygoodsmsg/deliverygoodsmsg",
     
+    "pages/newaddress/newaddress",
+    "pages/addnewgoods/addnewgoods",
+    "pages/cmorder/cmorder",
     "pages/stockcart/stockcart",
     "pages/stockordersubmit/stockordersubmit",
     "pages/shophours/shophours",
@@ -12,7 +15,6 @@
     "pages/myshop/myshop",
     "pages/messagecollect/messagecollect",
     "pages/address/address",
-    "pages/newaddress/newaddress",
     "pages/myorder/myorder",
     "pages/index/index",
     "pages/suppliercenter/suppliercenter",

@@ -44,6 +44,38 @@ App({
     }
 
   },
+  socketOpen:false,
+  /**
+   * 创建socket
+   * @param  {Function} cb 回调函数
+   * @return {[type]}      [description]
+   */
+  createSocket:function(keyId,cb){
+    var _this = this;
+    wx.connectSocket({
+      url: 'ws://192.168.26.115:8080/ibest/websocket?openId='+keyId,
+    })
+    wx.onSocketOpen(function(res) {
+      console.log("连接成功");
+      _this.socketOpen = true;
+    })
+    wx.onSocketMessage(cb)
+    wx.onSocketClose(function(res) {
+    })
+  },
+  closeSocket: function(){
+    wx.closeSocket();
+    console.log("连接关闭");
+  },
+  sendSocketMessage: function(msg) {
+    if (this.socketOpen) {
+      wx.sendSocketMessage({
+        data:msg
+      })
+    } else {
+       socketMsgQueue.push(msg)
+    }
+  },
   goBack:function(content,delta){
     if(content){
        wx.showToast({

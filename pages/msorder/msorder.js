@@ -43,8 +43,8 @@ Page({
 
   },
  
-  onShow:function(options){
-    
+  onShow:function(){
+    this.dataLoad(true);
   },
   toPay:function(currentTarget){
     var _dataId = app.getData(currentTarget,'id');
@@ -105,7 +105,7 @@ Page({
   noMoreData:false,
   dataLoading:false,
   current:0,
-  size:4,
+  size:10,
   /**
    * 数据加载
    * @param  Boolean reload 是否重新加载
@@ -126,11 +126,11 @@ Page({
     if(_id == 2){
       params.status = 'WAIT_PAY';
     }else if(_id == 3){
-      params.status = 'WAIT_SELLER_SEND_GOODS';
+      params.status = 'PAID';
     }else if(_id == 4){
-      params.status = 'WAIT_BUYER_CONFIRM_GOODS';
+      params.status = 'WAIT_REVEIVE';
     }else if(_id == 5){
-      params.status = 'TRADE_FINISHED';
+      params.status = 'FINISHED';
     }
     if(this.isMerchant){
       params.merchantId = this.baseInfo.merchantInfo.mchtId;
@@ -171,12 +171,42 @@ Page({
   },
   baseInfo:null,
   isMerchant:null,
+  createSocket:function(){
+    var _this = this;
+    console.log(_this.baseInfo);
+    //var keyId = this.baseInfo;
+    app.createSocket("supId_"+this.baseInfo.supplierInfo.supId,function(res){
+      if(res.data == "success"){
+        wx.showModal({
+          title: '温馨提示',
+          content:"有新的订单",
+          showCancel:false,
+          success:function(res){
+            _this.dataLoad(true);
+          }
+        })
+      }
+    })
+  },
+  closeSocket:function(){
+    app.closeSocket();
+  },
+  onHide:function(){
+    this.closeSocket();
+  },
+  baseInfo:null,
   onLoad: function(options){
     var _this = this;
-    if(options.type == 'MERCHANT') 
-      this.isMerchant = 1;
     this.baseInfo = app.globalData.baseInfo;
-    this.dataLoad(true);
+    if(options.type == 'MERCHANT'){
+      this.isMerchant = 1;
+      this.setData({
+        isMerchant:1
+      })
+    }else{
+      this.createSocket()
+    }
+    
   },
   remindBusiness:function(){
     var _phone = app.globalData.shopGlobalMsg.serviceTelphone;
@@ -229,18 +259,21 @@ Page({
       }
     }
   })
-   
   },
   confirmReceive:function(currentTarget){
-     var _this = this;
+    this.updateOrderState(currentTarget,"CONFIRM_RECEIVE");
+  },
+  finished:function(currentTarget){
+    this.updateOrderState(currentTarget,"FINISHED");
+  },
+  updateOrderState:function(currentTarget,state){
+    var _this = this;
     var _id = app.getData(currentTarget,"id");
     var params = {
       orderId:_id,
-      status:"CONFIRM_RECEIVE"
+      status:state
     };
-    service.merchantConfirmReceive(params,function(res){
-     
-     
+    service.updateMsOrderState(params,function(res){
     })
   },
   callPhone:function(){

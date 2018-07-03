@@ -43,6 +43,7 @@ Page({
     }
    
   },
+  
   getMerchantInfo:function(){
      var _baseInfo = app.globalData.baseInfo;
     if(_baseInfo&&_baseInfo.isMerchant == 1){
@@ -62,6 +63,7 @@ Page({
   },
   onLoad:function(){
     this.getBaseInfo();
+    
   },
 	chooseImage: function (currentTarget) {
       var _this =　this;

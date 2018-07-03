@@ -3,7 +3,7 @@
 		<image class="img" src="{{baseInfo.avatar?baseInfo.avatar:'/images/avatar.png'}}"></image>
 	</view>
 	<view class="name">{{baseInfo.nickName}}</view>
-	<view class="score">
+	<view class="score" wx:if="{{baseInfo}}">
 		<span wx:if="{{baseInfo.isSupplier == 1}}">账户余额:{{baseInfo.supplierInfo.accountFund}}</span>
 		<span wx:if="{{baseInfo.isMerchant == 1}}" style="margin-left: 30rpx;">账户余额:{{baseInfo.merchantInfo.accountFund}}</span>
 	</view>

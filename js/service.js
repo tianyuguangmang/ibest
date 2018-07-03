@@ -10,12 +10,11 @@ const getSupplierGoodsListUrl = "/supplier/product/list";
 const stockCartInfoSubmitUrl = "/msorder/save";
 const getStockOrderInfoUrl = "/msorder/info";
 const buyConfirmUrl = "/msorder/add";
-const getMerchantOrderUrl = "/submsorder/list";
+const getMerchantStockOrderUrl = "/submsorder/list";
 const getMerchantProductUrl = "/merchant/product/list";
 const getSupplierProductUrl = "/supplier/product/list";
 const toShelfGoodUrl = "/merchant/product/sell";
 const toShelfSupplierGoodUrl = "/supplier/product/sell";
-const merchantConfirmReceiveUrl = "/submsorder/status";
 const consumerConfirmReceiveUrl = "/cmorder/update";
 const addNewAddressUrl = "/address/add";
 const getAddressListUrl = "/address/list";
@@ -32,8 +31,22 @@ const registerSupplierUrl = '/supplier/register';
 const updateSupplierShopTimeUrl = "/supplier/shop/time";
 const updateMerchantShopTimeUrl = "/merchant/shop/time";
 const editorAddressUrl = "/address/update";
-const updateUserUrl = "/user/update"
+const updateUserUrl = "/user/update";
+const getMerchantDeliveryOrderUrl = "/cmorder/list";
+//供应商去发货
+const supplierDeliveryGoodsUrl = "/submsorder/send";
+//更新订单状态
+const updateMsOrderStateUrl = "/submsorder/status";
 var Service = {
+	updateMsOrderState: function(params,cb,failcb){
+		http.get(updateMsOrderStateUrl,params,cb,failcb);
+	},
+	supplierDeliveryGoods: function(params,cb,failcb){
+		http.post(supplierDeliveryGoodsUrl,params,cb,failcb);
+	},
+	getMerchantDeliveryOrder: function(params,cb,failcb){
+		http.get(getMerchantDeliveryOrderUrl,params,cb,failcb);
+	},
 	/*setDefaultAddress: function(params,cb,failcb){
 		http.json(editorAddressUrl,params,cb,failcb);
 	},*/
@@ -92,7 +105,7 @@ var Service = {
 		http.json(addNewAddressUrl,params,cb,failcb);
 	},
 	merchantConfirmReceive: function(params,cb,failcb){
-		http.get(merchantConfirmReceiveUrl,params,cb,failcb);
+		http.get(updateMsOrderStateUrl,params,cb,failcb);
 	},
 	getSupplierProduct:function(params,cb,failcb){
 		http.get(getSupplierProductUrl,params,cb,failcb,1);
@@ -108,7 +121,7 @@ var Service = {
 		http.get(getMerchantProductUrl,params,cb,failcb,1);
 	},
 	getMerchantOrder:function(params,cb,failcb){
-		http.get(getMerchantOrderUrl,params,cb,failcb);
+		http.get(getMerchantStockOrderUrl,params,cb,failcb);
 	},
 	//进货的确认购买
 	stockBuyConfirm:function(params,cb,failcb){

@@ -22,10 +22,10 @@
 			<i class="iconfont icon-shangpinguanli01 color1 clip" style="font-size:54rpx;"></i>
 			<span class="flex-1">进货列表</span>
 		</navigator>
-		<!-- <navigator class="item flex-y" url="/pages/msorder/msorder?type=MERCHANT">
+		<navigator class="item flex-y" url="/pages/cmorder/cmorder?type=MERCHANT">
 			<i class="iconfont icon-shangpinguanli01 color4 clip" style="font-size:54rpx;"></i>
 			<span class="flex-1">订单列表</span>
-		</navigator> -->
+		</navigator>
 		<navigator class="item flex-y" >
 			<i class="iconfont icon-erweima color1 clip" style="font-size:54rpx;"></i>
 			<span class="flex-1">推广二维码</span>

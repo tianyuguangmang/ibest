@@ -7,16 +7,8 @@ var isSubmiting = false;
 Page({
   data: {
     Size,
-    cateId:2,
-    phone:0,
-    contactPhone:0,
-    dataMsg:'',
-    noDataTip:'',
-    pageId:1,
-    size:20,
-    current:0,
-    nullMoreData:false,
-    dataLoading:false
+    cateId:1,
+  
     
   },
   /**
@@ -50,54 +42,13 @@ Page({
     })
 
   },
-  createSocket(){
-    app.createSocket(function(res){
-      if(res.data == "success"){
-        wx.showModal({
-          title: '温馨提示',
-          content:"有新的订单",
-          showCancel:false
-        })
-      }
-    })
-  },
-  closeSocket:function(){
-    app.closeSocket();
-  },
-  onHide:function(){
-    this.closeSocket();
-  },
+ 
   onShow:function(options){
-    var _this = this;
-    _this.noMoreData = false;
-    _this.current = 0;
-    /*_this.setData({
-      dataMsg:[{
-        shopName:"商铺名称",
-        id:"192732948824",
-        status:'TRADE_FINISHED',
-        deliveryFee:10,
-        totalFee:20,
-        productList:[{
-          title:"特价商品",
-          sku:"褐色",
-          originPrice:20,
-          currentPrice:10,
-          count:1,
-          mainImage:"https://img.alicdn.com/tfs/TB1EkSvdr_I8KJjy1XaXXbsxpXa-350-350.jpg_240x240xz.jpg_.webp",
-          productId:1
-        }]
-      }]
-    })*/
-    //_this.dataLoad(true); 
+    
   },
   toPay:function(currentTarget){
     var _dataId = app.getData(currentTarget,'id');
     var _index = app.getData(currentTarget,'index');
-
-   /* var params = {
-      tradeId:_dataId
-    };*/
     if(isSubmiting){
       return false;
     }
@@ -122,16 +73,11 @@ Page({
            },
            'fail':function(res){
             isSubmiting = false;
-           /* wx.switchTab({
-              url: '/pages/paybill/paybill'
-            })*/
            }
         })
       },function(){
       isSubmiting = false;
     })
-      /*service.prepay({trans})*/
-
     },function(){
       isSubmiting = false;
     })
@@ -143,152 +89,118 @@ Page({
     this.setData({
       cateId:cateId
     })
-    var _obj = this.orderMap["order_"+cateId];
-    if(_obj&&_obj.current){
-      this.current = _obj.current;
-    }else{
-      this.current =0;
-    }
-    //判断这个类目中是否有值
-    if(this.orderMap["order_"+this.cateId]&&this.orderMap["order_"+this.cateId].orderList){
-      this.dataLoad(false,false);
-    }else{
-      this.dataLoad(true,false);
-    }
-    
-    
-    
+    this.dataLoad(true);
   },
     //滚动到底部，加载更多的数据
   onReachBottom:function(e){
-    this.dataLoad(false,true);
+    this.dataLoad(false);
   },
-     // 下拉刷新
-  
+  // 下拉刷新
   onPullDownRefresh(){
     var _this = this;
-    //将所属类目中nomoredata 置为false
-    this.orderMap["order_"+this.data.cateId].noMoreData = false;
     this.current = 0;
-    this.dataLoad(true,false);
+    this.dataLoad(true);
     wx.stopPullDownRefresh();
-    
-  
   },
- /* lower:function(){
-    this.dataLoad();
-  },*/
-  dataLoading:false,
   noMoreData:false,
+  dataLoading:false,
   current:0,
-  size:20,
-  orderMap:{},
-  from:null,
+  size:4,
   /**
-   * 
-   * @param  {[type]} reload 是否重新加载
-   * @return {[type]}        [description]
+   * 数据加载
+   * @param  Boolean reload 是否重新加载
+   * @return Boolean more   是否加载更多
    */
-  dataLoad:function(reload,more){
-    console.log(111)
+  cateId:1,
+  dataLoad:function(reload){
     var _this = this;
-    var params = '';
-    var _id = this.cateId*1;
-    var _this = this;
-    if(_id==1){
-      params = {};
-    }else if(_id == 2){
-      params = {status:'WAIT_BUYER_PAY'};
+    var params = {
+      size:this.size,
+      current:this.current+1
+    };
+    if(reload){
+      params.current = 1;
+      this.noMoreData = false;
+    }
+    var _id = Number(this.cateId);
+    if(_id == 2){
+      params.status = 'WAIT_PAY';
     }else if(_id == 3){
-       params = {status:'WAIT_SELLER_SEND_GOODS'};
+      params.status = 'WAIT_SELLER_SEND_GOODS';
+    }else if(_id == 4){
+      params.status = 'WAIT_BUYER_CONFIRM_GOODS';
+    }else if(_id == 5){
+      params.status = 'TRADE_FINISHED';
     }
-    else if(_id == 4){
-       params = {status:'WAIT_BUYER_CONFIRM_GOODS'};
+    if(this.isMerchant){
+      params.merchantId = this.baseInfo.merchantInfo.mchtId;
+    }else{
+      params.supplierId = this.baseInfo.supplierInfo.supId;
     }
-    else if(_id == 5){
-       params = {status:'TRADE_FINISHED'};
-    }
-    var orderMap = this.orderMap;
-    //不是重新加载
-    //不是加载更多
-    //并且productMap 中存在 直接将数据取出使用
-    if(!more&&!reload&&orderMap["order_"+_id]&&orderMap["order_"+_id].orderList){
-      this.setData({
-        dataMsg:orderMap["order_"+_id].orderList
-      })
-      return ;
+    if(this.noMoreData){
+      return;
     }
     
-    if(orderMap["order_"+_this.cateId]&&orderMap["order_"+_this.cateId].noMoreData){
-      return false;
+    this.getData(params,reload);
+  },
+  getData:function(params,reload){
+    var _this = this;
+    if(_this.noMoreData){
+      return;
     }
-    if(this.dataLoading){
-      return false;
+    if(_this.dataLoading){
+      return;
     }
     _this.dataLoading = true;
- /*   service.getOrderDataList(Object.assign(params,{current:_this.current+1,size:_this.size}),function(res){
-      wx.hideLoading();
-      var _arr = reload?[]:_this.data.dataMsg||[];
-       _this.dataLoading = false;
-       _this.current =_this.current+1;
-      var noMoreData = false;
-      var record = res.data.results.records;
-      if(record){
-        _arr = _arr.concat(record);
-        if(record != _this.size){
-          noMoreData = true;
-        }
-        _this.orderMap["order_"+_id] = {
-          current:_this.current,
-          noMoreData:noMoreData,
-          orderList:_arr
-        }
-        _this.setData({
-          dataMsg:_arr
-        })
-      }else{
-       _this.dataLoading = false;
-      }
-    },function(res){
-      wx.hideLoading();
-      _this.dataLoading = false;
-    })*/
-  },
-  cateId:0,
-  getData:function(){
-    var _this = this;
-    service.getUserOrderList({current:1,size:10,userId:6},function(res){
+    service.getMerchantDeliveryOrder(params,function(res){
+      var originList = reload?[]:_this.data.dataMsg;
       var _list = res.data.result.list;
-     console.log(_list);
+      if(_list.length == _this.size){
+        _this.current = res.data.result.pageNum;
+      }else{
+        _this.noMoreData = true;
+      }
+      _list = originList.concat(_list);
       _this.setData({
         dataMsg:_list
       })
+      _this.dataLoading = false;
+    },function(){
+      _this.dataLoading = false;
     })
+  },
+  baseInfo:null,
+  isMerchant:null,
+  createSocket(){
+    var _this = this;
+    //var keyId = this.baseInfo;
+    app.createSocket(this.baseInfo.openId,function(res){
+      if(res.data == "success"){
+        wx.showModal({
+          title: '温馨提示',
+          content:"有新的订单",
+          showCancel:false,
+          success:function(res){
+            _this.dataLoad(true);
+          }
+        })
+      }
+    })
+  },
+  closeSocket:function(){
+    app.closeSocket();
+  },
+  onHide:function(){
+    this.closeSocket();
   },
   onLoad: function(options){
     var _this = this;
-    this.from = options.from;
-
-    if(!options.id){
-      var _id = 1;
-    }else{
-      var _id = options.id;
-    }
-    this.setData({
-      cateId:_id
-    })
-    this.cateId = _id;
-    this.getData();
+    if(options.type == 'MERCHANT') 
+      this.isMerchant = 1;
+    this.baseInfo = app.globalData.baseInfo;
+    this.dataLoad(true);
     this.createSocket();
 
-  
-    
-/*
-    var phone = app.globalData.shopGlobalMsg.serviceTelphone;
-    this.setData({
-      contactPhone:phone
-    })*/
-   
   },
   remindBusiness:function(){
     var _phone = app.globalData.shopGlobalMsg.serviceTelphone;
@@ -299,7 +211,6 @@ Page({
   },
   deleteOrder:function(currentTarget){
     var _this = this;
-
       var _id = app.getData(currentTarget,"id");
       var params = {
         id:_id
@@ -351,7 +262,7 @@ Page({
       orderId:_id,
       status:"CONFIRM_RECEIVE"
     };
-    service.consumerConfirmReceive(params,function(res){
+    service.merchantConfirmReceive(params,function(res){
      
      
     })
