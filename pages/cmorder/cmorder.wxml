@@ -16,10 +16,13 @@
 					<div class="service-number">订单编号：</div>
 					<div class="number flex-1">{{item.orderId}}</div>
 					<div class="states" wx:if="{{item.status=='WAIT_PAY'}}">待付款</div>
-					<div class="states" wx:if="{{item.status=='TRADE_CLOSED'}}">交易关闭</div>
-					<div class="states" wx:elif="{{item.status=='WAIT_SELLER_SEND_GOODS'}}">等待商家发货</div>
-					<div class="states" wx:elif="{{item.status=='WAIT_BUYER_CONFIRM_GOODS'}}">等待确认收货</div>
-					<div class="states" wx:elif="{{item.status=='TRADE_FINISHED'}}">交易成功</div>
+					<div class="states" wx:elif="{{item.status=='PAID'}}">待接单</div>
+					<div class="states" wx:elif="{{item.status=='RECEIVE_ORDER'}}">待送达</div>
+					<div class="states" wx:elif="{{item.status=='DELIVERY_FINISH'}}">已送达</div>
+					<div class="states" wx:elif="{{item.status=='CONFIRM_RECEIVE'}}">已收货</div>
+					<div class="states" wx:elif="{{item.status=='REFUSE_ORDER'}}">已拒单</div>
+					<div class="states" wx:elif="{{item.status=='FINISHED'}}">已完成</div>
+					<div class="states" wx:elif="{{item.status=='TRADE_CLOSE'}}">已关闭</div>
 					
 				</div>
 				<div class="order-protrait flex-xcs" wx:for="{{item.subOrderList}}" wx:for-item="it">
@@ -44,16 +47,11 @@
 				</view>
 				<div class="flex-x order-btn btl">
 					<div class="flex-1"></div>
-					<button class="call-contact" open-type="contact" wx:if="{{item.status=='WAIT_BUYER_PAY'}}" hover-class="none">联系客服</button>
-					<view class="call-contact" wx:if="{{item.status=='WAIT_BUYER_PAY'||item.status=='WAIT_BUYER_PAY'}}" bindtap="cancelOrder"  data-id="{{item.id}}">取消订单</view>
-					
-					<navigator class="finish-order" url="/pages/deliverystep/deliverystep?id={{item.id}}" wx:if="{{item.status=='TRADE_FINISHED'||item.status=='WAIT_BUYER_CONFIRM_GOODS'}}">查看物流</navigator>
-
-					<view class="finish-order btn" bindtap="toPay" data-id="{{item.id}}" data-index="{{index}}"  wx:if="{{item.status == 'WAIT_BUYER_PAY'}}" bindtap="toPay">立即支付</view>
-					<view class="finish-order"  data-id="{{item.id}}" wx:elif="{{item.status == 'TRADE_CLOSED'}}" bindtap="deleteOrder">删除订单</view>
-					<view class="finish-order btn"  data-id="{{item.id}}" wx:elif="{{item.status == 'WAIT_SELLER_SEND_GOODS'}}" bindtap="remindBusiness">提醒商家</view>
-					<view class="finish-order btn"  data-id="{{item.orderId}}" wx:elif="{{item.status == 'WAIT_PAY'}}" bindtap="confirmReceive">确认收货</view>
-					<view class="finish-order"  data-id="{{item.id}}" wx:elif="{{item.status == 'TRADE_FINISHED'}}" bindtap="deleteOrder">删除订单</view>
+					<block wx:if="{{item.status=='PAID'}}">
+						<view class="finish-order"  bindtap="refuseOrder"  data-id="{{item.orderId}}">拒绝接单</view>
+						<view bindtap="sendGoods" class="finish-order btn"  data-id="{{item.orderId}}">接单</view>
+					</block>
+					<view class="finish-order btn"  data-id="{{item.orderId}}" data-index="{{index}}" wx:elif="{{item.status == 'RECEIVE_ORDER'}}" bindtap="deliveryFinish">已送达</view>
 				</div>
 			</view>
 			<view wx:if="{{nullMoreData}}" class="no-more bg-w">没有更多数据啦</view>

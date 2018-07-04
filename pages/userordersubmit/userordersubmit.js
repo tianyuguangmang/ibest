@@ -54,7 +54,9 @@ Page({
       return;
     }
     service.userOrderSubmit({addressId:this.data.selectedAddress.addressId},function(res){
-      console.log(res);
+      wx.switchTab({
+        url: '/pages/myorder/myorder'
+      })
     })
   },
   onShow:function(){

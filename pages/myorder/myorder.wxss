@@ -49,7 +49,6 @@
 	margin-top: -20rpx;
 }
 .order-btn{
-	height: 80rpx;
 	line-height: 80rpx;
 	width:100%;
 	background: #fff;
@@ -124,6 +123,7 @@
 .finish-order{
 	color:#333;
 	width:158rpx;
+	margin:15rpx 0;
 	height: 54rpx;
 	border-radius: 27rpx;
 	font-size:28rpx;

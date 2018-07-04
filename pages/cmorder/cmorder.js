@@ -126,11 +126,11 @@ Page({
     if(_id == 2){
       params.status = 'WAIT_PAY';
     }else if(_id == 3){
-      params.status = 'WAIT_SELLER_SEND_GOODS';
+      params.status = 'PAID';
     }else if(_id == 4){
-      params.status = 'WAIT_BUYER_CONFIRM_GOODS';
+      params.status = 'WAIT_RECEIVE';
     }else if(_id == 5){
-      params.status = 'TRADE_FINISHED';
+      params.status = 'FINISHED';
     }
     if(this.isMerchant){
       params.merchantId = this.baseInfo.merchantInfo.mchtId;
@@ -233,28 +233,7 @@ Page({
 
    
   },
-  cancelOrder:function(currentTarget){
-     var _this = this;
-    var _id = app.getData(currentTarget,"id");
-    var params = {
-      id:_id
-    };
-    wx.showModal({
-    title: '提示',
-    content: '确定要取消这个订单吗？',
-    success: function(res) {
-      if (res.confirm) {
-        service.cancelOrder(params,function(res){
-          wx.redirectTo({
-            url: '/pages/myorder/myorder?id='+ _this.data.cateId
-          })
-        })
-      } else if (res.cancel) {
-      }
-    }
-  })
-   
-  },
+
   confirmReceive:function(currentTarget){
      var _this = this;
     var _id = app.getData(currentTarget,"id");
@@ -267,27 +246,66 @@ Page({
      
     })
   },
-  callPhone:function(){
-    var _phone = this.data.contactPhone;
-     wx.makePhoneCall({
-      phoneNumber: _phone //仅为示例，并非真实的电话号码
+  cancelOrder:function(currentTarget){
+    var _this = this;
+    wx.showModal({
+      title: '提示',
+      content: '确定要取消这个订单吗？',
+      success: function(res) {
+        if (res.confirm) {
+          _this.updateOrderState(currentTarget,"CANCEL_ORDER");
+        } 
+      }
     })
   },
-  toEvaluate:function(currentTarget){
-    var _index = app.getData(currentTarget,"index");
-    var _dataMsg = this.data.dataMsg;
-    app.globalData.needEvaluateOrder = _dataMsg[_index];
-    if(app.globalData.needEvaluateOrder){
-      wx.navigateTo({
-        url: '/pages/evaluateSubmit/evaluateSubmit'
+  //已送达
+  deliveryFinish:function(currentTarget){
+    var _this = this;
+    wx.showModal({
+      title: '提示',
+      content: '确定已经送达此订单吗？',
+      success: function(res) {
+        if (res.confirm) {
+          _this.updateOrderState(currentTarget,"DELIVERY_FINISH");
+        } else if (res.cancel) {
+        }
+      }
+    })
+  },
+  //已拒单
+  refuseOrder:function(currentTarget){
+    var _this = this;
+    wx.showModal({
+      title: '提示',
+      content: '确定要拒绝这个订单吗？',
+      success: function(res) {
+        if (res.confirm) {
+          _this.updateOrderState(currentTarget,"REFUSE_ORDER");
+        } else if (res.cancel) {
+        }
+      }
+    })
+  },
+  //已接单
+  sendGoods:function(currentTarget){
+    this.updateOrderState(currentTarget,"RECEIVE_ORDER");
+  },
+  finished:function(currentTarget){
+    this.updateOrderState(currentTarget,"FINISHED");
+  },
+  updateOrderState:function(currentTarget,state){
+    var _this = this;
+    var _id = app.getData(currentTarget,"id");
+    var params = {
+      orderId:_id,
+      status:state
+    };
+    service.updateCmOrderState(params,function(res){
+      wx.showToast({
+        title:"操作成功",
+        duration: 1000
       })
-    }
-    /* wx.showToast({
-      title: '该功能未开启',
-      icon: 'success',
-      image:"../../images/warnicon.png",
-      duration: 2000
-    })*/
-
+      _this.dataLoad(true);
+    })
   }
 })

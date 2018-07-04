@@ -1,9 +1,9 @@
 <view class="btl">
 	<view class="address" style="padding-bottom:20rpx; background: #fff;margin-bottom: 20rpx;" wx:if="{{selectedAddress}}">
-		<view class="item" >
+		<navigator class="item" url="/pages/address/address">
 			<view class="flex-x base"><div class="name flex-1">{{selectedAddress.name}}</div><div class="phone">{{selectedAddress.phone}}</div></view>
 			<view class="pos">{{selectedAddress.address+selectedAddress.detail}} </view>
-		</view>
+		</navigator>
 	</view>
 	<view class="menu" wx:else>
 		<navigator class="flex-x item" style="margin-bottom: 20rpx;" url="/pages/address/address">
@@ -35,7 +35,7 @@
 						<div class="price-number flex-1 flex-xsc">
 							<div class="price flex-x">
 								<div class="discount-price">￥{{item.resetPrice}}</div>
-								<div class="origin-price flex-1">￥{{item.originPrice}}</div>
+								<div class="origin-price flex-1"></div>
 								<div class="buy-count">x{{item.count}}</div>
 								
 							</div>

@@ -12,7 +12,7 @@ const getStockOrderInfoUrl = "/msorder/info";
 const buyConfirmUrl = "/msorder/add";
 const getMerchantStockOrderUrl = "/submsorder/list";
 const getMerchantProductUrl = "/merchant/product/list";
-const getSupplierProductUrl = "/supplier/product/list";
+const getSupplierProductUrl = "/sproduct/list";
 const toShelfGoodUrl = "/merchant/product/sell";
 const toShelfSupplierGoodUrl = "/supplier/product/sell";
 const consumerConfirmReceiveUrl = "/cmorder/update";
@@ -37,7 +37,12 @@ const getMerchantDeliveryOrderUrl = "/cmorder/list";
 const supplierDeliveryGoodsUrl = "/submsorder/send";
 //更新订单状态
 const updateMsOrderStateUrl = "/submsorder/status";
+//更新商家与用户的状态
+const updateCmOrderStateUrl = "/cmorder/update";
 var Service = {
+	updateCmOrderState: function(params,cb,failcb){
+		http.get(updateCmOrderStateUrl,params,cb,failcb);
+	},
 	updateMsOrderState: function(params,cb,failcb){
 		http.get(updateMsOrderStateUrl,params,cb,failcb);
 	},
@@ -108,7 +113,7 @@ var Service = {
 		http.get(updateMsOrderStateUrl,params,cb,failcb);
 	},
 	getSupplierProduct:function(params,cb,failcb){
-		http.get(getSupplierProductUrl,params,cb,failcb,1);
+		http.get(getSupplierProductUrl,params,cb,failcb);
 	},
 	toShelfGood:function(params,cb,failcb){
 		var url = toShelfGoodUrl;

@@ -1,3 +1,26 @@
+
+.title-box{
+	border-bottom: 1rpx solid #e5e5e5;
+	border-top: 1rpx solid #ddd;
+	position: fixed;
+	top:0px;
+	z-index: 1000;
+	width:100%;
+}
+.title-name{
+	height: 90rpx;
+	color:#bdbdbd;
+
+}
+.title-name div{
+	height: 100%;
+	line-height: 90rpx;
+	font-size:32rpx;
+}
+.selected{
+	color:#e56000;
+	border-bottom: 4rpx solid #e56000;
+}
 page{
 	height: 100%;
 	width: 100%;
@@ -28,12 +51,12 @@ page .title{
 	border-left: 9rpx solid #ff3d41;
 }
 .goods-list{
-	background: #fff;
 	height: 100%;
 }
 .goods-item{
-	padding:30rpx;
+	padding:20rpx 20rpx 0rpx 20rpx;
 	width:100%;
+	background: #fff;
 }
 .goods-item .img-box{
 	width:120rpx;
@@ -119,4 +142,5 @@ page .title{
 }
 .brief .editor{
 	color:#fe5600;
+	font-size: 30rpx;
 }

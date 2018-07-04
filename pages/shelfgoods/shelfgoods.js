@@ -8,71 +8,105 @@ import * as Size from '../../js/imagesize';
 Page({
 	data: {
 		Size,
-		menuList:[{id:1,name:"今日推荐"},{id:1,name:"推荐"},{id:1,name:"推荐"},{id:1,name:"推荐"},{id:1,name:"推荐"},{id:1,name:"推荐"}],
-		bannerList:[{pic:'https://ps.ssl.qhimg.com/sdmt/179_135_100/t010b0a4aa5bb6941c4.jpg'}],
-		goodsList:[{
-			productId:1,
-			title:'特价商品价商',
-			mainImage:'https://img.alicdn.com/tfs/TB1EkSvdr_I8KJjy1XaXXbsxpXa-350-350.jpg_240x240xz.jpg_.webp',
-			currentPrice:10,
-			sellCount:10,
-			onShelf:false,
-			originPrice:20
-		},{
-			productId:2,
-			title:'特价商品价商',
-			mainImage:'https://img.alicdn.com/tfs/TB1EkSvdr_I8KJjy1XaXXbsxpXa-350-350.jpg_240x240xz.jpg_.webp',
-			currentPrice:10,
-			sellCount:10,
-			onShelf:false,
-			originPrice:20
-		}]
+		cateId:1
 		
 	},
-
-	//页面分享功能
-	onShareAppMessage: function(res) {
-
-		return {
-			//longitude 经度 
-			//latitude 维度
-			title: app.globalData.title,
-			path: '/pages/mall/mall',
-			success: function(res) {
-				// 转发成功
-				wx.showToast({
-					title: '转发成功',
-					icon: 'success',
-					duration: 2000
-				})
-			},
-			fail: function(res) {
-
-			}
-		}
+	cateId:1,
+	changeCateId:function(currentTarget){
+	    var cateId = app.getData(currentTarget,"cateid");
+	    //类目保存
+	    this.cateId = cateId; 
+	    this.setData({
+	      cateId:cateId
+	    })
+	    this.dataLoad(true);
 	},
-	
-
-	
-	getSupplierProduct:function() {
+	dataLoad:function(reload){
+	    var _this = this;
+	    var params = {
+	      size:this.size,
+	      current:this.current+1,
+	    };
+	    if(reload){
+	      params.current = 1;
+	      this.noMoreData = false;
+	    }
+	    if(this.isMerchant){
+	      params.merchantId = this.baseInfo.merchantInfo.mchtId;
+	    }else{
+	      params.supplierId = this.baseInfo.supplierInfo.supId;
+	    }
+	    var _id = Number(this.cateId);
+	    if(_id == 2){
+	      params.status = 'WAIT_CHECK';
+	    }else if(_id == 3){
+	      params.status = 'PASS_CHECK';
+	    }else if(_id == 4){
+	      params.status = 'REFUSE_CHECK';
+	    }else if(_id == 5){
+	      params.status = 'STOP_USE';
+	    }
+	    if(this.noMoreData){
+	      return;
+	    }
+	    this.getData(params,reload);
+	},
+	noMoreData:false,
+  dataLoading:false,
+  current:0,
+  size:10,
+	getData:function(params,reload){
+    var _this = this;
+    if(_this.noMoreData){
+      return;
+    }
+    if(_this.dataLoading){
+      return;
+    }
+    _this.dataLoading = true;
+    if(this.isMerchant == 1){
+    	this.getMerchantProduct(params,reload);
+    }else{
+    	this.getSupplierProduct(params,reload);
+    }
+  },
+	getSupplierProduct:function(params,reload) {
 		var _this = this;
-		service.getSupplierProduct({current:1,size:10,supplierId:this.baseInfo.supplierInfo.supId},function(res){
-			_this.setData({
-				dataList:res.data.result.list
-			})
-		})
+		service.getSupplierProduct(params,function(res){
+      var originList = reload?[]:_this.data.dataList;
+      var _list = res.data.result.list;
+      if(_list.length == _this.size){
+        _this.current = res.data.result.pageNum;
+      }else{
+        _this.noMoreData = true;
+      }
+      _list = originList.concat(_list);
+      _this.setData({
+        dataList:_list
+      })
+      _this.dataLoading = false;
+    },function(){
+      _this.dataLoading = false;
+    })
 	},
-	getMerchantProduct:function() {
+	getMerchantProduct:function(params,reload) {
 		var _this = this;
-		service.getMerchantProduct({current:1,size:10,merchantId:this.baseInfo.merchantInfo.mchtId},function(res){
-			_this.setData({
-				dataList:res.data.result.list
-			})
-		})
-	},
-	toShelfGood: function(productId,onSell){
-
-
+		service.getMerchantProduct(params,function(res){
+      var originList = reload?[]:_this.data.dataList;
+      var _list = res.data.result.list;
+      if(_list.length == _this.size){
+        _this.current = res.data.result.pageNum;
+      }else{
+        _this.noMoreData = true;
+      }
+      _list = originList.concat(_list);
+      _this.setData({
+        dataList:_list
+      })
+      _this.dataLoading = false;
+    },function(){
+      _this.dataLoading = false;
+    })
 	},
 	editor:function(currentTarget){
 		var _this = this;
@@ -97,16 +131,17 @@ Page({
 	},
 	type:null,
 	baseInfo:null,
+	isMerchant:false,
 	onLoad:function(options){
 		this.baseInfo = app.globalData.baseInfo;
 		this.type = options.type;
 		if(this.type == 'MERCHANT'){
-			this.getMerchantProduct();
-		}
-		else{
-			this.getSupplierProduct();
-
+			this.isMerchant = true;
 		}
 		
+		
+	},
+	onShow:function(){
+		this.dataLoad(true);
 	}
 })

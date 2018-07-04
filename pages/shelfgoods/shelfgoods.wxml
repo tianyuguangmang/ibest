@@ -1,21 +1,43 @@
 
-<view class="flex-x index">
+
+
+<view class="index">
+	<view class="title-box flex-x bg-w">
+		<view class="flex-1 title-name flex-x"  data-cateid="1" bindtap="changeCateId"><div class="{{cateId==1?'selected':''}}">全部</div></view> 
+		<view class="flex-1 title-name flex-x"  data-cateid="2" bindtap="changeCateId"><div class="{{cateId==2?'selected':''}}">待审核</div></view>
+		<view class="flex-1 title-name flex-x"  data-cateid="3" bindtap="changeCateId"><div class="{{cateId==3?'selected':''}}">已通过</div></view>
+		<view class="flex-1 title-name flex-x"  data-cateid="4" bindtap="changeCateId"><div class="{{cateId==4?'selected':''}}">已拒绝</div></view>
+		<view class="flex-1 title-name flex-x"  data-cateid="5" bindtap="changeCateId"><div class="{{cateId==5?'selected':''}}">已停用</div></view>
+	</view>
+
 	<view class="flex-1 goods-list">
-		<view class="goods-item flex-xs" wx:for="{{dataList}}">
-			<view class="img-box">
-				<image class="" src="{{item.mainImage}}"></image>
-			</view>
-			<div class="brief flex-1 flex-y">
-				<div class="name">{{item.name}}</div>
-				<div class="sell flex-1">销量{{item.soldNumber}}件</div>
-				<div class="price flex-x">
-					<span style="font-size:24rpx;color:#f84f2f;">￥</span>
-					<span class="current-price">{{item.resetPrice}}</span><span class="origin-price lm">￥{{item.originPrice}}</span>
-					<span class="flex-1"></span>
-					<view class="flex-x editor"  data-index="{{index}}" bindtap="editor"><span wx:if="{{item.onSell}}">下架</span><span wx:else>上架</span></view>
-				
+		<view class="" style="height:100rpx;width:100%;"></view>
+		<view style="background: #fff;" wx:for="{{dataList}}">
+
+			<view class="goods-item flex-xs"  style="margin-top:10rpx;">
+				<view class="img-box">
+					<image class="" src="{{item.mainImage}}"></image>
+				</view>
+				<div class="brief flex-1 flex-y">
+					<div class="name">{{item.name}}</div>
+					<div class="sell flex-1">销量{{item.soldNumber?item.soldNumber:0}}件</div>
+					<div class="price flex-x">
+						<span style="font-size:24rpx;color:#f84f2f;">￥</span>
+						<span class="current-price" style="margin-top: -6rpx;margin-right: 0px;">{{item.originPrice}}元</span>
+						<span style="font-size:30rpx;color:#f84f2f;margin-top: -6rpx;">/</span>
+						<span style="font-size:30rpx;color:#f84f2f;margin-top: -6rpx;">{{item.baseCount}}</span>
+						<span style="font-size:30rpx;color:#f84f2f;margin-top: -6rpx;">个(件)</span>
+						<span class="flex-1"></span>
+						
+					</div>
 				</div>
-			</div>
+			</view>
+			<view class="flex-x" style="margin:10rpx 20rpx 20rpx 20rpx;">
+				<span class="flex-1"></span>
+				<!-- <navigator style="color:#aaa;font-size:30rpx;margin-right: 30rpx;" url="/pages/addnewgoods/addnewgoods?productId={{item.productId}}">编辑</navigator> -->
+				<span wx:if="{{item.onSell}}" style="color:#aaa;font-size:30rpx;" data-index="{{index}}" bindtap="editor">下架</span>
+				<span wx:else style="font-size:30rpx;color:#f84f2f;" data-index="{{index}}" bindtap="editor">上架</span>
+			</view>
 		</view>
 	</view>
 </view>

@@ -5,14 +5,15 @@
 			<i class="iconfont icon-weibiaoti2fuzhi08 color2 clip" style="font-size:54rpx;"></i>
 			<span class="flex-1">营业时间</span>
 		</navigator>
-		<navigator class="item flex-y" url='/pages/shelfgoods/shelfgoods?type=SUPPLIER'>
-			<i class="iconfont icon-shangpinguanli01 color1 clip" style="font-size:54rpx;"></i>
-			<span class="flex-1">商品管理</span>
-		</navigator>
 		<navigator class="item flex-y" url='/pages/addnewgoods/addnewgoods'>
 			<i class="iconfont icon-weibiaoti37 color1 clip" style="font-size:54rpx;"></i>
 			<span class="flex-1">添加商品</span>
 		</navigator>
+		<navigator class="item flex-y" url='/pages/shelfgoods/shelfgoods?type=SUPPLIER'>
+			<i class="iconfont icon-shangpinguanli01 color1 clip" style="font-size:54rpx;"></i>
+			<span class="flex-1">商品管理</span>
+		</navigator>
+		
 		<navigator class="item flex-y" url="/pages/msorder/msorder">
 			<i class="iconfont icon-liebiao color1 clip" style="font-size:54rpx;"></i>
 			<span class="flex-1">订单列表</span>

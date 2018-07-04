@@ -128,7 +128,7 @@ Page({
     }else if(_id == 3){
       params.status = 'PAID';
     }else if(_id == 4){
-      params.status = 'WAIT_REVEIVE';
+      params.status = 'WAIT_RECEIVE';
     }else if(_id == 5){
       params.status = 'FINISHED';
     }
@@ -215,46 +215,40 @@ Page({
     })
 
   },
+  refuseOrder:function(currentTarget){
+    var _this = this;
+    wx.showModal({
+      title: '提示',
+      content: '确定要拒绝这个订单吗？',
+      success: function(res) {
+        if (res.confirm) {
+          _this.updateOrderState(currentTarget,"REFUSE_ORDER");
+        } else if (res.cancel) {
+        }
+      }
+    })
+  },
   deleteOrder:function(currentTarget){
     var _this = this;
-      var _id = app.getData(currentTarget,"id");
-      var params = {
-        id:_id
-      };
-      wx.showModal({
-        title: '提示',
-        content: '确定要删除这个订单吗？',
-        success: function(res) {
-          if (res.confirm) {
-             service.deleteOrder(params,function(res){
-              wx.redirectTo({
-                url: '/pages/myorder/myorder?id='+ _this.data.cateId
-              })
-            })
-          } else if (res.cancel) {
-          }
-        }
-      })
-    
+    wx.showModal({
+      title: '提示',
+      content: '确定要删除这个订单吗？',
+      success: function(res) {
+        if (res.confirm) {
 
-   
+        } else if (res.cancel) {
+        }
+      }
+    })
   },
   cancelOrder:function(currentTarget){
-     var _this = this;
-    var _id = app.getData(currentTarget,"id");
-    var params = {
-      id:_id
-    };
+    var _this = this;
     wx.showModal({
     title: '提示',
     content: '确定要取消这个订单吗？',
     success: function(res) {
       if (res.confirm) {
-        service.cancelOrder(params,function(res){
-          wx.redirectTo({
-            url: '/pages/myorder/myorder?id='+ _this.data.cateId
-          })
-        })
+        _this.updateOrderState(currentTarget,"CANCEL_ORDER");
       } else if (res.cancel) {
       }
     }
@@ -274,7 +268,18 @@ Page({
       status:state
     };
     service.updateMsOrderState(params,function(res){
+      wx.showToast({
+        title:"操作成功",
+        duration: 1000
+      })
+      _this.dataLoad(true);
     })
+  },
+  refund:function(){
+
+  },
+  orderDetail:function(){
+
   },
   callPhone:function(){
     var _phone = this.data.contactPhone;
