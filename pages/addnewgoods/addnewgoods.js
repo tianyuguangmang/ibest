@@ -11,6 +11,7 @@ Page({
 		noMoreData: false,
 		hotList: null,
 		menuList:null,
+		productId:null,
 		menuIndex:0,
 		name:'',
 		originPrice:'',
@@ -37,13 +38,56 @@ Page({
 			}
 		}
 	},
-	onLoad:function(){
+	productId:null,
+	dataComputed:function(_menuList,productDetail){
+		var _menuIndex = null;
+		for(var i=0;i<_menuList.length;i++){
+			if(_menuList[i].cateId == productDetail.cateId){
+				_menuIndex = i;
+				break;
+			}
+		}
+		console.log(_menuIndex);
+		this.setData({
+			menuList:_menuList,
+			menuIndex:_menuIndex,
+			...productDetail
+		})
+
+	},
+	getProductDetail:function(){
+		var _this = this;
+		service.getSproductDetail({productId:this.productId},function(res){
+			var productDetail = res.data.result;
+			var _menuList = _this.data.menuList;
+			console.log(_menuList);
+			if(_menuList == null){
+				_this.getCateList(function(response){
+					 _menuList = response.data.result;
+
+					_this.dataComputed(_menuList,productDetail);
+				});
+				return;
+			}
+			_this.dataComputed(_menuList,productDetail);
+		})
+	},
+	onLoad:function(options){
 		this.getCateList();
+		this.productId = options.productId?options.productId:null;
+		if(this.productId){
+			this.getProductDetail();
+		}
+		
 	},
 	//获取分类列表
-	getCateList:function(){
+	getCateList:function(cb){
 		var _this = this;
 		service.getCateList(null,function(res){
+			if(cb){
+				cb(res);
+				return;
+			}
 			_this.setData({
 				menuList:res.data.result
 			})
@@ -108,6 +152,21 @@ Page({
 	        showCancel:false
 	      })
 	      return;
+	    }
+	    if(this.productId){
+	    	params.productId = this.productId
+	    	wx.showModal({
+		        title: '温馨提示',
+		        content:"确定修改完成吗？",
+		        showCancel:false,
+		        success:function(){
+		        	service.updateSproductGoods(params,function(res){
+						app.goBack("已提交");
+
+					});
+		        }
+		    })
+		    return;
 	    }
 	    wx.showModal({
 	        title: '温馨提示',

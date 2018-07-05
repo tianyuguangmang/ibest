@@ -39,7 +39,16 @@ const supplierDeliveryGoodsUrl = "/submsorder/send";
 const updateMsOrderStateUrl = "/submsorder/status";
 //更新商家与用户的状态
 const updateCmOrderStateUrl = "/cmorder/update";
+//获取商品详情
+const getSproductDetailUrl = "/supplier/product/detail";
+const updateSproductGoodsUrl = "/supplier/product/update";
 var Service = {
+	updateSproductGoods: function(params,cb,failcb){
+		http.json(updateSproductGoodsUrl,params,cb,failcb);
+	},
+	getSproductDetail: function(params,cb,failcb){
+		http.get(getSproductDetailUrl,params,cb,failcb);
+	},
 	updateCmOrderState: function(params,cb,failcb){
 		http.get(updateCmOrderStateUrl,params,cb,failcb);
 	},

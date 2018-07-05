@@ -10,11 +10,12 @@
 		<view class="flex-1 title-name flex-x"  data-cateid="5" bindtap="changeCateId"><div class="{{cateId==5?'selected':''}}">已停用</div></view>
 	</view>
 
-	<view class="flex-1 goods-list">
+	<view class="flex-1 goods-list" wx:if="{{dataList}}">
 		<view class="" style="height:100rpx;width:100%;"></view>
-		<view style="background: #fff;" wx:for="{{dataList}}">
-
-			<view class="goods-item flex-xs"  style="margin-top:10rpx;">
+		<block  wx:if="{{dataList.length>0}}">
+		<view  style="margin-top:10rpx;background: #fff;" wx:for="{{dataList}}">
+			<div class="flex-x bbl" style="padding: 10rpx 30rpx 20rpx 20rpx;color:#aaa;font-size:30rpx;"  wx:if="{{item.status == 'REFUSE_CHECK'||item.status=='STOP_USE'}}"><span>原因</span><span class="flex-1"></span><span>{{item.reason?item.reason:''}}</span></div>
+			<view class="goods-item flex-xs"  >
 				<view class="img-box">
 					<image class="" src="{{item.mainImage}}"></image>
 				</view>
@@ -32,14 +33,22 @@
 					</div>
 				</div>
 			</view>
-			<view class="flex-x" style="margin:10rpx 20rpx 20rpx 20rpx;">
+			<view class="flex-x btl" style="padding: 10rpx 30rpx 20rpx 20rpx;">
 				<span class="flex-1"></span>
-				<!-- <navigator style="color:#aaa;font-size:30rpx;margin-right: 30rpx;" url="/pages/addnewgoods/addnewgoods?productId={{item.productId}}">编辑</navigator> -->
+				<navigator style="color:#aaa;font-size:30rpx;margin-right: 30rpx;" url="/pages/addnewgoods/addnewgoods?productId={{item.productId}}">编辑</navigator> 
 				<span wx:if="{{item.onSell}}" style="color:#aaa;font-size:30rpx;" data-index="{{index}}" bindtap="editor">下架</span>
 				<span wx:else style="font-size:30rpx;color:#f84f2f;" data-index="{{index}}" bindtap="editor">上架</span>
 			</view>
 		</view>
+		</block>
+		<view class="no-data flex-y" wx:else>
+			<div class="order-img-box flex-x">
+				<image src="../../images/no_data.png"/>
+			</div>
+			<div style="margin-top:20rpx;">暂无相关记录</div>
+		</view>
 	</view>
+	
 </view>
 <!-- <view class="total flex-x">
 	
