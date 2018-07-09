@@ -34,7 +34,6 @@ Page({
 				})
 			},
 			fail: function(res) {
-
 			}
 		}
 	},
