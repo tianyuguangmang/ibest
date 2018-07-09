@@ -41,8 +41,38 @@ const updateMsOrderStateUrl = "/submsorder/status";
 const updateCmOrderStateUrl = "/cmorder/update";
 //获取商品详情
 const getSproductDetailUrl = "/supplier/product/detail";
+//更新供应商商品数据
 const updateSproductGoodsUrl = "/supplier/product/update";
+//获取银行卡列表
+const getBankCardListUrl= "/bankcard/list";
+//各个银行的信息
+const getBankListUrl = "/bank/list";4
+//添加银行卡
+const addBankCardUrl = "/bankcard/add";
+//删除银行卡
+const deleteBankCardUrl = "/bankcard/delete";
+//提现
+const withdrawUrl = "/withdraw/add"
 var Service = {
+
+	withdraw: function(params,cb,failcb){
+		http.json(withdrawUrl,params,cb,failcb);
+	},
+	supplierWithdraw: function(params,cb,failcb){
+		http.json(supplierWithdrawUrl,params,cb,failcb);
+	},
+	deleteBankCard: function(params,cb,failcb){
+		http.get(deleteBankCardUrl,params,cb,failcb);
+	},
+	addBankCard: function(params,cb,failcb){
+		http.json(addBankCardUrl,params,cb,failcb);
+	},
+	getBankList: function(params,cb,failcb){
+		http.get(getBankListUrl,params,cb,failcb);
+	},
+	getBankCard: function(params,cb,failcb){
+		http.get(getBankCardListUrl,params,cb,failcb);
+	},
 	updateSproductGoods: function(params,cb,failcb){
 		http.json(updateSproductGoodsUrl,params,cb,failcb);
 	},

@@ -1,0 +1,46 @@
+<view class="myshop">
+	<view class="address" style="padding:20rpx;background: #fff;margin-top: 20rpx;margin-bottom: 20rpx;" wx:if="{{selectedBankCard}}">
+		<navigator class="flex-x item" url="/pages/bankcard/bankcard" style="margin-top: 0px;">
+			<div class="flex-1 flex-y">
+				<div style="width:100%;">{{selectedBankCard.bankName}}</div>
+				<div style="width:100%;margin-top: 20rpx;">{{selectedBankCard.bankCardNumber}}</div>
+			</div>
+			<div class="right-icon flex-x">
+				<i class="iconfont icon-weibiaoti34 color clip" style="font-size:54rpx;"></i>
+			</div>
+		</navigator>
+	</view>
+	<view class="menu" wx:else>
+		<navigator class="flex-x item" style="margin-bottom: 20rpx;" url="/pages/bankcard/bankcard">
+			<div class="flex-1">请选择银行卡</div>
+			<div class="right-icon flex-x">
+				<i class="iconfont icon-weibiaoti34 color clip" style="font-size:54rpx;"></i>
+			</div>
+		</navigator>
+	</view>
+	<view class="flex-y box">
+		<view style="padding-top:30rpx;width:100%;color:#666;">提现金额(收取0.1%服务费)</view>
+		<div class="flex-x box-item">
+			<span style="color:#333;margin-right:10rpx;font-size:35rpx;">￥</span>
+			<input value="{{amount}}" type="text" placeholder="请输提现金额" class="flex-1" bindinput="inputAmount" />
+		</div>
+		<div class="flex-x box-item" style="height: 100rpx;">
+			<div class="flex-1">
+				<span style="color:#333;margin-right:40rpx;" wx:if="{{amount&&amount>0}}">服务费{{amount*0.001}}元</span>
+				<span style="color:#333;margin-right:40rpx;" wx:else>可用余额{{5000}}元</span>
+			</div>
+			<span style="color:#00b7d3;margin-right: 30rpx;" bindtap="allAmount">全部提现</span>
+		</div>
+		<!-- <div class="flex-x" style="height:120rpx;width:100%;">
+			<span style="color:#333;margin-right:40rpx;">验证码</span>
+			<input value="{{validateCode}}" type="number" placeholder="请输入验证码" class="flex-1" bindinput="inputValidate" />
+			<span style="padding:15rpx 40rpx;border-radius:40rpx;background:#ff3c42;color:#fff;margin-right:30rpx;" class="flex-x" bindtap="getValidateCode" wx:if="{{effectiveTime==0}}">发送验证码</span>
+			<span style="padding:15rpx 40rpx;border-radius:40rpx;background:#ccc;color:#fff;margin-right:30rpx;" class="flex-x" wx:else>{{effectiveTime}}s后重新发送</span>
+		</div> -->
+	</view>
+	<view class="flex-x btn-box">
+		<view class="btn flex-x" bindtap="onSubmit">
+			提交
+		</view>
+	</view>
+</view>

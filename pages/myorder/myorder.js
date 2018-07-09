@@ -176,13 +176,7 @@ Page({
   onLoad: function(options){
     var _this = this;
     this.baseInfo = app.globalData.baseInfo;
-    if(options.type == 'MERCHANT'){
-      this.isMerchant = 1;
-      this.setData({
-        isMerchant:1
-      })
-    }else{
-    }
+    
     
   },
   remindBusiness:function(){

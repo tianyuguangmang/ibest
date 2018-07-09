@@ -1,0 +1,32 @@
+<view class="address"  wx:if="{{dataList}}">
+	<block wx:if="{{dataList.length>0}}">
+		<view class="item"  wx:for="{{dataList}}">
+			<div bindtap="selectedThis"  data-id="{{item.bankCardId}}" data-index="{{index}}">
+			<!-- <view class="flex-x base">
+				<div class="name flex-1">{{item.realName}}</div>
+				<div class="phone">{{item.phone}}</div>
+			</view> -->
+			<view class="pos flex-x" style="padding-top: 20rpx;"><span class="flex-1">开户银行</span><span>{{item.bankName}}</span> </view>
+			<view class="pos flex-x"><span class="flex-1">银行卡号</span><span>{{item.bankCardNumber}}</span> </view>
+			</div>
+			<view class="btn flex-x btl">
+				<!-- <view class="default flex-1" data-id="{{item.addressId}}" data-index="{{index}}" wx:if="{{item.isDefault}}">默认地址</view>
+				<view class=" flex-1" bindtap="setDefault" data-id="{{item.addressId}}" data-index="{{index}}" wx:else>设为默认</view> -->
+				<view class="flex-1"></view>
+				<!-- <view class="editor" data-id="{{item.bankCardId}}" data-index="{{index}}" bindtap="editorBankCard">编辑</view> -->
+				<view class="dele" data-id="{{item.bankCardId}}" data-index="{{index}}" bindtap="deleteBankCard">删除</view>
+			</view>
+		</view>
+	</block>
+	<view class="no-data flex-y" wx:else>
+		<div class="order-img-box flex-x">
+			<image src="../../images/no_data.png"/>
+		</div>
+		<div>暂无银行卡</div>
+	</view>
+	<view class="btn-box flex-x">
+		<navigator class="btn flex-x" url="/pages/newbankcard/newbankcard">
+			新增银行卡
+		</navigator>
+	</view>
+</view>

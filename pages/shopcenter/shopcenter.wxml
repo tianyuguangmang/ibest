@@ -30,16 +30,16 @@
 			<i class="iconfont icon-erweima color1 clip" style="font-size:54rpx;"></i>
 			<span class="flex-1">推广二维码</span>
 		</navigator>
-	
-	<!-- 	<navigator class="item flex-y">
-		<i class="iconfont icon-yinxingqia-copy color3 clip" style="font-size:54rpx;"></i>
-		<span class="flex-1">银行卡</span>
-	</navigator>
-	<navigator class="item flex-y">
-		<i class="iconfont icon-tixian color1 clip" style="font-size:54rpx;"></i>
-		<span class="flex-1">提现</span>
-	</navigator>
-	 -->
+		<navigator class="item flex-y" url="/pages/withdraw/withdraw?type=MERCHANT">
+			<i class="iconfont icon-tixian color1 clip" style="font-size:54rpx;"></i>
+			<span class="flex-1">提现</span>
+		</navigator>
+		<navigator class="item flex-y" url="/pages/bankcard/bankcard?type=MERCHANT">
+			<i class="iconfont icon-yinxingqia-copy color3 clip" style="font-size:54rpx;"></i>
+			<span class="flex-1">银行卡</span>
+		</navigator>
+		
+
 	</view>
 	
 </view>

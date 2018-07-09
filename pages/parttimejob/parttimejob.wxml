@@ -1,5 +1,5 @@
 <view wx:if="baseInfo">
-	<baseinfo></baseinfo>
+	<baseinfo baseInfo="{{baseInfo}}"></baseinfo>
 	<view class="flex-wrap packet">
 		<!-- <navigator class="item flex-y" >
 			<i class="iconfont icon-xuanti-fuzeren color1 clip" style="font-size:54rpx;"></i>

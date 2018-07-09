@@ -8,7 +8,7 @@
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "1.9.9",
+	"libVersion": "2.1.1",
 	"appid": "wx005cb93df28521fb",
 	"projectname": "hgs_tygm",
 	"condition": {

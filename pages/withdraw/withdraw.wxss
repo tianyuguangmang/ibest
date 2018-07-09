@@ -1,0 +1,2 @@
+@import "../myshop/myshop.wxss";
+@import "../userordersubmit/userordersubmit.wxss";

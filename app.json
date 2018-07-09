@@ -1,8 +1,13 @@
 {
 
   "pages":[
-    
     "pages/my/my",
+    
+    "pages/withdraw/withdraw",
+    "pages/bankcard/bankcard",
+    "pages/newbankcard/newbankcard",
+    
+
     "pages/deliverygoodsmsg/deliverygoodsmsg",
     
     "pages/newaddress/newaddress",

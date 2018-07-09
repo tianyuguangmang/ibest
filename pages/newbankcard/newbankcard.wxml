@@ -1,0 +1,35 @@
+<view class="myshop">
+	
+	<view class="flex-y box">
+		<div class="flex-x box-item">
+			<span style="color:#333;margin-right:40rpx;">姓<span style="margin:0 28rpx;"></span>名</span>
+			<input value="{{name}}" type="text" placeholder="请输入真实姓名" class="flex-1" bindinput="inputName" />
+		</div>
+		
+		<div class="flex-x box-item">
+			<span style="color:#333;margin-right:40rpx;">手<span style="margin:0 8rpx;"></span>机<span style="margin:0 8rpx;"></span>号</span>
+			<input value="{{phone}}" type="number" placeholder="请输入手机号" class="flex-1" bindinput="inputPhone" />
+		</div>
+		<div class="flex-x box-item">
+			<span style="color:#333;margin-right:40rpx;">银行卡号</span>
+			<input value="{{bankCardNumber}}" type="number" placeholder="请输入银行卡号" class="flex-1" bindinput="inputBankCard" />
+		</div>
+		<div class="flex-x box-item">
+			<span style="color:#333;margin-right:40rpx;">开户银行</span>
+			<picker bindchange="bindPickerChange" value="{{menuIndex}}" range-key="bankName" class="flex-1" range="{{menuList}}">
+			    <view class="picker">
+			      {{menuList[menuIndex].bankName}}
+			    </view>
+			  </picker>
+			<div class="right-icon flex-x">
+				<i class="iconfont icon-weibiaoti34 color clip" style="font-size:50rpx;color:#ccc;"></i>
+			</div>
+		</div>
+	
+	</view>
+	<view class="flex-x btn-box">
+		<view class="btn flex-x" bindtap="toSubmit">
+			确定
+		</view>
+	</view>
+</view>
