@@ -32,7 +32,7 @@
 							<div class="price flex-x">
 								<div class="discount-price">￥{{item.resetPrice}}</div>
 								<div class="origin-price flex-1"></div>
-								<div class="buy-count">x{{10||item.count}}</div>
+								<div class="buy-count">x{{item.count}}</div>
 								
 							</div>
 							<!-- <div class="number flex-x">

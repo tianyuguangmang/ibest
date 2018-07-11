@@ -65,16 +65,26 @@ Page({
     }
    
   },
+  dataLoading:false,
 	toSubmit:function(){
+    var _this = this;
     var params = this.data.dataMsg;
+    if(_this.dataLoading)return;
+    _this.dataLoading = true;
     if(this.isMerchant == 1){
       service.updateMerchantShopTime(params,function(res){
+        _this.dataLoading = false;
         app.goBack("修改成功");
+      },function(){
+        _this.dataLoading = false;
       });
       return;
     }
     service.updateSupplierShopTime(params,function(res){
+      _this.dataLoading = false;
       app.goBack("修改成功");
+    },function(){
+      _this.dataLoading = false;
     })
 	},
 })

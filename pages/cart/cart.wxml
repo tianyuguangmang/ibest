@@ -2,7 +2,6 @@
 	<view wx:if="{{cartList}}">
 		<view class="cart-list" wx:if="{{cartList.length>0}}">
 			<block  wx:for="{{cartList}}">
-			
 				<view class="cart-item flex-x flex-1" style="width:100%">
 					<div class="select-btn flex-x">
 						<radio checked="{{item.selected}}" bindtap="selectedThisGoods" data-index="{{index}}"/>
@@ -14,7 +13,7 @@
 						<div class="title m-ellipsis">
 							{{item.name}}
 						</div>
-						<div class="goods-detail a-ellipsis">
+						<div class="goods-detail a-ellipsis" wx:if="{{item.sku}}">
 							{{item.sku}}
 						</div>
 						<div class="price-number flex-1 flex-xsc">
@@ -32,7 +31,6 @@
 						</div>
 					</div>
 				</view>
-			
 			</block>
 		</view>
 		<view class="no-data flex-y" wx:else>

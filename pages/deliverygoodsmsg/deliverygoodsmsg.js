@@ -34,7 +34,9 @@ Page({
       courier:e.detail.value
     })
   },
+  dataLoading: false,
   toSubmit:function(){
+    var _this = this;
     var params = {
       orderNumber:this.data.orderNumber,
       courier:this.data.courier,
@@ -64,15 +66,22 @@ Page({
         })
         return;
       }
-
+      if(this.dataLoading)return;
+      _this.dataLoading = true;
       wx.showModal({
           title: '温馨提示',
           content:"确定填写信息无误吗？",
           showCancel:false,
           success:function(){
             service.supplierDeliveryGoods(params,function(res){
+              _this.dataLoading = false;
               app.goBack("已提交");
+            },function(){
+              _this.dataLoading = false;
             });
+          },
+          fail:function(){
+            _this.dataLoading = false;
           }
       })
     }

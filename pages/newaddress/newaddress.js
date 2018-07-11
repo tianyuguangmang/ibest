@@ -15,28 +15,6 @@ Page({
 		detail:"3号楼403",
 		address:""
 	},
-
-	//页面分享功能
-	onShareAppMessage: function(res) {
-
-		return {
-			//longitude 经度 
-			//latitude 维度
-			title: app.globalData.title,
-			path: '/pages/mall/mall',
-			success: function(res) {
-				// 转发成功
-				wx.showToast({
-					title: '转发成功',
-					icon: 'success',
-					duration: 2000
-				})
-			},
-			fail: function(res) {
-
-			}
-		}
-	},
 	isEditor:null,
 	onLoad:function(options){
 
@@ -66,7 +44,9 @@ Page({
 			detail:e.detail.value
 		})
 	},
+	dataLoading:false,
 	onSubmit: function(){
+		var _this = this;
 		var params = {
 			name:this.data.name,
 			phone:this.data.phone,
@@ -115,10 +95,13 @@ Page({
 			})
 			return;
 		}
-
+		if(this.dataLoading){return}
+		_this.dataLoading = true;
 		service.addNewAddress(params,function(res){
+			_this.dataLoading = false;
 			app.goBack("添加成功");
-
+		},function(){
+			_this.dataLoading = false;
 		})
 	}
 })

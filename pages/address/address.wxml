@@ -16,6 +16,7 @@
 				<view class="dele" data-id="{{item.addressId}}" data-index="{{index}}" bindtap="deleteAddress">删除</view>
 			</view>
 		</view>
+		<view style="height:140rpx;" wx:if="{{dataList.length>3}}"></view>
 	</block>
 	<view class="no-data flex-y" wx:else>
 		<div class="order-img-box flex-x">
@@ -24,8 +25,8 @@
 		<div>暂无地址</div>
 	</view>
 	<view class="btn-box flex-x">
-		<navigator class="btn flex-x" url="/pages/newaddress/newaddress">
+		<view class="btn flex-x" catchtap="newAddressPage" >
 			新增地址
-		</navigator>
+		</view>
 	</view>
 </view>

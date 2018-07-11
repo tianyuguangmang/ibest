@@ -1,6 +1,6 @@
 {
 
-    "enablePullDownRefresh": true,
+    "enablePullDownRefresh": false,
     "onReachBottomDistance":50,
     "navigationBarTitleText": "地址"
     

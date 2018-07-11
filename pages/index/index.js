@@ -102,13 +102,7 @@ Page({
 		}else{
 			_cartInfo['pid_'+data.productId+'_skuid_1'] = {
 				count:data.count,
-				productId:data.productId,
-				title:data.title,//名称
-				resetPrice:data.resetPrice,
-				mainImage:data.mainImage,
-				originPrice:data.originPrice,
-				sku:'褐色',
-				skuId:0
+				productId:data.productId
 			}
 		}
 		wx.setStorageSync(app.CART_INFO,_cartInfo);
@@ -154,28 +148,48 @@ Page({
 	dataCurrent:1,
 	dataSize:10,
 	dataCateId:null,
+	cartGoods:function(_goodsList,_cartInfo){
+		if(_cartInfo&&_goodsList.length>0){
+			for(var i=0,_len = _goodsList.length;i<_len;i++){
+		    	if(_cartInfo['pid_'+_goodsList[i].productId+'_skuid_1']){
+		    		_goodsList[i].count = _cartInfo['pid_'+_goodsList[i].productId+'_skuid_1'].count;
+		    	}
+		    }
+		}
+		this.setData({
+			goodsList:_goodsList
+		})
+	},
+	onShow:function(){
+		var _cartInfo = wx.getStorageSync(app.CART_INFO);
+		var _goodsList = this.data.goodsList;
+
+		if(_cartInfo&&_goodsList){
+			this.cartGoods(_goodsList,_cartInfo);
+		}
+		
+	},
 	getDataList:function(){
 		var _this = this;
 		var params = {
 			current:this.dataCurrent,
 			size:this.dataSize,
-			//merchantId:this.mchtId
+			merchantId:this.mchtId
 		}
 		if(this.dataCateId) params.cateId = this.dataCateId;
 		service.merchantGoodsList(params,function(res){
 			var _goodsList = res.data.result.list;
-			var _cartInfo = _this.cartDataInfo;
-			if(_cartInfo&&_goodsList.length>0){
-				for(var i=0,_len = _goodsList.length;i<_len;i++){
-			    	if(_cartInfo['pid_'+_goodsList[i].productId+'_skuid_1']){
-			    		_goodsList[i].count = _cartInfo['pid_'+_goodsList[i].productId+'_skuid_1'].count;
-			    	}
-			    }
-			}
-			_this.setData({
-				goodsList:_goodsList
+			var _cartInfo = _this.cartInfo;
+			_this.cartGoods(_goodsList,_cartInfo);
+		},function(res){
+			wx.showModal({
+			  title: '温馨提示',
+			  content:res.data.error,
+			  showCancel:false,
+			  success: function(res) {
+			    
+			  }
 			})
-
 		})
 	},
 	cartDataInfo:null,

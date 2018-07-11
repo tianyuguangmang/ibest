@@ -1,7 +1,7 @@
 {
 
-    "enablePullDownRefresh": true,
+    "enablePullDownRefresh": false,
     "onReachBottomDistance":50,
-    "navigationBarTitleText": "成为供应商"
+    "navigationBarTitleText": "信息注册"
     
 }

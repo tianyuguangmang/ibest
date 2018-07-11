@@ -8,33 +8,8 @@ import * as Size from '../../js/imagesize';
 Page({
   data: {
     Size,
-    cartList:[],
+    cartList:null,
     countMoney:0
-    
-  },
-
-  //页面分享功能
-  onShareAppMessage: function(res) {
-
-    return {
-      //longitude 经度 
-      //latitude 维度
-      title: app.globalData.title,
-      path: '/pages/mall/mall',
-      success: function(res) {
-        // 转发成功
-        // 
-        // 
-        wx.showToast({
-          title: '转发成功',
-          icon: 'success',
-          duration: 2000
-        })
-      },
-      fail: function(res) {
-
-      }
-    }
   },
   selectedThisGoods:function(currentTarget){
     var _index = app.getData(currentTarget,"index");
@@ -46,30 +21,62 @@ Page({
     }else{
       _cartList[_index].selected = true;
       _amount += _cartList[_index].resetPrice*_cartList[_index].count;
-
     }
     this.setData({
       cartList:_cartList,
       countMoney:_amount
     })
-    
-
   },
+  getProductByIds:function(){
+    var _this = this;
+    service.getMproductByIds({
+      productIds:JSON.stringify(this.productIds)
+    },function(res){
+      var _list = res.data.result;
+      var _amount = 0;
+      for(var i=0;i<_list.length;i++){
+        if(_this.cartInfo['pid_'+_list[i].productId+'_skuid_1']){
+          _list[i].count = _this.cartInfo['pid_'+_list[i].productId+'_skuid_1'].count;
+          _amount += _list[i].count * _list[i].resetPrice;
+        }else{
+          _list[i].count = 0;
+        }
+        _list[i].selected = true;
+      }
+      _this.setData({
+        cartList:_list,
+        countMoney:_amount
+      })
+
+    })
+  },
+  productIds:[],
+  cartInfo:{},
   onShow:function(){
     var _this = this;
     var _cartInfo = wx.getStorageSync(app.CART_INFO);
+    this.cartInfo = _cartInfo;
+    console.log(_cartInfo);
     var _arr = [];
     var _amount = 0;
     for(var key in _cartInfo){
-      _cartInfo[key].selected = true;
-      _amount += _cartInfo[key].resetPrice*_cartInfo[key].count;
-      _arr.push(_cartInfo[key]);
+      /*_cartInfo[key].selected = true;
+      _amount += _cartInfo[key].resetPrice*_cartInfo[key].count;*/
+      _arr.push(_cartInfo[key].productId);
     }
-    console.log(_cartInfo);
-    _this.setData({
+    if(_arr.length>0){
+      _this.productIds = _arr;
+      this.getProductByIds();
+    }else{
+      _this.setData({
+        cartList:[]
+      })
+    }
+    
+   /* _this.setData({
       cartList:_arr,
       countMoney:_amount
-    })
+    })*/
     /*wx.getStorage({
       key: 'shop_cart_info',
       success: function(res) {
@@ -103,6 +110,7 @@ Page({
   merchantId:null,
   onLoad:function(){
     this.merchantId = app.globalData.merchantId||9;
+    
 
   }
 })

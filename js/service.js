@@ -52,9 +52,12 @@ const addBankCardUrl = "/bankcard/add";
 //删除银行卡
 const deleteBankCardUrl = "/bankcard/delete";
 //提现
-const withdrawUrl = "/withdraw/add"
+const withdrawUrl = "/withdraw/add";
+const getMproductByIdsUrl = "/merchant/product/cartlist"
 var Service = {
-
+	getMproductByIds: function(params,cb,failcb){
+		http.get(getMproductByIdsUrl,params,cb,failcb);
+	},
 	withdraw: function(params,cb,failcb){
 		http.json(withdrawUrl,params,cb,failcb);
 	},

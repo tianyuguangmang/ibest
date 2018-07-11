@@ -19,29 +19,6 @@ Page({
     
   },
 
-  //页面分享功能
-  onShareAppMessage: function(res) {
-
-    return {
-      //longitude 经度 
-      //latitude 维度
-      title: app.globalData.title,
-      path: '/pages/mall/mall',
-      success: function(res) {
-        // 转发成功
-        // 
-        // 
-        wx.showToast({
-          title: '转发成功',
-          icon: 'success',
-          duration: 2000
-        })
-      },
-      fail: function(res) {
-
-      }
-    }
-  },
   selectedAddress:function(){
 
   },
@@ -68,9 +45,10 @@ Page({
       })
 
     })
-
   },
+  dataLoading: false,
   buyConfirm:function(){
+    var _this = this;
     if(!this.data.selectedAddress||!this.data.selectedAddress.addressId){
       wx.showModal({
         title: '温馨提示',
@@ -79,10 +57,17 @@ Page({
       })
       return;
     }
+    if(_this.dataLoading){
+      return;
+    }
+    _this.dataLoading = true;
     service.stockBuyConfirm({addressId:this.data.selectedAddress.addressId,payType:'ACCOUNT'},function(res){
+      _this.dataLoading = false;
       wx.navigateTo({
         url: '/pages/msorder/msorder?type=MERCHANT'
       })
+    },function(){
+      _this.dataLoading = false;
     })
   },
   onShow:function(){

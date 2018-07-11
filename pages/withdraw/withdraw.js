@@ -74,7 +74,9 @@ Page({
       })
     }
   },
+  dataLoading:false,
   onSubmit: function(){
+    var _this = this;
     var bankCard = this.data.selectedBankCard;
     console.log(bankCard);
     if(!bankCard){
@@ -103,8 +105,13 @@ Page({
     if(this.isMerchant == 1){
       params.type = 1;
     }
+    if(_this.dataLoading)return;
+    _this.dataLoading = true;
     service.withdraw(params,function(res){
+      _this.dataLoading = false;
       app.goBack("请等待");
+    },function(){
+      _this.dataLoading = false;
     })
   }
 	

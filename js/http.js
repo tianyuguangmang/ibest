@@ -27,7 +27,7 @@ function request(contentType,type,url,params,successcb,failcb){
     success: function(res) {
     	if(res.data.code == 200){
     		successcb(res);
-    	}else{
+    	}else if(res.data.code == 555){
     		wx.hideLoading();
     		wx.showModal({
 			  title: '温馨提示',
@@ -43,7 +43,11 @@ function request(contentType,type,url,params,successcb,failcb){
 			    }
 			  }
 			})
-      }
+        }else{
+        	if(failcb){
+				failcb(res);
+			}
+        }
     },
     fail:function(res){
      	wx.hideLoading();   
@@ -109,9 +113,8 @@ const http = {
 			wx.login({
 			  success: function(res) {
 			    if (res.code) {
-			    	console.log(res);
 			      //发起网络请求
-			      http.login("/user/wxcode",{wxcode:res.code},function(res){
+			      	http.login("/user/wxcode",{wxcode:res.code},function(res){
 				  		var _openId = res.data.result.openId;
 				  		app.globalData.openId = _openId;
 				  		OpenId = _openId;

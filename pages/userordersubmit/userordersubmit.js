@@ -44,7 +44,9 @@ Page({
 
     })
   },
+  dataLoading:false,
   buyConfirm:function(){
+    var _this = this;
     if(!this.data.selectedAddress||!this.data.selectedAddress.addressId){
       wx.showModal({
         title: '温馨提示',
@@ -53,10 +55,19 @@ Page({
       })
       return;
     }
+    if(_this.dataLoading){
+      return;
+    }
+    _this.dataLoading = true;
     service.userOrderSubmit({addressId:this.data.selectedAddress.addressId},function(res){
+      _this.dataLoading = false;
+      //清除本地存储的购物车信息
+      wx.removeStorageSync(app.CART_INFO);
       wx.switchTab({
         url: '/pages/myorder/myorder'
       })
+    },function(){
+      _this.dataLoading = false;
     })
   },
   onShow:function(){

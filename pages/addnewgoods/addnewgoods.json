@@ -1,6 +1,6 @@
 {
 
-    "enablePullDownRefresh": true,
+    "enablePullDownRefresh": false,
     "onReachBottomDistance":50,
     "navigationBarTitleText": "添加新商品"
     

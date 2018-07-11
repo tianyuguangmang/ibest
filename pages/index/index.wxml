@@ -16,6 +16,7 @@
 		<view class="add-cart" bindtap="addToCart">+</view>
 		<view class="price">￥{{5}}</view>
 	</div> -->
+		<block wx:if="{{goodsList.length>0}}">
 		<view class="goods-item flex-xs" wx:for="{{goodsList}}">
 			<view class="img-box">
 				<image class="" src="{{item.mainImage}}"></image>
@@ -33,6 +34,13 @@
 					<view class="add-cart flex-x" bindtap="addToCart" data-index="{{index}}">+</view>
 				</div>
 			</div>
+		</view>
+		</block>
+		<view class="no-data flex-y" wx:else>
+			<div class="order-img-box flex-x">
+				<image src="../../images/no_data.png"/>
+			</div>
+			<div style="margin-top:20rpx;">暂无商品</div>
 		</view>
 	</view>
 </view>

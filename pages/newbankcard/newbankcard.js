@@ -49,7 +49,9 @@ Page({
 			name:e.detail.value
 		})
 	},
+	dataLoading: false,
 	toSubmit:function(){
+		var _this = this;
 		var params = {
 			userId:app.globalData.baseInfo.userId,
 			realName:this.data.name,
@@ -84,9 +86,13 @@ Page({
 	      })
 	      return;
 	    }
+	    if(this.dataLoading)return;
+	    this.dataLoading = true;
 	    service.addBankCard(params,function(res){
+	    	_this.dataLoading = false;
 			app.goBack("保存成功");
-
+		},function(){
+			_this.dataLoading = false;
 		});
 		
 

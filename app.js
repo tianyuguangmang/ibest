@@ -53,7 +53,8 @@ App({
   createSocket:function(keyId,cb){
     var _this = this;
     wx.connectSocket({
-      url: 'ws://192.168.26.124:8080/ibest/websocket?openId='+keyId,
+      url: 'ws://im.echgs.com/websocket?openId='+keyId,
+      //url: 'ws://192.168.26.111:8080/ibest/websocket?openId='+keyId,
     })
     wx.onSocketOpen(function(res) {
       console.log("连接成功");
@@ -119,8 +120,9 @@ App({
     userInfo: null,
     //用户访问的商户的id
     merchantId:null,
+    baseUrl:"https://im.echgs.com",
     //访问url
-    baseUrl:"http://192.168.26.124:8080/ibest",
+    //baseUrl:"http://192.168.26.113:8080/ibest",
     //用户的openId
     openId:'',
   },

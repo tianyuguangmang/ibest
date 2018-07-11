@@ -12,28 +12,6 @@ Page({
 		hotList: null
 	},
 
-	//页面分享功能
-	onShareAppMessage: function(res) {
-
-		return {
-			//longitude 经度 
-			//latitude 维度
-			title: app.globalData.title,
-			path: '/pages/mall/mall',
-			success: function(res) {
-				// 转发成功
-				wx.showToast({
-					title: '转发成功',
-					icon: 'success',
-					duration: 2000
-				})
-			},
-			fail: function(res) {
-
-			}
-		}
-	},
-
   getSupplierInfo:function(cb){
     var _baseInfo = app.globalData.baseInfo;
     if(_baseInfo&&_baseInfo.isSupplier == 1){
@@ -55,6 +33,7 @@ Page({
   getBaseInfo:function(){
     var _this = this;
     service.getBaseInfo((res) => {
+      app.globalData.baseInfo = res.data.result
       _this.setData({
         baseInfo:res.data.result
       })
@@ -62,8 +41,13 @@ Page({
     });
   },
   onLoad:function(){
-    this.getBaseInfo();
     
+    this.getBaseInfo();
+  },
+  // 下拉刷新
+  onPullDownRefresh(){
+    this.getBaseInfo();
+    wx.stopPullDownRefresh();
   },
 	chooseImage: function (currentTarget) {
       var _this =　this;

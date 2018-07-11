@@ -18,25 +18,7 @@ Page({
 		stock:"",
 		baseCount:''
 	},
-	//页面分享功能
-	onShareAppMessage: function(res) {
-		return {
-			//longitude 经度 
-			//latitude 维度
-			title: app.globalData.title,
-			path: '/pages/mall/mall',
-			success: function(res) {
-				// 转发成功
-				wx.showToast({
-					title: '转发成功',
-					icon: 'success',
-					duration: 2000
-				})
-			},
-			fail: function(res) {
-			}
-		}
-	},
+	
 	productId:null,
 	dataComputed:function(_menuList,productDetail){
 		var _menuIndex = null;
@@ -118,7 +100,9 @@ Page({
 			stock:e.detail.value
 		})
 	},
+	dataLoading:false,
 	toSubmit:function(){
+		var _this = this;
 		var params = {
 			name:this.data.name,
 			mainImage:"https://img.alicdn.com/tfs/TB1EkSvdr_I8KJjy1XaXXbsxpXa-350-350.jpg_240x240xz.jpg_.webp",
@@ -152,6 +136,10 @@ Page({
 	      })
 	      return;
 	    }
+	    if(this.dataLoading){
+	    	return;
+	    }
+	    this.dataLoading = true;
 	    if(this.productId){
 	    	params.productId = this.productId
 	    	wx.showModal({
@@ -160,9 +148,14 @@ Page({
 		        showCancel:false,
 		        success:function(){
 		        	service.updateSproductGoods(params,function(res){
+		        		_this.dataLoading = false;
 						app.goBack("已提交");
-
+					},function(){
+						_this.dataLoading = false;
 					});
+		        },
+		        fail:function(){
+		        	_this.dataLoading = false;
 		        }
 		    })
 		    return;
@@ -173,9 +166,14 @@ Page({
 	        showCancel:false,
 	        success:function(){
 	        	service.addNewGoods(params,function(res){
+	        		_this.dataLoading = false;
 					app.goBack("已提交");
-
+				},function(){
+					_this.dataLoading = false;
 				});
+	        },
+	        fail:function(){
+	        	_this.dataLoading = false;
 	        }
 	    })
 		

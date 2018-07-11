@@ -41,6 +41,6 @@
 		</navigator>
 		
 	</view>
-	<div class="" bindtap="sendSocketMessage">发送消息</div>
-	<div class="" bindtap="closeSocket">关闭</div>
+	<!-- <div class="" bindtap="sendSocketMessage">发送消息</div>
+	<div class="" bindtap="closeSocket">关闭</div> -->
 </view>
