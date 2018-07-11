@@ -120,9 +120,9 @@ App({
     userInfo: null,
     //用户访问的商户的id
     merchantId:null,
-    baseUrl:"https://im.echgs.com",
+    //baseUrl:"https://im.echgs.com",
     //访问url
-    //baseUrl:"http://192.168.26.113:8080/ibest",
+    baseUrl:"http://192.168.26.113:8080/ibest",
     //用户的openId
     openId:'',
   },

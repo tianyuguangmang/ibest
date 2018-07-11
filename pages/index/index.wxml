@@ -1,11 +1,13 @@
 
-<view class="flex-x index">
+<view class="flex-xs index">
 	<view class="title">
+		<scroll-view scroll-y  class="title-content">
 		<block wx:for="{{menuList}}">
 		<view class="item flex-x {{index == cateIndex?'selected':''}}" bindtap="changeCate" data-id="{{item.cateId}}" data-index="{{index}}">
 			{{item.title}}
 		</view>
 		</block>
+		</scroll-view>
 	</view>
 
 	<view class="flex-1 goods-list">

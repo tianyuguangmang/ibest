@@ -1,6 +1,6 @@
 page{
-	height: 100%;
 	width: 100%;
+	background: #fff;
 }
 page .index{
 	width:100%;
@@ -14,8 +14,17 @@ page .title{
 	background: #f7f7f7;
 	font-size:30rpx;
 	color:#000;
+	position: relative;
 
 }
+.title-content{
+	position: fixed;
+	left:0;
+	top:0;
+	width:200rpx;
+	height: 100%;
+}
+
 .title .item{
 	height: 100rpx;
 	width:100%;
