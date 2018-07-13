@@ -23,6 +23,7 @@ Page({
 		var _index = app.getData(currentTarget,"index");
 		var _cartInfo = this.cartInfo;
 		var productDetail = this.data.goodsList[_index];
+		productDetail.imgList = productDetail.imgList?JSON.parse(productDetail.imgList):[];
 		if(_cartInfo['pid_'+productDetail.productId+'_skuid_1']){
 			productDetail.count = _cartInfo['pid_'+productDetail.productId+'_skuid_1'].count;
 		}else{
@@ -82,26 +83,7 @@ Page({
 		this.getSupplierGoodsList();
 		this.getCateList();		
 	},
-	//页面分享功能
-	onShareAppMessage: function(res) {
-		return {
-			//longitude 经度 
-			//latitude 维度
-			title: app.globalData.title,
-			path: '/pages/mall/mall',
-			success: function(res) {
-				// 转发成功
-				wx.showToast({
-					title: '转发成功',
-					icon: 'success',
-					duration: 2000
-				})
-			},
-			fail: function(res) {
 
-			}
-		}
-	},
 	cartInfo:wx.getStorageSync(app.SHOP_CART_INFO)||{},
 	/**
 	 * 购物车本地存储数据格式 

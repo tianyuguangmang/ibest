@@ -31,6 +31,8 @@ page{
 	margin-top: 50rpx;
 	width:100%;
 
+	padding-bottom: 30rpx;
+
 }
 .btn-box .btn{
 	width:600rpx;
@@ -50,4 +52,37 @@ page{
 	height:120rpx;
 	width:100%;
 	border-bottom:1rpx solid #eee;
+}
+.add-icon-box{
+	position: relative;
+	width:300rpx;
+	height: 300rpx;
+	background: #fff;
+}
+
+.add-icon-box image{
+	width:300rpx;
+	height: 300rpx;
+}
+.add-icon-box .row{
+	position: absolute;
+	left:50%;
+	width:14rpx;
+	margin-left: -10rpx;
+	height: 150rpx;
+	top:50%;
+	margin-top: -75rpx;
+	border-radius: 10rpx;
+	background: #ccc;
+}
+.add-icon-box .column{
+	position: absolute;
+	left:50%;
+	width:150rpx;
+	margin-left: -75rpx;
+	height: 14rpx;
+	top:50%;
+	margin-top: -10rpx;
+	border-radius: 10rpx;
+	background: #ccc;
 }

@@ -1,5 +1,5 @@
 
-<view class="index">
+<view class="index {{showDetail?'hiden':''}}">
 	<!-- <view class="title">
 		<block wx:for="{{menuList}}">
 		<view class="item flex-x {{index == cateIndex?'selected':''}}" bindtap="changeCate" data-cateid="{{item.cateId}}" data-index="{{index}}">
@@ -47,10 +47,17 @@
 </view>
 <view class="bg-cover" hidden="{{!showDetail}}" bindtap="showDetailToggle"></view>
 <view class="goods-detail" hidden="{{!showDetail}}">
-	
-	<view class="img-content">
+	<swiper indicator-dots="{{true}}"
+	  autoplay="{{true}}" interval="{{3000}}" circular="{{true}}" duration="{{800}}" class="img-content">
+	  <block wx:for="{{productDetail.imgList}}">
+	    <swiper-item>
+	      <image src="{{item}}"/>
+	    </swiper-item>
+	  </block>
+	</swiper>
+	<!-- <view class="img-content">
 		<image src="{{productDetail.mainImage}}"></image>
-	</view>
+	</view> -->
 	<view class="goods-msg flex-ys">
 		<div class="name">{{productDetail.name}}</div>
 		<div class="sell-number">销量<span style="color:#fe5600;margin-left: 10rpx;">{{productDetail.soldNumber?item.soldNumber:0}}</span></div>

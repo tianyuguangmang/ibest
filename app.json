@@ -3,6 +3,12 @@
   "pages":[
     "pages/my/my",
     
+    "pages/stockordersubmit/stockordersubmit",
+
+
+    "pages/addnewgoods/addnewgoods",
+
+    
     "pages/withdraw/withdraw",
     "pages/bankcard/bankcard",
     "pages/newbankcard/newbankcard",
@@ -11,10 +17,8 @@
     "pages/deliverygoodsmsg/deliverygoodsmsg",
     
     "pages/newaddress/newaddress",
-    "pages/addnewgoods/addnewgoods",
     "pages/cmorder/cmorder",
     "pages/stockcart/stockcart",
-    "pages/stockordersubmit/stockordersubmit",
     "pages/shophours/shophours",
     
     "pages/myshop/myshop",

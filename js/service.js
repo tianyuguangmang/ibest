@@ -53,8 +53,14 @@ const addBankCardUrl = "/bankcard/add";
 const deleteBankCardUrl = "/bankcard/delete";
 //提现
 const withdrawUrl = "/withdraw/add";
-const getMproductByIdsUrl = "/merchant/product/cartlist"
+//通过商品id 批量获取
+const getMproductByIdsUrl = "/merchant/product/cartlist";
+//图片上传七牛token
+const qiniuTokenUrl = "/qiniu/token";
 var Service = {
+	qiniuToken: function(params,cb,failcb){
+		http.get(qiniuTokenUrl,params,cb,failcb);
+	},
 	getMproductByIds: function(params,cb,failcb){
 		http.get(getMproductByIdsUrl,params,cb,failcb);
 	},

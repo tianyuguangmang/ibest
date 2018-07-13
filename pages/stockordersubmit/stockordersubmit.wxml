@@ -18,7 +18,7 @@
 		<view class="cart-list" wx:if="{{dataMsg.orderList.length>0}}">
 			<block  wx:for="{{dataMsg.orderList}}">
 			
-				<view class="cart-item flex-x flex-1" style="width:100%">
+				<view class="cart-item flex-x flex-1" style="width:100%;padding-left: 20rpx;">
 				<!-- 	<div class="select-btn flex-x">
 					<radio checked="{{item.selected}}" bindtap="selectedThisGoods" data-index="{{index}}"/>
 				</div> -->
