@@ -5,15 +5,16 @@
 		<div class="img-box"></div>
 	</view>
 	<view class="flex-x item">
-		<div class="name">电话</div>
+		<div class="name">手机号</div>
 		<div class="flex-1"><input type="text" bindinput="inputPhone" value="{{phone}}"/></div>
 		<div class="img-box"></div>
 	</view>
 	<view class="flex-x item">
-		<div class="name">地址</div>
+		<div class="name">地<span style="margin:0 14rpx;"></span>址</div>
 		<div class="flex-1"><input type="text" bindinput="inputAddress" value="{{address}}" /></div>
 		<div class="img-box"></div>
 	</view>
+	<view style="color:#ff532c;padding:20rpx 0;font-size:26rpx;">此为商家的配送范围，如果改变，商家不一定配送</view>
 	<view class="flex-x item">
 		<div class="name">门牌号</div>
 		<div class="flex-1"><input type="text" placeholder="6号楼601室" bindinput="inputDetail" value="{{detail}}"/></div>

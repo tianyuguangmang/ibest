@@ -16,13 +16,17 @@ Page({
 		address:""
 	},
 	isEditor:null,
+	
 	onLoad:function(options){
-
 		if(options.type == 1){
 			this.isEditor = 1;
 			var _address = app.globalData.selectedAddress;
 			this.setData(_address);
+			return;
 		}
+		app.globalData.merchantId = 9;
+		this.getMerchantInfo();
+
 	},
 	inputName:function(e){
 		this.setData({

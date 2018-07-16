@@ -45,6 +45,8 @@
 				</view>
 			
 			</block>
+			<view class="flex-x" style="padding:20rpx 30rpx;color:#666;background: #fff;font-size:32rpx;"><span>金额:</span><span class="flex-1"></span><span style="">{{dataMsg.totalMoney}}元</span></view>
+			<view class="flex-x" style="padding:20rpx 30rpx;color:#666;background: #fff;font-size:32rpx;"><span>配送费:</span><span class="flex-1"></span><span style="">{{dataMsg.deliveryFee}}元</span></view>
 		</view>
 		<view class="no-data flex-y" wx:else>
 			<div class="order-img-box flex-x">
@@ -63,7 +65,7 @@
 		</div>
 		<div class="select-word">全选</div> -->
 		<div class="total-money flex-1 flex-x">
-			合计：<span class="money">￥{{dataMsg.totalMoney}}</span><span class="flex-1"></span>
+			合计：<span class="money">￥{{dataMsg.allFee}}</span><span class="flex-1"></span>
 		</div>
 		<view class="amount" bindtap="buyConfirm">
 			确认购买

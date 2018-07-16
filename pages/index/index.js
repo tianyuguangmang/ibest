@@ -113,7 +113,6 @@ Page({
 				goodsList:_list
 			})
 		}
-		
 	},
 	/**
 	 * 购物车减少
@@ -190,10 +189,29 @@ Page({
 		//});
 		
 	},
+	getMerchantInfo:function(){
+		var _this = this;
+		var _merchantInfo = app.globalData.merchantInfo;
+		if(_merchantInfo){
+			this.setData({
+				address:_merchantInfo.deliveryArea
+			})
+		}else{
+			if(app.globalData.merchantId){
+				service.getMerchantInfo({merchantId:app.globalData.merchantId},function(res){
+					app.globalData.merchantInfo = res.data.result;
+					_this.setData({
+						address:res.data.result.deliveryArea
+					})
+				})
+			}
+		}
+	},
 	onLoad:function(options){
 		var _this = this;
 		this.mchtId = options.merchantId||9;
 		app.globalData.merchantId = this.mchtId;
+		this.getMerchantInfo();
 		this.getCateList();
 		this.cartDataInfo = wx.getStorageSync(app.CART_INFO);
 		this.getDataList();	

@@ -60,7 +60,7 @@
 	text-align: center;
 }
 .number{
-	width:190rpx;
+	width:300rpx;
 	height: 60rpx;
 	border: 1px solid #ccc;
 }

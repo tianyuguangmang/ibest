@@ -60,7 +60,7 @@
 	</view> -->
 	<view class="goods-msg flex-ys">
 		<div class="name">{{productDetail.name}}</div>
-		<div class="sell-number">销量<span style="color:#fe5600;margin-left: 10rpx;">{{productDetail.soldNumber?item.soldNumber:0}}</span></div>
+		<div class="sell-number">销量<span style="color:#fe5600;margin-left: 10rpx;">{{productDetail.soldNumber?productDetail.soldNumber:0}}</span>笔</div>
 		<div class="price flex-x">
 			<span style="font-size:28rpx;margin-top: 8rpx;">￥</span>
 			<span>{{productDetail.resetPrice}}</span>

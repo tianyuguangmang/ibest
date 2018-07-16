@@ -118,7 +118,7 @@ Page({
 		if(_cartInfo['pid_'+_select.productId+'_skuid_1']){
 			_cartInfo['pid_'+_select.productId+'_skuid_1'].count += num;
 			if(_cartInfo['pid_'+_select.productId+'_skuid_1'].count<0){
-				_cartInfo['pid_'+_select.productId+'_skuid_1'] = 0;
+				_cartInfo['pid_'+_select.productId+'_skuid_1'].count = 0;
 			}
 		}else{
 			_cartInfo['pid_'+_select.productId+'_skuid_1'] = {

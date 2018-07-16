@@ -20,14 +20,14 @@
 							<div class="price flex-x">
 								<div class="discount-price">￥{{item.resetPrice}}</div>
 								<div class="origin-price flex-1"></div>
-								<div class="buy-count">x{{item.count}}</div>
+								<!-- <div class="buy-count">x{{item.count}}</div> -->
 								
 							</div>
-							<!-- <div class="number flex-x">
+							<div class="number flex-x">
 								<view class="flex-1 decrease" bindtap="decrease" data-index="{{index}}">-</view>
-								<input type="number" class="value" value="{{item.count}}" data-index="{{index}}" bindinput="changeCount"/>
+								<input disabled="{{true}}" type="number" class="value" value="{{item.count}}" data-index="{{index}}" />
 								<view class="flex-1 add" bindtap="add" data-index="{{index}}">+</view>
-							</div> -->
+							</div>
 						</div>
 					</div>
 				</view>
@@ -53,8 +53,16 @@
 			合计：<span class="money">￥{{countMoney}}</span>
 		</div>
 		<div class="flex-1"></div>
-		<view class="amount" bindtap="onSubmit">
-			结算
-		</view>
+		<block wx:if="{{merchantInfo}}">
+			<view class="amount" style="background: #ccc;" wx:if="{{countMoney<merchantInfo.sendPrice}}">
+				还差{{merchantInfo.sendPrice-countMoney}}元
+			</view>
+			<view class="amount" bindtap="onSubmit" wx:else>
+				结算
+			</view>
+		</block>
+		<block wx:else>
+			<view class="amount" >有错误,别点啦</view>
+		</block>
 	</view>
 </view>

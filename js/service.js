@@ -57,7 +57,12 @@ const withdrawUrl = "/withdraw/add";
 const getMproductByIdsUrl = "/merchant/product/cartlist";
 //图片上传七牛token
 const qiniuTokenUrl = "/qiniu/token";
+//商家的基础信息
+const merchantBaseInfoUrl = "/merchant/shop/baseinfo";
 var Service = {
+	updateMerchantBaseInfo: function(params,cb,failcb){
+		http.post(merchantBaseInfoUrl,params,cb,failcb);
+	},
 	qiniuToken: function(params,cb,failcb){
 		http.get(qiniuTokenUrl,params,cb,failcb);
 	},

@@ -15,7 +15,7 @@
 .item .name{
 	color:#666;
 	width:100rpx;
-	margin-right: 80rpx;
+	margin-right: 40rpx;
 	font-weight: bold;
 	text-align: center;
 	

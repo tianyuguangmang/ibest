@@ -12,11 +12,7 @@ Page({
 		dataMsg:{
 			sendPrice:'',
 			deliveryFee:'',
-			latitude:'',
-			longitude:'',
-			address:'',
-			detailAddress:'',
-
+      deliveryArea:''
 		},
 		
 		hotList: null
@@ -70,9 +66,9 @@ Page({
       }
   	})
 	},
-  inputDetailAddress:function(e) {
+  inputdeliveryArea:function(e) {
     var _dataMsg = this.data.dataMsg;
-    _dataMsg.detailAddress = e.detail.value;
+    _dataMsg.deliveryArea = e.detail.value;
     this.setData({
       dataMsg:_dataMsg
     })
@@ -91,27 +87,29 @@ Page({
       dataMsg:_dataMsg
     })
   },
-	//页面分享功能
-	onShareAppMessage: function(res) {
-		return {
-			//longitude 经度 
-			//latitude 维度
-			title: app.globalData.title,
-			path: '/pages/mall/mall',
-			success: function(res) {
-				// 转发成功
-				wx.showToast({
-					title: '转发成功',
-					icon: 'success',
-					duration: 2000
-				})
-			},
-			fail: function(res) {
-
-			}
-		}
-	},
+  onLoad:function(){
+    var baseInfo = app.globalData.baseInfo;
+    if(baseInfo){
+      this.setData({
+        dataMsg:{
+          sendPrice:baseInfo.merchantInfo.sendPrice,
+          deliveryFee:baseInfo.merchantInfo.deliveryFee,
+          deliveryArea:baseInfo.merchantInfo.deliveryArea,
+        }
+      })
+    }
+    
+  },
 	toSubmit:function(){
-		console.log(this.data.dataMsg);
+    var _this = this;
+    var params = _this.data.dataMsg;
+    service.updateMerchantBaseInfo(params,function(res){
+        app.globalData.baseInfo.merchantInfo.sendPrice = params.sendPrice;
+        app.globalData.baseInfo.merchantInfo.deliveryFee = params.deliveryFee;
+        app.globalData.baseInfo.merchantInfo.deliveryArea = params.deliveryArea;
+        app.goBack("修改成功");
+
+
+    })
 	},
 })

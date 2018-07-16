@@ -49,58 +49,5 @@ Page({
     this.getBaseInfo();
     wx.stopPullDownRefresh();
   },
-	chooseImage: function (currentTarget) {
-      var _this =　this;
-      var _evaluateList = this.data.evaluateList;
-      var _index = app.getData(currentTarget,"index");
-      if(_this.data.hasClick){
-          return false;
-      }
-      _this.setData({
-          hasClick:true,
-          colo: '#000'
-      })
-      var _count = _evaluateList[_index].imageList.length? _evaluateList[_index].imageList.length:0;
-      if(_count==6){
-          return false;
-      }
-      wx.chooseImage({
-        count:6-_count,
-        // count: _this.data.count[_this.data.countIndex],
-        sizeType: ['original','compressed'],//原图、压缩图
-        sourceType: ['album','camera'],//相片来源：相册、相机
-        success: function (res) {
-          var tempFilePaths = res.tempFilePaths;
-          var _arr = '';
-          for(let i = 0,_len = tempFilePaths.length;i<_len;i++){
-            wx.uploadFile({
-              url: 'https://upload.qiniup.com', //接口地址
-              filePath: tempFilePaths[i],
-              name: 'file',
-              formData:{
-                "token":_this.data.token
-              },
-              success: function(res){
-                var data = JSON.parse(res.data);
-               _arr = _evaluateList[_index].imageList||[];
-                var _imgPath = "https://img.chuanshangjia.com/"+data.key;
-                _arr.push(_imgPath)
-                _evaluateList[_index].imageList = _arr;
-                _this.setData({
-                    evaluateList:_evaluateList,
-                    hasClick:false
-                })
-                
-              },
-              fail: function (res) {
-                 _this.setData({
-                    hasClick:false
-                })
-                
-              }
-            })
-          }
-        }
-      })
-    },
+	
 })
