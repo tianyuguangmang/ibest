@@ -12,7 +12,7 @@ Page({
 		totalMoney:0,
 		menuList:[],
 		bannerList:[{pic:'https://ps.ssl.qhimg.com/sdmt/179_135_100/t010b0a4aa5bb6941c4.jpg'}],
-		goodsList:[],
+		goodsList:"",
 		//是否显示商品详情默认不显示
 		showDetail:false,
 		//选中的要显示的商品
@@ -23,7 +23,7 @@ Page({
 		var _index = app.getData(currentTarget,"index");
 		var _cartInfo = this.cartInfo;
 		var productDetail = this.data.goodsList[_index];
-		productDetail.imgList = productDetail.imgList?JSON.parse(productDetail.imgList):[];
+		productDetail.imgList = productDetail.imgList? typeof productDetail.imgList == "string"?JSON.parse(productDetail.imgList):productDetail.imgList:[];
 		if(_cartInfo['pid_'+productDetail.productId+'_skuid_1']){
 			productDetail.count = _cartInfo['pid_'+productDetail.productId+'_skuid_1'].count;
 		}else{
@@ -124,11 +124,6 @@ Page({
 			_cartInfo['pid_'+_select.productId+'_skuid_1'] = {
 				count:1,
 				productId:_select.productId,
-				name:_select.name,//名称
-				resetPrice:_select.resetPrice,
-				mainImage:_select.mainImage,
-				originPrice:_select.originPrice,
-				supplierId:_select.supplierId,
 				sku:'褐色',
 				skuId:0
 			}

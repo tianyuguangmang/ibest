@@ -17,33 +17,46 @@
 		</view>
   </scroll-view>
   <view style="height: 95rpx;"></view>
-	<view class="goods-list flex-wrap">
-	<!-- 	<div class="goods-item flex-y" wx:for="{{goodsList}}">
-		<image class="mainImag e" src="{{item.mainImage}}" mode="aspectFill"></image>
-		<div class="name flex-1">{{item.title}}</div>
-		<view class="add-cart" bindtap="addToCart">+</view>
-		<view class="price">￥{{5}}</view>
-	</div> -->
-		<view class="goods-item " wx:for="{{goodsList}}">
-			<view class="content" bindtap="showDetailLay" data-index="{{index}}" data-cateid="{{item.productId}}">
-				<view class="img-box">
-					<image class="" src="{{item.mainImage}}" mode="aspectFill"></image>
-				</view>
-				<div class="brief flex-1 flex-y">
-					<div class="name a-ellipsis">{{item.name}}</div>
+  	<block wx:if="{{goodsList}}">
+	  	<block wx:if="{{goodsList.length>0}}">
+			<view class="goods-list flex-wrap">
+			<!-- 	<div class="goods-item flex-y" wx:for="{{goodsList}}">
+				<image class="mainImag e" src="{{item.mainImage}}" mode="aspectFill"></image>
+				<div class="name flex-1">{{item.title}}</div>
+				<view class="add-cart" bindtap="addToCart">+</view>
+				<view class="price">￥{{5}}</view>
+			</div> -->
+				
 					
-					<div class="sell">销量{{item.soldNumber?item.soldNumber:0}}件</div>
-					<div class="price flex-x" style="color:#f84f2f;">
-						<span style="font-size:24rpx;margin-top: 8rpx;">￥</span>
-						<span>{{item.resetPrice}}</span><span style="font-size:24rpx;color:#333;margin:6rpx 5rpx 0 5rpx;">元/</span>
-						<span >{{item.baseCount}}</span>
-						<span class="flex-1" style="font-size:24rpx;color:#333;margin:6rpx 5rpx 0 5rpx;">个</span>
-						<!-- <span class="origin-price lm">￥{{item.originPrice}}</span> -->
-					</div>
-				</div>
+				<view class="goods-item " wx:for="{{goodsList}}">
+					<view class="content" bindtap="showDetailLay" data-index="{{index}}" data-cateid="{{item.productId}}">
+						<view class="img-box">
+							<image class="" src="{{item.mainImage}}" mode="aspectFill"></image>
+						</view>
+						<div class="brief flex-1 flex-y">
+							<div class="name a-ellipsis">{{item.name}}</div>
+							
+							<div class="sell">销量{{item.soldNumber?item.soldNumber:0}}件</div>
+							<div class="price flex-x" style="color:#f84f2f;">
+								<span style="font-size:24rpx;margin-top: 8rpx;">￥</span>
+								<span>{{item.resetPrice}}</span><span style="font-size:24rpx;color:#333;margin:6rpx 5rpx 0 5rpx;">元/</span>
+								<span >{{item.baseCount}}</span>
+								<span class="flex-1" style="font-size:24rpx;color:#333;margin:6rpx 5rpx 0 5rpx;">个</span>
+								<!-- <span class="origin-price lm">￥{{item.originPrice}}</span> -->
+							</div>
+						</div>
+					</view>
+				</view>
+					
 			</view>
+		</block>
+		<view class="no-data flex-y" wx:else>
+			<div class="order-img-box flex-x">
+				<image src="../../images/no_data.png"/>
+			</div>
+			<div style="margin-top:20rpx;">暂无相关记录</div>
 		</view>
-	</view>
+	</block>
 </view>
 <view class="bg-cover" hidden="{{!showDetail}}" bindtap="showDetailToggle"></view>
 <view class="goods-detail" hidden="{{!showDetail}}">
