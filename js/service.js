@@ -41,12 +41,15 @@ const updateMsOrderStateUrl = "/submsorder/status";
 const updateCmOrderStateUrl = "/cmorder/update";
 //获取商品详情
 const getSproductDetailUrl = "/supplier/product/detail";
+const getMproductDetailUrl = "/merchant/product/detail";
 //更新供应商商品数据
 const updateSproductGoodsUrl = "/supplier/product/update";
+//更新商家商品
+const updateMproductGoodsUrl = "/merchant/product/update";
 //获取银行卡列表
 const getBankCardListUrl= "/bankcard/list";
 //各个银行的信息
-const getBankListUrl = "/bank/list";4
+const getBankListUrl = "/bank/list";
 //添加银行卡
 const addBankCardUrl = "/bankcard/add";
 //删除银行卡
@@ -59,7 +62,20 @@ const getMproductByIdsUrl = "/merchant/product/cartlist";
 const qiniuTokenUrl = "/qiniu/token";
 //商家的基础信息
 const merchantBaseInfoUrl = "/merchant/shop/baseinfo";
+//商家进货时的购物车数据
+const stockCartListUrl = "/supplier/product/cartlist";
+//获取订单的token
+const getOrderTokenUrl = "/order/token";
 var Service = {
+	getStockCartList: function(params,cb,failcb){
+		http.get(stockCartListUrl,params,cb,failcb);
+	},
+	getOrderToken: function(params,cb,failcb){
+		http.get(getOrderTokenUrl,params,cb,failcb);
+	},
+	updateMproductGoods: function(params,cb,failcb){
+		http.post(updateMproductGoodsUrl,params,cb,failcb);
+	},
 	updateMerchantBaseInfo: function(params,cb,failcb){
 		http.post(merchantBaseInfoUrl,params,cb,failcb);
 	},
@@ -89,6 +105,9 @@ var Service = {
 	},
 	updateSproductGoods: function(params,cb,failcb){
 		http.json(updateSproductGoodsUrl,params,cb,failcb);
+	},
+	getMproductDetail: function(params,cb,failcb){
+		http.get(getMproductDetailUrl,params,cb,failcb);
 	},
 	getSproductDetail: function(params,cb,failcb){
 		http.get(getSproductDetailUrl,params,cb,failcb);

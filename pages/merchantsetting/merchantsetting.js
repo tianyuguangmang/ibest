@@ -12,67 +12,44 @@ Page({
 		dataMsg:{
 			sendPrice:'',
 			deliveryFee:'',
-      deliveryArea:''
+      amStartTime:'09:00',
+      amEndTime:'12:00',
+      pmStartTime:'14:00',
+      pmEndTime:'18:00',
 		},
 		
 		hotList: null
 	},
-	getSelectPos:function(){
-		var _this = this;
-		var _dataMsg = this.data.dataMsg;
-		wx.getSetting({
-      success(res) {
-        if (res.authSetting['scope.userLocation'] === false) {
-          wx.openSetting({
-            success: (res) => {
-              if (res.authSetting['scope.userLocation'] === true) {
-                wx.chooseLocation({
-                  success:function(data){
-                    _dataMsg.latitude = data.latitude;
-                    _dataMsg.longitude = data.longitude;
-                    _dataMsg.address = data.name;
-                    _this.setData({
-                     	dataMsg:_dataMsg
-                    })
-                  },
-                  fail:function(res){
-                    _this.setData({
-                     res:res
 
-                    })
-                  }
-                })
-
-              }
-            }
-          })
-        }else{
-          wx.chooseLocation({
-            success:function(data){
-              _dataMsg.latitude = data.latitude;
-              _dataMsg.longitude = data.longitude;
-              _dataMsg.address = data.name;
-              _this.setData({
-               	dataMsg:_dataMsg
-              })
-            },
-            fail:function(res){
-              _this.setData({
-               res:res
-              })
-            }
-          })
-        }
-      }
-  	})
-	},
-  inputdeliveryArea:function(e) {
+  bindTimeChange1: function(e) {
     var _dataMsg = this.data.dataMsg;
-    _dataMsg.deliveryArea = e.detail.value;
+    _dataMsg.amStartTime = e.detail.value;
     this.setData({
       dataMsg:_dataMsg
     })
   },
+  bindTimeChange2: function(e) {
+    var _dataMsg = this.data.dataMsg;
+    _dataMsg.amEndTime = e.detail.value;
+    this.setData({
+      dataMsg: _dataMsg
+    })
+  },
+  bindTimeChange3: function(e) {
+    var _dataMsg = this.data.dataMsg;
+    _dataMsg.pmStartTime = e.detail.value;
+    this.setData({
+      dataMsg:_dataMsg
+    })
+  },
+  bindTimeChange4: function(e) {
+    var _dataMsg = this.data.dataMsg;
+    _dataMsg.pmEndTime = e.detail.value;
+    this.setData({
+      dataMsg:_dataMsg
+    })
+  },
+ 
 	inputSendPrice:function(e) {
     var _dataMsg = this.data.dataMsg;
     _dataMsg.sendPrice = e.detail.value;
@@ -95,6 +72,10 @@ Page({
           sendPrice:baseInfo.merchantInfo.sendPrice,
           deliveryFee:baseInfo.merchantInfo.deliveryFee,
           deliveryArea:baseInfo.merchantInfo.deliveryArea,
+          amStartTime:baseInfo.merchantInfo.amStartTime,
+          amEndTime:baseInfo.merchantInfo.amEndTime,
+          pmStartTime:baseInfo.merchantInfo.pmStartTime,
+          pmEndTime:baseInfo.merchantInfo.pmEndTime,
         }
       })
     }
@@ -104,9 +85,7 @@ Page({
     var _this = this;
     var params = _this.data.dataMsg;
     service.updateMerchantBaseInfo(params,function(res){
-        app.globalData.baseInfo.merchantInfo.sendPrice = params.sendPrice;
-        app.globalData.baseInfo.merchantInfo.deliveryFee = params.deliveryFee;
-        app.globalData.baseInfo.merchantInfo.deliveryArea = params.deliveryArea;
+        app.globalData.baseInfo.merchantInfo = Object.assign(app.globalData.baseInfo.merchantInfo,params);
         app.goBack("修改成功");
 
 

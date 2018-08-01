@@ -15,7 +15,6 @@ Page({
 	onShow:function(){
 
 		var baseInfo = app.globalData.baseInfo;
-		console.log(baseInfo);
 		this.setData({
 			baseInfo:baseInfo
 		})

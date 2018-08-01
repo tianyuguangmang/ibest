@@ -24,6 +24,7 @@ Page({
 		var _cartInfo = this.cartInfo;
 		var productDetail = this.data.goodsList[_index];
 		productDetail.imgList = productDetail.imgList? typeof productDetail.imgList == "string"?JSON.parse(productDetail.imgList):productDetail.imgList:[];
+		console.log(productDetail);
 		if(_cartInfo['pid_'+productDetail.productId+'_skuid_1']){
 			productDetail.count = _cartInfo['pid_'+productDetail.productId+'_skuid_1'].count;
 		}else{
@@ -45,13 +46,19 @@ Page({
 		cateId = cateId?cateId:1;
 
 		var params = {
-			//cateId:cateId,
+			cateId:cateId,
 			size:10,
-			current:1
+			current:1,
+			onSell:1,
 		};
 		service.getSupplierGoodsList(params,function(res){
+			var _list = res.data.result.list;
+			_list.forEach(function(item,index){
+				_list[index].originPrice = app.dot2(item.originPrice);
+				_list[index].resetPrice = app.dot2(item.resetPrice);
+			})
 			_this.setData({
-				goodsList:res.data.result.list
+				goodsList:_list
 			})
 			
 		})
@@ -73,14 +80,14 @@ Page({
 			_this.setData({
 				menuList:res.data.result
 			})
-
+			_this.getSupplierGoodsList(res.data.result[0].cateId);
 
 
 		});
 	},
 	onLoad:function(){
 		var _this = this;
-		this.getSupplierGoodsList();
+		//this.getSupplierGoodsList();
 		this.getCateList();		
 	},
 

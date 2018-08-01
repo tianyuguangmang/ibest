@@ -7,3 +7,7 @@
 .total-money{
 	padding-left: 30rpx;
 }
+.number{
+	width: 200rpx;
+	margin-top: 10rpx;
+}

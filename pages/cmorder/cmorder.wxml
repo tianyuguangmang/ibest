@@ -34,16 +34,27 @@
 						</div>
 					</view>
 					<div class="price">
-						<div class="discount-price">￥{{it.resetPrice}}</div>
+						<div class="discount-price">售价：￥{{it.resetPrice}}</div>
+
+						<div class="discount-price" style="color:#999;">成本价：￥{{it.originPrice}}</div>
 						<!-- <div class="origin-price">￥{{it.originPrice}}</div> -->
-						<div class="buyer-number"><span>x{{it.count?it.count:1}}</span></div>
+						<div class="buyer-number"><span>x{{it.count}}</span></div>
 					</div>
 					
 				</div>
 				<view class="bg-w flex-x" style="font-size:24rpx;height:80rpx;">
 					
 					<div class="flex-1"></div>
-					<div style="padding-right:20rpx;">合计：￥<span style="font-size:30rpx;margin-right:5rpx;">{{item.totalMoney}}</span></div>
+					<div style="padding-right:20rpx;">总价：￥<span style="font-size:30rpx;margin-right:5rpx;">{{item.allFee}}</span></div>
+					<div style="padding-right:20rpx;">成本：￥<span style="font-size:30rpx;margin-right:5rpx;">{{item.finalCost}}</span></div>
+					<div style="padding-right:20rpx;color:#e56000;">盈利：￥<span style="font-size:30rpx;margin-right:5rpx;">{{item.gainsMoney + item.deliveryFee}}</span></div>
+					
+				</view>
+				<view class="address btl" style="padding-bottom:20rpx; background: #fff;">
+					<div class="item" >
+						<view class="flex-x base"><div class="name flex-1">{{item.cName}}</div><div class="phone">{{item.cPhone}}</div></view>
+						<view class="pos">{{item.cAddress+item.cDetailAddress}} </view>
+					</div>
 				</view>
 				<div class="flex-x order-btn btl">
 					<div class="flex-1"></div>

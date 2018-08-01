@@ -11,33 +11,17 @@ Page({
     cartList:[]
     
   },
-  onShareAppMessage: function(res) {
 
-    return {
-      //longitude 经度 
-      //latitude 维度
-      title: app.globalData.title,
-      path: '/pages/mall/mall',
-      success: function(res) {
-        // 转发成功
-        // 
-        // 
-        wx.showToast({
-          title: '转发成功',
-          icon: 'success',
-          duration: 2000
-        })
-      },
-      fail: function(res) {
-
-      }
-    }
-  },
   
   getUserOrderInfo:function(){
     var _this = this;
     service.getUserOrderInfo({},function(res){
       var _dataMsg = res.data.result;
+      _dataMsg.totalMoney = app.dot2(_dataMsg.totalMoney);
+      _dataMsg.allFee = app.dot2(_dataMsg.allFee);
+      _dataMsg.subOrderList.forEach(function(item,index){
+        _dataMsg.subOrderList[index].resetPrice = app.dot2(item.resetPrice);
+      })
       _this.setData({
         dataMsg:_dataMsg
       })
@@ -59,7 +43,7 @@ Page({
       return;
     }
     _this.dataLoading = true;
-    service.userOrderSubmit({addressId:this.data.selectedAddress.addressId},function(res){
+    service.userOrderSubmit({addressId:this.data.selectedAddress.addressId,token:this.data.token},function(res){
       _this.dataLoading = false;
       //清除本地存储的购物车信息
       wx.removeStorageSync(app.CART_INFO);
@@ -68,6 +52,7 @@ Page({
       })
     },function(){
       _this.dataLoading = false;
+      _this.getOrderToken();
     })
   },
   onShow:function(){
@@ -78,9 +63,18 @@ Page({
     }
    
   },
+  getOrderToken:function(){
+    var _this = this;
+    service.getOrderToken(null,function(res){
+      _this.setData({
+        token:res.data.result
+      })
+    })
+  },
   
   onLoad:function(options){
     this.getUserOrderInfo();
+    this.getOrderToken();
 
   }
 })

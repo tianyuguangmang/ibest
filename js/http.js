@@ -97,6 +97,7 @@ const http = {
 			  		app.globalData.openId = _openId;
 			  		OpenId = _openId;
 			  		app.globalData.baseInfo = res.data.result;
+			  		
 			  		if(cb)cb(res);
 			    })
 			  }

@@ -1,4 +1,4 @@
-
+@import "../iconfont.wxss";
 page{
 	font-size:30rpx;
 }
@@ -45,4 +45,16 @@ page{
 }
 .picker{
 	height: 100%;
+}
+.open-set{
+	background:#1aad16;
+	padding:20rpx;
+	border-radius: 20rpx;
+	font-size:32rpx;
+	margin-right: 30rpx;
+	color:#fff;
+
+}
+.no-msg{
+	color:#666;
 }

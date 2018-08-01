@@ -1,0 +1,10 @@
+<view>
+	<view class="" wx:for="{{list}}">
+		<div class="">{{item}}</div>
+	</view>
+	<view class=""  style="position: fixed; bottom: 0px;">
+		<div class="" bindtap="add" data-msg="添加1">添加1</div>
+		<div class="" bindtap="add" data-msg="添加2">添加2</div>
+		<div class="" bindtap="add" data-msg="添加3">添加3</div>
+	</view>
+</view>

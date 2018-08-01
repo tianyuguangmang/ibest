@@ -80,7 +80,7 @@ page{
   	padding:0 15rpx;
   }
   .brief .name{
-	font-size:28rpx;
+	font-size:32rpx;
 	height: 35rpx;
 	line-height: 35rpx;
   }

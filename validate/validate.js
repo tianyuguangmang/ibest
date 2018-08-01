@@ -26,3 +26,9 @@ export const length8 = (value) => {
 	}
 	return false;
 }
+export const hasDot = (value) => {
+	if((value*100)%1>0){
+		return false;
+	}
+	return true;
+}

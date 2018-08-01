@@ -2,10 +2,11 @@
 	<view class="avatar">
 		<image class="img" src="{{baseInfo.avatar?baseInfo.avatar:'/images/avatar.png'}}"></image>
 	</view>
-	<view class="name">{{baseInfo.nickName}}</view>
-	<view class="score" wx:if="{{baseInfo}}">
-		<span wx:if="{{baseInfo.isSupplier == 1}}">账户余额:{{baseInfo.supplierInfo.accountFund}}</span>
-		<span wx:if="{{baseInfo.isMerchant == 1}}" style="margin-left: 30rpx;">账户余额:{{baseInfo.merchantInfo.accountFund}}</span>
+	<view class="name">{{baseInfo.nickName?baseInfo.nickName:"匿名"}}</view>
+	<view class="score flex-x" wx:if="{{baseInfo}}">
+		<span wx:if="{{baseInfo.isSupplier == 1}}" style="margin-right: 30rpx;">账户余额:{{baseInfo.supplierInfo.accountFund*0.01}}</span>
+		<span wx:if="{{baseInfo.isMerchant == 1}}" >账户余额:{{baseInfo.merchantInfo.accountFund*0.01}}</span>
+		<span class="flex-1"></span>
 	</view>
 </view>
 

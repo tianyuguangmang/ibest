@@ -16,7 +16,29 @@ Page({
 		address:""
 	},
 	isEditor:null,
-	
+
+	handleChooseLocation:function(){
+    var _this = this;
+    var _dataMsg = {};
+    wx.chooseLocation({
+      success:function(data){
+        data.city = data.address.substring(0,data.address.indexOf("市")+1);
+        console.log(data);
+        delete data["name"];
+        _this.setData(data)
+      },
+      fail:function(res){
+        _this.setData({
+         res:res
+
+        })
+      }
+    })
+  },
+  getSelectPos:function(){
+    var _this = this;
+    _this.handleChooseLocation();
+  },
 	onLoad:function(options){
 		if(options.type == 1){
 			this.isEditor = 1;
@@ -24,8 +46,6 @@ Page({
 			this.setData(_address);
 			return;
 		}
-		app.globalData.merchantId = 9;
-		this.getMerchantInfo();
 
 	},
 	inputName:function(e){
@@ -55,7 +75,10 @@ Page({
 			name:this.data.name,
 			phone:this.data.phone,
 			address:this.data.address,
-			detail:this.data.detail
+			detail:this.data.detail,
+			longitude:this.data.longitude.toString(),
+			latitude:this.data.latitude.toString(),
+			city:this.data.city,
 		}
 		if(!app.required(params.name)){
 			wx.showModal({

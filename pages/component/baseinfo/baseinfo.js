@@ -5,8 +5,6 @@ Component({
       type: Object,
       value:{},
       observer: function(newVal, oldVal, changedPath) {
-        console.log("1,",newVal);
-        console.log("2,",changedPath);
       }
     }
   },
@@ -18,7 +16,7 @@ Component({
     
   },
   ready:function(){
-    
+
   },
   methods: {
     // 这里是一个自定义方法

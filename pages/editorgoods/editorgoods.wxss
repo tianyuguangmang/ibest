@@ -49,7 +49,7 @@ page{
 	border-bottom:1rpx solid #ddd;
 }
 .box .box-item{
-	height:100rpx;
+	height:120rpx;
 	width:100%;
 	border-bottom:1rpx solid #eee;
 }

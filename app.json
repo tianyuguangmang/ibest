@@ -1,9 +1,17 @@
 {
 
   "pages":[
-    "pages/userordersubmit/userordersubmit",
     "pages/my/my",
+    
     "pages/newaddress/newaddress",
+    
+
+    "pages/myshop/myshop",
+
+    "pages/stockcart/stockcart",
+
+    "pages/editorgoods/editorgoods",
+    "pages/userordersubmit/userordersubmit",
     "pages/stockordersubmit/stockordersubmit",
     "pages/addnewgoods/addnewgoods",
     "pages/withdraw/withdraw",
@@ -11,9 +19,7 @@
     "pages/newbankcard/newbankcard",
     "pages/deliverygoodsmsg/deliverygoodsmsg",
     "pages/cmorder/cmorder",
-    "pages/stockcart/stockcart",
     "pages/shophours/shophours",
-    "pages/myshop/myshop",
     "pages/messagecollect/messagecollect",
     "pages/address/address",
     "pages/myorder/myorder",
@@ -29,6 +35,8 @@
     "pages/servicecenter/servicecenter",
     "pages/shopsettle/shopsettle",
     "pages/cart/cart",
+    "pages/test/test",
+
     "pages/mall/mall"
   ],
   

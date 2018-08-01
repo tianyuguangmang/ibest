@@ -44,6 +44,9 @@ App({
     }
 
   },
+  dot2:function(value){
+    return (value*0.01).toFixed(2);
+  },
   socketOpen:false,
   /**
    * 创建socket
@@ -62,6 +65,7 @@ App({
     })
     wx.onSocketMessage(cb)
     wx.onSocketClose(function(res) {
+      console.log("连接关闭");
     })
   },
   closeSocket: function(){
@@ -124,7 +128,7 @@ App({
     merchantInfo:null,
     //baseUrl:"https://im.echgs.com",
     //访问url
-    baseUrl:"http://192.168.26.112:8080/ibest",
+    baseUrl:"http://192.168.43.90:8080/ibest",
     //用户的openId
     openId:'',
   },

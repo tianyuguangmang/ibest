@@ -33,9 +33,9 @@
 						</div>
 					</view>
 					<div class="price">
-						<div class="discount-price" wx:if="{{isMerchant == 1}}">￥{{item.resetPrice}}</div>
-						<div class="discount-price" wx:else>￥{{item.originPrice}}</div>
-						<div class="buyer-number"><span>x{{item.count}}</span></div>
+						<div class="discount-price" wx:if="{{isMerchant == 1}}">￥{{item.resetPrice}}元/{{item.baseCount}}个(件)</div>
+						<div class="discount-price" wx:else>￥{{item.originPrice}}元/{{item.baseCount}}个(件)</div>
+						<div class="buyer-number"><span>x{{item.count}}组</span></div>
 					</div>
 					
 				</div>
@@ -45,6 +45,12 @@
 					<div style="padding-right:20rpx;"> 合计：￥
 						<span style="font-size:30rpx;margin-right:5rpx;" wx:if="{{isMerchant == 1}}">{{item.totalMoney}}</span>
 						<span style="font-size:30rpx;margin-right:5rpx;" wx:else>{{item.finalCost}}</span>
+					</div>
+				</view>
+				<view class="address btl" style="padding-bottom:20rpx; background: #fff;">
+					<div class="item" >
+						<view class="flex-x base"><div class="name flex-1">{{item.mName}}</div><div class="phone">{{item.mPhone}}</div></view>
+						<view class="pos">{{item.mAddress+item.mDetailAddress}} </view>
 					</div>
 				</view>
 				<div class="flex-x order-btn btl" wx:if="{{isMerchant == 1}}">
@@ -62,7 +68,7 @@
 					<!-- <view class="finish-order"  data-id="{{item.orderId}}" bindtap="orderDetail">查看详情</view> -->
 					<block wx:if="{{item.status=='PAID'}}">
 						<view class="finish-order"  bindtap="refuseOrder"  data-id="{{item.orderId}}">拒绝接单</view>
-						<navigator url="/pages/deliverygoodsmsg/deliverygoodsmsg?id={{item.orderId}}" class="finish-order btn">去发货</navigator>
+						<navigator url="/pages/deliverygoodsmsg/deliverygoodsmsg?id={{item.orderId}}" class="finish-order btn">确认发货</navigator>
 					</block>
 					<navigator wx:elif="{{item.status == 'WAIT_REVEIVE'}}"  url="/pages/deliverygoodsmsg/deliverygoodsmsg?id={{item.orderId}}" class="finish-order btn">修改信息</navigator>
 					<!-- <view class="finish-order btn"  data-id="{{item.orderId}}" data-index="{{index}}" wx:elif="{{item.status == 'WAIT_REVEIVE'}}" bindtap="confirmReceive">确认收货</view> -->

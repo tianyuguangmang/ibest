@@ -55,14 +55,14 @@
 		<div class="flex-1"></div>
 		<block wx:if="{{merchantInfo}}">
 			<view class="amount" style="background: #ccc;" wx:if="{{countMoney<merchantInfo.sendPrice}}">
-				还差{{merchantInfo.sendPrice-countMoney}}元
+				还差{{needAmount}}元
 			</view>
 			<view class="amount" bindtap="onSubmit" wx:else>
 				结算
 			</view>
 		</block>
 		<block wx:else>
-			<view class="amount" >有错误,别点啦</view>
+			<view class="amount" bindtap="refush">刷新</view>
 		</block>
 	</view>
 </view>

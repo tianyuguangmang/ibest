@@ -44,6 +44,9 @@ Page({
     
     this.getBaseInfo();
   },
+  onShow:function(){
+    
+  },
   // 下拉刷新
   onPullDownRefresh(){
     this.getBaseInfo();

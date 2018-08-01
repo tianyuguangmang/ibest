@@ -1,6 +1,6 @@
 <view>
 	<baseinfo></baseinfo>
-	<view class="flex-wrap packet">
+	<view class="flex-wrap packet" wx:if="{{baseInfo.isSupplier == 1 }}">
 <!-- 		<navigator class="item flex-y" url="/pages/shophours/shophours">
 	<i class="iconfont icon-weibiaoti2fuzhi08 color2 clip" style="font-size:54rpx;"></i>
 	<span class="flex-1">营业时间</span>
@@ -27,4 +27,11 @@
 			<span class="flex-1">银行卡</span>
 		</navigator>
 	</view>
+	<view class="flex-wrap packet" wx:else>
+		<navigator class="item flex-y" url="/pages/myshop/myshop">
+			<i class="iconfont icon-supplier color1 clip" style="font-size:54rpx;"></i>
+			<span class="flex-1">成为供应商</span>
+		</navigator>
+	</view>
+	
 </view>

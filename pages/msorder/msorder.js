@@ -155,6 +155,12 @@ Page({
     service.getMerchantOrder(params,function(res){
       var originList = reload?[]:_this.data.dataList;
       var _list = res.data.result.list;
+      _list.forEach(function(item,index){
+        _list[index].originPrice = app.dot2(item.originPrice);
+        _list[index].resetPrice = app.dot2(item.resetPrice);
+        _list[index].totalMoney = app.dot2(item.totalMoney);
+        _list[index].finalCost = app.dot2(item.finalCost);
+      })
       if(_list.length == _this.size){
         _this.current = res.data.result.pageNum;
       }else{

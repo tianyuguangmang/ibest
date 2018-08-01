@@ -2,6 +2,6 @@
 
     "enablePullDownRefresh": false,
     "onReachBottomDistance":50,
-    "navigationBarTitleText": "添加商品"
+    "navigationBarTitleText": "编辑商品"
     
 }

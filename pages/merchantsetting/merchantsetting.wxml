@@ -10,12 +10,54 @@
 			<input value="{{dataMsg.deliveryFee}}" type="number" placeholder="请输入配送费" class="flex-1" bindinput="inputDeliveryFee" />
 		</div>
 	</view>
+	
+	<view class="flex-y box">
+		<!-- <div  style="width:100%;padding:20rpx 0;font-size:32rpx;">周一~周五</div> -->
+		<div class="flex-x box-item">
+			<span style="color:#333;margin-right:40rpx;">上午</span><span class="flex-1"></span>
+		</div>
+		<div class="flex-x box-item">
+			<span style="color:#333;margin-right:40rpx;">开始时间：</span>
+			 <picker mode="time" value="{{dataMsg.amStartTime}}" start="00:00" end="12:00" bindchange="bindTimeChange1" class="flex-1">
+			    <view class="picker">
+			       {{dataMsg.amStartTime}}
+			    </view>
+			  </picker>
+		</div>
+		<div class="flex-x box-item">
+			<span style="color:#333;margin-right:40rpx;">结束时间：</span>
+			 <picker mode="time" value="{{dataMsg.amEndTime}}" start="{{dataMsg.amStartTime}}" end="12:00" bindchange="bindTimeChange2" class="flex-1">
+			    <view class="picker">
+			       {{dataMsg.amEndTime}}
+			    </view>
+			  </picker>
+		</div>
+		
+	</view>
 	<view class="flex-y box">
 		<div class="flex-x box-item">
-			<span style="color:#333;margin-right:40rpx;">配送范围</span>
-			<input value="{{dataMsg.deliveryArea}}" type="number" placeholder="请输入配送范围" class="flex-1" bindinput="inputdeliveryArea" />
+			<span style="color:#333;margin-right:40rpx;">下午</span><span class="flex-1"></span>
 		</div>
+		<div class="flex-x box-item">
+			<span style="color:#333;margin-right:40rpx;">开始时间：</span>
+			 <picker mode="time" value="{{dataMsg.pmStartTime}}" start="12:00" end="23:59" bindchange="bindTimeChange3" class="flex-1">
+			    <view class="picker">
+			       {{dataMsg.pmStartTime}}
+			    </view>
+			  </picker>
+		</div>
+		<div class="flex-x box-item">
+			<span style="color:#333;margin-right:40rpx;">结束时间：</span>
+			 <picker mode="time" value="{{dataMsg.pmEndTime}}" start="{{dataMsg.pmStartTime}}" end="23:59" bindchange="bindTimeChange4" class="flex-1">
+			    <view class="picker">
+			       {{dataMsg.pmEndTime}}
+			    </view>
+			  </picker>
+		</div>
+		
 	</view>
+
+
 
 	<view class="flex-x btn-box">
 		<view class="btn flex-x" bindtap="toSubmit">

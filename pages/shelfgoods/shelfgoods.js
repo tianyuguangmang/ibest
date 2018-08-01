@@ -8,7 +8,8 @@ import * as Size from '../../js/imagesize';
 Page({
 	data: {
 		Size,
-		cateId:1
+		cateId:1,
+		isMerchant:0,
 		
 	},
 	cateId:1,
@@ -22,34 +23,34 @@ Page({
 	    this.dataLoad(true);
 	},
 	dataLoad:function(reload){
-	    var _this = this;
-	    var params = {
-	      size:this.size,
-	      current:this.current+1,
-	    };
-	    if(reload){
-	      params.current = 1;
-	      this.noMoreData = false;
-	    }
-	    if(this.isMerchant){
-	      params.merchantId = this.baseInfo.merchantInfo.mchtId;
-	    }else{
-	      params.supplierId = this.baseInfo.supplierInfo.supId;
-	    }
-	    var _id = Number(this.cateId);
-	    if(_id == 2){
-	      params.status = 'WAIT_CHECK';
-	    }else if(_id == 3){
-	      params.status = 'PASS_CHECK';
-	    }else if(_id == 4){
-	      params.status = 'REFUSE_CHECK';
-	    }else if(_id == 5){
-	      params.status = 'STOP_USE';
-	    }
-	    if(this.noMoreData){
-	      return;
-	    }
-	    this.getData(params,reload);
+    var _this = this;
+    var params = {
+      size:this.size,
+      current:this.current+1,
+    };
+    if(reload){
+      params.current = 1;
+      this.noMoreData = false;
+    }
+    if(this.isMerchant){
+      params.merchantId = this.baseInfo.merchantInfo.mchtId;
+    }else{
+      params.supplierId = this.baseInfo.supplierInfo.supId;
+    }
+    var _id = Number(this.cateId);
+    if(_id == 2){
+      params.status = 'WAIT_CHECK';
+    }else if(_id == 3){
+      params.status = 'PASS_CHECK';
+    }else if(_id == 4){
+      params.status = 'REFUSE_CHECK';
+    }else if(_id == 5){
+      params.status = 'STOP_USE';
+    }
+    if(this.noMoreData){
+      return;
+    }
+    this.getData(params,reload);
 	},
 	noMoreData:false,
   dataLoading:false,
@@ -70,11 +71,26 @@ Page({
     	this.getSupplierProduct(params,reload);
     }
   },
+  //滚动到底部，加载更多的数据
+  onReachBottom:function(e){
+    this.dataLoad(false);
+  },
+  // 下拉刷新
+  onPullDownRefresh(){
+    var _this = this;
+    this.current = 0;
+    this.dataLoad(true);
+    wx.stopPullDownRefresh();
+  },
 	getSupplierProduct:function(params,reload) {
 		var _this = this;
 		service.getSupplierProduct(params,function(res){
       var originList = reload?[]:_this.data.dataList;
       var _list = res.data.result.list;
+      _list.forEach(function(item,index){
+        _list[index].originPrice = app.dot2(item.originPrice);
+        _list[index].resetPrice = app.dot2(item.resetPrice);
+      })
       if(_list.length == _this.size){
         _this.current = res.data.result.pageNum;
       }else{
@@ -94,6 +110,10 @@ Page({
 		service.getMerchantProduct(params,function(res){
       var originList = reload?[]:_this.data.dataList;
       var _list = res.data.result.list;
+      _list.forEach(function(item,index){
+        _list[index].originPrice = app.dot2(item.originPrice);
+        _list[index].resetPrice = app.dot2(item.resetPrice);
+      })
       if(_list.length == _this.size){
         _this.current = res.data.result.pageNum;
       }else{
@@ -137,6 +157,9 @@ Page({
 		this.type = options.type;
 		if(this.type == 'MERCHANT'){
 			this.isMerchant = true;
+			this.setData({
+				isMerchant:1
+			})
 		}
 		
 		

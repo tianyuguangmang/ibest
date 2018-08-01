@@ -22,9 +22,10 @@ Page({
       _cartList[_index].selected = true;
       _amount += _cartList[_index].resetPrice*_cartList[_index].count;
     }
+
     this.setData({
       cartList:_cartList,
-      countMoney:_amount
+      countMoney:Math.round(_amount*100)/100
     })
   },
   getProductByIds:function(){
@@ -35,6 +36,8 @@ Page({
       var _list = res.data.result;
       var _amount = 0;
       for(var i=0;i<_list.length;i++){
+        _list[i].originPrice = app.dot2(_list[i].originPrice);
+        _list[i].resetPrice = app.dot2(_list[i].resetPrice);
         if(_this.cartInfo['pid_'+_list[i].productId+'_skuid_1']){
           _list[i].count = _this.cartInfo['pid_'+_list[i].productId+'_skuid_1'].count;
           _amount += _list[i].count * _list[i].resetPrice;
@@ -43,25 +46,34 @@ Page({
         }
         _list[i].selected = true;
       }
+      _amount = Math.round(_amount*100)/100
+      var _needAmount = Math.round((_this.merchantInfo.sendPrice - _amount)*100)/100
       _this.setData({
         cartList:_list,
-        countMoney:_amount
+        countMoney:_amount.toFixed(2),
+        needAmount:_needAmount.toFixed(2) 
       })
 
     })
   },
+  
   productIds:[],
   cartInfo:{},
+  merchantInfo:null,
   onShow:function(){
     var _this = this;
+    this.merchantId = app.globalData.merchantId;
+    if(app.globalData.merchantInfo){
+      this.merchantInfo = app.globalData.merchantInfo
+      this.setData({
+        merchantInfo:app.globalData.merchantInfo
+      })
+    }
     var _cartInfo = wx.getStorageSync(app.CART_INFO);
     this.cartInfo = _cartInfo;
-    console.log(_cartInfo);
     var _arr = [];
     var _amount = 0;
     for(var key in _cartInfo){
-      /*_cartInfo[key].selected = true;
-      _amount += _cartInfo[key].resetPrice*_cartInfo[key].count;*/
       _arr.push(_cartInfo[key].productId);
     }
     if(_arr.length>0){
@@ -72,22 +84,7 @@ Page({
         cartList:[]
       })
     }
-    
-   /* _this.setData({
-      cartList:_arr,
-      countMoney:_amount
-    })*/
-    /*wx.getStorage({
-      key: 'shop_cart_info',
-      success: function(res) {
-          console.log("x",res);
-
-          
-          _this.setData({
-            cartList:res.data,
-          })
-      } 
-    })*/
+    this.refush();
   },
   /**
    * 计算购物车
@@ -98,13 +95,12 @@ Page({
     var cartList = this.data.cartList;
     var _select = cartList[index];
     var _cartInfo = this.cartInfo;
-    var _amount = this.data.countMoney;
+    var _amount = 0;
     var _info = _cartInfo['pid_'+_select.productId+'_skuid_1'];
     if(_info){
       _info.count += num;
       if(_info.count<0){
         _info.count = 0;
-        
       }
     }else{
       _info = {
@@ -115,11 +111,14 @@ Page({
     _cartInfo['pid_'+_select.productId+'_skuid_1'] = _info;
     cartList[index].count = _info.count;
     for(var i = 0;i<cartList.length;i++){
-      _amount = cartList[i].count * cartList[i].resetPrice;
+      _amount += cartList[i].count * cartList[i].resetPrice;
     }
+    _amount = Math.round(_amount*100)/100
+    var _needAmount = Math.round((this.merchantInfo.sendPrice - _amount)*100)/100
     this.setData({
       cartList:cartList,
-      countMoney:_amount
+      countMoney:_amount.toFixed(2),
+      needAmount:_needAmount.toFixed(2)
     })
     wx.setStorageSync(app.CART_INFO, _cartInfo);
   },
@@ -151,15 +150,18 @@ Page({
 
     })
   },
+
   merchantId:null,
 
-  onLoad:function(){
-    this.merchantId = app.globalData.merchantId||9;
+  refush:function(){
     if(app.globalData.merchantInfo){
       this.setData({
         merchantInfo:app.globalData.merchantInfo
       })
     }
+  },
+  onLoad:function(){
+    
 
     
 

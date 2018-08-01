@@ -21,7 +21,7 @@
 		
 	</view>
 	<view class="menu">
-		<navigator class="flex-x item  btl"  url="/pages/parttimejob/parttimejob">
+		<navigator class="flex-x item  btl"  url="/pages/shopcenter/shopcenter">
 			<div class="icon-box flex-x">
 				<i class="iconfont icon-jianzhi color2 clip" style="font-size:50rpx;"></i>
 			</div>
@@ -30,7 +30,7 @@
 				<i class="iconfont icon-weibiaoti34 color clip" style="font-size:54rpx;"></i>
 			</div>
 		</navigator>
-		<navigator class="flex-x item btl bbl"  url="/pages/servicecenter/servicecenter">
+		<navigator class="flex-x item btl bbl"  url="/pages/suppliercenter/suppliercenter">
 			<div class="icon-box flex-x">
 				<i class="iconfont icon-woshishangjia color3 clip"></i>
 			</div>

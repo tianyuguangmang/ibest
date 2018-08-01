@@ -1,6 +1,7 @@
 <view>
 	<baseinfo></baseinfo>
-	<view class="flex-wrap packet">
+
+	<view class="flex-wrap packet" wx:if="{{baseInfo.isMerchant==1}}">
 		<navigator class="item flex-y" url="/pages/merchantsetting/merchantsetting">
 			<i class="iconfont icon-weibiaoti2fuzhi08 color1 clip" style="font-size:54rpx;"></i>
 			<span class="flex-1">商家信息</span>
@@ -40,6 +41,12 @@
 		</navigator>
 		
 
+	</view>
+	<view class="flex-wrap packet" wx:else>
+		<navigator class="item flex-y" url="/pages/myshop/myshop?type=MERCHANT">
+			<i class="iconfont icon-dianpu color1 clip" style="font-size:54rpx;"></i>
+			<span class="flex-1">成为店铺负责人</span>
+		</navigator>
 	</view>
 	
 </view>

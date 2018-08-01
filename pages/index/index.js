@@ -159,11 +159,16 @@ Page({
 		var params = {
 			current:this.dataCurrent,
 			size:this.dataSize,
+			onSell:1,
 			merchantId:this.mchtId
 		}
 		if(this.dataCateId) params.cateId = this.dataCateId;
 		service.merchantGoodsList(params,function(res){
 			var _goodsList = res.data.result.list;
+			_goodsList.forEach(function(item,index){
+		        _goodsList[index].originPrice = app.dot2(item.originPrice);
+		        _goodsList[index].resetPrice = app.dot2(item.resetPrice);
+		    })
 			var _cartInfo = _this.cartInfo;
 			_this.cartGoods(_goodsList,_cartInfo);
 		},function(res){
@@ -209,7 +214,7 @@ Page({
 	},
 	onLoad:function(options){
 		var _this = this;
-		this.mchtId = options.merchantId||9;
+		this.mchtId = options.merchantId||13;
 		app.globalData.merchantId = this.mchtId;
 		this.getMerchantInfo();
 		this.getCateList();
@@ -217,5 +222,11 @@ Page({
 		this.getDataList();	
 		this.getWxUserInfo();	
 		
-	}
+	},
+
+	toCart:function(){
+		wx.navigateTo({
+		  url: '/pages/cart/cart'
+		})
+	},
 })

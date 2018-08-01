@@ -2,7 +2,6 @@
 	<view wx:if="{{cartList}}">
 		<view class="cart-list" wx:if="{{cartList.length>0}}">
 			<block  wx:for="{{cartList}}">
-			
 				<view class="cart-item flex-x flex-1" style="width:100%">
 					<div class="select-btn flex-x">
 						<radio checked="{{item.selected}}" bindtap="selectedThisGoods" data-index="{{index}}"/>
@@ -14,24 +13,24 @@
 						<div class="title m-ellipsis">
 							{{item.name}}
 						</div>
-						<div class="goods-detail a-ellipsis">
+						<div class="goods-detail a-ellipsis" wx:if="{{item.sku}}">
 							{{item.sku}}
 						</div>
-						<div class="price-number flex-1 flex-xsc">
+						<div class="price-number flex-1">
 							<div class="price flex-x">
-								<div class="discount-price">￥{{item.resetPrice}}</div>
+								<div class="discount-price">￥{{item.resetPrice}}元/{{item.baseCount}}个(件)</div>
 								<div class="origin-price flex-1"></div>
-								<div class="buy-count">x{{item.count}}</div>
+								<!-- <div class="buy-count">x{{item.count}}</div> -->
+								
 							</div>
-							<!-- <div class="number flex-x">
+							<div class="number flex-x">
 								<view class="flex-1 decrease" bindtap="decrease" data-index="{{index}}">-</view>
-								<input type="number" class="value" value="{{item.count}}" data-index="{{index}}" bindinput="changeCount"/>
+								<input disabled="{{true}}" type="number" class="value" value="{{item.count}}" data-index="{{index}}" />
 								<view class="flex-1 add" bindtap="add" data-index="{{index}}">+</view>
-							</div> -->
+							</div>
 						</div>
 					</div>
 				</view>
-			
 			</block>
 		</view>
 		<view class="no-data flex-y" wx:else>
@@ -42,16 +41,24 @@
 		</view>
 		
 	</view>
-	<view class="total flex-x" wx:if="{{cartList}}" style="z-index: 999;">
+
+	
+
+	<view class="total flex-x" wx:if="{{cartList}}">
 		<!-- <div class="all-select flex-x">
 			<radio checked="{{allSelectedState}}" bindtap="allSelected"/>
+		</div> -->
+		<!-- <div class="select-word">全选</div> -->
+		<div class="total-money" style="margin-left: 20rpx;">
+			合计：<span class="money">￥{{countMoney}}</span>
 		</div>
-		<div class="select-word">全选</div> -->
-		<div class="total-money flex-1 flex-x">
-			合计：<span class="money">￥{{countMoney?countMoney:'0.00'}}</span><span class="flex-1"></span>
-		</div>
-		<view class="amount" bindtap="cartInfoSubmit">
-			结算
-		</view>
+		<div class="flex-1"></div>
+		<block >
+			
+			<view class="amount" bindtap="onSubmit">
+				结算
+			</view>
+		</block>
+		
 	</view>
 </view>

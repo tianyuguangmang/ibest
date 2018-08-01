@@ -34,9 +34,9 @@
 						</div>
 						<div class="price-number flex-1 flex-xsc">
 							<div class="price flex-x">
-								<div class="discount-price">￥{{item.resetPrice}}</div>
+								<div class="discount-price">￥{{item.resetPrice}}元/{{item.baseCount}}个(件)</div>
 								<div class="origin-price flex-1"></div>
-								<div class="buy-count">x{{item.count}}</div>
+								<div class="buy-count">x{{item.count}}组</div>
 								
 							</div>
 							<!-- <div class="number flex-x">

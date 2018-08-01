@@ -21,55 +21,7 @@ Page({
 		
 		hotList: null
 	},
-	getSelectPos:function(){
-		var _this = this;
-		var _dataMsg = this.data.dataMsg;
-		wx.getSetting({
-      success(res) {
-        if (res.authSetting['scope.userLocation'] === false) {
-          wx.openSetting({
-            success: (res) => {
-              if (res.authSetting['scope.userLocation'] === true) {
-                wx.chooseLocation({
-                  success:function(data){
-                    _dataMsg.latitude = data.latitude;
-                    _dataMsg.longitude = data.longitude;
-                    _dataMsg.address = data.name;
-                    _this.setData({
-                     	dataMsg:_dataMsg
-                    })
-                  },
-                  fail:function(res){
-                    _this.setData({
-                     res:res
-
-                    })
-                  }
-                })
-
-              }
-            }
-          })
-        }else{
-          wx.chooseLocation({
-            success:function(data){
-              _dataMsg.latitude = data.latitude;
-              _dataMsg.longitude = data.longitude;
-              _dataMsg.address = data.name;
-              _this.setData({
-               	dataMsg:_dataMsg
-              })
-            },
-            fail:function(res){
-              _this.setData({
-               res:res
-              })
-            }
-          })
-        }
-      }
-  	})
-	},
+  
   inputDetailAddress:function(e) {
     var _dataMsg = this.data.dataMsg;
     _dataMsg.detailAddress = e.detail.value;

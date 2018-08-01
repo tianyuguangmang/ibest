@@ -21,21 +21,27 @@
 				</view>
 				<div class="brief flex-1 flex-y">
 					<div class="name">{{item.name}}</div>
-					<div class="sell flex-1">销量{{item.soldNumber?item.soldNumber:0}}件</div>
+					<div class="sell flex-1">销量{{item.soldNumber?item.soldNumber:0}}件<span style="margin-left: 30rpx;">库存{{item.stock?item.stock:0}}件</span></div>
 					<div class="price flex-x">
 						<span style="font-size:24rpx;color:#f84f2f;">￥</span>
-						<span class="current-price" style="margin-top: -6rpx;margin-right: 0px;">{{item.originPrice}}元</span>
+						<span class="current-price" style="margin-top: -6rpx;margin-right: 0px;" wx:if="{{isMerchant==1}}">{{item.resetPrice}}元 
+
+						</span>
+						<span class="current-price" style="margin-top: -6rpx;margin-right: 0px;" wx:else>{{item.originPrice}}元</span>
 						<span style="font-size:30rpx;color:#f84f2f;margin-top: -6rpx;">/</span>
-						<span style="font-size:30rpx;color:#f84f2f;margin-top: -6rpx;">{{item.baseCount}}</span>
+						<span style="font-size:30rpx;color:#f84f2f;margin-top: -6rpx;" wx:if="{{item.baseCount}}">{{item.baseCount}}</span>
 						<span style="font-size:30rpx;color:#f84f2f;margin-top: -6rpx;">个(件)</span>
+						<span style="color: #999;font-size:28rpx;margin-top: -5rpx;margin-left: 30rpx;" wx:if="{{isMerchant==1}}">
+							<span>成本价{{item.originPrice}}元</span>
+						</span>
 						<span class="flex-1"></span>
-						
 					</div>
 				</div>
 			</view>
 			<view class="flex-x btl" style="padding: 10rpx 30rpx 20rpx 20rpx;">
 				<span class="flex-1"></span>
-				<navigator style="color:#aaa;font-size:30rpx;margin-right: 30rpx;" url="/pages/addnewgoods/addnewgoods?productId={{item.productId}}">编辑</navigator> 
+				<navigator wx:if="{{isMerchant==1}}" style="color:#aaa;font-size:30rpx;margin-right: 30rpx;" url="/pages/editorgoods/editorgoods?productId={{item.productId}}">编辑</navigator> 
+				<navigator wx:else style="color:#aaa;font-size:30rpx;margin-right: 30rpx;" url="/pages/addnewgoods/addnewgoods?productId={{item.productId}}">编辑</navigator> 
 				<span wx:if="{{item.onSell}}" style="color:#aaa;font-size:30rpx;" data-index="{{index}}" bindtap="editor">下架</span>
 				<span wx:else style="font-size:30rpx;color:#f84f2f;" data-index="{{index}}" bindtap="editor">上架</span>
 			</view>

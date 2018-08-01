@@ -14,6 +14,9 @@ Page({
     phone:"",
     validCode:"",
     region: ['北京市', '北京市', '东城区'],
+    address:null,
+    longitude:null,
+    ltitude:null,
 	},
 	timeCount:function(s){
     var _this = this;
@@ -33,6 +36,27 @@ Page({
 
     },1000)
   },
+  handleChooseLocation:function(){
+    var _this = this;
+    var _dataMsg = {};
+    wx.chooseLocation({
+      success:function(data){
+        console.log(data);
+        data.city = data.address.substring(0,data.address.indexOf("市")+1);
+        _this.setData(data)
+      },
+      fail:function(res){
+        _this.setData({
+         res:res
+
+        })
+      }
+    })
+  },
+  getSelectPos:function(){
+    var _this = this;
+    _this.handleChooseLocation();
+  },
   bindRegionChange: function (e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
@@ -49,6 +73,11 @@ Page({
       phone: e.detail.value
     })
   },
+  inputPassword:function(e){
+    this.setData({
+      password: e.detail.value
+    })
+  },
   inputValidate:function(e){
     this.setData({
       validCode: e.detail.value
@@ -63,11 +92,18 @@ Page({
       this.isMerchant = 1;
     }
   },
+  dataLoading:false,
   onSubmit: function(){
+    var _this = this;
     var params = {
       realName:this.data.realName,
       phone:this.data.phone,
-      validCode:this.data.validCode
+      password:this.data.password,
+      validCode:this.data.validCode,
+      address:this.data.address,
+      longitude:this.data.longitude,
+      latitude:this.data.latitude,
+      city:this.data.city
     }
     if(!app.required(params.realName)){
       wx.showModal({
@@ -86,6 +122,7 @@ Page({
       return;
     }
 
+
     if(!app.required(params.validCode)){
       wx.showModal({
         title: '温馨提示',
@@ -94,16 +131,36 @@ Page({
       })
       return;
     }
+   
+    if(!params.address||!app.required(params.address)){
+      wx.showModal({
+        title: '温馨提示',
+        content:"请选择地址",
+        showCancel:false
+      })
+      return;
+    }
+    if(this.dataLoading){
+      return;
+    }
+    this.dataLoading = true;
     if(this.isMerchant == 1){
       service.registerMerchant(params,function(res){
-        app.goBack("请等待审核");
+        app.globalData.baseInfo = res.data.result;
+        _this.dataLoading = false;
+        app.goBack("已注册");
+      },function(){
+        _this.dataLoading = false;
       })
       return;
     }
 
     service.registerSupplier(params,function(res){
-      app.goBack("请等待审核");
-
+      app.globalData.baseInfo = res.data.result;
+      _this.dataLoading = false;
+      app.goBack("已注册");
+    },function(){
+      _this.dataLoading = false;
     })
   }
 	

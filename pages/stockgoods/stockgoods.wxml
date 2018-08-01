@@ -7,7 +7,7 @@
 		</view>
 		</block>
 	</view> -->
-  <scroll-view scroll-x  class="swiper-title" scroll-into-view="cateId-{{1}}" scroll-with-animation="{{true}}">
+  <scroll-view scroll-x  class="swiper-title" scroll-into-view="cateId-{{cateIndex}}" scroll-with-animation="{{true}}">
    	<view class="flex-x" style="width:{{200*menuList.length+'rpx'}};height:100%;">
 	   	<block wx:for="{{menuList}}">
 				<view class="flex-x {{cateIndex==index?'selected':''}} item" bindtap="changeCate"  style="width:200rpx;height:100%;" id="cateId-{{index}}" data-index="{{index}}" data-cateid="{{item.cateId}}">
@@ -73,7 +73,7 @@
 	</view> -->
 	<view class="goods-msg flex-ys">
 		<div class="name">{{productDetail.name}}</div>
-		<div class="sell-number">销量<span style="color:#fe5600;margin-left: 10rpx;">{{productDetail.soldNumber?productDetail.soldNumber:0}}</span>笔</div>
+		<div class="sell-number">销量<span style="color:#fe5600;margin-left: 10rpx;">{{productDetail.soldNumber?productDetail.soldNumber:0}}</span>组</div>
 		<div class="price flex-x">
 			<span style="font-size:28rpx;margin-top: 8rpx;">￥</span>
 			<span>{{productDetail.resetPrice}}</span>
@@ -84,7 +84,7 @@
 			<span class="add-cart" bindtap="subtractCart">-</span>
 			<span style="margin:0 10rpx;">{{productDetail.count}}</span>
 			<span class="add-cart" bindtap="addToCart">+</span>
-			<span>笔</span>
+			<span>组</span>
 		</div>
 		<div class="goods-brief"></div>
 	</view>

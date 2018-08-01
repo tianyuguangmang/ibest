@@ -8,137 +8,56 @@ import * as Size from '../../js/imagesize';
 Page({
 	data: {
 		Size,
-		noMoreData: false,
-		hotList: null,
-		menuList:null,
 		productId:null,
-		localImgList:[],
-		imgList:[],
-		changeIndex:{},
-		menuIndex:0,
 		name:'',
-		originPrice:'',
+		resetPrice:'',
 		stock:"",
-		baseCount:''
 	},
 	
 	productId:null,
-	dataComputed:function(_menuList,productDetail){
-		var _menuIndex = null;
-		for(var i=0;i<_menuList.length;i++){
-			if(_menuList[i].cateId == productDetail.cateId){
-				_menuIndex = i;
-				break;
-			}
-		}
-		this.setData({
-			menuList:_menuList,
-			menuIndex:_menuIndex,
-			...productDetail
-		})
-
-	},
+	stock:0,
 	getProductDetail:function(){
 		var _this = this;
-		service.getSproductDetail({productId:this.productId},function(res){
+		service.getMproductDetail({productId:this.productId},function(res){
 			var productDetail = res.data.result;
-			productDetail.originPrice = app.dot2(productDetail.originPrice);
-			if(res.data.result.imgList){
-				productDetail.localImgList = JSON.parse(res.data.result.imgList);
-				_this.imgList = JSON.parse(res.data.result.imgList);
-			}else{
-				productDetail.localImgList = [];
-				_this.imgList = [];
-			}
-			var _menuList = _this.data.menuList;
-			if(_menuList == null){
-				_this.getCateList(function(response){
-					 _menuList = response.data.result;
-
-					_this.dataComputed(_menuList,productDetail);
-				});
-				return;
-			}
-			_this.dataComputed(_menuList,productDetail);
+			productDetail.resetPrice = app.dot2(productDetail.resetPrice);
+			_this.stock = productDetail.stock;
+			_this.setData(productDetail)
 		})
 	},
-	getQiNiuToken:function(){
-		var _this = this;
-		service.qiniuToken(null,function(res){
-			_this.setData({
-				token:res.data.result
-			})
-		})
-	},
+	
 	onLoad:function(options){
-		this.getCateList();
-		this.getQiNiuToken();
-		this.productId = options.productId?options.productId:null;
+		this.productId = options.productId;
 		if(this.productId){
-			wx.setNavigationBarTitle({
-			  title: '编辑商品'
-			})
 			this.getProductDetail();
 		}
 	},
-	//获取分类列表
-	getCateList:function(cb){
-		var _this = this;
-		service.getCateList(null,function(res){
-			if(cb){
-				cb(res);
-				return;
-			}
-			_this.setData({
-				menuList:res.data.result
-			})
-		});
-	},
-	bindPickerChange: function(e) {
-	  console.log('picker发送选择改变，携带值为', e.detail.value)
-	  this.setData({
-	    menuIndex: e.detail.value
-	  })
-	},
-	inputBaseCount:function(e){
-		this.setData({
-			baseCount:e.detail.value
-		})
-	},
+	
 	inputName:function(e){
 		this.setData({
 			name:e.detail.value
 		})
 	},
-	inputOriginPrice:function(e){
+	inputResetPrice:function(e){
 		this.setData({
-			originPrice:e.detail.value
+			resetPrice:e.detail.value
 		})
 	},
 	inputStock:function(e){
+		var _value = e.detail.value>this.stock?this.stock:e.detail.value;
 		this.setData({
-			stock:e.detail.value
+			stock:_value
 		})
 	},
 	dataLoading:false,
 	toSubmit:function(){
 		var _this = this;
 		var params = {
-			name:this.data.name,
-			originPrice:this.data.originPrice,
+			resetPrice:this.data.resetPrice,
 			stock:this.data.stock,
-			baseCount:this.data.baseCount,
-			cateId:this.data.menuList[this.data.menuIndex].cateId
+			productId:this.data.productId
 		}
-		if(!app.required(params.name)){
-	      wx.showModal({
-	        title: '温馨提示',
-	        content:"请输入商品名称",
-	        showCancel:false
-	      })
-	      return;
-	    }
-	    if(!app.required(params.originPrice)){
+	    if(!app.required(params.resetPrice)){
 	      wx.showModal({
 	        title: '温馨提示',
 	        content:"请输入商品价格",
@@ -146,80 +65,51 @@ Page({
 	      })
 	      return;
 	    }
-	    if(!app.hasDot(params.originPrice)){
+	    if(params.resetPrice<this.data.originPrice*0.01){
 	      wx.showModal({
 	        title: '温馨提示',
-	        content:"商品价格不正确",
+	        content:"商品价格不能低于"+this.data.originPrice*0.01+"元",
 	        showCancel:false
 	      })
 	      return;
 	    }
-
-	    if(!app.required(params.stock)){
+	    if(!app.dot2(params.resetPrice)){
 	      wx.showModal({
 	        title: '温馨提示',
-	        content:"请输入商品库存",
+	        content:"请输入正确商品价格",
 	        showCancel:false
 	      })
 	      return;
 	    }
-	    if(this.data.localImgList.length == 0){
-	    	wx.showModal({
+	    if(params.stock<0){
+	      wx.showModal({
 	        title: '温馨提示',
-	        content:"请上传商品图片",
+	        content:"请输入正确的商品库存",
 	        showCancel:false
 	      })
 	      return;
 	    }
+	   
 	    if(this.dataLoading){
 	    	return;
 	    }
 	    this.dataLoading = true;
-	    if(this.productId){
-	    	params.productId = this.productId
-	    	this.uploadImage2(function(){
-	    		params.mainImage = _this.imgList[0];
-	    		params.imgList = JSON.stringify(_this.imgList);
-		    	wx.showModal({
-			        title: '温馨提示',
-			        content:"确定修改完成吗？",
-			        showCancel:false,
-			        success:function(){
-		        	params.originPrice = params.originPrice*100;
-			        	service.updateSproductGoods(params,function(res){
-			        		_this.dataLoading = false;
-									app.goBack("已提交");
-								},function(){
-									_this.dataLoading = false;
-								});
-			        },
-			        fail:function(){
-			        	_this.dataLoading = false;
-			        }
-			    })
-		    })
-		    return;
-	    }
-	    this.uploadImage(function(){
-	    	params.mainImage = _this.imgList[0];
-	    	params.imgList = JSON.stringify(_this.imgList);
-	    	wx.showModal({
+	    wx.showModal({
 	        title: '温馨提示',
-	        content:"确定要以"+params.originPrice+"元/"+params.baseCount+"个(件)"+"销售此商品吗？",
-	        showCancel:false,
+	        content:"确定修改完成吗？",
+	        showCancel:true,
 	        success:function(){
-	        	params.originPrice = params.originPrice*100;
-	        	service.addNewGoods(params,function(res){
-	        		_this.dataLoading = false;
-							app.goBack("已提交");
-						},function(){
-							_this.dataLoading = false;
-						});
+	        	params.resetPrice = params.resetPrice*100;
+	        	service.updateMproductGoods(params,function(res){
+        		_this.dataLoading = false;
+					app.goBack("已提交");
+				},function(){
+					_this.dataLoading = false;
+				});
 	        },
 	        fail:function(){
 	        	_this.dataLoading = false;
 	        }
-	    	})
 	    })
 	    
 	},

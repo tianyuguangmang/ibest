@@ -14,7 +14,7 @@
 			<view class="order-item flex-y" wx:for="{{dataList}}" wx:key="item.orderId" data-id="{{item.orderId}}">
 				<div class="order-msg flex-x bg-w">
 					<div class="service-number">订单编号：</div>
-					<div class="number flex-1">{{item.orderId}}</div>
+					<div class="number flex-1">{{item.orderNumber}}</div>
 					<div class="states" wx:if="{{item.status=='WAIT_PAY'}}">待付款</div>
 					<div class="states" wx:elif="{{item.status=='PAID'}}">待接单</div>
 					<div class="states" wx:elif="{{item.status=='RECEIVE_ORDER'}}">配送中</div>
@@ -33,7 +33,7 @@
 						</div>
 					</view>
 					<div class="price">
-						<div class="discount-price">￥{{it.resetPrice}}</div>
+						<div class="discount-price">￥{{it.resetPrice*0.01}}</div>
 						<!-- <div class="origin-price">￥{{it.originPrice}}</div> -->
 						<div class="buyer-number"><span>x{{it.count?it.count:1}}</span></div>
 					</div>
@@ -42,7 +42,8 @@
 				<view class="bg-w flex-x" style="font-size:24rpx;height:80rpx;">
 					
 					<div class="flex-1"></div>
-					<div style="padding-right:20rpx;">共{{item.subOrderList.length}}件商品 合计：￥<span style="font-size:30rpx;margin-right:5rpx;">{{item.totalMoney}}</span></div>
+					<div style="padding-right:20rpx;" wx:if="{{item.deliveryFee}}"> 配送费：￥<span style="font-size:30rpx;margin-right:5rpx;">{{item.deliveryFee*0.01}}</span></div>
+					<div style="padding-right:20rpx;">共{{item.subOrderList.length}}件商品 合计：￥<span style="font-size:30rpx;margin-right:5rpx;">{{item.allFee*0.01}}</span></div>
 				</view>
 				<div class="flex-x order-btn btl">
 					<div class="flex-1"></div>

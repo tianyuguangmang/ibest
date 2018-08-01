@@ -1,3 +1,4 @@
+@import "../myshop/myshop.wxss";
 .new-address{
 	background: #fff;
 	margin-top: 20rpx;

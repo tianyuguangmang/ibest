@@ -26,7 +26,10 @@ Page({
     var _this = this;
     service.getStockOrderInfo({},function(res){
       var _dataMsg = res.data.result;
-      
+      _dataMsg.totalMoney = app.dot2(_dataMsg.totalMoney);
+      _dataMsg.orderList.forEach(function(item,index){
+        _dataMsg.orderList[index].resetPrice = app.dot2(item.resetPrice);
+      })
       _this.setData({
         dataMsg:_dataMsg
       })
@@ -34,18 +37,6 @@ Page({
     })
   },
 
-  getUserOrderInfo:function(){
-    service.getUserOrderInfo({},function(res){
-      var _dataMsg = res.data.result;
-      _dataMsg.productList = JSON.parse(_dataMsg.productList);
-     
-      console.log(_dataMsg)
-      _this.setData({
-        dataMsg:_dataMsg
-      })
-
-    })
-  },
   dataLoading: false,
   buyConfirm:function(){
     var _this = this;
@@ -63,7 +54,8 @@ Page({
     _this.dataLoading = true;
     service.stockBuyConfirm({addressId:this.data.selectedAddress.addressId,payType:'ACCOUNT'},function(res){
       _this.dataLoading = false;
-      wx.navigateTo({
+      wx.removeStorageSync(app.SHOP_CART_INFO);
+      wx.redirectTo({
         url: '/pages/msorder/msorder?type=MERCHANT'
       })
     },function(){

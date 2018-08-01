@@ -193,6 +193,9 @@ Page({
   onHide:function(){
     this.closeSocket();
   },
+  onUnload:function(){
+    this.closeSocket();
+  },
   onLoad: function(options){
     var _this = this;
     if(options.type == 'MERCHANT') 
