@@ -2,14 +2,9 @@
 
   "pages":[
     "pages/my/my",
-    
     "pages/newaddress/newaddress",
-    
-
     "pages/myshop/myshop",
-
     "pages/stockcart/stockcart",
-
     "pages/editorgoods/editorgoods",
     "pages/userordersubmit/userordersubmit",
     "pages/stockordersubmit/stockordersubmit",
@@ -36,7 +31,6 @@
     "pages/shopsettle/shopsettle",
     "pages/cart/cart",
     "pages/test/test",
-
     "pages/mall/mall"
   ],
   

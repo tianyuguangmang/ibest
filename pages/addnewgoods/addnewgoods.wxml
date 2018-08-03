@@ -34,7 +34,7 @@
 	<view class="flex-wrap" style="background: #fff;padding:0 30rpx 30rpx 30rpx;">
 		<block wx:for="{{localImgList}}">
 		<view class="add-icon-box flex-x" style="width:50%;margin-top: 20rpx;" bindtap="chooseImage" data-index="{{index}}">
-			<image src="{{item}}"></image>
+			<image src="{{item}}" mode="aspectFill"></image>
 		</view>
 		</block>
 		<view class="add-icon-box" bindtap="chooseImage" wx:if="{{localImgList.length<6}}">

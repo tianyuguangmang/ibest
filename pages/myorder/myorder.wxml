@@ -25,7 +25,7 @@
 					<div class="states" wx:elif="{{item.status=='TRADE_CLOSE'}}">已关闭</div>
 				</div>
 				<div class="order-protrait flex-xcs" wx:for="{{item.subOrderList}}" wx:for-item="it">
-					<div class="img-box flex-x"><image src="{{it.mainImage}}" lazy-load="{{true}}"/></div>
+					<div class="img-box flex-x"><image mode="aspectFill" src="{{it.mainImage +Size.W100H100}}" lazy-load="{{true}}"/></div>
 					<view class="order-name flex-1 flex-y">
 						<div class="name m-ellipsis">{{it.name}}</div>
 						<div class="styles">

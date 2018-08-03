@@ -21,7 +21,7 @@
 		<block wx:if="{{goodsList.length>0}}">
 		<view class="goods-item flex-xs" wx:for="{{goodsList}}">
 			<view class="img-box">
-				<image class="" src="{{item.mainImage}}"></image>
+				<image class="" src="{{item.mainImage+Size.W100H100}}" mode="aspectFill"></image>
 			</view>
 			<div class="brief flex-1 flex-y">
 				<div class="name">{{item.name}}</div>

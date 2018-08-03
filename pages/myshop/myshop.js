@@ -10,6 +10,7 @@ Page({
 		Size,
 		noMoreData: false,
 		hotList: null,
+    effectiveTime:0,
     realName:'',
     phone:"",
     validCode:"",
@@ -35,6 +36,22 @@ Page({
       })
 
     },1000)
+  },
+  getValidateCode:function(){
+    var _this = this;
+    if(!app.phoneValidate(this.data.phone)){
+      wx.showModal({
+        title: '温馨提示',
+        content:"请输入正确手机号",
+        showCancel:false
+      })
+      return;
+    }
+    service.getValidateCode({phone:this.data.phone},function(){
+      _this.timeCount(60);
+
+    })
+
   },
   handleChooseLocation:function(){
     var _this = this;

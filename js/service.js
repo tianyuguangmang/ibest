@@ -66,7 +66,12 @@ const merchantBaseInfoUrl = "/merchant/shop/baseinfo";
 const stockCartListUrl = "/supplier/product/cartlist";
 //获取订单的token
 const getOrderTokenUrl = "/order/token";
+//手机短信验证码
+const getValidateCodeUrl = "/phone/code";
 var Service = {
+	getValidateCode: function(params,cb,failcb){
+		http.get(getValidateCodeUrl,params,cb,failcb);
+	},
 	getStockCartList: function(params,cb,failcb){
 		http.get(stockCartListUrl,params,cb,failcb);
 	},
