@@ -5,6 +5,15 @@ Component({
       type: Object,
       value:{},
       observer: function(newVal, oldVal, changedPath) {
+        if(newVal&&newVal.supplierInfo){
+          newVal.supplierInfo.accountFund = (newVal.supplierInfo.accountFund*0.01).toFixed(2);
+        }
+        if(newVal&&newVal.supplierInfo){
+          newVal.merchantInfo.accountFund = (newVal.merchantInfo.accountFund*0.01).toFixed(2);
+        }
+        this.setData({
+          baseInfo:newVal
+        })
       }
     }
   },
