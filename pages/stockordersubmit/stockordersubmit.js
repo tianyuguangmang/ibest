@@ -51,13 +51,39 @@ Page({
     if(_this.dataLoading){
       return;
     }
+    var params = {
+      addressId:this.data.selectedAddress.addressId,
+      payType:'WX'
+    };
     _this.dataLoading = true;
-    service.stockBuyConfirm({addressId:this.data.selectedAddress.addressId,payType:'ACCOUNT'},function(res){
+    service.stockBuyConfirm(params,function(response){
+      var _msg = response.data.result;
       _this.dataLoading = false;
+      if(params.payType == 'WX'){
+        service.userPayMsOrder({orderId:_msg.orderId},function(res){
+          var _results = res.data.result;
+          wx.requestPayment({
+               'timeStamp': _results.timeStamp,
+               'nonceStr': _results.nonceStr,
+               'package': _results.packAge,
+               'signType': 'MD5',
+               'paySign': _results.paySign,
+               'success':function(res){
+                  wx.redirectTo({
+                    url: '/pages/msorder/msorder?type=MERCHANT'
+                  })
+               },
+               'fail':function(res){
+                  // wx.redirectTo({
+                  //   url: '/pages/msorder/msorder?type=MERCHANT'
+                  // })
+               }
+            })
+        })
+      }
+
       wx.removeStorageSync(app.SHOP_CART_INFO);
-      wx.redirectTo({
-        url: '/pages/msorder/msorder?type=MERCHANT'
-      })
+      
     },function(){
       _this.dataLoading = false;
     })

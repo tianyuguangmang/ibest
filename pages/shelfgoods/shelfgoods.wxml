@@ -20,7 +20,7 @@
 					<image class="" src="{{item.mainImage}}"></image>
 				</view>
 				<div class="brief flex-1 flex-y">
-					<div class="name">{{item.name}}</div>
+					<div class="name ">{{item.name}}</div>
 					<div class="sell flex-1">销量{{item.soldNumber?item.soldNumber:0}}件<span style="margin-left: 30rpx;">库存{{item.stock?item.stock:0}}件</span></div>
 					<div class="price flex-x">
 						<span style="font-size:24rpx;color:#f84f2f;">￥</span>

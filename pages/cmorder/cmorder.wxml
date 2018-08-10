@@ -14,7 +14,7 @@
 			<view class="order-item flex-y" wx:for="{{dataMsg}}" wx:key="item.orderId" data-id="{{item.orderId}}">
 				<div class="order-msg flex-x bg-w">
 					<div class="service-number">订单编号：</div>
-					<div class="number flex-1">{{item.orderId}}</div>
+					<div class="number flex-1">{{item.orderNumber}}</div>
 					<div class="states" wx:if="{{item.status=='WAIT_PAY'}}">待付款</div>
 					<div class="states" wx:elif="{{item.status=='PAID'}}">待接单</div>
 					<div class="states" wx:elif="{{item.status=='RECEIVE_ORDER'}}">待送达</div>
@@ -34,9 +34,9 @@
 						</div>
 					</view>
 					<div class="price">
-						<div class="discount-price">售价：￥{{it.resetPrice}}</div>
+						<div class="discount-price">售价：￥{{it.resetPrice*0.01}}</div>
 
-						<div class="discount-price" style="color:#999;">成本价：￥{{it.originPrice}}</div>
+						<div class="discount-price" style="color:#999;">成本价：￥{{it.originPrice*0.01}}</div>
 						<!-- <div class="origin-price">￥{{it.originPrice}}</div> -->
 						<div class="buyer-number"><span>x{{it.count}}</span></div>
 					</div>
@@ -45,9 +45,9 @@
 				<view class="bg-w flex-x" style="font-size:24rpx;height:80rpx;">
 					
 					<div class="flex-1"></div>
-					<div style="padding-right:20rpx;">总价：￥<span style="font-size:30rpx;margin-right:5rpx;">{{item.allFee}}</span></div>
-					<div style="padding-right:20rpx;">成本：￥<span style="font-size:30rpx;margin-right:5rpx;">{{item.finalCost}}</span></div>
-					<div style="padding-right:20rpx;color:#e56000;">盈利：￥<span style="font-size:30rpx;margin-right:5rpx;">{{item.gainsMoney + item.deliveryFee}}</span></div>
+					<div style="padding-right:20rpx;">总价：￥<span style="font-size:30rpx;margin-right:5rpx;">{{item.allFee*0.01}}</span></div>
+					<div style="padding-right:20rpx;">成本：￥<span style="font-size:30rpx;margin-right:5rpx;">{{item.finalCost*0.01}}</span></div>
+					<div style="padding-right:20rpx;color:#e56000;">盈利：￥<span style="font-size:30rpx;margin-right:5rpx;">{{item.gainsMoney*0.01 + item.deliveryFee*0.01}}</span></div>
 					
 				</view>
 				<view class="address btl" style="padding-bottom:20rpx; background: #fff;">

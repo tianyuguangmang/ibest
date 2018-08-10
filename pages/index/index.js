@@ -70,6 +70,8 @@ Page({
 			_this.setData({
 				menuList:res.data.result
 			})
+			_this.dataCateId = res.data.result[0].cateId;
+			_this.getDataList();	
 		});
 	},
 	/**
@@ -159,10 +161,10 @@ Page({
 		var params = {
 			current:this.dataCurrent,
 			size:this.dataSize,
-			onSell:1,
-			merchantId:this.mchtId
+			onSell:1
 		}
 		if(this.dataCateId) params.cateId = this.dataCateId;
+		if(this.mchtId) params.merchantId = this.mchtId;
 		service.merchantGoodsList(params,function(res){
 			var _goodsList = res.data.result.list;
 			_goodsList.forEach(function(item,index){
@@ -183,7 +185,7 @@ Page({
 		})
 	},
 	cartDataInfo:null,
-	mchtId:1,
+	mchtId:15,
 	getWxUserInfo:function(){
 		//app.getUserInfo(function(res) {
 			/*service.updateUserInfo({
@@ -202,8 +204,9 @@ Page({
 				address:_merchantInfo.deliveryArea
 			})
 		}else{
-			if(app.globalData.merchantId){
-				service.getMerchantInfo({merchantId:app.globalData.merchantId},function(res){
+			if(this.mchtId){
+				app.globalData.merchantId = this.mchtId;
+				service.getMerchantInfo({merchantId:this.mchtId},function(res){
 					app.globalData.merchantInfo = res.data.result;
 					_this.setData({
 						address:res.data.result.deliveryArea
@@ -212,15 +215,29 @@ Page({
 			}
 		}
 	},
+	getBaseInfo:function(){
+    var _this = this;
+    service.getBaseInfo((res) => {
+      app.globalData.baseInfo = res.data.result
+      _this.setData({
+        baseInfo:res.data.result
+      })
+      _this.getMerchantInfo();
+     
+    });
+  },
 	onLoad:function(options){
 		var _this = this;
-		this.mchtId = options.merchantId||13;
-		app.globalData.merchantId = this.mchtId;
-		this.getMerchantInfo();
-		this.getCateList();
+		if(options.merchantId){
+			this.mchtId = options.merchantId;
+			app.globalData.merchantId = this.mchtId;
+		}
 		this.cartDataInfo = wx.getStorageSync(app.CART_INFO);
-		this.getDataList();	
-		this.getWxUserInfo();	
+		this.getBaseInfo();
+		
+		this.getCateList();
+		
+		
 		
 	},
 

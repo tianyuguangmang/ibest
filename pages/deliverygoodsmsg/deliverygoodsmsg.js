@@ -7,7 +7,7 @@ var app = getApp();
 import * as Size from '../../js/imagesize';
 Page({
   data: {
-    orderNumber:'',
+    courierNumber:'',
     courier:"",
 
   },
@@ -17,7 +17,6 @@ Page({
   },
 
   bindPickerChange: function(e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       menuIndex: e.detail.value
     })
@@ -25,7 +24,7 @@ Page({
 
   inputOrderNumber:function(e){
     this.setData({
-      orderNumber:e.detail.value
+      courierNumber:e.detail.value
     })
   },
  
@@ -38,7 +37,7 @@ Page({
   toSubmit:function(){
     var _this = this;
     var params = {
-      orderNumber:this.data.orderNumber,
+      courierNumber:this.data.courierNumber,
       courier:this.data.courier,
       orderId:this.orderId
     }
@@ -50,7 +49,7 @@ Page({
         })
         return;
       }
-    if(!app.required(params.orderNumber)){
+    if(!app.required(params.courierNumber)){
         wx.showModal({
           title: '温馨提示',
           content:"请输入发货单号",

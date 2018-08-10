@@ -17,6 +17,7 @@
 					<div class="number flex-1">{{item.orderNumber}}</div>
 					<div class="states" wx:if="{{item.status=='WAIT_PAY'}}">待付款</div>
 					<div class="states" wx:elif="{{item.status=='PAID'}}">待接单</div>
+					<div class="states" wx:elif="{{item.status=='REFUND'}}">已退款</div>
 					<div class="states" wx:elif="{{item.status=='RECEIVE_ORDER'}}">配送中</div>
 					<div class="states" wx:elif="{{item.status=='CANCEL_ORDER'}}">已取消</div>
 					<div class="states" wx:elif="{{item.status=='REFUSE_ORDER'}}">已拒单</div>
@@ -48,7 +49,7 @@
 				<div class="flex-x order-btn btl">
 					<div class="flex-1"></div>
 					<!-- <view class="finish-order"  data-id="{{item.orderId}}" bindtap="orderDetail">查看详情</view> -->
-					<view class="finish-order"  data-id="{{item.orderId}}" wx:if="{{item.status == 'PAID'}}" bindtap="refund">退款</view>
+					<view class="finish-order" data-index="{{index}}" data-id="{{item.orderId}}" wx:if="{{item.status == 'PAID'}}" bindtap="fundOrder">退款</view>
 					<!-- <view class="finish-order"  data-id="{{item.orderId}}" wx:elif="{{item.status == 'FINISHED'}}" bindtap="deleteOrder">删除订单</view> -->
 					<view class="finish-order btn"  data-id="{{item.orderId}}" data-index="{{index}}" wx:elif="{{item.status == 'WAIT_PAY'}}" bindtap="cancelOrder">取消订单</view>
 					<view class="finish-order btn"  data-id="{{item.orderId}}" data-index="{{index}}" wx:elif="{{item.status == 'DELIVERY_FINISH'}}" bindtap="confirmReceive">确认收货</view>

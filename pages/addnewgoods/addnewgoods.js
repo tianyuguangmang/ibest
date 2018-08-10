@@ -231,7 +231,6 @@ Page({
 		var localImgList = _this.data.localImgList;
 		for(let i =0,len = localImgList.length;i<len;i++){
 			wx.uploadFile({
-			  //url: 'https://upload.qiniup.com', //接口地址
 			  url: 'https://upload.qiniup.com', //接口地址
 			  filePath: localImgList[i],
 			  name: 'file',
@@ -240,7 +239,7 @@ Page({
 			  },
 			  success: function(res){
 			    var data = JSON.parse(res.data);
-			    var _imgPath = "http://oznoulcwg.bkt.clouddn.com/"+data.key;
+			    var _imgPath = "http://img.echgs.com/"+data.key;
 			    _this.imgList.push(_imgPath);
 			    _this.dataLoading = false;
 			    if(cb&&(i==localImgList.length-1))cb();
@@ -270,7 +269,7 @@ Page({
 				  success: function(res){
 				  	_this.dataLoading = false;
 				    var data = JSON.parse(res.data);
-				    var _imgPath = "http://oznoulcwg.bkt.clouddn.com/"+data.key;
+				    var _imgPath = "http://img.echgs.com/"+data.key;
 				    _this.imgList[i] = _imgPath;
 				    if(cb&&(i==localImgList.length-1))cb();
 				  },

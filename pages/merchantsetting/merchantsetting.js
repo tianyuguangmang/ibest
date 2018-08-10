@@ -69,8 +69,8 @@ Page({
     if(baseInfo){
       this.setData({
         dataMsg:{
-          sendPrice:baseInfo.merchantInfo.sendPrice,
-          deliveryFee:baseInfo.merchantInfo.deliveryFee,
+          sendPrice:baseInfo.merchantInfo.sendPrice*0.01,
+          deliveryFee:baseInfo.merchantInfo.deliveryFee*0.01,
           deliveryArea:baseInfo.merchantInfo.deliveryArea,
           amStartTime:baseInfo.merchantInfo.amStartTime,
           amEndTime:baseInfo.merchantInfo.amEndTime,
@@ -84,6 +84,9 @@ Page({
 	toSubmit:function(){
     var _this = this;
     var params = _this.data.dataMsg;
+    var baseInfo = app.globalData.baseInfo;
+    params.sendPrice = baseInfo.merchantInfo.sendPrice*100,
+    params.deliveryFee = baseInfo.merchantInfo.deliveryFee*100,
     service.updateMerchantBaseInfo(params,function(res){
         app.globalData.baseInfo.merchantInfo = Object.assign(app.globalData.baseInfo.merchantInfo,params);
         app.goBack("修改成功");

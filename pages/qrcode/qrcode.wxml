@@ -1,0 +1,6 @@
+<view style="height: 100%;background: #666;" class="flex-y">
+	<view class="" style="width:600rpx;height: 800rpx;">
+	<image style="width:100%;height: 600rpx;" src=""></image>
+	<view style="color: #fff;" class="flex-x">扫码可进入</view>
+	</view>
+</view>

@@ -1,0 +1,14 @@
+{
+
+  "enablePullDownRefresh": true,
+  "navigationBarBackgroundColor": "#666",
+  "navigationBarTextStyle":"#fff",
+  "onReachBottomDistance":50,
+  "navigationBarTitleText": "推广二维码",
+  "component": true,
+  "usingComponents": {
+    "baseinfo": "../component/baseinfo/baseinfo"
+  }
+
+    
+}

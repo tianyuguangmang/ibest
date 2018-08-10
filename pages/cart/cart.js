@@ -47,6 +47,12 @@ Page({
         _list[i].selected = true;
       }
       _amount = Math.round(_amount*100)/100
+      if(!_this.merchantInfo){
+        wx.switchTab({
+          url:"/pages/index/index"
+        })
+        return;
+      }
       var _needAmount = Math.round((_this.merchantInfo.sendPrice - _amount)*100)/100
       _this.setData({
         cartList:_list,
@@ -84,7 +90,6 @@ Page({
         cartList:[]
       })
     }
-    this.refush();
   },
   /**
    * 计算购物车

@@ -18,14 +18,14 @@
 			<i class="iconfont icon-liebiao color1 clip" style="font-size:54rpx;"></i>
 			<span class="flex-1">订单列表</span>
 		</navigator>
-		<navigator class="item flex-y" url="/pages/withdraw/withdraw">
+		<!-- <navigator class="item flex-y" url="/pages/withdraw/withdraw">
 			<i class="iconfont icon-tixian color1 clip" style="font-size:54rpx;"></i>
 			<span class="flex-1">提现</span>
 		</navigator>
 		<navigator class="item flex-y" url="/pages/bankcard/bankcard">
 			<i class="iconfont icon-yinxingqia-copy color1 clip" style="font-size:54rpx;"></i>
 			<span class="flex-1">银行卡</span>
-		</navigator>
+		</navigator> -->
 	</view>
 	<view class="flex-wrap packet" wx:else>
 		<navigator class="item flex-y" url="/pages/myshop/myshop">

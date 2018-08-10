@@ -8,7 +8,7 @@ Component({
         if(newVal&&newVal.supplierInfo){
           newVal.supplierInfo.accountFund = (newVal.supplierInfo.accountFund*0.01).toFixed(2);
         }
-        if(newVal&&newVal.supplierInfo){
+        if(newVal&&newVal.merchantInfo){
           newVal.merchantInfo.accountFund = (newVal.merchantInfo.accountFund*0.01).toFixed(2);
         }
         this.setData({

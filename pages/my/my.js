@@ -41,8 +41,15 @@ Page({
     });
   },
   onLoad:function(){
+    if(app.globalData.baseInfo){
+      this.setData({
+        baseInfo:app.globalData.baseInfo
+      })
+    }else{
+      this.getBaseInfo();
+
+    }
     
-    this.getBaseInfo();
   },
   onShow:function(){
     

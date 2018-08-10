@@ -1,6 +1,9 @@
 {
 
   "pages":[
+    "pages/index/index",
+    "pages/qrcode/qrcode",
+    
     "pages/my/my",
     "pages/newaddress/newaddress",
     "pages/myshop/myshop",
@@ -18,7 +21,6 @@
     "pages/messagecollect/messagecollect",
     "pages/address/address",
     "pages/myorder/myorder",
-    "pages/index/index",
     "pages/suppliercenter/suppliercenter",
     "pages/stockgoods/stockgoods",
     "pages/shelfgoods/shelfgoods",
@@ -35,7 +37,7 @@
   ],
   
   "networkTimeout":{
-    "request":5000
+    "request":10000
   },
   "window":{
     "navigationBarBackgroundColor": "white",

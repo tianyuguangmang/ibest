@@ -68,7 +68,26 @@ const stockCartListUrl = "/supplier/product/cartlist";
 const getOrderTokenUrl = "/order/token";
 //手机短信验证码
 const getValidateCodeUrl = "/phone/code";
+//普通用户支付
+const userPayUrl = "/wx/pay/cmorder";
+//商家支付
+const userPayMsOrderUrl = "/wx/pay/msorder";
+//更新状态
+const updateMsOrderStatusUrl = "/msorder/update";
+const getQrCodeUrl = "/wx/qrcode";
 var Service = {
+	getQrCode: function(params,cb,failcb){
+		http.get(getQrCodeUrl,params,cb,failcb);
+	},
+	updateMsOrderStatus: function(params,cb,failcb){
+		http.post(updateMsOrderStatusUrl,params,cb,failcb);
+	},
+	userPayMsOrder: function(params,cb,failcb){
+		http.post(userPayMsOrderUrl,params,cb,failcb);
+	},
+	userPay: function(params,cb,failcb){
+		http.post(userPayUrl,params,cb,failcb);
+	},
 	getValidateCode: function(params,cb,failcb){
 		http.get(getValidateCodeUrl,params,cb,failcb);
 	},
@@ -175,7 +194,7 @@ var Service = {
 		http.post(cmOrderSaveUrl,params,cb,failcb);
 	},
 	merchantGoodsList: function(params,cb,failcb){
-		http.get(merchantGoodsListUrl,params,cb,failcb);
+		http.get(merchantGoodsListUrl,params,cb,failcb,1);
 	},
 	deleteAddress: function(params,cb,failcb){
 		http.post(deleteAddressUrl,params,cb,failcb);

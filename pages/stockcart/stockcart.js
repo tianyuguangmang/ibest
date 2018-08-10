@@ -24,7 +24,7 @@ Page({
     }
     this.setData({
       cartList:_cartList,
-      countMoney:_amount
+      countMoney:_amount.toFixed(2)
     })
   },
   getProductByIds:function(){

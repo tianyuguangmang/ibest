@@ -151,16 +151,6 @@ Page({
     service.getUserOrderList(params,function(res){
       var originList = reload?[]:_this.data.dataList;
       var _list = res.data.result.list;
-      /*_list.forEach(function(item,index){
-        _list[index].deliveryFee = app.dot2(item.deliveryFee);
-        _list[index].allFee = app.dot2(item.allFee);
-        _list[index].totalMoney = app.dot2(item.totalMoney);
-        _list[index].subOrderList.forEach(function(item2,index2){
-          _list[index2].subOrderList.originPrice = app.dot2(item2.originPrice);
-          _list[index2].subOrderList.resetPrice = app.dot2(item.resetPrice);
-
-        })
-      })*/
       if(_list.length == _this.size){
         _this.current = res.data.result.pageNum;
       }else{
@@ -238,9 +228,20 @@ Page({
   confirmReceive:function(currentTarget){
     this.updateOrderState(currentTarget,"FINISHED");
   },
-  /*finished:function(currentTarget){
-    this.updateOrderState(currentTarget,"FINISHED");
-  },*/
+  fundOrder:function(currentTarget){
+    var _this = this;
+    wx.showModal({
+      title: '提示',
+      content: '确定要取消这个订单吗？',
+      success: function(res) {
+        if (res.confirm) {
+          _this.updateOrderState(currentTarget,"REFUND");
+        } else if (res.cancel) {
+        }
+      }
+    })
+  },
+
   updateOrderState:function(currentTarget,state){
     var _this = this;
     var _id = app.getData(currentTarget,"id");
@@ -255,9 +256,6 @@ Page({
       })
       _this.dataLoad(true);
     })
-  },
-  refund:function(){
-
   },
   orderDetail:function(){
 

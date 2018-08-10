@@ -24,6 +24,7 @@ page{
 	width:100%;
 
 }
+
 .btn-box .btn{
 	width:600rpx;
 	height: 80rpx;

@@ -10,7 +10,7 @@ page .title{
 	height: 100%;
 }
 .title{
-	width:200rpx;
+	width:150rpx;
 	background: #f7f7f7;
 	font-size:30rpx;
 	color:#000;
@@ -21,7 +21,7 @@ page .title{
 	position: fixed;
 	left:0;
 	top:0;
-	width:200rpx;
+	width:150rpx;
 	height: 100%;
 }
 

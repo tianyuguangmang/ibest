@@ -67,9 +67,12 @@ Page({
            'paySign': _results.paySign+"",
            'success':function(res){
             isSubmiting = false;
-             wx.redirectTo({
+            service.updateCmOrderState({},function(res){
+              
+            })
+             /* wx.redirectTo({
                 url: '/pages/myorder/myorder?id=3'
-              })
+              })*/
            },
            'fail':function(res){
             isSubmiting = false;

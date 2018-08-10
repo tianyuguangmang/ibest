@@ -20,7 +20,7 @@
 		<div class="flex-x box-item" style="height:120rpx;width:100%;">
 			<span style="color:#333;margin-right:40rpx;">验证码</span>
 			<input value="{{validateCode}}" type="number" placeholder="请输入验证码" class="flex-1" bindinput="inputValidate" />
-			<span style="padding:15rpx 40rpx;border-radius:40rpx;background:#ff3c42;color:#fff;margin-right:30rpx;" class="flex-x" bindtap="getValidateCode" wx:if="{{effectiveTime==0}}">发送验证码</span>
+			<span style="padding:15rpx 40rpx;border-radius:40rpx;background:#fe5600;color:#fff;margin-right:30rpx;" class="flex-x" bindtap="getValidateCode" wx:if="{{effectiveTime==0}}">发送验证码</span>
 			<span style="padding:15rpx 40rpx;border-radius:40rpx;background:#ccc;color:#fff;margin-right:30rpx;" class="flex-x" wx:else>{{effectiveTime}}s后重新发送</span>
 		</div>
 		
